@@ -6,24 +6,25 @@
     <title>合同会社たいせい｜価値を積み上げ、タイセイする。</title>
     <meta
       name="description"
-      content="買取事業・不動産事業・小売事業を展開する合同会社たいせいのコーポレートサイト。"
+      content="合同会社たいせいのコーポレートサイト。買取・不動産・小売を基盤に、金融知見と実業運営を統合した堅実な事業経営を行っています。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         --navy-900: #0b1b3b;
         --navy-800: #12254d;
-        --navy-700: #193060;
+        --navy-700: #1f3d73;
         --text: #111827;
         --muted: #4b5563;
-        --line: rgba(17, 24, 39, 0.08);
-        --soft: 0 24px 60px rgba(7, 16, 34, 0.12);
-        --radius: 28px;
+        --line: rgba(15, 23, 42, 0.12);
+        --surface: #f8fafc;
+        --radius: 24px;
+        --shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
       }
 
       * {
@@ -35,18 +36,19 @@
       body {
         font-family: 'Noto Sans JP', 'Hiragino Sans', 'Helvetica Neue', Arial, sans-serif;
         color: var(--text);
-        background: #ffffff;
+        background: #fff;
+        line-height: 1.75;
         letter-spacing: 0.01em;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
       }
 
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
       }
 
       .container {
@@ -59,98 +61,104 @@
         padding: 96px 0;
       }
 
-      .section--muted {
-        background: #f8fafc;
+      .section-muted {
+        background: var(--surface);
       }
 
       .eyebrow {
         font-size: 12px;
-        font-weight: 600;
         letter-spacing: 0.3em;
         text-transform: uppercase;
         color: var(--navy-700);
-      }
-
-      .heading {
-        font-size: clamp(24px, 2.4vw, 34px);
         font-weight: 600;
-        color: var(--navy-900);
-        margin-top: 16px;
       }
 
-      .description {
-        font-size: 15px;
-        line-height: 1.8;
+      .title {
+        margin-top: 14px;
+        font-size: clamp(24px, 2.4vw, 34px);
+        color: var(--navy-900);
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .lead {
+        margin-top: 14px;
         color: var(--muted);
-        margin-top: 16px;
+        font-size: 15px;
       }
 
       .card {
-        background: #ffffff;
         border: 1px solid var(--line);
         border-radius: var(--radius);
-        box-shadow: var(--soft);
+        background: #fff;
+        box-shadow: var(--shadow);
         padding: 28px;
       }
 
-      .card--navy {
+      .card-navy {
         background: var(--navy-900);
-        color: #ffffff;
+        color: #fff;
       }
 
-      .pill-button {
+      .btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        border-radius: 999px;
-        font-weight: 600;
-        font-size: 14px;
         padding: 12px 24px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 600;
         border: 1px solid var(--navy-900);
         transition: all 0.2s ease;
       }
 
-      .pill-button--solid {
+      .btn-solid {
         background: var(--navy-900);
-        color: #ffffff;
+        color: #fff;
       }
 
-      .pill-button--solid:hover {
+      .btn-solid:hover {
         background: var(--navy-800);
       }
 
-      .pill-button--outline {
-        background: transparent;
+      .btn-outline {
         color: var(--navy-900);
+        background: transparent;
       }
 
-      .pill-button--outline:hover {
+      .btn-outline:hover {
         background: var(--navy-900);
-        color: #ffffff;
+        color: #fff;
       }
 
       header {
         position: sticky;
         top: 0;
-        z-index: 100;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
+        z-index: 10;
         border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(8px);
       }
 
       .nav {
+        min-height: 78px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 18px 0;
         gap: 16px;
+      }
+
+      .nav-logo {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--navy-900);
       }
 
       .nav-links {
         display: flex;
-        gap: 28px;
-        font-size: 14px;
+        gap: 24px;
         color: #6b7280;
+        font-size: 14px;
       }
 
       .nav-links a:hover {
@@ -158,108 +166,171 @@
       }
 
       .hero {
+        background: radial-gradient(circle at top, rgba(11, 27, 59, 0.12), transparent 58%),
+          linear-gradient(180deg, rgba(11, 27, 59, 0.03), rgba(11, 27, 59, 0));
         padding: 80px 0 96px;
-        background: radial-gradient(circle at top, rgba(11, 27, 59, 0.12), transparent 55%),
-          linear-gradient(180deg, rgba(11, 27, 59, 0.03), rgba(11, 27, 59, 0.0));
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 40px;
-        align-items: center;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 36px;
       }
 
       .hero-title {
-        font-size: clamp(32px, 4vw, 52px);
+        margin-top: 16px;
+        font-size: clamp(32px, 4.2vw, 54px);
         line-height: 1.3;
         font-weight: 600;
         color: var(--navy-900);
-        margin: 20px 0;
       }
 
-      .hero-text {
-        font-size: 15px;
-        line-height: 1.9;
+      .hero-copy {
+        margin-top: 22px;
         color: var(--muted);
+        font-size: 16px;
       }
 
-      .hero-buttons {
-        margin-top: 24px;
+      .hero-actions {
+        margin-top: 26px;
         display: flex;
-        flex-wrap: wrap;
         gap: 12px;
+        flex-wrap: wrap;
       }
 
       .grid-3 {
+        margin-top: 32px;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 20px;
       }
 
       .grid-2 {
+        margin-top: 32px;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
       }
 
+      .card-title {
+        color: var(--navy-900);
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .card-text {
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
       .list {
-        margin-top: 16px;
+        margin-top: 14px;
         display: grid;
-        gap: 10px;
+        gap: 8px;
         color: #374151;
         font-size: 14px;
       }
 
-      .list-item {
+      .list li {
         display: flex;
         align-items: center;
         gap: 10px;
       }
 
-      .list-dot {
-        width: 6px;
-        height: 6px;
-        background: var(--navy-700);
-        border-radius: 50%;
-      }
-
-      .timeline {
-        display: grid;
-        gap: 12px;
-        font-size: 14px;
-        color: var(--muted);
-      }
-
-      .timeline span {
-        display: inline-flex;
-        gap: 10px;
-        align-items: center;
-      }
-
-      .timeline span::before {
+      .list li::before {
         content: '';
         width: 6px;
         height: 6px;
-        background: var(--navy-700);
         border-radius: 999px;
-        display: inline-block;
+        background: var(--navy-700);
+      }
+
+      .strength-item {
+        display: grid;
+        gap: 10px;
+      }
+
+      .strength-item p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .rep-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .rep-photo {
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: #e5e7eb;
+      }
+
+      .rep-photo img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      .timeline {
+        margin-top: 14px;
+        display: grid;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .timeline div {
+        display: flex;
+        gap: 10px;
+      }
+
+      .timeline div::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        margin-top: 9px;
+        border-radius: 999px;
+        background: var(--navy-700);
+        flex-shrink: 0;
+      }
+
+      .outline {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .outline dt {
+        color: var(--navy-900);
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .outline dd {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 15px;
       }
 
       footer {
         border-top: 1px solid var(--line);
-        background: #ffffff;
-        padding: 32px 0 40px;
+        padding: 30px 0 40px;
         color: #6b7280;
         font-size: 13px;
       }
 
-      .footer-grid {
+      .footer {
         display: flex;
-        align-items: center;
         justify-content: space-between;
+        align-items: center;
+        gap: 10px;
         flex-wrap: wrap;
-        gap: 12px;
       }
 
       .reveal {
@@ -273,25 +344,21 @@
         transform: translateY(0);
       }
 
-      @media (max-width: 900px) {
-        .hero-grid {
+      @media (max-width: 960px) {
+        .hero-grid,
+        .grid-3,
+        .grid-2,
+        .rep-layout,
+        .outline {
           grid-template-columns: 1fr;
         }
 
-        .grid-3 {
-          grid-template-columns: 1fr;
-        }
-
-        .grid-2 {
-          grid-template-columns: 1fr;
+        .section {
+          padding: 76px 0;
         }
 
         .nav-links {
           display: none;
-        }
-
-        .section {
-          padding: 72px 0;
         }
       }
     </style>
@@ -300,281 +367,218 @@
     <!-- Header -->
     <header>
       <div class="container nav">
-        <a href="#top" class="logo" aria-label="合同会社たいせい">
-          <strong style="color: var(--navy-900); font-size: 18px;">合同会社たいせい</strong>
-        </a>
+        <a href="#top" class="nav-logo">合同会社たいせい</a>
         <nav class="nav-links" aria-label="主要ナビゲーション">
+          <a href="#strength">強み</a>
+          <a href="#business">事業</a>
+          <a href="#representative">代表</a>
           <a href="#company">会社概要</a>
-          <a href="#business">事業紹介</a>
         </nav>
-        <a class="pill-button pill-button--outline" href="#company">会社情報を見る</a>
+        <a class="btn btn-outline" href="#company">会社情報を見る</a>
       </div>
     </header>
 
     <!-- Hero -->
-    <section id="top" class="hero">
+    <section class="hero" id="top">
       <div class="container hero-grid">
         <div class="reveal">
           <p class="eyebrow">Taisei Corporate</p>
           <h1 class="hero-title">価値を積み上げ、<br />タイセイする。</h1>
-          <p class="hero-text">
-            合同会社たいせいは、買取事業・不動産事業・小売事業を軸に、
-            実体のあるビジネスを堅実に運営する実業会社です。
+          <p class="hero-copy">
+            合同会社たいせいは、買取・不動産・小売の実業を基盤に、
+            投資判断と現場運営を一体で行う事業会社です。短期的な拡大よりも、
+            収益性と継続性を重視し、東京を拠点に全国で着実な成長を進めています。
           </p>
-          <div class="hero-buttons">
-            <a class="pill-button pill-button--solid" href="#company">会社概要を見る</a>
-            <a class="pill-button pill-button--outline" href="#business">事業紹介へ</a>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#business">事業内容を見る</a>
+            <a class="btn btn-outline" href="#representative">代表プロフィールへ</a>
           </div>
         </div>
         <div class="card reveal">
-          <p class="eyebrow">Message</p>
-          <p class="description">
-            古くから存在する産業に新しい視点を持ち込み、
-            地域と市場の両方に価値を届けることを使命としています。
-          </p>
-          <p class="description" style="margin-top: 12px;">
-            東京を拠点に、全国へ。私たちは事業を通じて、持続的な成長を積み重ねていきます。
+          <p class="eyebrow">Company Policy</p>
+          <h2 class="title">投資と運営の両輪で、<br />再現性のある成長を実現</h2>
+          <p class="lead">
+            古くからある産業に新しい視点を持ち込み、
+            金融・会計の専門性と現場の実行力を組み合わせることで、
+            一過性ではない企業価値の向上を目指します。
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Business Highlights -->
-    <section class="section">
+    <!-- Strength -->
+    <section class="section" id="strength">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">Strengths</p>
+          <h2 class="title">強み・特徴</h2>
+          <p class="lead">若さと機動力を備えつつ、経営判断は常に規律と実績を基準に行います。</p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal strength-item">
+            <h3 class="card-title">投資会社寄りの経営</h3>
+            <p>
+              事業単位の収益構造と資本効率を可視化し、
+              定量評価に基づく意思決定を徹底しています。
+            </p>
+          </article>
+          <article class="card reveal strength-item">
+            <h3 class="card-title">実業を持つ安定性</h3>
+            <p>
+              実店舗・不動産・小売の運営基盤により、
+              市況変動時にも耐性のあるキャッシュフローを構築します。
+            </p>
+          </article>
+          <article class="card reveal strength-item">
+            <h3 class="card-title">金融×実業のハイブリッド</h3>
+            <p>
+              金融知見でリスクを管理し、現場運営で価値を創出することで、
+              成長と安定の両立を実現します。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business -->
+    <section class="section section-muted" id="business">
       <div class="container">
         <div class="reveal">
           <p class="eyebrow">Business</p>
-          <h2 class="heading">事業紹介</h2>
-          <p class="description">実体あるビジネスを育てながら、地域と市場の価値を結びます。</p>
+          <h2 class="title">事業ポートフォリオ</h2>
+          <p class="lead">
+            生活に根差した三つの領域で実体資産を運営し、
+            中長期で持続可能な収益基盤を育成しています。
+          </p>
         </div>
-        <div class="grid-3" style="margin-top: 32px;">
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">買取事業</h3>
-            <p class="description">
-              買取専門店「こやし屋」を通じて、地域に根差した価値循環を実現します。
-            </p>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>大森山王店</div>
-              <div class="list-item"><span class="list-dot"></span>大口通店</div>
-              <div class="list-item"><span class="list-dot"></span>野方店</div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">不動産事業</h3>
-            <p class="description">
-              全国の拠点で実体ある資産運営を行い、長期視点で地域に寄与します。
-            </p>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>青森市 メゾンドアーク</div>
-              <div class="list-item"><span class="list-dot"></span>岐阜市 ベイセジュール</div>
-              <div class="list-item"><span class="list-dot"></span>静岡市 T-style広野</div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">小売事業</h3>
-            <p class="description">選び抜いた商品と体験を届けるショップ運営を行っています。</p>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>365スイーツショップ青森本店</div>
-            </div>
-          </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3 class="card-title">買取事業</h3>
+            <p class="card-text">買取専門店「こやし屋」を運営し、地域に密着した価値循環を推進しています。</p>
+            <ul class="list">
+              <li>大森山王店</li>
+              <li>大口通店</li>
+              <li>野方店</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3 class="card-title">不動産賃貸業</h3>
+            <p class="card-text">全国の運営物件を通じ、安定運用と適切な資産管理を継続しています。</p>
+            <ul class="list">
+              <li>青森市 メゾンドアーク</li>
+              <li>岐阜市 ベイセジュール</li>
+              <li>静岡市 T-style広野</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3 class="card-title">小売事業</h3>
+            <p class="card-text">「365スイーツショップ青森本店」にて品質重視の店舗運営を行っています。</p>
+            <ul class="list">
+              <li>365スイーツショップ青森本店</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Philosophy -->
-    <section class="section section--muted" id="company">
+    <!-- Vision -->
+    <section class="section" id="vision">
       <div class="container">
-        <div class="reveal">
-          <p class="eyebrow">Philosophy</p>
-          <h2 class="heading">会社理念</h2>
-          <p class="description">投資と運営の両輪で事業を育て、一過性ではない価値を創出し続けること。</p>
-        </div>
-        <div class="card reveal" style="margin-top: 28px;">
-          <p class="description">
-            古くからある事業に新しい視点を持ち込み、堅実さと挑戦を両立させながら、
-            次の標準をつくる企業であり続けます。
+        <div class="card card-navy reveal">
+          <p class="eyebrow" style="color: rgba(255, 255, 255, 0.7);">Vision</p>
+          <h2 class="title" style="color: #fff;">地域に根差した実業を、全国水準の経営品質へ</h2>
+          <p class="lead" style="color: rgba(255, 255, 255, 0.86);">
+            既存事業の収益性向上と管理高度化を進めながら、隣接領域への展開を段階的に実行します。
+            投資規律と現場改善を両立し、規模よりも質を重視した成長戦略で企業価値の最大化を図ります。
           </p>
         </div>
       </div>
     </section>
 
     <!-- Representative -->
-    <section class="section">
+    <section class="section section-muted" id="representative">
       <div class="container">
         <div class="reveal">
           <p class="eyebrow">Representative</p>
-          <h2 class="heading">代表プロフィール</h2>
-          <p class="description">代表社員　三上浩平</p>
+          <h2 class="title">代表プロフィール</h2>
+          <p class="lead">代表社員　三上浩平</p>
         </div>
-        <div class="grid-2" style="margin-top: 32px;">
-          <div class="card reveal">
-            <p class="eyebrow">Profile</p>
-            <p class="description" style="margin-top: 16px;">
-              東北大学経済学部卒業後、2008年に三井住友銀行へ入行。連結会計の統括、リスク管理、投資銀行部門に従事。
-            </p>
-            <p class="description">
-              公認会計士試験合格後、EYストラテジー・アンド・コンサルティングにて財務・経営コンサルティング業務に携わる。
-            </p>
-            <p class="description">
-              2021年に税理士事務所を設立し独立。税務・会計コンサルティングを行う一方で、買取事業、小売事業、不動産賃貸業を展開。
-            </p>
-            <p class="description">金融・会計の専門性と実業運営を融合させた事業経営を行っている。</p>
-          </div>
-          <div class="card reveal">
-            <p class="eyebrow">History</p>
-            <div class="timeline" style="margin-top: 16px;">
-              <span>2008年　東北大学経済学部卒業</span>
-              <span>2008年　三井住友銀行 入行</span>
-              <span>2018年　公認会計士試験合格</span>
-              <span>2019年　EYストラテジー・アンド・コンサルティング 入社</span>
-              <span>2020年　合同会社たいせい 設立</span>
-              <span>2021年　三上浩平税理士事務所 設立</span>
-              <span>2021年　合同会社あっぷるキャピタル 設立</span>
+
+        <div class="card reveal" style="margin-top: 30px;">
+          <!-- Photo + text horizontal layout -->
+          <div class="rep-layout">
+            <figure class="rep-photo">
+              <img src="宣材写真.jpg" alt="代表社員 三上浩平の写真" loading="lazy" />
+            </figure>
+            <div>
+              <p class="lead" style="margin-top: 0;">
+                東北大学経済学部卒業後、2008年に三井住友銀行へ入行。連結会計の統括、リスク管理、投資銀行部門に従事。
+                公認会計士試験合格後はEYストラテジー・アンド・コンサルティングで財務・経営コンサルティング業務を担当。
+              </p>
+              <p class="lead">
+                2021年に税理士事務所を設立し独立。税務・会計コンサルティングに加え、
+                買取事業・小売事業・不動産賃貸業を展開し、金融知見と実業運営を統合した経営を実践しています。
+              </p>
+
+              <div class="timeline">
+                <div>2008年　東北大学経済学部卒業</div>
+                <div>2008年　三井住友銀行 入行</div>
+                <div>2018年　公認会計士試験合格</div>
+                <div>2019年　EYストラテジー・アンド・コンサルティング 入社</div>
+                <div>2020年　合同会社たいせい 設立</div>
+                <div>2021年　三上浩平税理士事務所 設立</div>
+                <div>2021年　合同会社あっぷるキャピタル 設立</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Business Detail -->
-    <section class="section section--muted" id="business">
+    <!-- Company -->
+    <section class="section" id="company">
       <div class="container">
         <div class="reveal">
-          <p class="eyebrow">Business</p>
-          <h2 class="heading">事業紹介</h2>
-          <p class="description">買取・不動産・小売の三事業で、地域と市場をつなぐ価値を育てます。</p>
+          <p class="eyebrow">Company Outline</p>
+          <h2 class="title">会社概要</h2>
+          <p class="lead">実体のある事業運営を基盤に、着実な企業価値向上を目指しています。</p>
         </div>
-        <div class="grid-3" style="margin-top: 32px;">
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">買取事業｜買取専門店こやし屋</h3>
-            <p class="description">
-              古くからある市場に誠実に向き合い、地域のお客様の資産を丁寧に引き受けます。
-            </p>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>大森山王店</div>
-              <div class="list-item"><span class="list-dot"></span>大口通店</div>
-              <div class="list-item"><span class="list-dot"></span>野方店</div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">不動産賃貸業</h3>
-            <p class="description">居住者と地域に安心を提供し続けるための運営体制を整備しています。</p>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>青森市 メゾンドアーク</div>
-              <div class="list-item"><span class="list-dot"></span>岐阜市 ベイセジュール</div>
-              <div class="list-item"><span class="list-dot"></span>静岡市 T-style広野</div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">小売事業</h3>
-            <p class="description">365スイーツショップ青森本店を中心に、日常に上質な体験を提供します。</p>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>365スイーツショップ青森本店</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Locations -->
-    <section class="section">
-      <div class="container">
-        <div class="reveal">
-          <p class="eyebrow">Locations</p>
-          <h2 class="heading">店舗・物件一覧</h2>
-          <p class="description">全国各地で堅実に運営している拠点をご紹介します。</p>
-        </div>
-        <div class="grid-2" style="margin-top: 32px;">
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">買取専門店こやし屋</h3>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>大森山王店</div>
-              <div class="list-item"><span class="list-dot"></span>大口通店</div>
-              <div class="list-item"><span class="list-dot"></span>野方店</div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">不動産賃貸業</h3>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>青森市 メゾンドアーク</div>
-              <div class="list-item"><span class="list-dot"></span>岐阜市 ベイセジュール</div>
-              <div class="list-item"><span class="list-dot"></span>静岡市 T-style広野</div>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0;">小売事業</h3>
-            <div class="list">
-              <div class="list-item"><span class="list-dot"></span>365スイーツショップ青森本店</div>
-            </div>
-          </div>
-          <div class="card card--navy reveal">
-            <h3 class="heading" style="font-size: 18px; margin-top: 0; color: #ffffff;">拠点情報の更新</h3>
-            <p class="description" style="color: rgba(255, 255, 255, 0.8);">
-              新規出店や運営拠点の情報は順次更新していきます。
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Company Outline -->
-    <section class="section section--muted">
-      <div class="container">
-        <div class="reveal">
-          <p class="eyebrow">Outline</p>
-          <h2 class="heading">会社概要</h2>
-        </div>
-        <div class="card reveal" style="margin-top: 32px;">
-          <div class="grid-2" style="gap: 24px;">
+        <div class="card reveal">
+          <dl class="outline">
             <div>
-              <p style="font-weight: 600; color: var(--navy-900);">会社名</p>
-              <p class="description">合同会社たいせい</p>
+              <dt>会社名</dt>
+              <dd>合同会社たいせい</dd>
             </div>
             <div>
-              <p style="font-weight: 600; color: var(--navy-900);">設立</p>
-              <p class="description">2020年6月15日</p>
+              <dt>設立</dt>
+              <dd>2020年6月15日</dd>
             </div>
             <div>
-              <p style="font-weight: 600; color: var(--navy-900);">所在地</p>
-              <p class="description">東京都港区港南4丁目2-7-4020</p>
+              <dt>所在地</dt>
+              <dd>東京都港区港南4丁目2-7-4020</dd>
             </div>
             <div>
-              <p style="font-weight: 600; color: var(--navy-900);">代表社員</p>
-              <p class="description">三上浩平</p>
+              <dt>代表社員</dt>
+              <dd>三上浩平</dd>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section">
-      <div class="container">
-        <div class="card card--navy reveal" style="padding: 36px;">
-          <p class="eyebrow" style="color: rgba(255, 255, 255, 0.7);">Leadership</p>
-          <h2 class="heading" style="color: #ffffff;">代表紹介はこちら</h2>
-          <p class="description" style="color: rgba(255, 255, 255, 0.8);">
-            金融・会計の専門性と実業運営を融合した経営体制をご紹介します。
-          </p>
-          <a class="pill-button pill-button--outline" style="border-color: #ffffff; color: #ffffff; margin-top: 16px;" href="#company">
-            会社概要ページへ
-          </a>
+          </dl>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="container footer-grid">
+      <div class="container footer">
         <div>
           <strong style="color: var(--navy-900);">合同会社たいせい</strong>
-          <p style="margin-top: 6px;">東京都港区港南4丁目2-7-4020</p>
+          <p>東京都港区港南4丁目2-7-4020</p>
         </div>
         <p>© 2024 Taisei LLC. All rights reserved.</p>
       </div>
     </footer>
 
     <script>
-      // Scroll reveal animation using IntersectionObserver.
+      // Scroll animation for section entrance.
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -587,7 +591,7 @@
         { threshold: 0.2 }
       );
 
-      document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+      document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
     </script>
   </body>
 </html>
