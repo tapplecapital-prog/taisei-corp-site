@@ -508,7 +508,7 @@
           <!-- Photo + text horizontal layout -->
           <div class="rep-layout">
             <figure class="rep-photo">
-              <img src="宣材写真.jpg" alt="代表社員 三上浩平の写真" loading="lazy" />
+              <img id="representative-photo" src="./宣材写真.jpg" alt="代表社員 三上浩平の写真" loading="lazy" />
             </figure>
             <div>
               <p class="lead" style="margin-top: 0;">
@@ -592,6 +592,27 @@
       );
 
       document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+
+      // Fallback loader for Japanese filename image paths in some environments.
+      (function () {
+        const img = document.getElementById('representative-photo');
+        if (!img) return;
+
+        const candidates = [
+          './宣材写真.jpg',
+          '宣材写真.jpg',
+          './%E5%AE%A3%E6%9D%90%E5%86%99%E7%9C%9F.jpg',
+          '%E5%AE%A3%E6%9D%90%E5%86%99%E7%9C%9F.jpg'
+        ];
+
+        let index = 0;
+        img.onerror = () => {
+          index += 1;
+          if (index < candidates.length) {
+            img.src = candidates[index];
+          }
+        };
+      })();
     </script>
   </body>
 </html>
