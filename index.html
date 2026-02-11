@@ -6,7 +6,7 @@
     <title>合同会社たいせい｜価値を積み上げ、タイセイする。</title>
     <meta
       name="description"
-      content="合同会社たいせいのコーポレートサイト。買取・不動産・小売を基盤に、金融知見と実業運営を統合した堅実な事業経営を行っています。"
+      content="合同会社たいせいは、リユース事業・不動産賃貸業・小売事業を全国展開し、価値の最大化を追求する戦略的事業体です。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,7 @@
         font-family: 'Noto Sans JP', 'Hiragino Sans', 'Helvetica Neue', Arial, sans-serif;
         color: var(--text);
         background: #fff;
-        line-height: 1.75;
+        line-height: 1.8;
         letter-spacing: 0.01em;
       }
 
@@ -134,9 +134,9 @@
       header {
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 20;
         border-bottom: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.88);
+        background: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(8px);
       }
 
@@ -168,31 +168,31 @@
       .hero {
         background: radial-gradient(circle at top, rgba(11, 27, 59, 0.12), transparent 58%),
           linear-gradient(180deg, rgba(11, 27, 59, 0.03), rgba(11, 27, 59, 0));
-        padding: 80px 0 96px;
+        padding: 86px 0 102px;
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
+        grid-template-columns: 1.2fr 0.8fr;
         gap: 36px;
       }
 
       .hero-title {
         margin-top: 16px;
-        font-size: clamp(32px, 4.2vw, 54px);
-        line-height: 1.3;
+        font-size: clamp(32px, 4.3vw, 56px);
+        line-height: 1.28;
         font-weight: 600;
         color: var(--navy-900);
       }
 
       .hero-copy {
-        margin-top: 22px;
+        margin-top: 18px;
         color: var(--muted);
         font-size: 16px;
       }
 
       .hero-actions {
-        margin-top: 26px;
+        margin-top: 28px;
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
@@ -234,7 +234,7 @@
 
       .list li {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 10px;
       }
 
@@ -242,16 +242,20 @@
         content: '';
         width: 6px;
         height: 6px;
+        margin-top: 9px;
         border-radius: 999px;
         background: var(--navy-700);
+        flex-shrink: 0;
       }
 
-      .strength-item {
-        display: grid;
-        gap: 10px;
+      .policy-title {
+        color: var(--navy-900);
+        font-size: 18px;
+        font-weight: 600;
       }
 
-      .strength-item p {
+      .policy-text {
+        margin-top: 10px;
         color: var(--muted);
         font-size: 14px;
       }
@@ -364,11 +368,11 @@
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <div class="container nav">
         <a href="#top" class="nav-logo">合同会社たいせい</a>
         <nav class="nav-links" aria-label="主要ナビゲーション">
+          <a href="#policy">ポリシー</a>
           <a href="#strength">強み</a>
           <a href="#business">事業</a>
           <a href="#representative">代表</a>
@@ -378,101 +382,132 @@
       </div>
     </header>
 
-    <!-- Hero -->
     <section class="hero" id="top">
       <div class="container hero-grid">
         <div class="reveal">
           <p class="eyebrow">Taisei Corporate</p>
           <h1 class="hero-title">価値を積み上げ、<br />タイセイする。</h1>
           <p class="hero-copy">
-            合同会社たいせいは、買取・不動産・小売の実業を基盤に、
-            投資判断と現場運営を一体で行う事業会社です。短期的な拡大よりも、
-            収益性と継続性を重視し、東京を拠点に全国で着実な成長を進めています。
+            合同会社たいせいは、リユース事業・不動産賃貸業・小売事業という三つの事業分野を「価値の最大化」という共通の目的に集約させ、全国規模で展開する戦略的事業体です。
+          </p>
+          <p class="hero-copy">
+            単なる収益の追求にとどまらず、市場の歪みを見極めた成長性と、持続的な成長を担保する堅実な財務規律を両立。変化の激しい現代において、常に一歩先を見据えた事業ポートフォリオを構築しています。
           </p>
           <div class="hero-actions">
-            <a class="btn btn-solid" href="#business">事業内容を見る</a>
+            <a class="btn btn-solid" href="#business">事業ポートフォリオを見る</a>
             <a class="btn btn-outline" href="#representative">代表プロフィールへ</a>
           </div>
         </div>
         <div class="card reveal">
-          <p class="eyebrow">Company Policy</p>
-          <h2 class="title">投資と運営の両輪で、<br />再現性のある成長を実現</h2>
+          <p class="eyebrow">Overview</p>
+          <h2 class="title">戦略的な実業運営と、規律ある資本配分</h2>
           <p class="lead">
-            古くからある産業に新しい視点を持ち込み、
-            金融・会計の専門性と現場の実行力を組み合わせることで、
-            一過性ではない企業価値の向上を目指します。
+            事業ごとの収益性・資本効率・成長余地を精密に評価し、守りと攻めのバランスを保ちながら、中長期で企業価値を高める経営を徹底しています。
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Strength -->
-    <section class="section" id="strength">
+    <section class="section" id="policy">
+      <div class="container">
+        <div class="reveal">
+          <p class="eyebrow">Company Policy</p>
+          <h2 class="title">カンパニーポリシー</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3 class="policy-title">Policy 01：精密な分析に基づく、アセットの最適化</h3>
+            <p class="policy-text">
+              私たちは、あらゆる事業を「数字」という共通言語で解読します。会計・財務領域で培った高度な分析力を羅針盤とし、直感や慣習に頼らない、エビデンスに基づいた意思決定を徹底。伝統的なビジネスモデルの中に、新たな収益の鉱脈を見出すことを得意としています。
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3 class="policy-title">Policy 02：伝統的事業と、先進的スキームの融合</h3>
+            <p class="policy-text">
+              不動産やリユース、小売といった古くから存在ビジネスには、時代を超えた普遍的な価値が眠っています。私たちは、これら伝統的な市場に現代の資本戦略と経営管理スキームを掛け合わせることで、既存の枠組みに縛られないダイナミックな成長を実現します。
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3 class="policy-title">Policy 03：透明性と継続性を核とした、資本の循環</h3>
+            <p class="policy-text">
+              一過性の利益ではなく、10年、20年先を見据えた「継続性」を最優先事項としています。健全な財務体質を維持し、得られた利益を次なる成長へと再投資する。このクリーンで力強い資本の循環こそが、社会に対する私たちの責任であり、信頼の証であると考えます。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" id="strength">
       <div class="container">
         <div class="reveal">
           <p class="eyebrow">Strengths</p>
           <h2 class="title">強み・特徴</h2>
-          <p class="lead">若さと機動力を備えつつ、経営判断は常に規律と実績を基準に行います。</p>
+          <p class="lead">確かな専門性と機動力で、安定した成長基盤を構築します。</p>
         </div>
+
         <div class="grid-3">
-          <article class="card reveal strength-item">
-            <h3 class="card-title">投資会社寄りの経営</h3>
-            <p>
-              事業単位の収益構造と資本効率を可視化し、
-              定量評価に基づく意思決定を徹底しています。
+          <article class="card reveal">
+            <h3 class="card-title">定量分析に基づく投資判断</h3>
+            <p class="card-text">
+              各事業の収益構造や資本効率を徹底的に可視化。勘や経験だけに頼らず、数字の裏付け（定量評価）に基づく厳格な意思決定を貫いています。
             </p>
           </article>
-          <article class="card reveal strength-item">
-            <h3 class="card-title">実業を持つ安定性</h3>
-            <p>
-              実店舗・不動産・小売の運営基盤により、
-              市況変動時にも耐性のあるキャッシュフローを構築します。
+
+          <article class="card reveal">
+            <h3 class="card-title">複合的な事業運営による経営の安定化</h3>
+            <p class="card-text">
+              実店舗や収益不動産、小売販売と3事業を保有。景気変動に左右されにくい、強固で安定したキャッシュフローを基盤として成長戦略を描きます。
             </p>
           </article>
-          <article class="card reveal strength-item">
-            <h3 class="card-title">金融×実業のハイブリッド</h3>
-            <p>
-              金融知見でリスクを管理し、現場運営で価値を創出することで、
-              成長と安定の両立を実現します。
+
+          <article class="card reveal">
+            <h3 class="card-title">金融・会計・事業の融合</h3>
+            <p class="card-text">
+              公認会計士・税理士としての高度な金融・会計ノウハウを核に、自ら現場を動かす実務能力。これらを併せ持つことで、守りの堅実さと攻めの成長を両立させています。
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Business -->
-    <section class="section section-muted" id="business">
+    <section class="section" id="business">
       <div class="container">
         <div class="reveal">
-          <p class="eyebrow">Business</p>
+          <p class="eyebrow">Business Portfolio</p>
           <h2 class="title">事業ポートフォリオ</h2>
-          <p class="lead">
-            生活に根差した三つの領域で実体資産を運営し、
-            中長期で持続可能な収益基盤を育成しています。
-          </p>
+          <p class="lead">生活に根ざした領域で、持続可能な収益基盤を育成しています。</p>
         </div>
+
         <div class="grid-3">
           <article class="card reveal">
-            <h3 class="card-title">買取事業</h3>
-            <p class="card-text">買取専門店「こやし屋」を運営し、地域に密着した価値循環を推進しています。</p>
+            <h3 class="card-title">リユース事業</h3>
+            <p class="card-text">
+              買取専門店「こやし屋」の運営を通じ、地域に眠る資産の価値を再び循環させる、地域密着型のビジネスを展開しています。
+            </p>
             <ul class="list">
               <li>大森山王店</li>
               <li>大口通店</li>
               <li>野方店</li>
             </ul>
           </article>
+
           <article class="card reveal">
             <h3 class="card-title">不動産賃貸業</h3>
-            <p class="card-text">全国の運営物件を通じ、安定運用と適切な資産管理を継続しています。</p>
+            <p class="card-text">
+              全国主要都市において、徹底した市場分析に基づいた物件の取得と管理を行い、中長期的な安定運用を継続しています。
+            </p>
             <ul class="list">
               <li>青森市 メゾンドアーク</li>
               <li>岐阜市 ベイセジュール</li>
               <li>静岡市 T-style広野</li>
             </ul>
           </article>
+
           <article class="card reveal">
             <h3 class="card-title">小売事業</h3>
-            <p class="card-text">「365スイーツショップ青森本店」にて品質重視の店舗運営を行っています。</p>
+            <p class="card-text">
+              「365スイーツショップ青森本店」において、品質と顧客満足度を重視した店舗運営を行い、地域経済の活性化に寄与しています。
+            </p>
             <ul class="list">
               <li>365スイーツショップ青森本店</li>
             </ul>
@@ -481,22 +516,21 @@
       </div>
     </section>
 
-    <!-- Vision -->
-    <section class="section" id="vision">
+    <section class="section section-muted" id="vision">
       <div class="container">
         <div class="card card-navy reveal">
-          <p class="eyebrow" style="color: rgba(255, 255, 255, 0.7);">Vision</p>
-          <h2 class="title" style="color: #fff;">地域に根差した実業を、全国水準の経営品質へ</h2>
+          <p class="eyebrow" style="color: rgba(255, 255, 255, 0.75);">Vision / ビジョン</p>
+          <h2 class="title" style="color: #fff; margin-top: 12px;">
+            地域に根ざした実業を、プロフェッショナルな経営品質へ。
+          </h2>
           <p class="lead" style="color: rgba(255, 255, 255, 0.86);">
-            既存事業の収益性向上と管理高度化を進めながら、隣接領域への展開を段階的に実行します。
-            投資規律と現場改善を両立し、規模よりも質を重視した成長戦略で企業価値の最大化を図ります。
+            既存事業の収益性向上と管理体制の高度化を柱に、隣接する事業領域へも段階的に進出していきます。投資の規律を守りながら現場の改善を積み重ねる。規模の大きさよりも「経営の質」を重んじる戦略で、そこで得られた利益を次なる成長へと再投資する。このクリーンで力強い資本の循環を生み出すことこそが、社会に対する私たちの責任であると定義します。
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Representative -->
-    <section class="section section-muted" id="representative">
+    <section class="section" id="representative">
       <div class="container">
         <div class="reveal">
           <p class="eyebrow">Representative</p>
@@ -505,10 +539,9 @@
         </div>
 
         <div class="card reveal" style="margin-top: 30px;">
-          <!-- Photo + text horizontal layout -->
           <div class="rep-layout">
             <figure class="rep-photo">
-              <img id="representative-photo" src="./profile.jpg" alt="代表社員 三上浩平（公認会計士・税理士）の写真" loading="lazy" />
+              <img id="representative-photo" src="./宣材写真.jpg" alt="代表社員 三上浩平（公認会計士・税理士）の写真" loading="lazy" />
             </figure>
             <div>
               <p class="lead" style="margin-top: 0;">
@@ -516,7 +549,7 @@
                 公認会計士試験合格後はEYストラテジー・アンド・コンサルティングで財務・経営コンサルティング業務を担当。
               </p>
               <p class="lead">
-                2021年に税理士事務所を設立し独立。税務・会計コンサルティングに加え、
+                2021年に税理士事務所を設立独立。税務・会計コンサルティングに加え、
                 買取事業・小売事業・不動産賃貸業を展開し、金融知見と実業運営を統合した経営を実践しています。
               </p>
 
@@ -535,13 +568,12 @@
       </div>
     </section>
 
-    <!-- Company -->
-    <section class="section" id="company">
+    <section class="section section-muted" id="company">
       <div class="container">
         <div class="reveal">
           <p class="eyebrow">Company Outline</p>
           <h2 class="title">会社概要</h2>
-          <p class="lead">実体のある事業運営を基盤に、着実な企業価値向上を目指しています。</p>
+          <p class="lead">投資と運営の両輪で事業を育て、一過性ではない価値の創出に取り組んでいます。</p>
         </div>
 
         <div class="card reveal">
@@ -578,7 +610,7 @@
     </footer>
 
     <script>
-      // Scroll animation for section entrance.
+      // Scroll reveal animation
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -593,20 +625,20 @@
 
       document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
 
-      // Fallback loader for Japanese filename image paths in some environments.
+      // Fallback loader for image path differences across environments.
       (function () {
         const img = document.getElementById('representative-photo');
         if (!img) return;
 
         const candidates = [
-          './profile.jpg',
-          'profile.jpg',
-          './proile.jpg',
-          'proile.jpg',
           './宣材写真.jpg',
           '宣材写真.jpg',
           './%E5%AE%A3%E6%9D%90%E5%86%99%E7%9C%9F.jpg',
-          '%E5%AE%A3%E6%9D%90%E5%86%99%E7%9C%9F.jpg'
+          '%E5%AE%A3%E6%9D%90%E5%86%99%E7%9C%9F.jpg',
+          './profile.jpg',
+          'profile.jpg',
+          './proile.jpg',
+          'proile.jpg'
         ];
 
         let index = 0;
