@@ -1,22 +1,20 @@
-# 合同会社たいせい コーポレートサイト
+# Taisei LLC / Apple Capital LLC Website
 
-合同会社たいせいのコーポレートサイトを **単一の HTML ファイル** で構成したプロジェクトです。
+This is the official website for **Taisei LLC** and **Apple Capital LLC**, integrated into a single web presence.
 
-## ファイル構成
+## Overview
+The website showcases the three main business pillars:
+1.  **Reuse Business**: "Koyashiya" purchase specialty stores.
+2.  **Real Estate Leasing**: 8 apartment properties across Japan.
+3.  **Retail Business**: "365 Sweets Shop" in Aomori.
 
-- `index.html`：サイト本体（HTML / CSS / JavaScriptを1ファイルに統合）
-- `profile.jpg`：代表プロフィール欄で使用するメイン写真（ASCII名で表示安定化）
-- `宣材写真.jpg`：互換用の同一画像
-- `proile.jpg`：互換用の同一画像（誤記ファイル名への対応）
+## Companies
+-   **Taisei LLC (合同会社たいせい)**
+-   **Apple Capital LLC (合同会社あっぷるキャピタル)**
 
-## 使い方
+## Setup
+OPEN `index.html` in your web browser.
 
-ブラウザで `index.html` を直接開くと表示できます。
-
-ローカルサーバーで確認する場合:
-
-```bash
-python -m http.server 8000
-```
-
-その後、`http://localhost:8000` にアクセスしてください。
+## Directory Structure
+-   `index.html`: Main website file.
+-   `images/`: Contains assets like the representative's profile photo.
