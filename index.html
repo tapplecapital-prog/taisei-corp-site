@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>合同会社たいせい / あっぷるキャピタル｜価値を積み上げ、タイセイする。</title>
     <meta name="description" content="合同会社たいせいは、リユース事業・不動産賃貸業・小売事業を全国展開し、価値の最大化を追求する戦略的事業体です。" />
+    <link rel="icon" href="./logo.png" />
+    <link rel="canonical" href="https://tapplecapital-prog.github.io/taisei-corp-site/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="合同会社たいせい / あっぷるキャピタル｜価値を積み上げ、タイセイする。" />
+    <meta property="og:description" content="合同会社たいせいは、リユース事業・不動産賃貸業・小売事業を全国展開し、価値の最大化を追求する戦略的事業体です。" />
+    <meta property="og:url" content="https://tapplecapital-prog.github.io/taisei-corp-site/" />
+    <meta property="og:image" content="https://tapplecapital-prog.github.io/taisei-corp-site/logo3.png" />
+    <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -735,7 +743,8 @@
                     </h3>
                     <figure class="rep-photo"
                         style="margin: 0 auto; border-radius: 4px; box-shadow: none; border: none; max-width: 100%;">
-                        <img id="representative-photo" src="./宣材写真.jpg" alt="代表社員 三上浩平"
+                        <img id="representative-photo" src="./宣材写真_720.webp" alt="代表社員 三上浩平"
+                            width="720" height="900"
                             style="width: 100%; aspect-ratio: 4/5; object-fit: cover;" loading="lazy" />
                     </figure>
                 </div>
@@ -803,7 +812,7 @@
                     合同会社あっぷるキャピタル</strong>
                 <p style="margin-top: 4px;">東京都港区港南4丁目2-7-4020</p>
             </div>
-            <p>© 2024 Taisei LLC. / Apple Capital LLC. All rights reserved.</p>
+            <p>© 2026 Taisei LLC. / Apple Capital LLC. All rights reserved.</p>
             <div style="width: 100%; margin-top: 40px; text-align: center;">
                 <img src="./logo3.png" alt="Taisei / Apple Capital Logo"
                     style="height: 60px; width: auto; margin: 0 auto;" />
@@ -827,30 +836,6 @@
 
         document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
 
-        // Fallback loader for image path differences across environments.
-        (function () {
-            const img = document.getElementById('representative-photo');
-            if (!img) return;
-
-            const candidates = [
-                './宣材写真.jpg',
-                '宣材写真.jpg',
-                './%E5%AE%A3%E6%9D%90%E5%86%99%E7%9C%9F.jpg',
-                '%E5%AE%A3%E6%9D%90%E5%86%99%E7%9C%9F.jpg',
-                './profile.jpg',
-                'profile.jpg',
-                './proile.jpg',
-                'proile.jpg'
-            ];
-
-            let index = 0;
-            img.onerror = () => {
-                index += 1;
-                if (index < candidates.length) {
-                    img.src = candidates[index];
-                }
-            };
-        })();
     </script>
 </body>
 
