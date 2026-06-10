@@ -14,6 +14,25 @@
     <meta property="og:url" content="https://tapplecapital-prog.github.io/taisei-corp-site/" />
     <meta property="og:image" content="https://tapplecapital-prog.github.io/taisei-corp-site/logo3.png" />
     <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "合同会社たいせい",
+      "alternateName": "合同会社あっぷるキャピタル",
+      "url": "https://tapplecapital-prog.github.io/taisei-corp-site/",
+      "logo": "https://tapplecapital-prog.github.io/taisei-corp-site/logo3.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "港南4丁目2-7-4020",
+        "addressLocality": "港区",
+        "addressRegion": "東京都",
+        "addressCountry": "JP"
+      },
+      "foundingDate": "2020-06-19",
+      "description": "合同会社たいせいは、リユース事業・不動産賃貸業・小売事業を全国展開し、価値の最大化を追求する戦略的事業体です。"
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -446,6 +465,82 @@
             transform: translateY(0);
         }
 
+        /* ハンバーガーボタン（デフォルト非表示） */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            flex-shrink: 0;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--navy-900);
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        /* 開いた状態のアニメーション */
+        .nav-hamburger.is-open span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .nav-hamburger.is-open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.is-open span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* モバイルメニューパネル */
+        .nav-mobile-panel {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .nav-mobile-panel.is-open {
+            display: block;
+        }
+
+        .nav-mobile-panel ul {
+            list-style: none;
+            padding: 8px 24px 16px;
+        }
+
+        .nav-mobile-panel li a {
+            display: block;
+            padding: 12px 0;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-mobile-panel li:last-child a {
+            border-bottom: none;
+        }
+
+        .nav-mobile-panel li a:hover {
+            color: var(--navy-700);
+            opacity: 1;
+        }
+
         @media (max-width: 960px) {
 
             .hero-grid,
@@ -481,6 +576,10 @@
                 display: none;
             }
 
+            .nav-hamburger {
+                display: flex;
+            }
+
             .hero-title {
                 font-size: 36px;
             }
@@ -489,10 +588,10 @@
 </head>
 
 <body>
-    <header>
+    <header style="position: sticky; top: 0; z-index: 100;">
         <div class="container nav">
             <a href="#top" class="nav-logo-group">
-                <img src="./logo.png" alt="Corporate Logo" style="height: 40px; width: auto;" />
+                <img src="./logo.png" alt="Corporate Logo" width="160" height="40" loading="lazy" style="height: 40px; width: auto;" />
                 <div class="nav-logo-jp">
                     <span>合同会社たいせい</span>
                     <span>合同会社あっぷるキャピタル</span>
@@ -510,7 +609,22 @@
                 <a href="#company">会社概要</a>
                 <a href="https://tapplecapital-prog.github.io/portfolio-portal/" target="_blank" rel="noopener noreferrer" style="color: var(--navy-700); font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">ポートフォリオ <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             </nav>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="nav-mobile-panel">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <a class="btn btn-outline" href="#company">会社情報を見る</a>
+        </div>
+        <div class="nav-mobile-panel" id="nav-mobile-panel" role="navigation" aria-label="モバイルナビゲーション">
+            <ul>
+                <li><a href="#policy" class="nav-mobile-link">ポリシー</a></li>
+                <li><a href="#strength" class="nav-mobile-link">強み</a></li>
+                <li><a href="#business" class="nav-mobile-link">事業</a></li>
+                <li><a href="#representative" class="nav-mobile-link">代表</a></li>
+                <li><a href="#company" class="nav-mobile-link">会社概要</a></li>
+                <li><a href="https://tapplecapital-prog.github.io/portfolio-portal/" target="_blank" rel="noopener noreferrer" class="nav-mobile-link" style="color: var(--navy-700); font-weight: 700;">ポートフォリオ ↗</a></li>
+            </ul>
         </div>
     </header>
 
@@ -815,6 +929,7 @@
             <p>© 2026 Taisei LLC. / Apple Capital LLC. All rights reserved.</p>
             <div style="width: 100%; margin-top: 40px; text-align: center;">
                 <img src="./logo3.png" alt="Taisei / Apple Capital Logo"
+                    width="240" height="60" loading="lazy"
                     style="height: 60px; width: auto; margin: 0 auto;" />
             </div>
         </div>
@@ -836,6 +951,36 @@
 
         document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
 
+        // Hamburger menu
+        (function () {
+            var btn = document.getElementById('nav-hamburger');
+            var panel = document.getElementById('nav-mobile-panel');
+            if (!btn || !panel) return;
+
+            function closeMenu() {
+                btn.classList.remove('is-open');
+                panel.classList.remove('is-open');
+                btn.setAttribute('aria-expanded', 'false');
+                btn.setAttribute('aria-label', 'メニューを開く');
+            }
+
+            btn.addEventListener('click', function () {
+                var isOpen = panel.classList.contains('is-open');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    btn.classList.add('is-open');
+                    panel.classList.add('is-open');
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.setAttribute('aria-label', 'メニューを閉じる');
+                }
+            });
+
+            // リンククリックで閉じる
+            panel.querySelectorAll('.nav-mobile-link').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
+        })();
     </script>
 </body>
 
