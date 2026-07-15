@@ -49,6 +49,10 @@
             --surface: #f8fafc;
             --radius: 24px;
             --shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+            --shadow-hover: 0 30px 70px rgba(15, 23, 42, 0.14);
+            /* emil-design-eng 準拠の強いイージング */
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease-io: cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         * {
@@ -154,7 +158,7 @@
             font-size: 14px;
             font-weight: 700;
             border: 1px solid var(--navy-900);
-            transition: all 0.2s ease;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.16s var(--ease-out), box-shadow 0.2s ease;
             letter-spacing: 0.1em;
         }
 
@@ -456,8 +460,8 @@
 
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1), transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(24px);
+            transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
         }
 
         .reveal.is-visible {
@@ -584,7 +588,110 @@
                 font-size: 36px;
             }
         }
+
+        /* ===== emil-design-eng 準拠のモーション強化（①Web標準装備の初運用 2026-07-15） ===== */
+
+        /* アンカー移動を滑らかに＋sticky headerに隠れないオフセット */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section[id] {
+            scroll-margin-top: 96px;
+        }
+
+        /* ボタン：押下で即応（emil「buttons must feel responsive to press」scale 0.95-0.98） */
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        /* カード：微ホバーリフトで「生きた」感触（transform/opacityのみ・hoverデバイス限定） */
+        @media (hover: hover) and (pointer: fine) {
+
+            .card {
+                transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+            }
+
+            .card:not(.card-navy):hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-hover);
+            }
+
+            .card-navy:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 34px 80px rgba(11, 27, 59, 0.35);
+            }
+        }
+
+        /* ナビ下線：トリガー起点（左）からscaleX（emil origin-aware） */
+        .nav-links a {
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -6px;
+            height: 2px;
+            background: var(--navy-700);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s var(--ease-out);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* スクロール表示のstagger：カードが一斉でなく連鎖して現れる（emil 30-80ms間隔） */
+        .hero-grid > .reveal:nth-child(2),
+        .grid-3 > .reveal:nth-child(2),
+        .business-column > .reveal:nth-child(2) {
+            transition-delay: 90ms;
+        }
+
+        .grid-3 > .reveal:nth-child(3) {
+            transition-delay: 180ms;
+        }
+
+        /* ヘッダー：スクロール時にそっと浮き上がる（unseen detail） */
+        header {
+            transition: box-shadow 0.3s var(--ease-out), background 0.3s ease;
+        }
+
+        header.is-scrolled {
+            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        /* モーション過敏配慮（emil必須）：動きは消すが内容は必ず表示する */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     </style>
+    <noscript>
+        <style>
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        </style>
+    </noscript>
 </head>
 
 <body>
@@ -937,19 +1044,34 @@
 
     <script>
         // Scroll reveal animation
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.15 }
-        );
+        // IntersectionObserver 非対応環境では即表示＝内容が消えない安全策（emil: エッジケースを不可視に処理）
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+            );
+            document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+        } else {
+            document.querySelectorAll('.reveal').forEach((node) => node.classList.add('is-visible'));
+        }
 
-        document.querySelectorAll('.reveal').forEach((node) => observer.observe(node));
+        // Header elevation on scroll（スクロールでヘッダーがそっと浮く）
+        (function () {
+            var header = document.querySelector('header');
+            if (!header) return;
+            var onScroll = function () {
+                header.classList.toggle('is-scrolled', window.scrollY > 8);
+            };
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+        })();
 
         // Hamburger menu
         (function () {
