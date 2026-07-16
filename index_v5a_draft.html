@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>合同会社たいせい / あっぷるキャピタル｜価値を積み上げ、タイセイする。</title>
-    <meta name="description" content="合同会社たいせいは、リユース事業・不動産賃貸業・小売事業を全国展開し、価値の最大化を追求する戦略的事業体です。" />
+    <meta name="description" content="合同会社たいせい／あっぷるキャピタルは、税理士業務・リユース事業・不動産賃貸業・小売事業を営み、価値の最大化を追求する事業体です。" />
     <link rel="icon" href="./logo.png" />
     <link rel="canonical" href="https://tapplecapital-prog.github.io/taisei-corp-site/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="合同会社たいせい / あっぷるキャピタル｜価値を積み上げ、タイセイする。" />
-    <meta property="og:description" content="合同会社たいせいは、リユース事業・不動産賃貸業・小売事業を全国展開し、価値の最大化を追求する戦略的事業体です。" />
+    <meta property="og:description" content="合同会社たいせい／あっぷるキャピタルは、税理士業務・リユース事業・不動産賃貸業・小売事業を営み、価値の最大化を追求する事業体です。" />
     <meta property="og:url" content="https://tapplecapital-prog.github.io/taisei-corp-site/" />
     <meta property="og:image" content="https://tapplecapital-prog.github.io/taisei-corp-site/logo3.png" />
     <meta name="twitter:card" content="summary" />
@@ -30,7 +30,7 @@
         "addressCountry": "JP"
       },
       "foundingDate": "2020-06-19",
-      "description": "合同会社たいせいは、リユース事業・不動産賃貸業・小売事業を全国展開し、価値の最大化を追求する戦略的事業体です。"
+      "description": "合同会社たいせい／あっぷるキャピタルは、税理士業務・リユース事業・不動産賃貸業・小売事業を営み、価値の最大化を追求する事業体です。"
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -784,7 +784,7 @@
         }
 
         /* =====================================================
-           BUSINESS — 三つの実業
+           BUSINESS — 四つの実業
         ===================================================== */
         .business-grid {
             margin-top: 76px;
@@ -1197,9 +1197,12 @@
         }
 
         @media (max-width: 600px) {
-            .facts-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            /* 長い社名がヘッダーに収まるよう縮小・英語表記は省略 */
+            .brand { min-width: 0; }
+            .brand img { height: 28px; }
+            .brand-name { padding-left: 10px; min-width: 0; }
+            .brand-name strong { font-size: 11px; letter-spacing: 0.01em; line-height: 1.3; }
+            .brand-name span { display: none; }
         }
 
         /* =====================================================
@@ -1255,7 +1258,7 @@
             <a href="#top" class="brand">
                 <img src="./logo.png" alt="合同会社たいせい ロゴ" width="140" height="34" loading="lazy" />
                 <span class="brand-name">
-                    <strong>合同会社たいせい</strong>
+                    <strong>合同会社たいせい・合同会社あっぷるキャピタル</strong>
                     <span>Taisei LLC. / Apple Capital LLC.</span>
                 </span>
             </a>
@@ -1308,7 +1311,7 @@
                 <span class="hero-rule" aria-hidden="true"></span>
 
                 <div class="hero-lead reveal reveal-d2">
-                    <p>自ら現場を動かす公認会計士が、リユース・不動産賃貸・小売という三つの実業を、数字の規律で経営する。</p>
+                    <p>自ら現場を動かす公認会計士・税理士が、税理士業務・リユース・不動産賃貸・小売という四つの実業を、数字の規律で経営する。</p>
                     <p>市場の歪みを見極める攻めと、持続的な成長を支える堅実な財務規律。その両立にこそ、私たちの経営がある。</p>
                 </div>
 
@@ -1371,7 +1374,7 @@
                     <article class="strength-item reveal reveal-d1">
                         <h3 class="strength-title">複合的な事業運営による経営の安定化</h3>
                         <p class="strength-text">
-                            リユース店舗、収益不動産、小売――3つの事業を同時に保有する。景気の波に左右されにくい、強く安定したキャッシュフローの上に、成長戦略を描く。
+                            税理士業務、リユース店舗、収益不動産、小売――四つの事業を同時に営む。景気の波に左右されにくい、強く安定したキャッシュフローの上に、成長戦略を描く。
                         </p>
                     </article>
                     <article class="strength-item reveal reveal-d2">
@@ -1388,13 +1391,25 @@
             <div class="container">
                 <div class="section-head reveal">
                     <span class="eyebrow">Business Portfolio</span>
-                    <h2 class="h2">三つの実業</h2>
-                    <p class="lead">生活に根ざした場所で、途切れない収益基盤を育てている。</p>
+                    <h2 class="h2">四つの実業</h2>
+                    <p class="lead">税務会計から、生活に根ざした事業まで。数字の規律で、途切れない収益基盤を育てている。</p>
                 </div>
 
                 <div class="business-grid">
                     <div class="business-column">
                         <article class="field reveal">
+                            <h3 class="field-title">税理士事業</h3>
+                            <p class="field-text">
+                                「三上浩平税理士事務所」として、個人・法人の税務会計を担う。数字を通じて、事業と暮らしの意思決定を支える。
+                            </p>
+                            <ul class="field-list" style="margin-top: 26px;">
+                                <li>個人の確定申告 ― 書類の作成から節税の相談まで一貫して対応</li>
+                                <li>創業支援 ― 会社設立・資金計画・事業計画づくりに伴走</li>
+                                <li>相続税 ― 申告・生前対策・財産評価を専門的に支援</li>
+                            </ul>
+                        </article>
+
+                        <article class="field reveal reveal-d1">
                             <h3 class="field-title">リユース事業</h3>
                             <p class="field-text">
                                 買取専門店「こやし屋」を通じて、地域に眠る資産の価値を、もう一度循環させる。
@@ -1406,7 +1421,7 @@
                             </ul>
                         </article>
 
-                        <article class="field field-full reveal reveal-d1">
+                        <article class="field field-full reveal reveal-d2">
                             <div>
                                 <h3 class="field-title">小売事業</h3>
                                 <p class="field-text">
@@ -1516,10 +1531,10 @@
 
         <section class="section section-alt" id="company">
             <div class="container">
-                <div class="section-head reveal" style="max-width: 640px; margin: 0 auto; text-align: center;">
+                <div class="section-head reveal" style="max-width: 780px; margin: 0 auto; text-align: center;">
                     <span class="eyebrow">Company Outline</span>
                     <h2 class="h2">会社概要</h2>
-                    <p class="lead" style="margin-left: auto; margin-right: auto;">投資と運営の両輪で事業を育て、一過性ではない価値の創出に取り組んでいる。</p>
+                    <p class="lead" style="margin-left: auto; margin-right: auto; max-width: 46em;">投資と運営の両輪で事業を育て、一過性ではない価値の創出に取り組んでいる。</p>
                 </div>
 
                 <div class="outline-panel reveal reveal-d1">
