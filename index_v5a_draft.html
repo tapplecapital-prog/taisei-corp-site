@@ -497,7 +497,9 @@
             padding-left: clamp(0px, 6vw, 90px);
         }
 
-        /* ---------- Hero kicker (faint legal names) ---------- */
+        /* ---------- Hero kicker (faint legal names) ----------
+           既定は「見える・静止」状態（JSが再生しなくても内容は必ず表示）。
+           .hero.is-playing が付いた時だけ演出が走る。 */
         .hero-kicker {
             display: flex;
             align-items: center;
@@ -506,8 +508,7 @@
             font-size: 12px;
             letter-spacing: 0.2em;
             color: var(--ink-faint);
-            opacity: 0;
-            animation: kickerIn 1s var(--ease-out) 0.15s both;
+            opacity: 0.85;
         }
 
         .hero-kicker .sep {
@@ -515,12 +516,7 @@
             font-size: 11px;
         }
 
-        @keyframes kickerIn {
-            from { opacity: 0; transform: translateY(9px); }
-            to   { opacity: 0.85; transform: none; }
-        }
-
-        /* ---------- Hero animated tagline (積み上げ = stacking rise) ---------- */
+        /* ---------- Hero animated tagline (積み上げ = 文字が積み上がる) ---------- */
         .hero-tagline {
             margin-top: 24px;
             font-family: var(--serif-jp);
@@ -531,43 +527,50 @@
             color: var(--ink);
         }
 
+        .hero-tagline .char { display: inline-block; }
         .hero-tagline .tl-accent { color: var(--accent-ink); }
 
-        .hero-tagline .char {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(0.66em);
-            animation: charRise 0.74s var(--ease-out) both;
-            animation-delay: calc(var(--i) * 0.052s + 0.34s);
-        }
-
-        @keyframes charRise {
-            from { opacity: 0; transform: translateY(0.66em); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 墨の罫線 that draws under the tagline */
+        /* 墨の罫線（既定は引かれた状態） */
         .hero-rule {
             display: block;
             height: 2px;
             width: clamp(96px, 16vw, 150px);
             margin-top: 32px;
             background: var(--accent);
-            transform: scaleX(0);
             transform-origin: left center;
-            animation: ruleDraw 1s var(--ease-out) 1.15s both;
         }
 
-        @keyframes ruleDraw { to { transform: scaleX(1); } }
+        /* ---- 再生状態（JSが tab可視 & motion許可時のみ .hero に付与）---- */
+        .hero.is-playing .hero-kicker {
+            opacity: 0;
+            animation: kickerIn 1s var(--ease-out) 0.1s forwards;
+        }
 
-        @media (prefers-reduced-motion: reduce) {
-            .hero-kicker,
-            .hero-tagline .char,
-            .hero-rule {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
+        .hero.is-playing .hero-tagline .char {
+            opacity: 0;
+            transform: translateY(0.72em);
+            animation: charRise 0.72s var(--ease-out) forwards;
+            animation-delay: calc(var(--i) * 0.058s + 0.2s);
+        }
+
+        .hero.is-playing .hero-rule {
+            transform: scaleX(0);
+            animation: ruleDraw 0.95s var(--ease-out) 1.05s forwards;
+        }
+
+        @keyframes kickerIn {
+            from { opacity: 0; transform: translateY(9px); }
+            to   { opacity: 0.85; transform: none; }
+        }
+
+        @keyframes charRise {
+            from { opacity: 0; transform: translateY(0.72em); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes ruleDraw {
+            from { transform: scaleX(0); }
+            to   { transform: scaleX(1); }
         }
 
         .hero-lead {
@@ -1506,35 +1509,43 @@
         (function () {
             var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            var heroTitle = document.getElementById('hero-title');
-            var heroAccent = document.getElementById('hero-accent');
+            var heroSection = document.querySelector('.hero');
 
-            // ---- Scroll reveal (fade/rise + mask-line + hairline) ----
+            // ---- Scroll reveal (fade/rise + hairline) ----
             // IntersectionObserver ではなく scroll + getBoundingClientRect による判定を採用。
-            // 理由: 一部のブラウザ／埋め込み環境で IO のコールバックが描画パイプラインに
-            // 依存して遅延・不発するケースがあるため、layout 値だけで完結する判定に統一し、
-            // どの環境でもコンテンツが「消えたまま」にならないことを優先する。
             var watchNodes = Array.prototype.slice.call(
                 document.querySelectorAll('.reveal, .hairline, .mask-title')
-            ).filter(function (node) {
-                return node !== heroTitle && node !== heroAccent; // hero は load 時に別枠で演出
-            });
+            );
 
             function markVisible(node) {
                 if (node) node.classList.add('is-visible');
             }
 
+            // ---- Hero イントロ演出 ----
+            // 既定では内容は表示済み（アニメが走らなくても消えない）。
+            // タブが「可視」になった瞬間に .is-playing を1回付与して積み上がり演出を再生。
+            // 新規タブ/バックグラウンドで開いても、見た瞬間に必ずモーションが走る。
+            function playHero() {
+                if (heroSection) heroSection.classList.add('is-playing');
+            }
+            if (!reduceMotion && heroSection) {
+                if (document.hidden) {
+                    var onVis = function () {
+                        if (!document.hidden) {
+                            playHero();
+                            document.removeEventListener('visibilitychange', onVis);
+                        }
+                    };
+                    document.addEventListener('visibilitychange', onVis);
+                } else {
+                    requestAnimationFrame(function () {
+                        requestAnimationFrame(playHero);
+                    });
+                }
+            }
+
             if (reduceMotion) {
                 watchNodes.forEach(markVisible);
-                markVisible(heroTitle);
-                markVisible(heroAccent);
-            } else {
-                window.addEventListener('load', function () {
-                    setTimeout(function () {
-                        markVisible(heroTitle);
-                        markVisible(heroAccent);
-                    }, 120);
-                });
             }
 
             // ---- Header elevation on scroll ----
