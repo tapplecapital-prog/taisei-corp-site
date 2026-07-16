@@ -36,7 +36,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Zen+Old+Mincho:wght@700;900&display=swap"
         rel="stylesheet" />
     <style>
         /* ===================================================================
@@ -85,6 +85,12 @@
             line-height: 1.9;
             -webkit-font-smoothing: antialiased;
         }
+
+        /* 改行を自然に：見出し・短いリード文は行長を均等化(balance)、
+           本文は孤立行や中途半端な最終行を抑制(pretty)。対応ブラウザで有効・非対応でも無害。 */
+        h2, h3, .h2, .vision-title, .field-title, .section-lead,
+        .hero-lead p, .policy-lead, .strength-lead { text-wrap: balance; }
+        p, li { text-wrap: pretty; }
 
         a {
             color: inherit;
@@ -497,74 +503,90 @@
             padding-left: clamp(0px, 6vw, 90px);
         }
 
-        /* ---------- Hero kicker (faint legal names) ----------
-           既定は「見える・静止」状態（JSが再生しなくても内容は必ず表示）。
-           .hero.is-playing が付いた時だけ演出が走る。 */
-        .hero-kicker {
-            display: flex;
-            align-items: center;
-            gap: 13px;
-            font-family: var(--sans);
-            font-size: 12px;
-            letter-spacing: 0.2em;
-            color: var(--ink-faint);
-            opacity: 0.85;
+        /* ---------- Hero: 社名ブロック（既定は表示・静止／is-playingで流れる演出）---------- */
+        .hero-corp-jp {
+            font-family: var(--serif-jp);
+            font-weight: 500;
+            font-size: clamp(13px, 1.5vw, 15.5px);
+            letter-spacing: 0.14em;
+            color: var(--ink-soft);
         }
 
-        .hero-kicker .sep {
-            color: var(--line-strong);
-            font-size: 11px;
+        .hero-corp-en {
+            margin-top: 7px;
+            font-family: 'Cormorant Garamond', var(--serif-jp), serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: clamp(1.2rem, 2.7vw, 2rem);
+            letter-spacing: 0.015em;
+            color: var(--accent-ink);
+            line-height: 1.2;
         }
 
-        /* ---------- Hero animated tagline (積み上げ = 文字が積み上がる) ---------- */
+        /* ---------- Hero tagline（積み上げ、で改行／タイセイを雑誌風に大きく）---------- */
         .hero-tagline {
-            margin-top: 24px;
+            margin-top: 22px;
             font-family: var(--serif-jp);
             font-weight: 800;
-            font-size: clamp(2.5rem, 6.6vw, 5rem);
-            line-height: 1.34;
-            letter-spacing: 0.025em;
+            font-size: clamp(2.4rem, 6.4vw, 4.9rem);
+            line-height: 1.44;
+            letter-spacing: 0.03em;
             color: var(--ink);
         }
 
+        .hero-tagline .tl-line { display: block; }
+        .hero-tagline .tl-line-2 { margin-top: 6px; }
         .hero-tagline .char { display: inline-block; }
-        .hero-tagline .tl-accent { color: var(--accent-ink); }
+        .hero-tagline .tl-tail { color: var(--ink); }
+
+        /* 「タイセイ」＝雑誌風の見出し書体で大きく強調 */
+        .hero-tagline .tl-accent {
+            font-family: 'Zen Old Mincho', var(--serif-jp), serif;
+            font-weight: 900;
+            font-size: 1.34em;
+            letter-spacing: 0.06em;
+            color: var(--accent-ink);
+        }
 
         /* 墨の罫線（既定は引かれた状態） */
         .hero-rule {
             display: block;
             height: 2px;
             width: clamp(96px, 16vw, 150px);
-            margin-top: 32px;
+            margin-top: 34px;
             background: var(--accent);
             transform-origin: left center;
         }
 
         /* ---- 再生状態（JSが tab可視 & motion許可時のみ .hero に付与）---- */
-        .hero.is-playing .hero-kicker {
+        /* 社名は「流れるように」横から入る（ゆっくり順番に）*/
+        .hero.is-playing .hero-corp-jp {
             opacity: 0;
-            animation: kickerIn 1s var(--ease-out) 0.1s forwards;
+            animation: flowIn 1.1s var(--ease-out) 0.15s forwards;
         }
-
+        .hero.is-playing .hero-corp-en {
+            opacity: 0;
+            animation: flowIn 1.2s var(--ease-out) 0.5s forwards;
+        }
+        /* タグラインは一文字ずつ「ゆっくり」積み上がる */
         .hero.is-playing .hero-tagline .char {
             opacity: 0;
-            transform: translateY(0.72em);
-            animation: charRise 0.72s var(--ease-out) forwards;
-            animation-delay: calc(var(--i) * 0.058s + 0.2s);
+            transform: translateY(0.8em);
+            animation: charRise 1s var(--ease-out) forwards;
+            animation-delay: calc(var(--i) * 0.1s + 0.95s);
         }
-
         .hero.is-playing .hero-rule {
             transform: scaleX(0);
-            animation: ruleDraw 0.95s var(--ease-out) 1.05s forwards;
+            animation: ruleDraw 1.1s var(--ease-out) 2.9s forwards;
         }
 
-        @keyframes kickerIn {
-            from { opacity: 0; transform: translateY(9px); }
-            to   { opacity: 0.85; transform: none; }
+        @keyframes flowIn {
+            from { opacity: 0; transform: translateX(-26px); }
+            to   { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes charRise {
-            from { opacity: 0; transform: translateY(0.72em); }
+            from { opacity: 0; transform: translateY(0.8em); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
@@ -1243,14 +1265,12 @@
         <section class="hero" id="top">
             <img class="hero-watermark" id="hero-watermark" src="./logo.png" alt="" aria-hidden="true" />
             <div class="container hero-inner">
-                <p class="hero-kicker">
-                    <span>Taisei&nbsp;LLC.</span>
-                    <span class="sep" aria-hidden="true">/</span>
-                    <span>Apple&nbsp;Capital&nbsp;LLC.</span>
-                </p>
+                <p class="hero-corp-jp">合同会社たいせい　・　合同会社あっぷるキャピタル</p>
+                <p class="hero-corp-en" aria-hidden="true">Taisei&nbsp;LLC.&nbsp;&nbsp;/&nbsp;&nbsp;Apple&nbsp;Capital&nbsp;LLC.</p>
 
                 <h1 class="hero-tagline" id="hero-title" aria-label="価値を積み上げ、タイセイする。">
-                    <span aria-hidden="true"><span class="char" style="--i:0">価</span><span class="char" style="--i:1">値</span><span class="char" style="--i:2">を</span><span class="char" style="--i:3">積</span><span class="char" style="--i:4">み</span><span class="char" style="--i:5">上</span><span class="char" style="--i:6">げ</span><span class="char" style="--i:7">、</span><span class="tl-accent"><span class="char" style="--i:8">タ</span><span class="char" style="--i:9">イ</span><span class="char" style="--i:10">セ</span><span class="char" style="--i:11">イ</span><span class="char" style="--i:12">す</span><span class="char" style="--i:13">る</span></span></span>
+                    <span class="tl-line" aria-hidden="true"><span class="char" style="--i:0">価</span><span class="char" style="--i:1">値</span><span class="char" style="--i:2">を</span><span class="char" style="--i:3">積</span><span class="char" style="--i:4">み</span><span class="char" style="--i:5">上</span><span class="char" style="--i:6">げ</span><span class="char" style="--i:7">、</span></span>
+                    <span class="tl-line tl-line-2" aria-hidden="true"><span class="tl-accent"><span class="char" style="--i:8">タ</span><span class="char" style="--i:9">イ</span><span class="char" style="--i:10">セ</span><span class="char" style="--i:11">イ</span></span><span class="char tl-tail" style="--i:12">す</span><span class="char tl-tail" style="--i:13">る</span></span>
                 </h1>
                 <span class="hero-rule" aria-hidden="true"></span>
 
@@ -1397,6 +1417,7 @@
                                     <li>郡山市 グレースランド</li>
                                     <li>十和田市 メゾントワダ稲生</li>
                                     <li>南相馬市 MOMO</li>
+                                    <li>東松山市 ヴェルディ</li>
                                 </ul>
                             </div>
                             <div class="field-portal">
