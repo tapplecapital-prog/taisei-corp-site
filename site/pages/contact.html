@@ -1,43 +1,43 @@
 <!--meta
-{"title": "ご相談窓口", "path": "contact/",
- "description": "あっぷるキャピタルグループのご相談窓口。税務・会計、AI・業務改善、物件情報のご提供、取材・講演のご依頼を、目的別にお受けしています。初回の面談は15分・無料です。"}
+{"title": "お問い合わせ", "path": "contact/",
+ "description": "あっぷるキャピタルグループへのお問い合わせ。税務・会計、AI・業務改善、物件情報のご提供、取材・講演のご依頼をお受けしています。初回のご面談（15分）は無料です。"}
 -->
 <div class="page-head">
   <div class="wrap">
-    <div class="crumb"><a href="@@BASE@@">トップ</a> ／ ご相談窓口</div>
-    <div class="eyebrow" style="margin-top:14px">Contact</div>
-    <h1>ご相談窓口</h1>
-    <p class="lead">ご用件を選んで、概要をお送りください。内容を確認のうえ、担当からご連絡します。初回の面談は15分・無料で、オンラインでもお受けします。</p>
+    <div class="crumb"><a href="@@BASE@@">トップ</a>　／　お問い合わせ</div>
+    <p class="label">Contact</p>
+    <h1>お問い合わせ</h1>
+    <p class="lead">ご用件を選び、概要をお送りください。内容を確認のうえ、担当よりご連絡いたします。初回のご面談（15分）は無料です。オンラインでも承ります。</p>
   </div>
 </div>
 
 <section>
   <div class="wrap two">
     <div>
-      <div class="eyebrow">How it works</div>
-      <h2>送信について</h2>
-      <p class="small">送信ボタンを押すと、入力した内容が書き込まれた状態でメールソフトが開きます。そのまま送信してください。税務・会計のご相談は三上浩平税理士事務所の窓口に、それ以外はグループの窓口に届きます。</p>
-      <noscript><p class="small">スクリプトが無効のため、フォームが使えません。t.applecapital（アット）gmail.com までメールでご連絡ください。税務・会計のご相談は kohei.mikami.zeirishi（アット）gmail.com まで。</p></noscript>
+      <p class="label">Form</p>
+      <h2>送信方法について</h2>
+      <span class="small">送信ボタンを押すと、入力内容を記載したメールが作成されます。そのまま送信してください。税務・会計のご相談は三上浩平税理士事務所へ、それ以外のご用件はグループの窓口へ届きます。</span>
+      <noscript><p class="small">フォームを利用できない場合は、t.applecapital（アット）gmail.com までメールでご連絡ください。税務・会計のご相談は kohei.mikami.zeirishi（アット）gmail.com までお送りください。</p></noscript>
     </div>
     <form class="form" id="contact-form" novalidate>
       <fieldset>
         <legend>ご用件<span class="req">必須</span></legend>
         <div class="purposes">
-          <label><input type="radio" name="purpose" value="tax" checked> 税務・会計のご相談<br><small>確定申告・法人化・相続・顧問</small></label>
+          <label><input type="radio" name="purpose" value="tax" checked> 税務・会計のご相談<br><small>確定申告・法人化・相続・顧問契約</small></label>
           <label><input type="radio" name="purpose" value="ai"> AI・業務改善のご相談</label>
           <label><input type="radio" name="purpose" value="property"> 物件情報のご提供</label>
           <label><input type="radio" name="purpose" value="media"> 取材・講演のご依頼</label>
-          <label><input type="radio" name="purpose" value="other"> その他・資料のご請求</label>
+          <label><input type="radio" name="purpose" value="other"> 資料のご請求・その他</label>
         </div>
       </fieldset>
       <label><span>お名前<span class="req">必須</span></span><input type="text" name="name" autocomplete="name" required></label>
       <label><span>会社名</span><input type="text" name="company" autocomplete="organization"></label>
       <label><span>メールアドレス<span class="req">必須</span></span><input type="email" name="email" autocomplete="email" required></label>
       <label><span>電話番号</span><input type="tel" name="tel" autocomplete="tel"></label>
-      <label><span>ご相談の内容<span class="req">必須</span></span><textarea name="body" required placeholder="例：青森市に一棟アパートを1棟持っています。来年から法人化するべきか相談したいです。"></textarea></label>
-      <div><button class="btn btn-primary" type="submit">メールソフトで送る <span class="arr">→</span></button>
-        <p class="hint">いただいた個人情報は、ご相談への回答のためにだけ使います。<a href="@@BASE@@privacy/">プライバシーポリシー</a></p></div>
-      <p id="contact-done" class="note-box" hidden>メールソフトが開かない場合は、<span class="addr"></span> 宛てに直接お送りください。</p>
+      <label><span>ご相談内容<span class="req">必須</span></span><textarea name="body" required placeholder="例：青森市に一棟アパートを所有しています。来年からの法人化について相談したいと考えています。"></textarea></label>
+      <div><button class="btn btn-primary" type="submit">メールを作成する<span class="arr"></span></button>
+        <p class="hint">お預かりした個人情報は、お問い合わせへの回答にのみ使用します。<a href="@@BASE@@privacy/">プライバシーポリシー</a></p></div>
+      <p id="contact-done" class="note-box" hidden>メールソフトが起動しない場合は、<span class="addr"></span> 宛てに直接お送りください。</p>
     </form>
   </div>
 </section>

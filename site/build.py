@@ -15,12 +15,12 @@ ASSETS = HERE / "assets"
 
 NAV = [
     ("about/", "私たちについて", "About"),
-    ("tax/", "税務・会計", "Tax & Accounting"),
+    ("tax/", "税務・会計", "Tax"),
     ("real-estate/", "不動産", "Real Estate"),
-    ("ai/", "AI・業務改善", "AI"),
-    ("stores/", "店舗", "Stores"),
-    ("numbers/", "数字で見る", "Numbers"),
-    ("insights/", "研究・発信", "Insights"),
+    ("ai/", "AI・業務改善", "Operations"),
+    ("stores/", "店舗", "Retail"),
+    ("numbers/", "数字で見る", "Figures"),
+    ("insights/", "研究・掲載", "Research"),
 ]
 X_URL = "https://x.com/applecapital_ri"
 RAKUMACHI_URL = "https://www.rakumachi.jp/news/column/406727"
@@ -79,7 +79,7 @@ def jsonld(kind: str, site: str) -> str:
     org = {
         "@type": "Organization", "@id": site + "#org", "name": "あっぷるキャピタルグループ",
         "alternateName": "APPLE CAPITAL GROUP", "url": site,
-        "logo": site + "assets/img/logo-color.png",
+        "logo": site + "assets/img/logo-color.png", "image": site + "assets/img/hero-1600.webp",
         "founder": {"@id": site + "about/profile/#person"},
         "subOrganization": [
             {"@type": "Organization", "name": "合同会社あっぷるキャピタル", "foundingDate": "2020-12-21"},
@@ -116,16 +116,15 @@ def layout(meta: dict, body: str, base: str, site: str, preview: bool) -> str:
         for href, ja, _ in NAV)
     mnav = "".join(f'<a href="{base}{href}">{ja}<small>{en}</small></a>' for href, ja, en in NAV)
     robots = '<meta name="robots" content="noindex,nofollow">' if preview else ""
-    note = ('<div class="preview-note">公開前の確認用ページです（検索エンジンには表示されません）。'
-            '内容・数字は最終確認前のものを含みます。</div>') if preview else ""
+    note = ('<div class="preview-note">公開前の確認用ページです（検索エンジンには表示されません）</div>') if preview else ""
     chrome = not meta.get("bare")
     header = f"""
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="{base}"><span class="mark" aria-hidden="true"></span><span><b>あっぷるキャピタルグループ</b><span>APPLE CAPITAL GROUP</span></span></a>
-    <nav class="gnav" aria-label="主要メニュー">{nav}<a class="btn btn-primary" href="{base}contact/">ご相談窓口</a></nav>
+    <a class="brand" href="{base}"><span class="mark" aria-hidden="true"></span><span><b>あっぷるキャピタルグループ</b><span class="en">APPLE CAPITAL GROUP</span></span></a>
+    <nav class="gnav" aria-label="主要メニュー">{nav}<a class="btn btn-primary" href="{base}contact/">お問い合わせ</a></nav>
     <details class="menu"><summary aria-label="メニューを開く"><i aria-hidden="true"></i>MENU</summary>
-      <nav aria-label="主要メニュー（スマートフォン）"><a href="{base}">トップ<small>Home</small></a>{mnav}<a class="btn btn-primary" href="{base}contact/">ご相談窓口</a></nav>
+      <nav aria-label="主要メニュー（スマートフォン）"><a href="{base}">トップ<small>Home</small></a>{mnav}<a class="btn btn-primary" href="{base}contact/">お問い合わせ</a></nav>
     </details>
   </div>
 </header>""" if chrome else ""
@@ -134,17 +133,17 @@ def layout(meta: dict, body: str, base: str, site: str, preview: bool) -> str:
   <div class="wrap">
     <div class="top">
       <div>
-        <a class="brand" href="{base}"><span class="mark" aria-hidden="true"></span><span><b>あっぷるキャピタルグループ</b><span>APPLE CAPITAL GROUP</span></span></a>
-        <p class="entities">合同会社あっぷるキャピタル／合同会社たいせい<br>三上浩平税理士事務所（税理士業務は同事務所が行います）<br>東京都港区港南4-2-7</p>
+        <a class="brand" href="{base}"><span class="mark" aria-hidden="true"></span><span><b>あっぷるキャピタルグループ</b><span class="en">APPLE CAPITAL GROUP</span></span></a>
+        <p class="entities">合同会社あっぷるキャピタル／合同会社たいせい<br>三上浩平税理士事務所（東京税理士会所属）<br>東京都港区港南4-2-7</p>
       </div>
-      <div><h4>Business</h4><ul>
+      <div><h4>BUSINESS</h4><ul>
         <li><a href="{base}tax/">税務・会計</a></li><li><a href="{base}real-estate/">不動産</a></li>
-        <li><a href="{base}ai/">AI・業務改善</a></li><li><a href="{base}stores/">店舗</a></li></ul></div>
-      <div><h4>Company</h4><ul>
+        <li><a href="{base}ai/">AI・業務改善</a></li><li><a href="{base}stores/">店舗</a></li><li><a href="{base}real-estate/#offer">物件情報のご提供</a></li></ul></div>
+      <div><h4>COMPANY</h4><ul>
         <li><a href="{base}about/">私たちについて</a></li><li><a href="{base}about/profile/">代表プロフィール</a></li>
-        <li><a href="{base}numbers/">数字で見るグループ</a></li><li><a href="{base}insights/">研究・発信</a></li>
+        <li><a href="{base}numbers/">数字で見るグループ</a></li><li><a href="{base}insights/">研究・掲載</a></li>
         <li><a href="{base}company/">会社概要</a></li><li><a href="{base}privacy/">プライバシーポリシー</a></li>
-        <li><a href="{base}contact/">ご相談窓口</a></li><li><a href="{X_URL}" rel="noopener">X（三上浩平）</a></li></ul></div>
+        <li><a href="{base}contact/">お問い合わせ</a></li><li><a href="{X_URL}" rel="noopener">X（三上浩平）</a></li></ul></div>
     </div>
     <div class="bottom"><span>© {datetime.date.today().year} APPLE CAPITAL GROUP</span><span>掲載の数字は2026年9月時点</span></div>
   </div>
@@ -162,16 +161,16 @@ def layout(meta: dict, body: str, base: str, site: str, preview: bool) -> str:
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{site}assets/img/logo-color.png">
+<meta property="og:image" content="{site}assets/img/hero-1600.webp">
 <meta property="og:locale" content="ja_JP">
 <meta name="theme-color" content="#0B1B3B">
 <link rel="icon" href="{base}assets/img/logo-color.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@500;600&family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho+B1:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{base}assets/css/site.css">
 {jsonld(meta.get("jsonld", ""), site)}
 </head>
-<body>
+<body{' class="hello-page"' if meta.get("bare") else ""}>
 <a class="skip" href="#main">本文へ移動</a>
 {note}{header}
 <main id="main">
@@ -191,10 +190,10 @@ FN;CHARSET=UTF-8:三上 浩平
 X-PHONETIC-FIRST-NAME;CHARSET=UTF-8:こうへい
 X-PHONETIC-LAST-NAME;CHARSET=UTF-8:みかみ
 ORG;CHARSET=UTF-8:あっぷるキャピタルグループ
-TITLE;CHARSET=UTF-8:代表／公認会計士・税理士
+TITLE;CHARSET=UTF-8:代表 公認会計士・税理士
 EMAIL;TYPE=INTERNET,WORK:t.applecapital@gmail.com
 URL:{url}
-NOTE;CHARSET=UTF-8:三上浩平税理士事務所 所長／合同会社あっぷるキャピタル・合同会社たいせい 代表社員
+NOTE;CHARSET=UTF-8:三上浩平税理士事務所 所長（東京税理士会所属 登録番号第144424号）／合同会社あっぷるキャピタル・合同会社たいせい 代表社員
 END:VCARD
 """
 
