@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AI・業務改善｜あっぷるキャピタルグループ</title>
+<meta name="description" content="あっぷるキャピタルグループが自社で運用しているAIの仕組みを、デモでご紹介します。領収書の読み取りから仕訳まで、届いた書類の仕分け、役割ごとに設定したAIの連携。">
+<link rel="icon" href="../../v6/assets/img/logo-color.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500&family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho+B1:wght@500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<script>(function(){var q=location.search.indexOf('noanim')>-1;var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(!q&&!rm)document.documentElement.classList.add('anim');})();</script>
+<style>
+:root{--bg:#F3F3F0;--white:#fff;--ink:#131313;--ink2:#4A4A46;--muted:#8B887F;--line:#D9D6CE;--navy:#0A1733;--navy2:#0F2147;--blue:#18549C;--teal:#1C7D86;--green:#54A83C;--gold:#C6A86E;--sky:#7FB3F0;
+--mincho:"Shippori Mincho B1","Yu Mincho",serif;--sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;--en:"Inter Tight","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",Consolas,monospace;--gut:clamp(20px,4.5vw,64px);--ease:cubic-bezier(.19,1,.22,1)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:2;letter-spacing:.04em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;word-break:auto-phrase}p{margin:0}
+.wrap{padding:0 var(--gut);max-width:1500px;margin:0 auto}
+.lab{font-family:var(--en);font-size:12px;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:14px}.lab::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.mark{display:inline-block;aspect-ratio:1024/559;-webkit-mask:url(../../v8/assets/img/mark.png) center/contain no-repeat;mask:url(../../v8/assets/img/mark.png) center/contain no-repeat;background:currentColor}
+.hd{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gut);background:rgba(243,243,240,.92);backdrop-filter:blur(10px)}
+.hd .brand{display:flex;align-items:center;gap:12px}.hd .brand .mark{width:40px}.hd .brand b{display:block;font-family:var(--mincho);font-weight:600;font-size:15px;letter-spacing:.14em;line-height:1.3}.hd .brand small{display:block;font-family:var(--en);font-size:9.5px;letter-spacing:.32em;opacity:.7}
+.hd nav{display:flex;gap:32px;font-size:13px;letter-spacing:.12em}@media(max-width:820px){.hd nav{display:none}}
+.badge{position:fixed;left:14px;bottom:14px;z-index:90;font-family:var(--en);font-size:11px;letter-spacing:.12em;background:rgba(10,23,51,.86);color:#cfd6e4;padding:6px 10px;border-radius:2px}
+
+.head{padding:clamp(80px,11vw,160px) 0 clamp(50px,7vw,90px)}
+.head .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,100px);align-items:end}
+.big{font-family:var(--en);font-weight:200;font-size:clamp(56px,9vw,150px);line-height:.92;letter-spacing:-.03em}
+.head h1{font-family:var(--mincho);font-size:clamp(22px,2.2vw,30px);letter-spacing:.12em;margin-top:18px}
+.head p{color:var(--ink2)}
+.head .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.head .toc a{font-size:12.5px;letter-spacing:.08em;border:1px solid var(--line);padding:6px 14px;border-radius:99px;background:#fff}
+.head .toc a:hover{border-color:var(--ink)}
+@media(max-width:860px){.head .wrap{grid-template-columns:1fr}}
+
+.demo{padding:clamp(40px,6vw,80px) 0}
+.demo .top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:28px}
+.demo .no{font-family:var(--en);font-weight:200;font-size:clamp(40px,4vw,64px);line-height:1;color:var(--muted)}
+.demo h2{font-family:var(--mincho);font-size:clamp(24px,2.6vw,36px);letter-spacing:.1em;margin-top:10px}
+.demo .top p{color:var(--ink2);font-size:14.5px}
+@media(max-width:860px){.demo .top{grid-template-columns:1fr}}
+.panel{position:relative;background:var(--navy);color:#E6EBF3;border-radius:14px;padding:clamp(22px,3.4vw,48px);overflow:hidden;min-height:440px}
+.panel::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 85% 10%,rgba(28,125,134,.35),transparent 60%),radial-gradient(50% 70% at 10% 100%,rgba(24,84,156,.45),transparent 60%);pointer-events:none}
+.panel>*{position:relative}
+.replay{position:absolute;right:18px;top:16px;z-index:3;font-family:var(--en);font-size:11px;letter-spacing:.2em;color:#AEB6C7;border:1px solid rgba(255,255,255,.25);background:transparent;border-radius:99px;padding:6px 14px;cursor:pointer}
+.replay:hover{color:#fff;border-color:#fff}
+.note{margin-top:14px;font-size:12px;color:var(--muted);line-height:1.9}
+
+/* ---- demo1: receipt ---- */
+.d1{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,60px);align-items:center}
+.receipt{position:relative;background:#FCFBF7;color:#2a2a2a;width:min(320px,100%);margin:0 auto;padding:26px 24px 30px;font-family:var(--mono);font-size:12.5px;line-height:1.9;box-shadow:0 20px 50px rgba(0,0,0,.35);clip-path:polygon(0 0,100% 0,100% 97%,95% 100%,90% 97%,85% 100%,80% 97%,75% 100%,70% 97%,65% 100%,60% 97%,55% 100%,50% 97%,45% 100%,40% 97%,35% 100%,30% 97%,25% 100%,20% 97%,15% 100%,10% 97%,5% 100%,0 97%)}
+.receipt .sh{text-align:center;font-weight:400;font-size:14px;letter-spacing:.2em}
+.receipt .row{display:flex;justify-content:space-between}
+.receipt .hr{border-top:1px dashed #bbb;margin:8px 0}
+.receipt .f{position:relative;border-radius:3px;transition:background .4s,box-shadow .4s}
+.receipt .f.hit{background:rgba(84,168,60,.16);box-shadow:0 0 0 1.5px rgba(84,168,60,.9)}
+.scanbar{position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,#7FE0A0,transparent);box-shadow:0 0 18px 4px rgba(127,224,160,.6);opacity:0}
+.fields{display:grid;gap:10px}
+.fld{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 16px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:rgba(255,255,255,.04);opacity:.25;transform:translateX(10px);transition:opacity .6s var(--ease),transform .6s var(--ease),border-color .6s}
+.fld.on{opacity:1;transform:none;border-color:rgba(127,224,160,.45)}
+.fld span{font-size:12px;color:#8F9AB0;letter-spacing:.1em}
+.fld b{font-weight:500;color:#fff;font-size:14.5px}
+.fld i{font-style:normal;font-family:var(--en);font-size:11px;color:#7FE0A0}
+.journal{margin-top:18px;border-radius:10px;border:1px solid rgba(198,168,110,.5);overflow:hidden;opacity:0;transform:translateY(12px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.journal.on{opacity:1;transform:none}
+.journal .jh{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));font-size:11px;color:#AEB6C7;letter-spacing:.14em;background:rgba(198,168,110,.12);padding:8px 14px}
+.journal .jr{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:12px 14px;font-size:14px;color:#fff}
+.journal .jr .n{font-family:var(--en);font-variant-numeric:tabular-nums}
+.timer{display:flex;gap:26px;align-items:baseline;margin-top:18px;font-size:12px;color:#AEB6C7}
+.timer b{font-family:var(--en);font-weight:200;font-size:36px;color:#fff;letter-spacing:-.01em}
+.timer s{color:#6F7A90}
+@media(max-width:860px){.d1{grid-template-columns:1fr}.fld{grid-template-columns:90px minmax(0,1fr)}.fld i{display:none}}
+
+/* ---- demo2: sorting ---- */
+.d2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:clamp(20px,4vw,60px);min-height:380px}
+.inbox{position:relative;border:1px dashed rgba(255,255,255,.25);border-radius:10px;min-height:340px;padding:16px}
+.inbox .t{font-size:11px;letter-spacing:.2em;color:#8F9AB0;font-family:var(--en)}
+.inbox:not(:has(.doc))::after{content:"未処理 0件 — すべて仕分け済み";position:absolute;left:0;right:0;top:50%;text-align:center;font-size:12.5px;letter-spacing:.12em;color:#7FD3A8}
+.doc{position:absolute;left:50%;top:56%;width:150px;height:96px;margin:-48px 0 0 -75px;background:#FCFBF7;color:#333;border-radius:4px;padding:10px 12px;font-size:11px;line-height:1.6;box-shadow:0 12px 30px rgba(0,0,0,.35);transition:transform 1s var(--ease),opacity .8s}
+.doc b{display:block;font-size:12.5px;color:#0A1733;margin-bottom:2px}
+.doc .tag{display:inline-block;margin-top:4px;font-size:10px;padding:1px 6px;border-radius:99px;background:#E6F2E1;color:#2E6B2A}
+.folders{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-content:start}
+.folder{border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);padding:14px 14px 10px;min-height:160px;transition:border-color .5s,background .5s}
+.folder.flash{border-color:rgba(127,224,160,.8);background:rgba(127,224,160,.08)}
+.folder h3{font-family:var(--mincho);font-size:14.5px;color:#fff;letter-spacing:.08em}
+.folder ul{list-style:none;margin:10px 0 0;padding:0;font-size:11.5px;color:#AEB6C7;line-height:1.7}
+.folder li{opacity:0;transform:translateY(-4px);transition:opacity .5s,transform .5s}
+.folder li.on{opacity:1;transform:none}
+.log{grid-column:1/-1;margin-top:6px;font-family:var(--mono);font-size:11.5px;color:#8FE0A8;line-height:1.8;min-height:66px}
+@media(max-width:860px){.d2{grid-template-columns:1fr}.folders{grid-template-columns:1fr}}
+
+/* ---- demo3: network ---- */
+.d3{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,60px);align-items:center}
+.net{width:100%;height:auto;max-height:560px}
+.net .edge{stroke:rgba(174,182,199,.22);stroke-width:1}
+.net .node circle{fill:#132A55;stroke:rgba(127,179,240,.55);stroke-width:1.2}
+.net .node.core circle{fill:#18549C;stroke:#C6A86E}
+.net .node text{fill:#E6EBF3;font-size:12px;font-family:var(--sans);letter-spacing:.06em}
+.net .node .sub{fill:#8F9AB0;font-size:9.5px;font-family:var(--en);letter-spacing:.14em}
+.net .pulse{fill:#7FE0A0}
+.net .node.lit circle{stroke:#7FE0A0;stroke-width:2}
+.feed{display:grid;gap:10px}
+.feed div{padding:12px 16px;border-left:2px solid rgba(127,224,160,.6);background:rgba(255,255,255,.04);font-size:13px;color:#DDE3EE;opacity:0;transform:translateY(8px);transition:opacity .6s,transform .6s}
+.feed div.on{opacity:1;transform:none}
+.feed small{display:block;font-family:var(--en);font-size:10.5px;letter-spacing:.14em;color:#8F9AB0}
+@media(max-width:860px){.d3{grid-template-columns:1fr}}
+
+/* ---- cases ---- */
+.cases{padding:clamp(70px,9vw,130px) 0;background:var(--white);margin-top:clamp(40px,6vw,80px)}
+.cases .wrap{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(30px,6vw,100px)}
+.cases h2{font-family:var(--mincho);font-size:clamp(22px,2.2vw,30px);letter-spacing:.12em;margin-top:16px}
+.cases .intro{color:var(--ink2);font-size:14px;margin-top:16px}
+.clist{border-top:1px solid var(--ink)}
+.clist>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+.clist h3{font-family:var(--mincho);font-size:16.5px;letter-spacing:.06em}
+.clist p{font-size:13.5px;color:var(--ink2);margin-top:4px;line-height:1.85}
+.clist b{font-family:var(--en);font-weight:300;font-size:22px;white-space:nowrap;align-self:center}
+@media(max-width:860px){.cases .wrap{grid-template-columns:1fr}}
+.ft{background:var(--navy);color:#AEB6C7;padding:50px 0;font-size:12.5px}
+.ft .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+<header class="hd">
+  <a class="brand" href="../"><span class="mark" aria-hidden="true"></span><span><b>あっぷるキャピタルグループ</b><small>APPLE CAPITAL GROUP</small></span></a>
+  <nav aria-label="主要メニュー"><a href="../">トップ</a><a href="../#business">事業内容</a><a href="../#stores">店舗</a><a href="../#research">研究</a><a href="../#company">会社概要</a></nav>
+</header>
+
+<main>
+<section class="head">
+  <div class="wrap">
+    <div><h2 class="big">AI<br>Operations</h2><h1>AI・業務改善</h1></div>
+    <div>
+      <p>当グループでは、経理、書類の管理、物件管理などの社内業務にAIを取り入れています。判断は人が行い、AIは下書き・集計・点検を受け持ちます。このページでは、実際に社内で動いている仕組みを、デモでご紹介します。</p>
+      <div class="toc"><a href="#d1">領収書から仕訳まで</a><a href="#d2">届いた書類の仕分け</a><a href="#d3">役割ごとのAIの連携</a><a href="#cases">自社での実例</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="d1">
+  <div class="wrap">
+    <div class="top"><div><span class="no">01</span><h2>領収書から仕訳まで</h2></div><p>撮影した領収書から、日付・取引先・金額・支払方法を読み取り、勘定科目を推定して仕訳の案を作ります。確定前に人が内容を確認します。</p></div>
+    <div class="panel">
+      <button class="replay" data-demo="1">REPLAY</button>
+      <div class="d1">
+        <div class="receipt" id="rc">
+          <div class="scanbar" id="scan"></div>
+          <div class="sh f" data-k="vendor">サンプル文具店</div>
+          <div style="text-align:center;font-size:11px;color:#777">東京都港区 見本町1-2-3</div>
+          <div class="hr"></div>
+          <div class="row f" data-k="date"><span>2026年9月12日</span><span>14:32</span></div>
+          <div class="hr"></div>
+          <div class="row"><span>コピー用紙 A4</span><span>¥900</span></div>
+          <div class="row"><span>　×2</span><span>¥1,800</span></div>
+          <div class="row"><span>消費税（10%）</span><span>¥180</span></div>
+          <div class="hr"></div>
+          <div class="row f" data-k="total" style="font-size:15px"><span>合計</span><span>¥1,980</span></div>
+          <div class="row f" data-k="pay"><span>お預り（現金）</span><span>¥2,000</span></div>
+          <div class="row"><span>お釣り</span><span>¥20</span></div>
+          <div class="hr"></div>
+          <div style="text-align:center;font-size:10.5px;color:#777">登録番号 T0000000000000</div>
+        </div>
+        <div>
+          <div class="fields">
+            <div class="fld" data-k="date"><span>日付</span><b>2026年9月12日</b><i>一致</i></div>
+            <div class="fld" data-k="vendor"><span>取引先</span><b>サンプル文具店</b><i>一致</i></div>
+            <div class="fld" data-k="total"><span>金額</span><b>1,980円（うち消費税 180円）</b><i>一致</i></div>
+            <div class="fld" data-k="pay"><span>支払方法</span><b>現金</b><i>一致</i></div>
+            <div class="fld" data-k="acct"><span>推定科目</span><b>消耗品費（過去の同じ取引先の処理から推定）</b><i>確認待ち</i></div>
+          </div>
+          <div class="journal" id="jr">
+            <div class="jh"><span>借方</span><span>金額</span><span>貸方</span><span>金額</span></div>
+            <div class="jr"><span>消耗品費</span><span class="n">1,980</span><span>現金</span><span class="n">1,980</span></div>
+          </div>
+          <div class="timer"><span>処理時間</span><b id="tm">0.0</b><span>秒</span><s>従来の方式 約80秒</s></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">デモのため、架空の領収書を使っています。社内では、文字を読み取る方式（OCR）を切り替えたことで、1枚あたりの処理時間が約80秒から約5秒になりました。</p>
+  </div>
+</section>
+
+<section class="demo" id="d2">
+  <div class="wrap">
+    <div class="top"><div><span class="no">02</span><h2>届いた書類の仕分け</h2></div><p>郵送やメールで届いた請求書・領収書・送金明細を、会社・書類の種類・対象の月で判定し、決まった場所へ保存します。毎朝、自動で動いています。</p></div>
+    <div class="panel">
+      <button class="replay" data-demo="2">REPLAY</button>
+      <div class="d2">
+        <div class="inbox" id="inbox"><span class="t">INBOX</span></div>
+        <div class="folders">
+          <div class="folder" data-f="0"><h3>合同会社たいせい</h3><ul></ul></div>
+          <div class="folder" data-f="1"><h3>合同会社あっぷるキャピタル</h3><ul></ul></div>
+          <div class="folder" data-f="2"><h3>三上浩平税理士事務所</h3><ul></ul></div>
+          <div class="log" id="log"></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">デモのため、書類名と取引先は架空のものです。誤った振り分けは記録し、判定の条件を修正しています。</p>
+  </div>
+</section>
+
+<section class="demo" id="d3">
+  <div class="wrap">
+    <div class="top"><div><span class="no">03</span><h2>役割ごとのAIの連携</h2></div><p>社内には、不動産・融資・経理・決算・店舗と発信・法務・開発・基盤の8つの役割を持つAIを設定しています。それぞれが下書きや点検を受け持ち、仕事を受け渡しながら動いています。</p></div>
+    <div class="panel">
+      <button class="replay" data-demo="3">REPLAY</button>
+      <div class="d3">
+        <svg class="net" id="net" viewBox="0 0 600 520" role="img" aria-label="代表を中心に、8つの役割のAIが仕事を受け渡す様子の図"></svg>
+        <div class="feed" id="feed"></div>
+      </div>
+    </div>
+    <p class="note">受け渡しの内容は、社内で実際に行っている業務の例です。最終的な判断は代表が行います。</p>
+  </div>
+</section>
+
+<section class="cases" id="cases">
+  <div class="wrap">
+    <div><p class="lab">Cases</p><h2>自社での実例</h2><p class="intro">いずれも当グループの社内業務における事例です。他社への導入実績はまだありません。</p></div>
+    <div class="clist">
+      <div><div><h3>会計システムの移行</h3><p>市販の会計ソフトから自社開発の会計システムへ移行。試算表の全科目が一致することを確認。</p></div><b>7,751<small style="font-size:12px"> 仕訳</small></b></div>
+      <div><div><h3>減価償却の再計算</h3><p>全資産を再計算し、旧ソフトで未計上だった創立費を確認。</p></div><b>84,860<small style="font-size:12px"> 円</small></b></div>
+      <div><div><h3>領収書読み取りの高速化</h3><p>文字認識の方式を切り替え、1枚あたりの処理時間を短縮。</p></div><b>80→5<small style="font-size:12px"> 秒</small></b></div>
+      <div><div><h3>立地評価の指標</h3><p>東北6県を1km四方に分けて採点し、物件取得の判断に使用。</p></div><b>28,207<small style="font-size:12px"> 区画</small></b></div>
+      <div><div><h3>社内システムのサーバー移設</h3><p>PCの稼働に依存していた社内の仕組みを、サーバーへ移設。</p></div><b>5<small style="font-size:12px"> 件</small></b></div>
+      <div><div><h3>SNS投稿の確認工程の追加</h3><p>AIに投稿まで任せた運用で問題が生じたため、公開前に人が確認する工程を設けた。</p></div><b>—</b></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="ft"><div class="wrap"><span>あっぷるキャピタルグループ</span><span>© 2026 Apple Capital Group</span></div></footer>
+<div class="badge">PREVIEW v9 — AIデモ</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var ANIM=document.documentElement.classList.contains('anim');
+  var timers={};
+  function later(id,fn,ms){ (timers[id]=timers[id]||[]).push(setTimeout(fn,ms)); }
+  function clear(id){ (timers[id]||[]).forEach(clearTimeout); timers[id]=[]; }
+
+  // ---------- 01 領収書から仕訳まで ----------
+  function demo1(){
+    clear(1);
+    var rc=document.getElementById('rc'), scan=document.getElementById('scan'), jr=document.getElementById('jr'), tm=document.getElementById('tm');
+    rc.querySelectorAll('.f').forEach(function(e){e.classList.remove('hit')});
+    document.querySelectorAll('.fld').forEach(function(e){e.classList.remove('on')});
+    jr.classList.remove('on'); tm.textContent='0.0';
+    if(!ANIM){ rc.querySelectorAll('.f').forEach(function(e){e.classList.add('hit')}); document.querySelectorAll('.fld').forEach(function(e){e.classList.add('on')}); jr.classList.add('on'); tm.textContent='4.8'; return; }
+    var H=rc.offsetHeight, t0=performance.now(), dur=2600;
+    scan.style.opacity=1;
+    (function f(t){ var p=Math.min(1,(t-t0)/dur); scan.style.top=(p*H)+'px';
+      rc.querySelectorAll('.f').forEach(function(e){ if(e.offsetTop<p*H && !e.classList.contains('hit')){ e.classList.add('hit'); var k=e.dataset.k; var fl=document.querySelector('.fld[data-k="'+k+'"]'); if(fl) fl.classList.add('on'); } });
+      tm.textContent=(p*3.9).toFixed(1);
+      if(p<1) requestAnimationFrame(f); else { scan.style.opacity=0;
+        later(1,function(){ document.querySelector('.fld[data-k="acct"]').classList.add('on'); tm.textContent='4.4'; },400);
+        later(1,function(){ jr.classList.add('on'); tm.textContent='4.8'; },1000); } })(t0);
+  }
+
+  // ---------- 02 届いた書類の仕分け ----------
+  var DOCS=[
+    {n:'請求書',v:'サンプル電力',m:'2026-09',f:0,c:'水道光熱費'},
+    {n:'送金明細',v:'サンプル管理会社',m:'2026-09',f:1,c:'家賃の入金'},
+    {n:'領収書',v:'サンプル文具店',m:'2026-09',f:2,c:'消耗品費'},
+    {n:'納税通知書',v:'サンプル市',m:'2026-10',f:1,c:'固定資産税'},
+    {n:'請求書',v:'サンプル設備',m:'2026-09',f:1,c:'修繕費'},
+    {n:'送金明細',v:'サンプル管理会社',m:'2026-09',f:0,c:'家賃の入金'}
+  ];
+  function demo2(){
+    clear(2);
+    var inbox=document.getElementById('inbox'), log=document.getElementById('log');
+    inbox.querySelectorAll('.doc').forEach(function(e){e.remove()});
+    document.querySelectorAll('.folder ul').forEach(function(u){u.innerHTML=''});
+    log.textContent='';
+    DOCS.forEach(function(d,i){
+      function place(){
+        var el=document.createElement('div'); el.className='doc';
+        el.innerHTML='<b>'+d.n+'</b>'+d.v+'<br><span class="tag">'+d.m+'</span>';
+        el.style.transform='translate('+(i%2?14:-10)+'px,'+(-i*4)+'px) rotate('+(i%2?4:-3)+'deg)';
+        inbox.appendChild(el);
+        var folder=document.querySelector('.folder[data-f="'+d.f+'"]'), li=document.createElement('li');
+        li.textContent=d.m+'／'+d.n+'（'+d.c+'）';
+        function send(){
+          var r1=el.getBoundingClientRect(), r2=folder.getBoundingClientRect();
+          el.style.transform='translate('+(r2.left+r2.width/2-r1.left-r1.width/2)+'px,'+(r2.top+40-r1.top-r1.height/2)+'px) scale(.3)';
+          el.style.opacity='0';
+          folder.classList.add('flash'); setTimeout(function(){folder.classList.remove('flash')},600);
+          folder.querySelector('ul').appendChild(li); setTimeout(function(){li.classList.add('on')},30);
+          var now=new Date(2026,8,28,7,2+i); log.innerHTML=('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2)+'  '+d.n+'（'+d.v+'）→ '+folder.querySelector('h3').textContent+'／'+d.m+'<br>'+log.innerHTML.split('<br>').slice(0,2).join('<br>');
+          setTimeout(function(){el.remove()},900);
+        }
+        if(ANIM) later(2,send,900); else send();
+      }
+      if(ANIM) later(2,place,i*1500); else place();
+    });
+  }
+
+  // ---------- 03 役割ごとのAIの連携 ----------
+  var ROLES=[['不動産','REAL ESTATE'],['融資','FINANCE'],['経理','BOOKKEEPING'],['決算','CLOSING'],['店舗・発信','RETAIL & MEDIA'],['法務','LEGAL'],['開発','DEVELOPMENT'],['基盤','INFRASTRUCTURE']];
+  var FLOWS=[[2,3,'経理 → 決算','月次の仕訳を締め、試算表を引き継ぐ'],[0,1,'不動産 → 融資','取得を検討する物件の収支を共有する'],[6,2,'開発 → 経理','領収書の読み取りの仕組みを更新する'],[5,0,'法務 → 不動産','賃貸借契約書の確認結果を返す'],[4,2,'店舗・発信 → 経理','店舗の売上データを渡す'],[7,6,'基盤 → 開発','サーバーの構成を見直す'],[3,-1,'決算 → 代表','決算の数値の確認を依頼する'],[1,-1,'融資 → 代表','金融機関への提出資料を上げる']];
+  var net=document.getElementById('net'), NS='http://www.w3.org/2000/svg', pos=[], cx=300, cy=260, R=195;
+  function el(n,a){var e=document.createElementNS(NS,n); for(var k in a) e.setAttribute(k,a[k]); return e;}
+  ROLES.forEach(function(r,i){ var a=-Math.PI/2+i*2*Math.PI/ROLES.length; pos.push([cx+R*Math.cos(a), cy+R*Math.sin(a)]); });
+  var gE=el('g',{}), gN=el('g',{}), gP=el('g',{}); net.appendChild(gE); net.appendChild(gP); net.appendChild(gN);
+  pos.forEach(function(p,i){ gE.appendChild(el('line',{class:'edge',x1:cx,y1:cy,x2:p[0],y2:p[1]})); pos.forEach(function(q,j){ if(j>i && (j-i==1||j-i==ROLES.length-1)) gE.appendChild(el('line',{class:'edge',x1:p[0],y1:p[1],x2:q[0],y2:q[1]})); }); });
+  var core=el('g',{class:'node core'}); core.appendChild(el('circle',{cx:cx,cy:cy,r:46})); var t=el('text',{x:cx,y:cy+4,'text-anchor':'middle'}); t.textContent='代表'; core.appendChild(t); var s=el('text',{x:cx,y:cy+20,'text-anchor':'middle',class:'sub'}); s.textContent='DECISION'; core.appendChild(s); gN.appendChild(core);
+  var nodes=pos.map(function(p,i){ var g=el('g',{class:'node'}); g.appendChild(el('circle',{cx:p[0],cy:p[1],r:36})); var tt=el('text',{x:p[0],y:p[1]+4,'text-anchor':'middle'}); tt.textContent=ROLES[i][0]; g.appendChild(tt); var ss=el('text',{x:p[0],y:p[1]+52,'text-anchor':'middle',class:'sub'}); ss.textContent=ROLES[i][1]; g.appendChild(ss); gN.appendChild(g); return g; });
+  function pulse(a,b){ var p=pos[a], q=b<0?[cx,cy]:pos[b], c=el('circle',{class:'pulse',r:5,cx:p[0],cy:p[1]}); gP.appendChild(c); nodes[a].classList.add('lit'); var t0=performance.now(), d=1400;
+    (function f(t){ var k=Math.min(1,(t-t0)/d), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2; c.setAttribute('cx',p[0]+(q[0]-p[0])*e); c.setAttribute('cy',p[1]+(q[1]-p[1])*e); if(k<1) requestAnimationFrame(f); else { c.remove(); nodes[a].classList.remove('lit'); if(b>=0){ nodes[b].classList.add('lit'); setTimeout(function(){nodes[b].classList.remove('lit')},700);} } })(t0); }
+  function demo3(){
+    clear(3); var feed=document.getElementById('feed'); feed.innerHTML='';
+    FLOWS.forEach(function(f,i){
+      var go=function(){ if(ANIM) pulse(f[0],f[1]); var d=document.createElement('div'); d.innerHTML='<small>'+f[2]+'</small>'+f[3]; feed.insertBefore(d,feed.firstChild); while(feed.children.length>4) feed.lastChild.remove(); setTimeout(function(){d.classList.add('on')},20); };
+      if(ANIM) later(3,go,i*1500); else if(i<4) go();
+    });
+    if(ANIM) later(3,demo3,FLOWS.length*1500+2500);
+  }
+
+  var runs={1:demo1,2:demo2,3:demo3}, started={};
+  document.querySelectorAll('.replay').forEach(function(b){ b.addEventListener('click',function(){ runs[b.dataset.demo](); }); });
+  if(ANIM && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ var id=e.target.id.slice(1); if(e.isIntersecting && !started[id]){ started[id]=1; runs[id](); } }); },{threshold:.35});
+    ['d1','d2','d3'].forEach(function(id){ io.observe(document.getElementById(id)); });
+  } else { demo1(); demo2(); demo3(); }
+});
+</script>
+</body>
+</html>
