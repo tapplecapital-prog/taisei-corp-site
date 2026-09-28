@@ -30,3 +30,10 @@ document.addEventListener('DOMContentLoaded', function(){
   // なめらかなスクロール
   if(ANIM && window.Lenis){ var lenis=new Lenis({lerp:.09}); (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now()); }
 });
+
+// IR：資料をこのページの中で開く
+document.addEventListener('DOMContentLoaded', function(){
+  var b=document.querySelector('[data-viewer]'), v=document.getElementById('viewer');
+  if(!b||!v) return;
+  b.addEventListener('click',function(){ var f=v.querySelector('iframe'); if(!f.src) f.src=f.dataset.src; v.hidden=!v.hidden; v.classList.add('in'); b.textContent=v.hidden?'このページで見る':'プレビューを閉じる'; if(!v.hidden) v.scrollIntoView({behavior:'smooth',block:'start'}); });
+});
