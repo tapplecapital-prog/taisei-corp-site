@@ -98,12 +98,12 @@ p{margin:0}
 .hero .photo{position:absolute;z-index:1;right:clamp(24px,14vw,280px);top:clamp(96px,13vh,150px);width:clamp(200px,23vw,380px);aspect-ratio:3/4;overflow:hidden;box-shadow:var(--photo-sh)}
 .hero .photo img{width:100%;height:112%;object-fit:cover;object-position:50% 10%}
 .hero .photo figcaption{position:absolute;left:0;bottom:-30px;font-size:11px;letter-spacing:.16em;color:color-mix(in srgb,var(--hero-ink) 78%,transparent);white-space:nowrap}
-.hero .copy{position:absolute;z-index:2;left:var(--gut);bottom:clamp(40px,9vh,96px);max-width:min(900px,70vw)}
+.hero .copy{position:absolute;z-index:2;left:var(--gut);right:var(--gut);bottom:clamp(40px,9vh,96px)}
 .hero .copy .lab{color:color-mix(in srgb,var(--hero-ink) 82%,transparent)}
-.hero h1{font-family:var(--mincho);font-weight:500;font-size:clamp(38px,5.4vw,92px);line-height:1.22;letter-spacing:.08em;margin:22px 0 26px}
+.hero h1{font-family:var(--mincho);font-weight:500;font-size:clamp(23px,5vw,80px);line-height:1.22;letter-spacing:.07em;margin:22px 0 22px;white-space:nowrap}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln span{display:inline-block}
-.hero .vision{font-family:var(--mincho);font-size:clamp(15px,1.35vw,19px);letter-spacing:.14em;line-height:1.9;margin:-6px 0 22px;color:color-mix(in srgb,var(--hero-ink) 92%,transparent)}
+.hero .vision{font-family:var(--mincho);font-size:clamp(17px,1.9vw,27px);letter-spacing:.24em;line-height:1.9;margin:-6px 0 22px;color:color-mix(in srgb,var(--hero-ink) 92%,transparent)}
 .anim .hero .vision{opacity:0;transition:opacity 1.4s var(--ease)}
 .anim.ready .hero .vision{opacity:1;transition-delay:.4s}
 .hero .areas{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:13px;letter-spacing:.16em;color:color-mix(in srgb,var(--hero-ink) 84%,transparent)}
@@ -154,13 +154,15 @@ p{margin:0}
 
 /* ---------- news strip ---------- */
 .news{background:var(--white);border-bottom:1px solid var(--line)}
-.news .wrap{display:grid;grid-template-columns:160px minmax(0,1fr) auto;gap:24px;align-items:center;padding-top:26px;padding-bottom:26px}
+.news .wrap{display:grid;grid-template-columns:160px minmax(0,1fr);gap:24px;align-items:start;padding-top:40px;padding-bottom:40px}
 .news .lab{color:var(--muted)}
 .news ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
-.news li{display:flex;gap:28px;font-size:14px}
+.news li{display:grid;grid-template-columns:96px 84px minmax(0,1fr);gap:18px;align-items:baseline;font-size:14px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.news li:last-child{border-bottom:0}
+.news .tg{justify-self:start;font-size:11px;letter-spacing:.08em;color:var(--ink2);border:1px solid var(--line);border-radius:99px;padding:0 10px;line-height:1.9;white-space:nowrap}
 .news time{font-family:var(--en);color:var(--muted);letter-spacing:.06em;min-width:88px}
 .news a:hover{color:var(--accent)}
-@media (max-width:760px){.news .wrap{grid-template-columns:1fr}.news li{flex-direction:column;gap:0}}
+@media (max-width:760px){.news .wrap{grid-template-columns:1fr}.news li{grid-template-columns:auto 1fr;gap:4px 12px}.news li>a,.news li>span:last-child{grid-column:1/-1}}
 
 /* ---------- about ---------- */
 .about{padding:clamp(110px,15vw,220px) 0 clamp(80px,10vw,150px)}
@@ -169,6 +171,19 @@ p{margin:0}
 .big+.jp{display:block;margin-top:18px;font-size:13px;letter-spacing:.2em;color:var(--muted)}
 .about .txt p{font-family:var(--mincho);font-size:clamp(17px,1.5vw,21px);line-height:2.2;letter-spacing:.08em}
 .about .txt p+p{margin-top:1.4em}
+.about .txt p.stmt{font-size:clamp(23px,2.5vw,36px);line-height:1.75;letter-spacing:.12em;color:var(--ink)}
+[data-theme=apple] .about .txt p.stmt{background:linear-gradient(90deg,#1B3F7A,#3A6FD0 60%,#C8457A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.emb{margin-top:48px;width:clamp(110px,11vw,170px);color:var(--ink)}
+.emb svg,.co-emb svg,.ft-emb svg{width:100%;height:auto;display:block;overflow:visible}
+.emb small{display:block;font-family:var(--en);font-size:10px;letter-spacing:.3em;color:var(--muted);margin-top:14px;white-space:nowrap}
+svg .s{fill:none;stroke:currentColor;stroke-dasharray:1;stroke-dashoffset:0}
+svg .dot{fill:#54A83C}
+.anim .emb .s{stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease)}
+.anim .emb .s:nth-child(2){transition-delay:.25s}.anim .emb .s:nth-child(3){transition-delay:.45s}.anim .emb .s:nth-child(4){transition-delay:.7s}
+.anim .emb .dot{opacity:0;transition:opacity .8s 1.8s}
+.anim .emb.in .s{stroke-dashoffset:0}.anim .emb.in .dot{opacity:1}
+.co-emb{width:64px;color:var(--ink);margin-bottom:22px}
+.ft-emb{width:44px;color:#fff;opacity:.9}
 .about .txt p.sub{font-family:var(--sans);font-size:14.5px;line-height:2.1;letter-spacing:.05em;color:var(--ink2)}
 .about .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;border-top:1px solid var(--ink)}
 .about .facts div{padding:18px 0 0}
@@ -182,15 +197,19 @@ p{margin:0}
 @media (max-width:860px){.about .wrap{grid-template-columns:1fr}}
 
 /* ---------- policy & strengths ---------- */
-.pol{padding:0 0 clamp(90px,11vw,150px)}
-.pol .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,90px)}
-.pol h2{font-family:var(--mincho);font-size:clamp(20px,2vw,26px);letter-spacing:.12em;margin:14px 0 8px}
-.pol ol{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--ink)}
-.pol li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
-.pol li>span{font-family:var(--en);font-weight:300;font-size:13px;letter-spacing:.1em;color:var(--muted);padding-top:3px}
-.pol h3{font-family:var(--mincho);font-size:17px;letter-spacing:.08em;line-height:1.7}
-.pol p{font-size:13.5px;color:var(--ink2);line-height:1.95;margin-top:4px}
-@media (max-width:860px){.pol .wrap{grid-template-columns:minmax(0,1fr)}}
+.pol{padding:clamp(40px,5vw,80px) 0 clamp(100px,12vw,170px)}
+.pol .ph{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1fr);gap:clamp(20px,4vw,70px);align-items:end;margin-bottom:34px}
+.pol .ph .lab{grid-column:1/-1}
+.pol h2{font-family:var(--mincho);font-size:clamp(28px,3.2vw,46px);letter-spacing:.14em;line-height:1.3}
+.pol .pl{color:var(--ink2);font-size:14.5px;line-height:2}
+.pgrid,.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.pgrid article{position:relative;padding:34px 30px 32px;border-radius:18px;background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.9);box-shadow:0 20px 50px rgba(40,90,160,.08);overflow:hidden}
+.pgrid .kj{display:table;padding-right:.05em;font-family:var(--mincho);font-weight:600;font-size:clamp(46px,4.4vw,68px);line-height:1;background:linear-gradient(135deg,#3A8FE0,#6D7FEA 55%,#E4506F);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px}
+.pol h3{font-family:var(--mincho);font-size:clamp(18px,1.6vw,22px);letter-spacing:.08em;line-height:1.6}
+.pol article p{font-size:14px;color:var(--ink2);line-height:2.05;margin-top:14px}
+.sgrid article{padding:26px 0 0;border-top:1px solid var(--ink)}
+.sgrid .nm{display:block;font-family:var(--en);font-weight:300;font-size:13px;letter-spacing:.14em;color:var(--accent);margin-bottom:12px}
+@media (max-width:900px){.pol .ph{grid-template-columns:1fr}.pgrid,.sgrid{grid-template-columns:1fr}}
 
 /* ---------- places filmstrip ---------- */
 .places{padding:0 0 clamp(90px,12vw,170px);overflow:hidden}
@@ -413,8 +432,8 @@ p{margin:0}
   <figure class="float" data-speed="-0.08" aria-hidden="true"><img src="../v8/assets/img/p-yonezawa.webp" alt=""><img src="../v8/assets/img/p-sakura.webp" alt=""><img src="../v8/assets/img/s365-front.webp" alt=""><img src="../v8/assets/img/p-towada.webp" alt=""><img src="../v8/assets/img/ks/k05.webp" alt=""><img src="../v8/assets/img/p-sendai.webp" alt=""><figcaption>保有物件と店舗</figcaption></figure>
   <div class="copy">
     <p class="lab">Apple Capital Group — Since 2020</p>
-    <h1><span class="ln"><span>あっぷるキャピタル</span></span><span class="ln"><span>グループ</span></span></h1>
-    <p class="vision">住まいと、店と、数字の仕事で、地方のまちを長持ちさせる。</p>
+    <h1><span class="ln"><span>あっぷるキャピタルグループ</span></span></h1>
+    <p class="vision">実らせて、未来へつなぐ。</p>
     <p class="areas"><span>税務・会計</span><span>不動産</span><span>店舗運営</span></p>
   </div>
   <div class="scroll" aria-hidden="true">SCROLL<i></i></div>
@@ -424,18 +443,25 @@ p{margin:0}
   <div class="wrap">
     <p class="lab">News</p>
     <ul>
-      <li><time datetime="2026-09-25">2026.09.25</time><a href="https://www.rakumachi.jp/news/column/406727" target="_blank" rel="noopener">楽待新聞「大家業のひとびと」に代表のインタビュー記事が掲載されました</a></li>
-      <li><time datetime="2026-06">2026.06</time><span>埼玉県東松山市の賃貸住宅（2棟22室）を取得しました</span></li>
+      <li><time datetime="2026-09-25">2026.09.25</time><span class="tg">メディア掲載</span><a href="https://www.rakumachi.jp/news/column/406727" target="_blank" rel="noopener">楽待新聞「大家業のひとびと」に代表のインタビュー記事が掲載されました</a></li>
+      <li><time datetime="2026-07">2026.07</time><span class="tg">決算</span><span>合同会社あっぷるキャピタルの第6期（2026年6月期）決算説明資料を公開しました</span></li>
+      <li><time datetime="2026-06">2026.06</time><span class="tg">物件取得</span><span>合同会社あっぷるキャピタルにて、埼玉県東松山市の一棟収益アパート「ヴェルディA棟・B棟」（22室）を取得しました</span></li>
+      <li><time datetime="2026-06">2026.06</time><span class="tg">設立</span><span>地方の収益不動産と地域経済を分析する研究機関「あっぷる総研（ACRI）」を設立し、研究サイトを公開しました</span></li>
+      <li><time datetime="2026-06">2026.06</time><span class="tg">経営</span><span>「不動産事業 中長期成長戦略」を策定し、経営会議へ報告しました</span></li>
+      <li><time datetime="2026-04">2026.04</time><span class="tg">物件取得</span><span>代表個人にて、宮城県仙台市青葉区の一棟収益アパート「ズーリングⅠ番館・Ⅱ番館」（16室）を取得しました</span></li>
+      <li><time datetime="2026-02">2026.02</time><span class="tg">物件取得</span><span>合同会社あっぷるキャピタルにて、福島県南相馬市の一棟収益アパート「南相馬コーポMOMO」（24室）を取得しました</span></li>
     </ul>
   </div>
 </section>
 
 <section class="about" id="about">
   <div class="wrap">
-    <div class="rv"><h2 class="big">About</h2><span class="jp">私たちについて</span></div>
+    <div class="rv"><h2 class="big">About</h2><span class="jp">私たちについて</span>
+      <div class="emb rv d1"><svg class="" viewBox="0 0 120 120" role="img" aria-label="あっぷるキャピタルグループの組み文字"><circle class="s" pathLength="1" cx="60" cy="60" r="56" stroke-width="1.6"/><path class="s" pathLength="1" d="M88 38 A 34 34 0 1 0 88 82" stroke-width="7"/><path class="s" pathLength="1" d="M44 84 L 62 34 L 80 84" stroke-width="7" stroke-linejoin="miter"/><path class="s" pathLength="1" d="M50 66 L 74 66" stroke-width="5"/><rect class="dot" x="58.5" y="71" width="7" height="7"/></svg><small>APPLE CAPITAL GROUP</small></div></div>
     <div class="txt">
-      <p class="rv">あっぷるキャピタルグループは、税理士事務所と2つの合同会社からなる企業グループです。公認会計士・税理士の三上浩平が2020年に設立し、税務・会計、北海道から中部までの賃貸住宅の保有・運営、買取専門店「こやし屋」、青森市の「365スイーツショップ」の運営を手がけています。</p>
-      <p class="rv d1 sub">人口が減っていく地域でも、手入れの行き届いた住まいと、気軽に立ち寄れる店があれば、まちの暮らしは続いていきます。私たちは、会計の知識と自社で積み上げてきた数字を使って、その土台を一つずつ整えていきたいと考えています。</p>
+      <p class="stmt rv">適切な場所に資本を届け、<br>長く愛される事業を育てる。</p>
+      <p class="rv d1">私たちは、人々の暮らしに根ざした事業を誠実に運営し、果実を未来の日本へ繋いでいきます。</p>
+      <p class="rv d1 sub">あっぷるキャピタルグループは、税理士事務所と2つの合同会社からなる企業グループです。公認会計士・税理士の三上浩平が2020年に設立し、税務・会計、北海道から中部までの賃貸住宅の保有・運営、買取専門店「こやし屋」、青森市の「365スイーツショップ」の運営を手がけています。</p>
       <div class="facts rv d1">
         <div><b data-count="14">14<small>棟</small></b><span>保有する賃貸住宅</span></div>
         <div><b data-count="208">208<small>室</small></b><span>保有する住戸</span></div>
@@ -448,24 +474,10 @@ p{margin:0}
 
 <section class="pol" id="policy" aria-label="経営の方針と強み">
   <div class="wrap">
-    <div class="rv">
-      <p class="lab">Policy</p>
-      <h2>経営の方針</h2>
-      <ol>
-        <li><span>01</span><div><h3>数字で確かめてから決める</h3><p>事業の良し悪しは、会計と財務の数字で確かめてから判断します。勘や慣習だけでは決めません。</p></div></li>
-        <li><span>02</span><div><h3>昔からある事業に、今の経営管理を</h3><p>不動産、買取、小売といった昔からある事業に、資金調達や経営管理の手法を組み合わせます。</p></div></li>
-        <li><span>03</span><div><h3>長く続けることを優先する</h3><p>目先の利益より、10年、20年と続くことを優先します。財務を健全に保ち、得た利益は次の事業へ再投資します。</p></div></li>
-      </ol>
-    </div>
-    <div class="rv d1">
-      <p class="lab">Strengths</p>
-      <h2>当グループの強み</h2>
-      <ol>
-        <li><span>01</span><div><h3>数字にもとづく投資判断</h3><p>事業ごとの収益の構造と資本の効率を数字で示し、物件や店舗の取得を判断しています。</p></div></li>
-        <li><span>02</span><div><h3>複数の事業による安定</h3><p>税務・会計、不動産、店舗運営と収入源が分かれているため、景気の波の影響を受けにくい構成です。</p></div></li>
-        <li><span>03</span><div><h3>専門知識と現場の経験</h3><p>公認会計士・税理士としての専門知識に加えて、自社で物件と店舗を運営してきた経験があります。</p></div></li>
-      </ol>
-    </div>
+    <div class="ph rv"><p class="lab">Policy</p><h2>三つの規律</h2><p class="pl">事業が増えても、変えずに守っている三つの指針があります。</p></div>
+    <div class="pgrid"><article class="rv"><span class="kj" aria-hidden="true">壱</span><h3>数字で読み解き、資産を磨く</h3><p>どの事業も、数字という共通の言葉で読み解きます。会計と財務で培った分析の力を拠りどころに、勘や慣習だけに頼らずに判断し、昔からある事業に眠っている価値を、ひとつずつ掘り起こしていきます。</p></article><article class="rv d1"><span class="kj" aria-hidden="true">弐</span><h3>変わらない実業に、新しい仕組みを</h3><p>住まい、リユース、まちの店。長く人の暮らしを支えてきた仕事には、古びない価値があります。そこに今の資本の考え方と経営管理、AIの仕組みを重ねて、次の成長につなげます。</p></article><article class="rv d2"><span class="kj" aria-hidden="true">参</span><h3>長く続けて、次の世代へつなぐ</h3><p>一時の利益よりも、10年、20年と続くことを選びます。財務を健全に保ち、得た利益は次の事業へ。その積み重ねを次の世代へ手渡していくことが、私たちの務めです。</p></article></div>
+    <div class="ph rv" style="margin-top:clamp(70px,8vw,120px)"><p class="lab">Strengths</p><h2>強さの内訳</h2><p class="pl">確かな専門性と、自分たちで動ける身軽さ。その両方を、安定した成長の土台にしています。</p></div>
+    <div class="sgrid"><article class="rv"><span class="nm">01</span><h3>数字に裏付けられた判断</h3><p>事業ごとの収益の仕組みと資本の効率を見えるかたちにし、物件や店舗の取得も、数字で確かめてから決めています。</p></article><article class="rv d1"><span class="nm">02</span><h3>いくつもの事業が支え合う安定</h3><p>税務・会計、不動産、店舗運営と、収入の柱が分かれています。景気の波が来ても、グループ全体で受け止められる構えです。</p></article><article class="rv d2"><span class="nm">03</span><h3>専門性と、現場を動かす力</h3><p>公認会計士・税理士としての専門性と、自ら物件や店舗を運営してきた経験。この両方があるから、守りの堅実さと攻めの成長を両立できます。</p></article></div>
   </div>
 </section>
 
@@ -609,7 +621,7 @@ p{margin:0}
 
 <section class="co" id="company" aria-labelledby="co-h">
   <div class="wrap">
-    <div class="rv"><p class="lab">Company</p><h2 id="co-h">会社概要</h2></div>
+    <div class="rv"><div class="co-emb"><svg class="" viewBox="0 0 120 120" role="img" aria-label="あっぷるキャピタルグループの組み文字"><circle class="s" pathLength="1" cx="60" cy="60" r="56" stroke-width="1.6"/><path class="s" pathLength="1" d="M88 38 A 34 34 0 1 0 88 82" stroke-width="7"/><path class="s" pathLength="1" d="M44 84 L 62 34 L 80 84" stroke-width="7" stroke-linejoin="miter"/><path class="s" pathLength="1" d="M50 66 L 74 66" stroke-width="5"/><rect class="dot" x="58.5" y="71" width="7" height="7"/></svg></div><p class="lab">Company</p><h2 id="co-h">会社概要</h2></div>
     <div>
       <div class="ents rv d1">
         <div><h3>合同会社あっぷるキャピタル</h3><p>2020年12月設立<br>賃貸不動産の保有・運営</p></div>
@@ -627,7 +639,7 @@ p{margin:0}
     <div class="word" aria-hidden="true">Apple Capital Group</div>
     <div class="cols">
       <nav aria-label="フッター"><a href="#about">私たちについて</a><a href="../v6/tax/">税務・会計</a><a href="../v6/real-estate/">不動産</a><a href="#stores">店舗</a><a href="ai/">AI・業務改善</a><a href="#company">会社概要</a><a href="../v6/privacy/">プライバシーポリシー</a></nav>
-      <span class="en">© 2026 Apple Capital Group</span>
+      <span class="en" style="display:flex;align-items:center;gap:14px"><span class="ft-emb"><svg class="" viewBox="0 0 120 120" role="img" aria-label="あっぷるキャピタルグループの組み文字"><circle class="s" pathLength="1" cx="60" cy="60" r="56" stroke-width="1.6"/><path class="s" pathLength="1" d="M88 38 A 34 34 0 1 0 88 82" stroke-width="7"/><path class="s" pathLength="1" d="M44 84 L 62 34 L 80 84" stroke-width="7" stroke-linejoin="miter"/><path class="s" pathLength="1" d="M50 66 L 74 66" stroke-width="5"/><rect class="dot" x="58.5" y="71" width="7" height="7"/></svg></span>© 2026 Apple Capital Group</span>
     </div>
   </div>
 </footer>
