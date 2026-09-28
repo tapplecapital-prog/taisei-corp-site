@@ -16,7 +16,9 @@
   if(!q&&!rm){document.documentElement.classList.add('anim');}
   // 配色（比較用）。?theme= か、前回選んだ配色を使う
   var t=(location.search.match(/theme=(\w+)/)||[])[1]; if(!t){try{t=localStorage.getItem('acg-theme2')}catch(e){}}
-  if(!/^(apple|navy|sky|mint|vivid)$/.test(t||'')) t='apple'; document.documentElement.setAttribute('data-theme',t);})();
+  if(!/^(apple|navy|sky|mint|vivid)$/.test(t||'')) t='apple'; document.documentElement.setAttribute('data-theme',t);
+  var h=(location.search.match(/hero=(\w+)/)||[])[1]; if(!h){try{h=localStorage.getItem('acg-hero')}catch(e){}}
+  if(!/^(band|float)$/.test(h||'')) h='band'; document.documentElement.setAttribute('data-hero',h);})();
 </script>
 <style>
 :root{
@@ -52,13 +54,18 @@ p{margin:0}
 .lab::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
 .mark{display:inline-block;aspect-ratio:1024/559;-webkit-mask:url(../v8/assets/img/mark.png) center/contain no-repeat;mask:url(../v8/assets/img/mark.png) center/contain no-repeat;background:currentColor}
 .tsw{position:fixed;left:12px;bottom:12px;z-index:90;display:flex;align-items:center;gap:2px;background:rgba(10,23,51,.9);color:#cfd6e4;padding:5px 6px 5px 14px;border-radius:999px;font-size:12px;letter-spacing:.06em;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.tsw{flex-direction:column;align-items:flex-start;gap:0;border-radius:14px;padding:6px 6px 6px 12px;font-size:11px;opacity:.94}
+.tsw button{padding:4px 9px!important;gap:5px!important}
+.tsw button i{width:11px!important;height:11px!important}
+.tsw .g{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.tsw .g>b{font-weight:500;font-size:11px;color:#8F9AB0;min-width:5.2em;letter-spacing:.08em}
 .tsw>b{font-family:var(--en);font-weight:500;font-size:10.5px;letter-spacing:.18em;margin-right:8px;white-space:nowrap}
 .tsw button{all:unset;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;color:#cfd6e4;white-space:nowrap;transition:background .3s,color .3s}
 .tsw button i{width:14px;height:14px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
 .tsw button:hover{background:rgba(255,255,255,.1)}
 .tsw button[aria-pressed=true]{background:#fff;color:#0A1733}
 .tsw button:focus-visible{outline:2px solid #fff;outline-offset:2px}
-@media (max-width:640px){.tsw>b,.tsw button span{display:none}.tsw{padding-left:6px}}
+@media (max-width:640px){.tsw>b,.tsw button span,.tsw .g>b{display:none}.tsw{padding-left:6px}}
 
 /* ---------- loader ---------- */
 .loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:clip-path 1.2s var(--ease)}
@@ -117,6 +124,28 @@ p{margin:0}
   .hero .copy{max-width:calc(100vw - 2*var(--gut))}
   .hero .scroll{display:none}
 }
+
+/* ---------- 第一画面の案：写真の帯（内側から見た円筒に写真を並べて回す） ---------- */
+.band{position:absolute;left:0;right:0;top:31%;height:0;z-index:1;pointer-events:none;display:none}
+[data-hero=band] .band{display:block}
+.bw{position:absolute;left:50%;top:0;width:0;height:0;perspective:800px;transform:scale(var(--bk,1))}
+.cyl{position:absolute;left:0;top:0;transform-style:preserve-3d;transform:rotateX(3deg) rotateZ(2deg)}
+.cyl figure{position:absolute;left:-170px;top:-225px;width:340px;height:450px;margin:0;border-radius:18px;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 30px 60px rgba(20,40,90,.22);background:#cfd8e4}
+.cyl img{width:100%;height:100%;object-fit:cover;display:block}
+.cyl figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;font-family:var(--en);font-size:15px;letter-spacing:.28em;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.35))}
+[data-hero=band] .hero .copy{bottom:clamp(28px,6vh,72px)}
+@media (max-width:820px){.band{top:27%}}
+/* ---------- 第一画面の案：浮かぶ写真（額の中で写真が入れ替わる） ---------- */
+.float{display:none;position:absolute;z-index:1;right:clamp(24px,13vw,260px);top:clamp(96px,13vh,150px);width:clamp(210px,25vw,400px);aspect-ratio:4/5;margin:0;border-radius:16px;overflow:hidden;box-shadow:var(--photo-sh)}
+[data-hero=float] .float{display:block}
+.float img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.float img:first-child{opacity:1}
+.anim .float img{animation:flx 30s infinite}
+.anim .float img:nth-child(2){animation-delay:5s}.anim .float img:nth-child(3){animation-delay:10s}.anim .float img:nth-child(4){animation-delay:15s}.anim .float img:nth-child(5){animation-delay:20s}.anim .float img:nth-child(6){animation-delay:25s}
+@keyframes flx{0%{opacity:0;transform:scale(1.1)}4%{opacity:1}17%{opacity:1}23%{opacity:0;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
+.float figcaption{position:absolute;left:16px;bottom:12px;font-size:11px;letter-spacing:.16em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+@media (max-width:820px){.float{right:var(--gut);top:96px;width:44vw}}
+[data-hero=band] .places{display:none}
 
 /* ---------- reveal ---------- */
 .anim .rv{opacity:0;transform:translateY(34px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease)}
@@ -372,7 +401,7 @@ p{margin:0}
 <header class="hd" id="hd">
   <a class="brand" href="./"><span class="mark" aria-hidden="true"></span><span><b>あっぷるキャピタルグループ</b><small>APPLE CAPITAL GROUP</small></span></a>
   <nav aria-label="主要メニュー">
-    <a href="#about">私たちについて</a><a href="#business">事業内容</a><a href="#stores">店舗</a><a href="#research">研究</a><a href="#message">代表</a><a href="#company">会社概要</a>
+    <a href="#about">私たちについて</a><a href="#business">事業内容</a><a href="#estate">不動産</a><a href="#stores">店舗</a><a href="#message">代表</a><a href="#company">会社概要</a>
   </nav>
 </header>
 
@@ -380,10 +409,8 @@ p{margin:0}
 <section class="hero" id="hero">
   <div class="fallback" aria-hidden="true"></div>
   <canvas id="field" aria-hidden="true"></canvas>
-  <figure class="photo" data-speed="-0.08">
-    <img src="../v8/assets/img/portrait-hq.webp" width="900" height="1284" alt="代表 三上浩平">
-    <figcaption>代表　公認会計士・税理士　三上浩平</figcaption>
-  </figure>
+  <div class="band" aria-hidden="true"><div class="bw" id="bw"><div class="cyl" id="cyl"><figure><img src="../v8/assets/img/p-yonezawa.webp" alt="" loading="eager" decoding="async"><figcaption>YONEZAWA</figcaption></figure><figure><img src="../v8/assets/img/s365-front.webp" alt="" loading="eager" decoding="async"><figcaption>AOMORI</figcaption></figure><figure><img src="../v8/assets/img/p-koriyama.webp" alt="" loading="eager" decoding="async"><figcaption>KORIYAMA</figcaption></figure><figure><img src="../v8/assets/img/ks/k08.webp" alt="" loading="eager" decoding="async"><figcaption>KOYASHIYA</figcaption></figure><figure><img src="../v8/assets/img/p-towada.webp" alt="" loading="eager" decoding="async"><figcaption>TOWADA</figcaption></figure><figure><img src="../v8/assets/img/p-sakura.webp" alt="" loading="eager" decoding="async"><figcaption>AOMORI</figcaption></figure><figure><img src="../v8/assets/img/p-sapporo.webp" alt="" loading="eager" decoding="async"><figcaption>SAPPORO</figcaption></figure><figure><img src="../v8/assets/img/s365-crepe.webp" alt="" loading="eager" decoding="async"><figcaption>365 SWEETS</figcaption></figure><figure><img src="../v8/assets/img/p-sendai.webp" alt="" loading="eager" decoding="async"><figcaption>SENDAI</figcaption></figure><figure><img src="../v8/assets/img/ks/k05.webp" alt="" loading="eager" decoding="async"><figcaption>KOYASHIYA</figcaption></figure><figure><img src="../v8/assets/img/p-yonezawa-snow.webp" alt="" loading="eager" decoding="async"><figcaption>YONEZAWA</figcaption></figure><figure><img src="../v8/assets/img/p-interior.webp" alt="" loading="eager" decoding="async"><figcaption>INTERIOR</figcaption></figure><figure><img src="../v8/assets/img/s365-neon.webp" alt="" loading="eager" decoding="async"><figcaption>365 SWEETS</figcaption></figure><figure><img src="../v8/assets/img/p-towada2.webp" alt="" loading="eager" decoding="async"><figcaption>TOWADA</figcaption></figure></div></div></div>
+  <figure class="float" data-speed="-0.08" aria-hidden="true"><img src="../v8/assets/img/p-yonezawa.webp" alt=""><img src="../v8/assets/img/p-sakura.webp" alt=""><img src="../v8/assets/img/s365-front.webp" alt=""><img src="../v8/assets/img/p-towada.webp" alt=""><img src="../v8/assets/img/ks/k05.webp" alt=""><img src="../v8/assets/img/p-sendai.webp" alt=""><figcaption>保有物件と店舗</figcaption></figure>
   <div class="copy">
     <p class="lab">Apple Capital Group — Since 2020</p>
     <h1><span class="ln"><span>あっぷるキャピタル</span></span><span class="ln"><span>グループ</span></span></h1>
@@ -473,13 +500,36 @@ p{margin:0}
     </div>
     <div class="rows" id="rows">
       <a class="row rv" href="../v6/tax/" data-peek="0"><span class="no">01</span><h3>税務・会計<small>Tax &amp; Accounting</small></h3><p>三上浩平税理士事務所として、個人・法人の税務申告と会計、相続税申告、創業支援を行っています。</p><span class="go" aria-hidden="true"></span></a>
-      <a class="row rv" href="../v6/real-estate/" data-peek="1"><span class="no">02</span><h3>不動産<small>Real Estate</small></h3><p>北海道・東北・関東・中部で、一棟の賃貸住宅を取得し、保有・運営しています。</p><span class="go" aria-hidden="true"></span></a>
+      <a class="row rv" href="#estate" data-peek="1"><span class="no">02</span><h3>不動産<small>Real Estate</small></h3><p>北海道・東北・関東・中部で、一棟の賃貸住宅を取得し、保有・運営しています。</p><span class="go" aria-hidden="true"></span></a>
       <a class="row rv" href="#stores" data-peek="3"><span class="no">03</span><h3>店舗運営<small>Retail</small></h3><p>東京と横浜で買取専門店「こやし屋」を3店舗、青森市で24時間営業のスイーツの無人販売店を運営しています。</p><span class="go" aria-hidden="true"></span></a>
       <a class="row rv" href="ai/" data-peek="2"><span class="no">04</span><h3>AI・業務改善<small>AI Operations</small></h3><p>経理の月次処理や店舗の顧客管理を、AIと自社で開発したシステムで組み直しています。流れをデモでご覧いただけます。</p><span class="go" aria-hidden="true"></span></a>
     </div>
   </div>
   <div class="peek" id="peek" aria-hidden="true">
     <img src="../v8/assets/img/portrait-hq.webp" alt="" loading="lazy"><img src="../v8/assets/img/p-yonezawa.webp" alt="" loading="lazy"><img src="../v8/assets/img/g-mesh.webp" alt="" loading="lazy"><img src="../v8/assets/img/ks/k08.webp" alt="" loading="lazy">
+  </div>
+</section>
+
+<section class="data" id="estate" aria-labelledby="data-h">
+  <div class="wrap">
+    <div class="txt">
+      <p class="lab rv">Real Estate</p>
+      <h2 id="data-h" class="rv d1">物件は、東北6県を1km四方で格付けした地図で選んでいます</h2>
+      <p class="rv d2">北海道から中部までの一棟の賃貸住宅を取得し、保有・運営しています。取得の前には、その場所で賃貸の需要が続くかを確かめるため、東北6県を1km四方の区画に分け、人口、立地、産業の指標から4段階に格付けした地図を使います。勘に頼らず、数字で確かめてから、まちに投資するための地図です。</p>
+      <div class="counts rv d3">
+        <div><b data-count="28207">28,207<small>区画</small></b><span>格付けした区画の数</span></div>
+        <div><b data-count="47021">47,021<small>地点</small></b><span>地価を44年分さかのぼって分析した地点の数</span></div>
+      </div>
+    </div>
+    <div class="mapbox" id="mapbox"><canvas id="map" role="img" aria-label="東北6県を1km四方で格付けした地図。明るい点ほど格付けが高く、金色の輪は当グループの保有物件の所在地"></canvas></div>
+    <div class="legend rv d2" aria-hidden="false">
+      <div><i style="background:#9BE07A"></i>特S<b>647</b></div>
+      <div><i style="background:#3FA7B5"></i>A<b>2,797</b></div>
+      <div><i style="background:#5680B2"></i>B<b>7,237</b></div>
+      <div><i style="background:#2A3A5C"></i>C<b>17,526</b></div>
+      <div><i class="ring"></i>保有物件の所在地（東北）<b>9</b></div>
+      <p class="src">出典：あっぷる総研「東北6県居住メッシュ格付けアトラス」。人口推計・立地・産業の指標を合成して採点。</p>
+    </div>
   </div>
 </section>
 
@@ -523,29 +573,6 @@ p{margin:0}
   </div>
 </section>
 
-<section class="data" id="research" aria-labelledby="data-h">
-  <div class="wrap">
-    <div class="txt">
-      <p class="lab rv">Research</p>
-      <h2 id="data-h" class="rv d1">東北6県を1km四方で格付けした、28,207区画の地図</h2>
-      <p class="rv d2">グループ内の調査部門「あっぷる総研」では、東北6県を1km四方の区画に分け、人口、立地、産業の指標から4段階に格付けしています。物件を取得する前に、その場所で賃貸の需要が続くかを確かめるための資料です。勘に頼らず、数字で確かめてから、まちに投資する。そのために作った地図です。</p>
-      <div class="counts rv d3">
-        <div><b data-count="28207">28,207<small>区画</small></b><span>格付けした区画の数</span></div>
-        <div><b data-count="47021">47,021<small>地点</small></b><span>地価を44年分さかのぼって分析した地点の数</span></div>
-      </div>
-    </div>
-    <div class="mapbox" id="mapbox"><canvas id="map" role="img" aria-label="東北6県を1km四方で格付けした地図。明るい点ほど格付けが高く、金色の輪は当グループの保有物件の所在地"></canvas></div>
-    <div class="legend rv d2" aria-hidden="false">
-      <div><i style="background:#9BE07A"></i>特S<b>647</b></div>
-      <div><i style="background:#3FA7B5"></i>A<b>2,797</b></div>
-      <div><i style="background:#5680B2"></i>B<b>7,237</b></div>
-      <div><i style="background:#2A3A5C"></i>C<b>17,526</b></div>
-      <div><i class="ring"></i>保有物件の所在地（東北）<b>9</b></div>
-      <p class="src">出典：あっぷる総研「東北6県居住メッシュ格付けアトラス」。人口推計・立地・産業の指標を合成して採点。</p>
-    </div>
-  </div>
-</section>
-
 <section class="msg" id="message">
   <div class="wrap">
     <figure class="rv"><img src="../v8/assets/img/portrait-sky.webp" width="900" height="1200" alt="代表 三上浩平" loading="lazy" data-speed="0.06"></figure>
@@ -570,7 +597,7 @@ p{margin:0}
 
 <section class="res" aria-labelledby="res-h">
   <div class="wrap">
-    <div class="rv"><p class="lab">Insights</p><h2 id="res-h">研究・掲載</h2></div>
+    <div class="rv"><p class="lab">Insights</p><h2 id="res-h">掲載・レポート</h2></div>
     <div class="list">
       <a class="rv th" href="https://www.rakumachi.jp/news/column/406727" target="_blank" rel="noopener"><time>2026.09.25</time><img src="../v8/assets/img/prof-smile.webp" width="480" height="480" alt="" loading="lazy"><h3><small>メディア掲載｜楽待新聞</small>「大家業のひとびと」#91 インタビュー</h3></a>
       <a class="rv d1" href="../v6/insights/"><time>2026.09</time><h3><small>調査レポート #04</small>地価44年の地点別分析</h3></a>
@@ -604,12 +631,15 @@ p{margin:0}
     </div>
   </div>
 </footer>
-<div class="tsw" role="group" aria-label="配色の比較（確認用）"><b>PREVIEW v9｜配色</b>
+<div class="tsw" role="group" aria-label="確認用の切り替え"><b>PREVIEW v9</b>
+  <div class="g"><b>配色</b>
   <button type="button" data-t="apple" aria-label="水色＋りんご"><i style="background:linear-gradient(135deg,#BFE3F7,#9FB5F4 50%,#F29AB0)"></i><span>水色＋りんご</span></button>
   <button type="button" data-t="navy" aria-label="紺（現行）"><i style="background:linear-gradient(135deg,#0A1733,#18549C 60%,#54A83C)"></i><span>紺（現行）</span></button>
   <button type="button" data-t="sky" aria-label="空色"><i style="background:linear-gradient(135deg,#DCEAF6,#8CC0EC 55%,#C4E3A0)"></i><span>空色</span></button>
   <button type="button" data-t="mint" aria-label="ミント"><i style="background:linear-gradient(135deg,#DDF0E9,#7ED0BA 55%,#D6EC96)"></i><span>ミント</span></button>
   <button type="button" data-t="vivid" aria-label="明るい青"><i style="background:linear-gradient(135deg,#1D5FB8,#2FA3A6 55%,#74C44A)"></i><span>明るい青</span></button>
+  </div>
+  <div class="g"><b>第一画面</b><button type="button" data-h="band" aria-pressed="false">写真の帯</button><button type="button" data-h="float" aria-pressed="false">浮かぶ写真</button></div>
 </div>
 
 <script src="../v8/assets/js/mesh.js" defer></script>
@@ -663,6 +693,29 @@ document.addEventListener('DOMContentLoaded', function(){
   }
   requestAnimationFrame(loop);
 
+  // ---------- 第一画面：写真の帯（円筒の内側に写真を並べ、ゆっくり回す。スクロールの速さで加速） ----------
+  var bw=document.getElementById('bw'), cyl=document.getElementById('cyl'), cards=cyl?[].slice.call(cyl.children):[], NC=cards.length, RR=900, STEP=360/NC, rot=-8, ringOn=false, rlast=0, tilt=0, tiltT=0;
+  cards.forEach(function(c,i){ c.style.transform='rotateY('+(i*STEP)+'deg) translateZ(-'+RR+'px)'; });
+  function ringSize(){ if(bw) bw.style.setProperty('--bk', Math.max(.6, Math.min(1.1, innerWidth/1440)).toFixed(3)); }
+  ringSize(); window.addEventListener('resize', ringSize);
+  window.addEventListener('mousemove', function(e){ tiltT=(e.clientY/innerHeight-.5)*-5; });
+  function ringFrame(t){
+    var dt=rlast?Math.min(50,t-rlast):16; rlast=t;
+    if(ANIM){ rot-= dt*.006 + Math.min(Math.abs(vel),60)*.03; tilt+=(tiltT-tilt)*.05; }
+    cyl.style.transform='rotateX('+(3+tilt).toFixed(2)+'deg) rotateZ(2deg) rotateY('+rot.toFixed(3)+'deg)';
+    cards.forEach(function(c,i){ var a=((i*STEP+rot)%360+540)%360-180, A=Math.abs(a);
+      if(A>100){ c.style.visibility='hidden'; } else { c.style.visibility='visible'; c.style.opacity=(A<78?1:(100-A)/22).toFixed(2); } });
+    if(ringOn && ANIM) requestAnimationFrame(ringFrame);
+  }
+  var hbtn=[].slice.call(document.querySelectorAll('.tsw [data-h]'));
+  function heroMode(m){ if(m!=='float') m='band'; H.setAttribute('data-hero',m);
+    hbtn.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.h===m?'true':'false'); });
+    try{ localStorage.setItem('acg-hero',m); }catch(e){}
+    try{ var u=new URL(location.href); u.searchParams.set('hero',m); history.replaceState(null,'',u); }catch(e){}
+    if(m==='band'){ if(!ringOn){ ringOn=true; rlast=0; ringFrame(performance.now()); } } else { ringOn=false; measure(); x=0; } }
+  hbtn.forEach(function(b){ b.addEventListener('click',function(){ heroMode(b.dataset.h); }); });
+  heroMode(H.getAttribute('data-hero')||'band');
+
   // ---------- 事業内容：行に重ねると画像が浮かぶ ----------
   var peek=document.getElementById('peek'), pims=peek?[].slice.call(peek.querySelectorAll('img')):[], px=0,py=0,tx=0,ty=0;
   if(peek && matchMedia('(hover:hover)').matches){
@@ -681,7 +734,7 @@ document.addEventListener('DOMContentLoaded', function(){
     sky:  {cb:[.86,.92,.97],c1:[.50,.74,.94],c2:[.64,.87,.92],c3:[.77,.90,.62],c4:[1,1,1],wt:[.85,.8,.7,.75],meta:'#DCEAF6'},
     mint: {cb:[.87,.94,.91],c1:[.47,.80,.71],c2:[.64,.81,.94],c3:[.84,.93,.58],c4:[1,1,1],wt:[.85,.75,.7,.75],meta:'#DDF0E9'},
     vivid:{cb:[.10,.33,.70],c1:[.22,.56,.90],c2:[.10,.62,.64],c3:[.45,.77,.29],c4:[.86,.93,1],wt:[.9,.85,.8,.35],meta:'#1D5FB8'}
-  }, FIELD=null, meta=document.querySelector('meta[name=theme-color]'), tbtn=[].slice.call(document.querySelectorAll('.tsw button'));
+  }, FIELD=null, meta=document.querySelector('meta[name=theme-color]'), tbtn=[].slice.call(document.querySelectorAll('.tsw [data-t]'));
   function theme(n){ if(!PAL[n]) n='apple'; H.setAttribute('data-theme',n); meta.setAttribute('content',PAL[n].meta);
     tbtn.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.t===n?'true':'false'); });
     if(FIELD) FIELD.set(n); try{ localStorage.setItem('acg-theme2',n); }catch(e){}

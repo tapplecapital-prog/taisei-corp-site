@@ -176,21 +176,6 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 .feed small{display:block;font-family:var(--en);font-size:10.5px;letter-spacing:.14em;color:#8F9AB0}
 @media(max-width:860px){.d3{grid-template-columns:1fr}}
 
-.cases{padding:clamp(70px,9vw,130px) 0;margin-top:clamp(40px,6vw,80px);background:rgba(255,255,255,.55)}
-.cases h2{font-family:var(--mincho);font-size:clamp(24px,2.6vw,34px);letter-spacing:.12em;margin:14px 0 10px}
-.cases .intro{color:var(--ink2);font-size:14px;max-width:44em}
-.cgrp{margin-top:44px}
-.cgrp h3{font-family:var(--mincho);font-size:18px;letter-spacing:.12em;display:flex;align-items:center;gap:14px;margin-bottom:16px}
-.cgrp h3::after{content:"";flex:1;height:1px;background:var(--line)}
-.cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.cc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;transition:transform .5s var(--ease),box-shadow .5s}
-.cc:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(40,90,160,.12)}
-.cc b{font-family:var(--en);font-weight:200;font-size:clamp(30px,2.8vw,40px);line-height:1.05;letter-spacing:-.01em;background:linear-gradient(90deg,#3A8FE0,#6D7FEA 60%,#E4506F);-webkit-background-clip:text;background-clip:text;color:transparent;align-self:flex-start;padding-right:.05em}
-.cc b small{font-family:var(--sans);font-size:13px;font-weight:400;margin-left:4px;color:var(--ink2);-webkit-text-fill-color:var(--ink2)}
-.cc h4{margin:0;font-family:var(--mincho);font-weight:500;font-size:16px;letter-spacing:.06em}
-.cc p{font-size:13px;color:var(--ink2);line-height:1.85}
-@media(max-width:980px){.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.cgrid{grid-template-columns:1fr}}
 .ft{background:var(--navy);color:#AEB6C7;padding:50px 0;font-size:12.5px}
 .ft .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 </style>
@@ -198,7 +183,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 <body>
 <header class="hd">
   <a class="brand" href="../"><span class="mark" aria-hidden="true"></span><span><b>あっぷるキャピタルグループ</b><small>APPLE CAPITAL GROUP</small></span></a>
-  <nav aria-label="主要メニュー"><a href="../">トップ</a><a href="../#business">事業内容</a><a href="../#stores">店舗</a><a href="../#research">研究</a><a href="../#company">会社概要</a></nav>
+  <nav aria-label="主要メニュー"><a href="../">トップ</a><a href="../#business">事業内容</a><a href="../#estate">不動産</a><a href="../#stores">店舗</a><a href="../#company">会社概要</a></nav>
 </header>
 
 <main>
@@ -207,7 +192,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
     <div><h2 class="big">AI<br>Operations</h2><h1>AI・業務改善</h1></div>
     <div>
       <p>経理を中心に、社内の業務を、AIと自社で開発したシステムで組み直してきました。書類が届いてから試算表ができるまでの流れ、店舗の日次処理と顧客の管理、物件の調査まで、実際に動いている仕組みを図とデモでご紹介します。判断は人が行い、AIは読み取り・下書き・集計・点検を受け持ちます。</p>
-      <div class="toc"><a href="#flow">経理の流れの全体像</a><a href="#d1">領収書から仕訳まで</a><a href="#d2">届いた書類の仕分け</a><a href="#d4">店舗の日次処理と顧客カルテ</a><a href="#d3">役割ごとのAIの連携</a><a href="#cases">主な事例</a></div>
+      <div class="toc"><a href="#flow">経理の流れの全体像</a><a href="#d1">領収書から仕訳まで</a><a href="#d2">届いた書類の仕分け</a><a href="#d4">店舗の日次処理と顧客カルテ</a><a href="#d3">役割ごとのAIの連携</a></div>
     </div>
   </div>
 </section>
@@ -348,36 +333,6 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
   </div>
 </section>
 
-<section class="cases" id="cases">
-  <div class="wrap">
-    <p class="lab">Cases</p>
-    <h2>主な事例</h2>
-    <p class="intro">経理、店舗、不動産の調査、社内の基盤の4つの分野で、これまでに取り組んだ主な事例です。</p>
-    <div class="cgrp"><h3>経理・会計</h3><div class="cgrid">
-      <article class="cc"><b>7,751<small>仕訳</small></b><h4>会計システムの切り替え</h4><p>市販の会計ソフトから、自社で開発した会計システム「LEAN会計」へ移行。過去の仕訳をすべて移し、貸借対照表の26科目が元の数字と一致することを確かめました。</p></article>
-      <article class="cc"><b>7<small>工程</small></b><h4>月次処理の一括実行</h4><p>投入箱の処理から、2社の月次の締め、試算表、経営管理ファイル、物件ごとの収支、返済予定表の更新まで、1つの指示で続けて実行します。</p></article>
-      <article class="cc"><b>80→5<small>秒</small></b><h4>領収書の読み取り</h4><p>読み取りの方式を切り替え、領収書1枚あたりの時間を短縮しました。通帳の写真は1枚9〜14秒で読み取ります。</p></article>
-      <article class="cc"><b>371,512<small>円</small></b><h4>月次の点検で見つけた二重計上</h4><p>書類名の付け間違いから生じた二重計上を、5種類の月次チェックで見つけて訂正しました（2026年7月分）。</p></article>
-      <article class="cc"><b>84,860<small>円</small></b><h4>減価償却の再計算</h4><p>すべての資産の償却を計算し直し、以前の会計ソフトで償却されずに残っていた創立費を見つけました。</p></article>
-      <article class="cc"><b>PDF→表</b><h4>返済予定表の取り込み</h4><p>金融機関から届くPDFの返済予定表を表計算の形に変換し、元金と利息の合計が合っているかを自動で検算します。</p></article>
-    </div></div>
-    <div class="cgrp"><h3>店舗</h3><div class="cgrid">
-      <article class="cc"><b>1日4回</b><h4>店舗の日次集計</h4><p>3店舗の日報と、本部のシステムにある明細を自動で集計します。店長のコメントも全文を検索できます。</p></article>
-      <article class="cc"><b>47<small>か月</small></b><h4>顧客カルテ</h4><p>47か月分の取引をさかのぼって同じお客さまの来店をまとめ、接客の前に来店の履歴を確かめられるようにしました。</p></article>
-      <article class="cc"><b>3<small>要因</small></b><h4>月次の要因分析</h4><p>店舗の粗利の増減を、金価格、エリア全体、店舗固有の3つに分け、取り組みの効果を相場の動きと切り分けて見ています。</p></article>
-      <article class="cc"><b>経路別</b><h4>販促の効果測定</h4><p>来店のきっかけ（ポスティング、チラシ、ホームページなど）ごとに、再来店の割合と1人あたりの粗利を集計しています。</p></article>
-      <article class="cc"><b>自動</b><h4>無人販売店の動画づくり</h4><p>365スイーツショップの商品写真と価格の情報から、Instagram用の短い動画を組み立てる仕組みを作りました。</p></article>
-    </div></div>
-    <div class="cgrp"><h3>不動産・調査</h3><div class="cgrid">
-      <article class="cc"><b>28,207<small>区画</small></b><h4>立地の格付け</h4><p>東北6県を1km四方に分け、人口・立地・産業の指標から4段階に採点しました。物件を取得する前の判断に使っています。</p></article>
-      <article class="cc"><b>47,021<small>地点</small></b><h4>地価の長期分析</h4><p>地価を44年分さかのぼり、地点ごとの動きを分析しました。調査レポートにまとめています。</p></article>
-    </div></div>
-    <div class="cgrp"><h3>社内の基盤</h3><div class="cgrid">
-      <article class="cc"><b>5<small>件</small></b><h4>サーバーへの移設</h4><p>PCの電源に左右されていた社内の仕組みを、サーバーへ移しました。会計システムや店舗の集計も、サーバー上で動いています。</p></article>
-      <article class="cc"><b>8<small>役割</small></b><h4>AIの役割分担</h4><p>不動産・融資・経理・決算・店舗と発信・法務・開発・基盤の8つの役割を持つAIを設定し、仕事を受け渡しています。</p></article>
-    </div></div>
-  </div>
-</section>
 </main>
 <footer class="ft"><div class="wrap"><span>あっぷるキャピタルグループ</span><span>© 2026 Apple Capital Group</span></div></footer>
 <div class="badge">PREVIEW v9 — AIデモ</div>
