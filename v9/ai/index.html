@@ -14,7 +14,7 @@
 :root{--bg:#EEF5FB;--pink:#E4506F;--white:#fff;--ink:#131313;--ink2:#4A4A46;--muted:#8B887F;--line:#D9D6CE;--navy:#0A1733;--navy2:#0F2147;--blue:#18549C;--teal:#1C7D86;--green:#54A83C;--gold:#C6A86E;--sky:#7FB3F0;
 --mincho:"Shippori Mincho B1","Yu Mincho",serif;--sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;--en:"Inter Tight","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",Consolas,monospace;--gut:clamp(20px,4.5vw,64px);--ease:cubic-bezier(.19,1,.22,1)}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#E4F3FB 0%,#E8EFFD 30%,#EEF0FD 55%,#E6F3FB 80%,#EEF1FD 100%);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:2;letter-spacing:.04em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;word-break:auto-phrase}p{margin:0}
+a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;word-break:auto-phrase}p{margin:0}p,li,dd,dt,td{word-break:auto-phrase;text-wrap:pretty}
 .wrap{padding:0 var(--gut);max-width:1500px;margin:0 auto}
 .lab{font-family:var(--en);font-size:12px;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:14px;color:var(--pink)}.lab::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
 .mark{display:inline-block;aspect-ratio:1024/559;-webkit-mask:url(../../v8/assets/img/mark.png) center/contain no-repeat;mask:url(../../v8/assets/img/mark.png) center/contain no-repeat;background:currentColor}
@@ -45,6 +45,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 .replay{position:absolute;right:18px;top:16px;z-index:3;font-family:var(--en);font-size:11px;letter-spacing:.2em;color:#AEB6C7;border:1px solid rgba(255,255,255,.25);background:transparent;border-radius:99px;padding:6px 14px;cursor:pointer}
 .replay:hover{color:#fff;border-color:#fff}
 .note{margin-top:14px;font-size:12px;color:var(--muted);line-height:1.9}
+@media(max-width:700px){.panel{padding-top:58px}}
 
 /* ---- 01 経理の流れの全体像 ---- */
 .pf{min-height:0}
@@ -176,8 +177,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 .feed small{display:block;font-family:var(--en);font-size:10.5px;letter-spacing:.14em;color:#8F9AB0}
 @media(max-width:860px){.d3{grid-template-columns:1fr}}
 
-.ft{background:linear-gradient(120deg,#193C86 0%,#2765C0 55%,#4A8ED9 100%);color:#AEB6C7;padding:50px 0;font-size:12.5px}
-.ft .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.ft{background:linear-gradient(120deg,#193C86 0%,#2765C0 55%,#4A8ED9 100%);color:#D5E0F2;padding:clamp(70px,9vw,120px) 0 36px;overflow:hidden}.ft .word{font-family:var(--en);font-weight:200;font-size:clamp(30px,8.5vw,200px);letter-spacing:-.03em;line-height:.9;background:linear-gradient(90deg,#fff 0%,#D8E8FF 50%,#FFC9D6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}.ft .cols{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2);font-size:12.5px;letter-spacing:.08em}.ft nav{display:flex;flex-wrap:wrap;gap:12px 28px}.ft a:hover{color:#fff}.ft .cp{display:flex;align-items:center;gap:14px;font-family:var(--en)}.ft .cp span{width:44px;color:#fff}.ft .cp svg{width:100%;height:auto;display:block}
 .mbtn{all:unset;display:none;cursor:pointer;width:44px;height:44px;border-radius:50%;place-items:center;color:var(--ink)}.mbtn i,.mbtn i::before,.mbtn i::after{display:block;width:20px;height:1.5px;background:currentColor;position:relative}.mbtn i::before,.mbtn i::after{content:'';position:absolute;left:0}.mbtn i::before{top:-6px}.mbtn i::after{top:6px}.mnav{position:fixed;inset:0;z-index:45;background:rgba(236,246,252,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:90px var(--gut) 40px;display:none;flex-direction:column;gap:6px}.mnav a{font-family:var(--mincho);font-size:22px;letter-spacing:.1em;padding:10px 0;border-bottom:1px solid var(--line)}.mnav.open{display:flex}@media(max-width:1100px){.mbtn{display:grid}}
 </style>
 </head>
@@ -209,7 +209,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
       </div>
       <div class="dtl" id="dtl" aria-live="polite"></div>
     </div>
-    <p class="note">工程②〜⑦は、1つの指示で2社分を順番に実行できます。月末は、投入箱の処理から試算表の出力、経営管理ファイルと物件別の収支の更新まで、7つの工程を続けて流しています。</p>
+    <p class="note">月末は、②から⑦にあたる処理を、1つの指示で2社分続けて実行しています。</p>
   </div>
 </section>
 
@@ -258,7 +258,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 
 <section class="demo" id="d2">
   <div class="wrap">
-    <div class="top"><div><span class="no">03</span><h2>届いた書類の仕分け</h2></div><p>全体像の①と②を拡大したデモです。郵送やメールで届いた請求書・領収書・送金明細を、会社・書類の種類・対象の月で判定し、決まった場所へ決まった名前で保存します。</p></div>
+    <div class="top"><div><span class="no">03</span><h2>届いた書類の仕分け</h2></div><p>全体像の①と②を拡大したデモです。郵送やメールで届いた請求書・領収書・送金明細を、会社・事務所、書類の種類、対象の月で判定し、決まった場所へ決まった名前で保存します。</p></div>
     <div class="panel">
       <button class="replay" data-demo="2">REPLAY</button>
       <div class="d2">
@@ -299,7 +299,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
             <div class="bd">
               <div class="row1"><b>サンプル 様</b><span>サンプル店・案内の送付 可</span></div>
               <div class="visit"><b id="vc">1</b><span>回目のご来店</span></div>
-              <dl><dt>初回</dt><dd>2025年6月（ポスティングを見て）</dd><dt>前回お売りいただいた品</dt><dd>金のネックレス、腕時計</dd><dt>前回からの日数</dt><dd>38日</dd></dl>
+              <dl><dt>初回</dt><dd>2025年6月（ポスティングを見て）</dd><dt>前回の品</dt><dd>金のネックレス、腕時計</dd><dt>前回からの日数</dt><dd>38日</dd></dl>
               <div class="mix" id="mix"><i style="background:#C6A86E"></i><i style="background:#6D7FEA"></i><i style="background:#3FA7B5"></i></div>
               <div class="legend4"><span><em style="background:#C6A86E"></em>貴金属</span><span><em style="background:#6D7FEA"></em>ブランド品</span><span><em style="background:#3FA7B5"></em>時計</span></div>
               <div class="memo" id="memo">日報より：次回はご家族のカメラを持ってきたいとのこと</div>
@@ -337,7 +337,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 </section>
 
 </main>
-<footer class="ft"><div class="wrap"><nav aria-label="フッター" style="display:flex;flex-wrap:wrap;gap:10px 26px"><a href="../#about">私たちについて</a><a href="../tax/">税務・会計</a><a href="../real-estate/">不動産</a><a href="../stores/">店舗</a><a href="./">AI・業務改善</a><a href="../profile/">代表</a><a href="../company/">会社概要</a><a href="../ir/">IR</a><a href="../privacy/">プライバシーポリシー</a></nav><span>© 2026 Apple Capital Group</span></div></footer>
+<footer class="ft"><div class="wrap"><div class="word" aria-hidden="true">Apple Capital Group</div><div class="cols"><nav aria-label="フッター"><a href="../#about">私たちについて</a><a href="../tax/">税務・会計</a><a href="../real-estate/">不動産</a><a href="../stores/">店舗</a><a href="./">AI・業務改善</a><a href="../profile/">代表</a><a href="../company/">会社概要</a><a href="../ir/">IR</a><a href="../privacy/">プライバシーポリシー</a></nav><span class="cp"><span><svg viewBox="0 0 120 120" role="img" aria-label="あっぷるキャピタルグループの組み文字"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M88 38 A 34 34 0 1 0 88 82" fill="none" stroke="currentColor" stroke-width="7"/><path d="M44 84 L 62 34 L 80 84" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter"/><path d="M50 66 L 74 66" stroke="currentColor" stroke-width="5"/><rect x="58.5" y="71" width="7" height="7" fill="#54A83C"/></svg></span>© 2026 Apple Capital Group</span></div></div></footer>
 <div class="badge">PREVIEW v9 — AIデモ</div>
 
 <script>
@@ -352,13 +352,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
   // ---------- 01 経理の流れの全体像 ----------
   var STEPS=[
-    {t:'集める',w:'COLLECT',by:'自動',h:'証憑を1か所に集める',p:'メールで届く請求書は、添付ファイルを自動で回収します。郵送物や領収書、通帳の写真、銀行の明細、店舗の現金表も、1つの「投入箱」に入れるだけにしました。その月に届くはずの書類のうち、まだ届いていないものも一覧で出ます。',tags:['メールの添付を自動回収','届いていない書類の一覧','通帳の写真・銀行明細・現金表'],mb:'9',mu:'種類',ms:'投入箱で受け付ける書類の種類（請求書・領収書・納品書・送金明細・カード明細・納税通知書・現金表・銀行明細・通帳の写真）'},
+    {t:'集める',w:'COLLECT',by:'自動',h:'証憑を1か所に集める',p:'メールで届く請求書は、添付ファイルを自動で回収します。郵送物や領収書、通帳の写真、銀行の明細、店舗の現金表も、1つの受付フォルダに入れるだけにしました。その月に届くはずの書類のうち、まだ届いていないものも一覧で確認できます。',tags:['メールの添付を自動回収','届いていない書類の一覧','通帳の写真・銀行明細・現金表'],mb:'9',mu:'種類',ms:'受付フォルダで扱う書類の種類（請求書・領収書・納品書・送金明細・カード明細・納税通知書・現金表・銀行明細・通帳の写真）'},
     {t:'読む・仕分ける',w:'READ',by:'AI',h:'中身を読んで、決まった場所へ',p:'AIが書類の中身を読み、会社・書類の種類・対象の月・取引先を判定します。決まったフォルダへ、決まった名前で保存し、会計システムへ登録します。',tags:['会社・種類・月・取引先を判定','保存先と名前を統一','会計システムへ自動登録'],mb:'80→5',mu:'秒',ms:'領収書1枚の読み取り時間（読み取り方式の切り替え後。通帳は9〜14秒）'},
     {t:'記帳する',w:'BOOK',by:'自動',h:'記帳ルールで仕訳を作る',p:'取引先や摘要ごとに決めた記帳ルールにもとづいて、仕訳を自動で作ります。物件や店舗ごとの部門と税区分は、物件ごとの記帳の仕様書から引きます。判断に迷った取引は、判断の記録に1行残します。',tags:['記帳ルールの台帳','物件ごとの記帳の仕様書','判断の記録'],mb:'52',mu:'件',ms:'市販の会計ソフトから移した記帳ルールの数（その後も追加している）'},
     {t:'照合する',w:'MATCH',by:'自動',h:'銀行の明細と突き合わせる',p:'銀行の明細と仕訳を自動で消し込みます。預金と借入の残高は、返済予定表などの元の資料と突き合わせ、差額があれば原因の候補を出します。',tags:['自動の消し込み','預金残高の照合','借入残高の照合'],mb:'預金・借入',mu:'',ms:'元の資料と突き合わせて毎月照合する残高'},
     {t:'点検する',w:'CHECK',by:'自動＋人',h:'5種類の月次チェック',p:'重複した仕訳、税区分の誤り、部門の付け漏れ、毎月あるはずの取引の欠け、貸借の不一致の5つを、毎月機械で点検します。見つかったものは人が確認して直します。',tags:['重複仕訳','税区分の誤り','部門の付け漏れ','定期取引の欠け','貸借の一致'],mb:'371,512',mu:'円',ms:'2026年7月分で見つかった二重計上（書類名の付け間違いが原因）'},
     {t:'締める',w:'CLOSE',by:'人が確認',h:'減価償却を確かめ、試算表を出す',p:'固定資産の減価償却を確かめたうえで月次を締め、試算表と月次レポートを出力します。2社分を順番に処理します。',tags:['減価償却の確認','試算表','月次レポート'],mb:'15',mu:'件',ms:'会計システムの固定資産台帳に登録した資産の数'},
-    {t:'活かす',w:'USE',by:'自動',h:'経営の資料に反映する',p:'締めた数字を、経営管理ファイル、物件ごとの収支、返済予定表、資金繰りの見通しへ反映します。金融機関との面談や、物件の取得の判断に、そのまま使える形にしています。',tags:['経営管理ファイル','物件ごとの収支','返済予定表','資金繰りの見通し'],mb:'7',mu:'工程',ms:'月末に1つの指示で続けて流す工程の数'},
+    {t:'活かす',w:'USE',by:'自動',h:'経営の資料に反映する',p:'締めた数字を、経営管理ファイル、物件ごとの収支、返済予定表、資金繰りの見通しへ反映します。金融機関との面談や、物件の取得の判断に、そのまま使える形にしています。',tags:['経営管理ファイル','物件ごとの収支','返済予定表','資金繰りの見通し'],mb:'2',mu:'社',ms:'1つの指示で続けて処理する会社の数'},
     {t:'直す',w:'IMPROVE',by:'人＋AI',h:'気づきを翌月の手順に戻す',p:'作業中に見つかった誤りや、人が判断した理由を改善の台帳に記録し、月の終わりに手順書と記帳ルールへ反映します。同じ誤りを翌月に繰り返さないための工程です。',tags:['改善の台帳','記帳の手順書','記帳ルールの更新'],mb:'毎月',mu:'',ms:'手順書と記帳ルールを見直す頻度'}
   ];
   var track=document.querySelector('.track'), dtl=document.getElementById('dtl'), railfill=document.getElementById('railfill'), stps=[], cur=-1, auto=null;

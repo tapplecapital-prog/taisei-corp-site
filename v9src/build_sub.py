@@ -58,9 +58,9 @@ PROPS = [("2020.09", "岐阜県岐阜市", "ベイセジュール", 10, "RC造",
          ("2022.07", "青森県弘前市", "ウェストヒルハイツ", 12, "木造", "a"), ("2023.10", "北海道札幌市", "エクセレンス東苗穂", 16, "鉄骨造", "a"),
          ("2024.10", "岩手県花巻市", "プリムローズ", 20, "木造", "a"), ("2025.03", "福島県郡山市", "グレースランド", 10, "木造", "a"),
          ("2025.11", "青森県十和田市", "メゾントワダ稲生", 30, "木造", "a"), ("2026.01", "福島県南相馬市", "コーポMOMO", 24, "木造", "a"),
-         ("2026.04", "宮城県仙台市", "ズーリング（2棟）", 16, "木造", "p"), ("2026.06", "埼玉県東松山市", "ヴェルディ（2棟）", 22, "木造", "a")]
+         ("2026.04", "宮城県仙台市", "ズーリング（Ⅰ番館・Ⅱ番館）", 16, "木造", "p"), ("2026.06", "埼玉県東松山市", "ヴェルディ（A棟・B棟）", 22, "木造", "a")]
 OWN = {"a": "あっぷるキャピタル", "t": "たいせい", "p": "代表個人"}
-prop_rows = "".join(f'<tr><td class="num">{d}</td><td>{c}</td><td>{n}</td><td class="r num">{u}</td><td>{s}</td><td><span class="own {o}">{OWN[o]}</span></td></tr>' for d, c, n, u, s, o in PROPS)
+prop_rows = "".join(f'<tr><td class="num" data-l="取得">{d}</td><td data-l="所在地">{c}</td><td data-l="物件名">{n}</td><td class="r num" data-l="室数">{u}</td><td data-l="構造">{s}</td><td data-l="保有"><span class="own {o}">{OWN[o]}</span></td></tr>' for d, c, n, u, s, o in PROPS)
 
 KS = ["k08", "k05", "k02", "k13", "k04", "k16", "k09", "k15"]
 ks_imgs = "".join(f'<img src="@@A@@img/ks/{k}.webp" width="600" height="750" alt="" loading="lazy">' for k in KS)
@@ -70,14 +70,14 @@ PAGES = {
   title="税務・会計｜三上浩平税理士事務所",
   desc="三上浩平税理士事務所（東京税理士会所属）のご案内。不動産オーナーの税務顧問を中心に、個人・法人の税務申告、会計、相続税申告、創業支援を行っています。",
   nav="tax/", en="Tax &amp; Accounting", h1="税務・会計",
-  lead="三上浩平税理士事務所は、不動産オーナーの税務顧問を中心に、個人・法人の税務申告、会計、相続税申告、創業支援を行っています。代表税理士は公認会計士でもあり、自ら賃貸住宅14棟208室を保有・運営しています。",
-  op="このページは、三上浩平税理士事務所（東京税理士会所属）のご案内です",
+  lead="三上浩平税理士事務所は、不動産オーナーの税務顧問を中心に、個人・法人の税務申告、会計、相続税申告、創業支援を行っています。代表税理士は公認会計士でもあり、代表社員を務める2社と個人で、賃貸住宅14棟208室を保有・運営しています。",
+  op="このページは三上浩平税理士事務所（東京税理士会所属）のご案内です。税理士業務は当事務所が行います",
   body='''
 <section class="sec"><div class="wrap two">
   <div class="rv"><p class="lab">Services</p><h2>業務内容</h2></div>
   <div class="cards">
     <article class="card rv"><span class="k">主な業務</span><h3>不動産オーナーの税務顧問</h3><p>記帳、決算、確定申告（法人の場合は法人税申告）に加え、法人化の検討、物件の購入・売却時の税額の試算、金融機関に提出する決算資料の整理を、年間を通じて行います。</p></article>
-    <article class="card rv d1"><span class="k">個人のお客様</span><h3>確定申告</h3><p>申告書の作成と、節税のご相談をお受けします。資料のやり取りは、できるだけ手間のかからない形にしています。</p></article>
+    <article class="card rv d1"><span class="k">個人のお客さま</span><h3>確定申告</h3><p>申告書の作成と、節税のご相談をお受けします。資料のやり取りは、できるだけ手間のかからない形にしています。</p></article>
     <article class="card rv"><span class="k">これから事業を始める方</span><h3>創業支援</h3><p>会社の設立、資金計画、事業計画の作成を支援します。</p></article>
     <article class="card rv d1"><span class="k">資産の承継</span><h3>相続税申告</h3><p>相続税の申告、生前の対策、財産の評価を行います。不動産を多く所有されるご家庭のご相談に対応しています。</p></article>
   </div>
@@ -87,14 +87,14 @@ PAGES = {
   <div class="rv"><p class="lab">Features</p><h2>当事務所の特長</h2></div>
   <div class="prose rv d1">
     <h3>賃貸経営の実務経験</h3>
-    <p>代表税理士は2020年から賃貸住宅を取得し、融資、決算、税務申告を自ら行っています。物件の取得や法人化のご相談にも、自分の事業で確かめてきた数字をもとにお答えします。</p>
+    <p>代表税理士は2020年から賃貸住宅を取得し、借入、決算、税務申告を自ら行っています。物件の取得や法人化のご相談にも、自分の事業で確かめてきた数字をもとにお答えします。</p>
     <h3>金融機関での実務経験</h3>
     <p>三井住友銀行でリスク管理と投資銀行業務に携わった経験から、金融機関が決算書で確認する項目を踏まえて資料を作成します。</p>
     <h3>公認会計士による会計の確認</h3>
     <p>税務申告に加え、法人の会計と資金繰りまで一体で確認します。</p>
     <h3>経理の仕組みづくり</h3>
     <p>書類の回収から試算表の作成までを自社で組み直してきた経験をもとに、記帳の手間を減らす方法もご提案します。<a href="@@R@@ai/">経理の流れの例</a></p>
-    <p class="note">掲載している物件数・室数は、代表の三上浩平が保有・運営する物件の数値です（2026年9月時点）。投資の成果や節税の効果を保証するものではありません。</p>
+    <p class="note">掲載している物件数・室数は、代表が代表社員を務める合同会社2社と代表個人が保有する物件の合計です（2026年9月時点）。投資の成果や節税の効果を保証するものではありません。</p>
   </div>
 </div></section>
 
@@ -102,9 +102,9 @@ PAGES = {
   <div class="rv"><p class="lab">Office</p><h2>事務所概要</h2></div>
   <dl class="dl rv d1">
     <dt>名称</dt><dd>三上浩平税理士事務所</dd>
-    <dt>代表</dt><dd>税理士 三上浩平（公認会計士）</dd>
-    <dt>所属</dt><dd>東京税理士会（登録番号 第144424号）</dd>
-    <dt>所在地</dt><dd>東京都港区港南4-2-7</dd>
+    <dt>所長</dt><dd>税理士 三上浩平（公認会計士）</dd>
+    <dt>所属</dt><dd>東京税理士会（登録番号 <span class="nw">第144424号</span>）</dd>
+    <dt>所在地</dt><dd>東京都港区港南4-2-7-4020</dd>
     <dt>開業</dt><dd>2021年</dd>
     <dt>業務</dt><dd>税務代理、税務書類の作成、税務相談、会計業務</dd>
   </dl>
@@ -123,10 +123,10 @@ PAGES = {
     <p style="color:var(--ink2)">9道県・14市町に、計14棟208室を保有しています。このうち12棟184室を合同会社あっぷるキャピタルと合同会社たいせいが、2棟24室を代表個人が保有しています（2026年9月時点）。</p>
     <div class="stats">
       <div><b data-count="14">14<small>棟</small></b><span>保有する賃貸住宅</span></div>
-      <div><b data-count="208">208<small>室</small></b><span>保有する住戸</span></div>
+      <div><b data-count="208">208<small>室</small></b><span>賃貸住宅の室数</span></div>
       <div><b data-count="9">9<small>道県</small></b><span>保有エリア</span></div>
     </div>
-    <p class="note">地図上の点は、各物件が所在する市町のおおよその位置です。</p>
+    <p class="note">棟数は物件の数で数えています（ズーリングとヴェルディは、2棟でそれぞれ1物件です）。地図上の点は、各物件が所在する市町のおおよその位置です。</p>
   </div>
   @@MAP@@
 </div></section>
@@ -154,7 +154,7 @@ PAGES = {
   <div class="rv"><p class="lab">Policy</p><h2>運営の方針</h2></div>
   <div class="prose rv d1">
     <h3>取得の前に、立地を数字で確かめる</h3>
-    <p>人口推計、地価の推移、自治体の都市計画を確かめ、賃貸の需要が続く立地かどうかを判断してから取得します。東北6県は、1km四方の区画ごとに格付けした地図を使っています。<a href="@@R@@#estate">格付けの地図</a></p>
+    <p>人口推計、地価の推移、自治体の都市計画を確かめ、賃貸の需要が続く立地かどうかを判断してから取得します。2026年からは、東北6県を1km四方の区画ごとに格付けした地図でも確かめています。<a href="@@R@@#estate">格付けの地図</a></p>
     <h3>保有中は、毎月の数字を追う</h3>
     <p>各地の管理会社と連携し、入居と退去、修繕、家賃の入金を毎月確認しています。集計は、AIを用いた社内の仕組みで行っています。</p>
     <h3>手元に残るお金と、売るときの価格まで見る</h3>
@@ -190,7 +190,7 @@ PAGES = {
     <h2 style="font-family:var(--mincho);font-size:clamp(26px,3vw,42px);letter-spacing:.1em;margin:16px 0 22px">365スイーツショップ<br>青森本店</h2>
     <p style="color:var(--ink2)">青森市古川で、24時間営業のスイーツの無人販売店を運営しています。ショーケースに並ぶケーキ、アイス、季節のスイーツを、お客さまが自分で選び、店内のセルフレジでお支払いいただく形です。仕事帰りの遅い時間でも、思い立ったときに甘いものを選べる店です。</p>
     <dl class="dl" style="margin-top:26px"><dt>所在地</dt><dd>青森県青森市古川</dd><dt>営業</dt><dd>24時間（無人販売）</dd><dt>開業</dt><dd>2024年1月</dd><dt>運営</dt><dd>合同会社たいせい</dd></dl>
-    <div class="pics"><img src="@@A@@img/s365-front.webp" alt="店舗の外観" loading="lazy"><img src="@@A@@img/s365-crepe.webp" alt="いちごを使ったスイーツ" loading="lazy"><img src="@@A@@img/s365-neon.webp" alt="店内のネオンサイン" loading="lazy"></div>
+    <div class="pics"><img src="@@A@@img/s365-front.webp" alt="店舗の外観" loading="lazy"><img src="@@A@@img/s365-crepe.webp" alt="いちごを使ったスイーツ" loading="lazy"><img src="@@A@@img/s365-cheese.webp" alt="ショーケースに並ぶケーキ" loading="lazy"></div>
     <a class="ig" href="https://www.instagram.com/365sweets.aomori/" target="_blank" rel="noopener">Instagram　@365sweets.aomori</a>
   </div>
 </div></section>'''),
@@ -213,15 +213,15 @@ PAGES = {
 
 <section class="sec alt"><div class="wrap two">
   <div class="rv"><h2>合同会社<br>あっぷるキャピタル</h2></div>
-  <dl class="dl rv d1"><dt>代表社員</dt><dd>三上浩平</dd><dt>設立</dt><dd>2020年（令和2年）12月21日</dd><dt>所在地</dt><dd>東京都港区港南4丁目2-7-4020</dd><dt>事業内容</dt><dd>賃貸不動産の保有・運営</dd></dl>
+  <dl class="dl rv d1"><dt>代表社員</dt><dd>三上浩平</dd><dt>設立</dt><dd>2020年（令和2年）12月21日</dd><dt>所在地</dt><dd>東京都港区港南4-2-7-4020</dd><dt>事業内容</dt><dd>賃貸不動産の保有・運営</dd></dl>
 </div></section>
 <section class="sec"><div class="wrap two">
   <div class="rv"><h2>合同会社たいせい</h2></div>
-  <dl class="dl rv d1"><dt>代表社員</dt><dd>三上浩平</dd><dt>設立</dt><dd>2020年（令和2年）6月19日</dd><dt>所在地</dt><dd>東京都港区港南4丁目2-7-4020</dd><dt>事業内容</dt><dd>賃貸不動産の保有・運営、買取専門店の運営、無人販売店の運営</dd></dl>
+  <dl class="dl rv d1"><dt>代表社員</dt><dd>三上浩平</dd><dt>設立</dt><dd>2020年（令和2年）6月19日</dd><dt>所在地</dt><dd>東京都港区港南4-2-7-4020</dd><dt>事業内容</dt><dd>賃貸不動産の保有・運営、買取専門店の運営、無人販売店の運営</dd></dl>
 </div></section>
 <section class="sec alt"><div class="wrap two">
   <div class="rv"><h2>三上浩平<br>税理士事務所</h2></div>
-  <dl class="dl rv d1"><dt>代表</dt><dd>税理士 三上浩平（公認会計士）</dd><dt>所属</dt><dd>東京税理士会（登録番号 第144424号）</dd><dt>開業</dt><dd>2021年</dd><dt>所在地</dt><dd>東京都港区港南4丁目2-7-4020</dd><dt>業務内容</dt><dd>税務代理、税務書類の作成、税務相談、会計業務</dd></dl>
+  <dl class="dl rv d1"><dt>所長</dt><dd>税理士 三上浩平（公認会計士）</dd><dt>所属</dt><dd>東京税理士会（登録番号 <span class="nw">第144424号</span>）</dd><dt>開業</dt><dd>2021年</dd><dt>所在地</dt><dd>東京都港区港南4-2-7-4020</dd><dt>業務内容</dt><dd>税務代理、税務書類の作成、税務相談、会計業務</dd></dl>
 </div></section>
 
 <section class="sec"><div class="wrap two">
@@ -262,7 +262,7 @@ PAGES = {
       <div><b>2021</b>三上浩平税理士事務所を開業</div>
     </div>
     <h3>資格</h3>
-    <p>公認会計士／税理士（東京税理士会所属、登録番号 第144424号）</p>
+    <p>公認会計士／税理士（東京税理士会所属、登録番号 <span class="nw">第144424号</span>）</p>
     <h3>取り組んでいること</h3>
     <ul>
       <li>不動産オーナーの税務、法人化、相続（三上浩平税理士事務所として）</li>
@@ -302,7 +302,7 @@ PAGES = {
   <div class="rv"><p class="lab">Strategy</p><h2>経営の方針</h2></div>
   <div>
     <article class="doc rv d1">
-      <div class="dh"><span class="dt">2026年6月　経営会議へ報告</span></div>
+      <div class="dh"><span class="dt">2026年6月策定</span></div>
       <h3>不動産事業 中長期成長戦略</h3>
       <p>地方の収益不動産の市場が縮小していく中で、当社がどのように成長を図るかの方針をまとめた資料です。</p>
       <div class="acts"><a class="btn line" href="https://tapplecapital-prog.github.io/portfolio-portal/strategy/index.html" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a></div>
@@ -333,11 +333,13 @@ PAGES = {
     <p>ご相談への回答、面談の日程調整、ご依頼いただいた業務の遂行のためにだけ利用します。</p>
     <h3>3. 第三者への提供</h3>
     <p>法令に基づく場合を除き、ご本人の同意なく第三者に提供しません。</p>
-    <h3>4. 安全管理</h3>
+    <h3>4. 共同利用</h3>
+    <p>1.の情報は、2.の目的の範囲で、当グループの3者が共同して利用することがあります。管理の責任者は、合同会社あっぷるキャピタル 代表社員 三上浩平です。ただし、税理士業務でお預かりした情報は共同利用の対象に含めず、三上浩平税理士事務所だけが取り扱います。</p>
+    <h3>5. 安全管理</h3>
     <p>取得した情報は、漏えい・紛失を防ぐための措置を講じて管理します。税理士業務でお預かりする情報は、税理士法の守秘義務に従って取り扱います。</p>
-    <h3>5. 開示・訂正・削除のご請求</h3>
-    <p>ご本人からのご請求があった場合は、本人確認のうえ、遅滞なく対応します。当グループ（東京都港区港南4丁目2-7-4020）までお知らせください。</p>
-    <h3>6. アクセス解析</h3>
+    <h3>6. 開示・訂正・削除のご請求</h3>
+    <p>ご本人からのご請求があった場合は、本人確認のうえ、遅滞なく対応します。当グループ（東京都港区港南4-2-7-4020、代表 三上浩平）まで書面でお知らせください。</p>
+    <h3>7. アクセス解析</h3>
     <p>当サイトでは現在、アクセス解析のツールを使用していません。使用を始める場合は、このページでお知らせします。</p>
     <p class="note">制定：2026年9月</p>
   </div>
@@ -348,7 +350,7 @@ PAGES = {
 def shell(key, p):
     R, A = "../", "../../v8/assets/"
     nav = "".join(f'<a href="{R}{h}"{" aria-current=\"page\"" if h == p["nav"] else ""}>{t}</a>' for h, t in NAV)
-    mnav = "".join(f'<a href="{R}{h}">{t}</a>' for h, t in NAV)
+    mnav = "".join(f'<a href="{R}{h}"{" aria-current=\"page\"" if h == p["nav"] else ""}>{t}</a>' for h, t in NAV)
     fnav = "".join(f'<a href="{R}{h}">{t}</a>' for h, t in FNAV)
     crumb = f'<a href="{R}">トップ</a>　／　{p["h1"] if key != "profile" else "代表プロフィール"}'
     op = f'<span class="op">{p["op"]}</span>' if p.get("op") else ""

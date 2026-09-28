@@ -15,6 +15,8 @@ body{margin:0;color:var(--ink);font-family:var(--sans);font-size:15px;line-heigh
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;word-break:auto-phrase}
+p,li,dd,dt,td,th,figcaption{word-break:auto-phrase;text-wrap:pretty}
+.nw{white-space:nowrap}
 p{margin:0}
 .wrap{padding:0 var(--gut);max-width:1400px;margin:0 auto}
 .lab{font-family:var(--en);font-size:12px;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:14px;color:var(--accent)}
@@ -40,6 +42,10 @@ p{margin:0}
 .mnav{position:fixed;inset:0;z-index:55;background:rgba(236,246,252,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:100px var(--gut) 40px;display:none;flex-direction:column;gap:6px}
 .mnav a{font-family:var(--mincho);font-size:22px;letter-spacing:.1em;padding:10px 0;border-bottom:1px solid var(--line)}
 .mnav.open{display:flex}
+.mnav a[aria-current=page]{color:var(--deep)}
+.mnav a[aria-current=page]::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin:0 10px 4px 0}
+.mbtn i::before,.mbtn i::after{transition:transform .3s}
+.mbtn[aria-expanded=true] i{background:transparent}.mbtn[aria-expanded=true] i::before{transform:translateY(6px) rotate(45deg)}.mbtn[aria-expanded=true] i::after{transform:translateY(-6px) rotate(-45deg)}
 @media (max-width:1100px){.hd nav{display:none}.mbtn{display:grid}}
 
 /* page head */
@@ -184,7 +190,7 @@ svg .dot{fill:#54A83C}
 
 /* footer */
 .ft{background:linear-gradient(120deg,#193C86 0%,#2765C0 55%,#4A8ED9 100%);color:#D5E0F2;padding:clamp(70px,9vw,120px) 0 36px;overflow:hidden}
-.ft .word{font-family:var(--en);font-weight:200;font-size:clamp(46px,10.5vw,200px);letter-spacing:-.03em;line-height:.9;background:linear-gradient(90deg,#fff 0%,#D8E8FF 50%,#FFC9D6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.ft .word{font-family:var(--en);font-weight:200;font-size:clamp(30px,8.5vw,200px);letter-spacing:-.03em;line-height:.9;background:linear-gradient(90deg,#fff 0%,#D8E8FF 50%,#FFC9D6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
 .ft .cols{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2);font-size:12.5px;letter-spacing:.08em}
 .ft nav{display:flex;flex-wrap:wrap;gap:12px 28px}
 .ft a:hover{color:#fff}
@@ -214,3 +220,15 @@ svg .dot{fill:#54A83C}
 .viewer{margin-top:18px;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px rgba(40,90,160,.12);background:#fff}
 .viewer iframe{display:block;width:100%;height:min(80vh,760px);border:0}
 @media (max-width:700px){.kpis{grid-template-columns:minmax(0,1fr)}.doc{padding:24px 20px}}
+
+/* スマホでは表をカードの並びにする（横スクロールをなくす） */
+@media (max-width:700px){
+  .tbl{background:none;border:0;box-shadow:none;overflow:visible}
+  .tbl table{min-width:0}
+  .tbl thead{display:none}
+  .tbl tr{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;background:rgba(255,255,255,.72);border-radius:14px;padding:14px 16px;margin-bottom:10px;box-shadow:0 10px 26px rgba(40,90,160,.08)}
+  .tbl td{display:block;border:0;padding:0;text-align:left!important;font-size:13px}
+  .tbl td::before{content:attr(data-l);display:block;font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+  .tbl td[data-l="物件名"]{grid-column:1/-1;font-family:var(--mincho);font-size:16px;order:-1}
+  .tbl td[data-l="物件名"]::before{display:none}
+}
