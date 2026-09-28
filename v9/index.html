@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="apple" data-hero="band">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +14,7 @@
   // 動きの有無を最初に決める。動きを減らす設定の人と、?noanim 付きの確認用表示では動かさない
   (function(){var q=location.search.indexOf('noanim')>-1;var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!q&&!rm){document.documentElement.classList.add('anim');}
-  // 配色（比較用）。?theme= か、前回選んだ配色を使う
-  var t=(location.search.match(/theme=(\w+)/)||[])[1]; if(!t){try{t=localStorage.getItem('acg-theme2')}catch(e){}}
-  if(!/^(apple|navy|sky|mint|vivid)$/.test(t||'')) t='apple'; document.documentElement.setAttribute('data-theme',t);
-  var h=(location.search.match(/hero=(\w+)/)||[])[1]; if(!h){try{h=localStorage.getItem('acg-hero')}catch(e){}}
-  if(!/^(band|float)$/.test(h||'')) h='band'; document.documentElement.setAttribute('data-hero',h);})();
+  })();
 </script>
 <style>
 :root{
@@ -35,12 +31,6 @@
 /* 配色の比較用（紺＝現行／空色／ミント／明るい青） */
 [data-theme=apple]{--bg:#EAF5FB;--paper:#FAFDFF;--white:#fff;--line:#D2DFEB;--muted:#7F8A99;--deep:#1D4E9E;--accent:#E4506F;--hero-bg:#E4F3FB;--hero-ink:#0B2340;--glass:rgba(236,246,252,.82);--photo-sh:0 30px 70px rgba(40,90,160,.2);
   --hero-fb:radial-gradient(60% 70% at 25% 70%,#8CC8F2 0%,transparent 60%),radial-gradient(50% 60% at 70% 30%,#A9B8F6 0%,transparent 60%),radial-gradient(35% 45% at 92% 8%,#F7A3B6 0%,transparent 60%),radial-gradient(40% 50% at 55% 90%,#A6E6EA 0%,transparent 60%),#E4F3FB}
-[data-theme=sky]{--bg:#F2F6F9;--paper:#FAFCFD;--line:#D3DCE4;--deep:#134B80;--accent:#2A7CCB;--hero-bg:#DCEAF6;--hero-ink:#0B2340;--glass:rgba(242,246,249,.9);--photo-sh:0 30px 70px rgba(19,75,128,.18);
-  --hero-fb:radial-gradient(60% 70% at 25% 70%,#8CC0EC 0%,transparent 60%),radial-gradient(50% 60% at 70% 30%,#A9DDE7 0%,transparent 60%),radial-gradient(40% 50% at 55% 90%,#C4E3A0 0%,transparent 60%),#DCEAF6}
-[data-theme=mint]{--bg:#F1F6F4;--paper:#FAFCFB;--line:#D1DED8;--deep:#0F4A4F;--accent:#15937F;--hero-bg:#DDF0E9;--hero-ink:#0B2B2E;--glass:rgba(241,246,244,.9);--photo-sh:0 30px 70px rgba(15,74,79,.18);
-  --hero-fb:radial-gradient(60% 70% at 25% 70%,#7ED0BA 0%,transparent 60%),radial-gradient(50% 60% at 70% 30%,#A7CFEF 0%,transparent 60%),radial-gradient(40% 50% at 55% 90%,#D6EC96 0%,transparent 60%),#DDF0E9}
-[data-theme=vivid]{--bg:#F3F5F8;--line:#D5DBE3;--deep:#154F9A;--accent:#1D5FB8;--hero-bg:#1D5FB8;--hero-ink:#fff;--glass:rgba(243,245,248,.9);
-  --hero-fb:radial-gradient(60% 70% at 25% 70%,#3A8EE0 0%,transparent 60%),radial-gradient(50% 60% at 70% 30%,#2FA3A6 0%,transparent 60%),radial-gradient(40% 50% at 55% 90%,#74C44A 0%,transparent 60%),#1D5FB8}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:2;letter-spacing:.04em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -53,19 +43,7 @@ p{margin:0}
 .lab{font-family:var(--en);font-size:12px;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:14px}
 .lab::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
 .mark{display:inline-block;aspect-ratio:1024/559;-webkit-mask:url(../v8/assets/img/mark.png) center/contain no-repeat;mask:url(../v8/assets/img/mark.png) center/contain no-repeat;background:currentColor}
-.tsw{position:fixed;left:12px;bottom:12px;z-index:90;display:flex;align-items:center;gap:2px;background:rgba(10,23,51,.9);color:#cfd6e4;padding:5px 6px 5px 14px;border-radius:999px;font-size:12px;letter-spacing:.06em;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
-.tsw{flex-direction:column;align-items:flex-start;gap:0;border-radius:14px;padding:6px 6px 6px 12px;font-size:11px;opacity:.94}
-.tsw button{padding:4px 9px!important;gap:5px!important}
-.tsw button i{width:11px!important;height:11px!important}
-.tsw .g{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
-.tsw .g>b{font-weight:500;font-size:11px;color:#8F9AB0;min-width:5.2em;letter-spacing:.08em}
-.tsw>b{font-family:var(--en);font-weight:500;font-size:10.5px;letter-spacing:.18em;margin-right:8px;white-space:nowrap}
-.tsw button{all:unset;cursor:pointer;display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;color:#cfd6e4;white-space:nowrap;transition:background .3s,color .3s}
-.tsw button i{width:14px;height:14px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
-.tsw button:hover{background:rgba(255,255,255,.1)}
-.tsw button[aria-pressed=true]{background:#fff;color:#0A1733}
-.tsw button:focus-visible{outline:2px solid #fff;outline-offset:2px}
-@media (max-width:640px){.tsw>b,.tsw button span,.tsw .g>b{display:none}.tsw{padding-left:6px}}
+.badge{position:fixed;left:12px;bottom:12px;z-index:90;font-family:var(--en);font-size:10.5px;letter-spacing:.16em;background:rgba(10,23,51,.82);color:#cfd6e4;padding:5px 10px;border-radius:99px}
 
 /* ---------- loader ---------- */
 .loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:clip-path 1.2s var(--ease)}
@@ -135,17 +113,6 @@ p{margin:0}
 .cyl figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 14px;font-family:var(--en);font-size:15px;letter-spacing:.28em;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.35))}
 [data-hero=band] .hero .copy{bottom:clamp(28px,6vh,72px)}
 @media (max-width:820px){.band{top:27%}}
-/* ---------- 第一画面の案：浮かぶ写真（額の中で写真が入れ替わる） ---------- */
-.float{display:none;position:absolute;z-index:1;right:clamp(24px,13vw,260px);top:clamp(96px,13vh,150px);width:clamp(210px,25vw,400px);aspect-ratio:4/5;margin:0;border-radius:16px;overflow:hidden;box-shadow:var(--photo-sh)}
-[data-hero=float] .float{display:block}
-.float img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
-.float img:first-child{opacity:1}
-.anim .float img{animation:flx 30s infinite}
-.anim .float img:nth-child(2){animation-delay:5s}.anim .float img:nth-child(3){animation-delay:10s}.anim .float img:nth-child(4){animation-delay:15s}.anim .float img:nth-child(5){animation-delay:20s}.anim .float img:nth-child(6){animation-delay:25s}
-@keyframes flx{0%{opacity:0;transform:scale(1.1)}4%{opacity:1}17%{opacity:1}23%{opacity:0;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
-.float figcaption{position:absolute;left:16px;bottom:12px;font-size:11px;letter-spacing:.16em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
-@media (max-width:820px){.float{right:var(--gut);top:96px;width:44vw}}
-[data-hero=band] .places{display:none}
 
 /* ---------- reveal ---------- */
 .anim .rv{opacity:0;transform:translateY(34px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease)}
@@ -210,23 +177,6 @@ svg .dot{fill:#54A83C}
 .sgrid article{padding:26px 0 0;border-top:1px solid var(--ink)}
 .sgrid .nm{display:block;font-family:var(--en);font-weight:300;font-size:13px;letter-spacing:.14em;color:var(--accent);margin-bottom:12px}
 @media (max-width:900px){.pol .ph{grid-template-columns:1fr}.pgrid,.sgrid{grid-template-columns:1fr}}
-
-/* ---------- places filmstrip ---------- */
-.places{padding:0 0 clamp(90px,12vw,170px);overflow:hidden}
-.places .head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:40px}
-.places .head h2{font-family:var(--mincho);font-size:clamp(20px,2vw,26px);letter-spacing:.12em;margin-top:14px}
-.places .head p{font-size:12.5px;color:var(--muted);max-width:34em;line-height:1.9}
-.strip{perspective:1600px;perspective-origin:50% 40%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.strip .plane{transform:rotateY(-14deg) rotateX(5deg);transform-style:preserve-3d}
-.track{display:flex;gap:18px;width:max-content;will-change:transform}
-.card{margin:0;width:clamp(210px,21vw,330px);flex:none}
-.card.w{width:clamp(280px,28vw,440px)}
-.card .im{overflow:hidden;background:#ddd}
-.card img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform 1.6s var(--ease)}
-.card.w img{aspect-ratio:4/3}
-.card:hover img{transform:scale(1.05)}
-.card figcaption{display:flex;justify-content:space-between;margin-top:10px;font-size:11.5px;letter-spacing:.12em;color:var(--ink2)}
-.card figcaption span{font-family:var(--en);color:var(--muted)}
 
 /* ---------- business ---------- */
 .biz{background:var(--white);padding:clamp(100px,13vw,190px) 0}
@@ -429,7 +379,6 @@ svg .dot{fill:#54A83C}
   <div class="fallback" aria-hidden="true"></div>
   <canvas id="field" aria-hidden="true"></canvas>
   <div class="band" aria-hidden="true"><div class="bw" id="bw"><div class="cyl" id="cyl"><figure><img src="../v8/assets/img/p-yonezawa.webp" alt="" loading="eager" decoding="async"><figcaption>YONEZAWA</figcaption></figure><figure><img src="../v8/assets/img/s365-front.webp" alt="" loading="eager" decoding="async"><figcaption>AOMORI</figcaption></figure><figure><img src="../v8/assets/img/p-koriyama.webp" alt="" loading="eager" decoding="async"><figcaption>KORIYAMA</figcaption></figure><figure><img src="../v8/assets/img/ks/k08.webp" alt="" loading="eager" decoding="async"><figcaption>KOYASHIYA</figcaption></figure><figure><img src="../v8/assets/img/p-towada.webp" alt="" loading="eager" decoding="async"><figcaption>TOWADA</figcaption></figure><figure><img src="../v8/assets/img/p-sakura.webp" alt="" loading="eager" decoding="async"><figcaption>AOMORI</figcaption></figure><figure><img src="../v8/assets/img/p-sapporo.webp" alt="" loading="eager" decoding="async"><figcaption>SAPPORO</figcaption></figure><figure><img src="../v8/assets/img/s365-crepe.webp" alt="" loading="eager" decoding="async"><figcaption>365 SWEETS</figcaption></figure><figure><img src="../v8/assets/img/p-sendai.webp" alt="" loading="eager" decoding="async"><figcaption>SENDAI</figcaption></figure><figure><img src="../v8/assets/img/ks/k05.webp" alt="" loading="eager" decoding="async"><figcaption>KOYASHIYA</figcaption></figure><figure><img src="../v8/assets/img/p-yonezawa-snow.webp" alt="" loading="eager" decoding="async"><figcaption>YONEZAWA</figcaption></figure><figure><img src="../v8/assets/img/p-interior.webp" alt="" loading="eager" decoding="async"><figcaption>INTERIOR</figcaption></figure><figure><img src="../v8/assets/img/s365-neon.webp" alt="" loading="eager" decoding="async"><figcaption>365 SWEETS</figcaption></figure><figure><img src="../v8/assets/img/p-towada2.webp" alt="" loading="eager" decoding="async"><figcaption>TOWADA</figcaption></figure></div></div></div>
-  <figure class="float" data-speed="-0.08" aria-hidden="true"><img src="../v8/assets/img/p-yonezawa.webp" alt=""><img src="../v8/assets/img/p-sakura.webp" alt=""><img src="../v8/assets/img/s365-front.webp" alt=""><img src="../v8/assets/img/p-towada.webp" alt=""><img src="../v8/assets/img/ks/k05.webp" alt=""><img src="../v8/assets/img/p-sendai.webp" alt=""><figcaption>保有物件と店舗</figcaption></figure>
   <div class="copy">
     <p class="lab">Apple Capital Group — Since 2020</p>
     <h1><span class="ln"><span>あっぷるキャピタルグループ</span></span></h1>
@@ -481,29 +430,6 @@ svg .dot{fill:#54A83C}
   </div>
 </section>
 
-<section class="places" id="places" aria-labelledby="places-h">
-  <div class="wrap head">
-    <div class="rv"><p class="lab">Places</p><h2 id="places-h">保有物件と店舗</h2></div>
-    <p class="rv d1">山形県米沢市、青森県十和田市、福島県郡山市、宮城県仙台市、北海道札幌市の保有物件と、青森市の店舗・街の写真です。</p>
-  </div>
-  <div class="strip rv d1">
-    <div class="plane">
-      <div class="track" id="track">
-        <figure class="card"><div class="im"><img src="../v8/assets/img/p-yonezawa.webp" width="750" height="1000" alt="米沢市の保有物件の外観" loading="lazy"></div><figcaption>山形県米沢市<span>Yonezawa</span></figcaption></figure>
-        <figure class="card w"><div class="im"><img src="../v8/assets/img/p-koriyama.webp" width="1000" height="750" alt="郡山市の保有物件の外観" loading="lazy"></div><figcaption>福島県郡山市<span>Koriyama</span></figcaption></figure>
-        <figure class="card"><div class="im"><img src="../v8/assets/img/p-towada.webp" width="750" height="1000" alt="十和田市の保有物件の外観" loading="lazy"></div><figcaption>青森県十和田市<span>Towada</span></figcaption></figure>
-        <figure class="card"><div class="im"><img src="../v8/assets/img/p-sakura.webp" width="750" height="1000" alt="青森市の桜" loading="lazy"></div><figcaption>青森市<span>Aomori</span></figcaption></figure>
-        <figure class="card w"><div class="im"><img src="../v8/assets/img/p-sapporo.webp" width="1000" height="750" alt="札幌市の保有物件の外観" loading="lazy"></div><figcaption>北海道札幌市<span>Sapporo</span></figcaption></figure>
-        <figure class="card"><div class="im"><img src="../v8/assets/img/p-yonezawa-snow.webp" width="750" height="1000" alt="雪の日の米沢市の保有物件" loading="lazy"></div><figcaption>山形県米沢市（冬）<span>Yonezawa</span></figcaption></figure>
-        <figure class="card"><div class="im"><img src="../v8/assets/img/p-sendai.webp" width="750" height="1000" alt="仙台市の保有物件の外観" loading="lazy"></div><figcaption>宮城県仙台市<span>Sendai</span></figcaption></figure>
-        <figure class="card w"><div class="im"><img src="../v8/assets/img/p-interior.webp" width="1000" height="750" alt="保有物件の室内" loading="lazy"></div><figcaption>保有物件の室内<span>Interior</span></figcaption></figure>
-        <figure class="card"><div class="im"><img src="../v8/assets/img/p-365.webp" width="750" height="1000" alt="365スイーツショップ青森本店の外観" loading="lazy"></div><figcaption>365スイーツショップ青森本店<span>Aomori</span></figcaption></figure>
-        <figure class="card"><div class="im"><img src="../v8/assets/img/p-towada2.webp" width="750" height="1000" alt="十和田市の保有物件の外観" loading="lazy"></div><figcaption>青森県十和田市<span>Towada</span></figcaption></figure>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="biz" id="business">
   <div class="wrap">
     <div class="head">
@@ -526,7 +452,7 @@ svg .dot{fill:#54A83C}
   <div class="wrap">
     <div class="txt">
       <p class="lab rv">Real Estate</p>
-      <h2 id="data-h" class="rv d1">物件は、東北6県を1km四方で格付けした地図で選んでいます</h2>
+      <h2 id="data-h" class="rv d1">物件は、<span style="white-space:nowrap">東北6県</span>を<span style="white-space:nowrap">1km四方</span>で格付けした地図で選んでいます</h2>
       <p class="rv d2">北海道から中部までの一棟の賃貸住宅を取得し、保有・運営しています。取得の前には、その場所で賃貸の需要が続くかを確かめるため、東北6県を1km四方の区画に分け、人口、立地、産業の指標から4段階に格付けした地図を使います。勘に頼らず、数字で確かめてから、まちに投資するための地図です。</p>
       <div class="counts rv d3">
         <div><b data-count="28207">28,207<small>区画</small></b><span>格付けした区画の数</span></div>
@@ -643,16 +569,7 @@ svg .dot{fill:#54A83C}
     </div>
   </div>
 </footer>
-<div class="tsw" role="group" aria-label="確認用の切り替え"><b>PREVIEW v9</b>
-  <div class="g"><b>配色</b>
-  <button type="button" data-t="apple" aria-label="水色＋りんご"><i style="background:linear-gradient(135deg,#BFE3F7,#9FB5F4 50%,#F29AB0)"></i><span>水色＋りんご</span></button>
-  <button type="button" data-t="navy" aria-label="紺（現行）"><i style="background:linear-gradient(135deg,#0A1733,#18549C 60%,#54A83C)"></i><span>紺（現行）</span></button>
-  <button type="button" data-t="sky" aria-label="空色"><i style="background:linear-gradient(135deg,#DCEAF6,#8CC0EC 55%,#C4E3A0)"></i><span>空色</span></button>
-  <button type="button" data-t="mint" aria-label="ミント"><i style="background:linear-gradient(135deg,#DDF0E9,#7ED0BA 55%,#D6EC96)"></i><span>ミント</span></button>
-  <button type="button" data-t="vivid" aria-label="明るい青"><i style="background:linear-gradient(135deg,#1D5FB8,#2FA3A6 55%,#74C44A)"></i><span>明るい青</span></button>
-  </div>
-  <div class="g"><b>第一画面</b><button type="button" data-h="band" aria-pressed="false">写真の帯</button><button type="button" data-h="float" aria-pressed="false">浮かぶ写真</button></div>
-</div>
+<div class="badge">PREVIEW v9</div>
 
 <script src="../v8/assets/js/mesh.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
@@ -686,7 +603,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // ---------- 写真の帯（ゆっくり流れ、スクロールの速さで加速） ----------
   var track=document.getElementById('track'), x=0, half=0;
   if(track){ track.innerHTML+=track.innerHTML; }
-  function measure(){ half=track.scrollWidth/2; }
+  function measure(){ half=track?track.scrollWidth/2:0; }
   window.addEventListener('load',measure); measure();
 
   // ---------- 視差 ----------
@@ -697,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(ANIM){
       x-= (0.35 + Math.min(Math.abs(vel),60)*0.12);
       if(half && -x>half) x+=half;
-      track.style.transform='translate3d('+x.toFixed(1)+'px,0,0)';
+      if(track) track.style.transform='translate3d('+x.toFixed(1)+'px,0,0)';
       par.forEach(function(el){ var r=el.getBoundingClientRect(), c=r.top+r.height/2-innerHeight/2; el.style.transform='translate3d(0,'+(c*+el.dataset.speed).toFixed(1)+'px,0)'; });
     }
     vel*=0.92;
@@ -719,14 +636,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(A>100){ c.style.visibility='hidden'; } else { c.style.visibility='visible'; c.style.opacity=(A<78?1:(100-A)/22).toFixed(2); } });
     if(ringOn && ANIM) requestAnimationFrame(ringFrame);
   }
-  var hbtn=[].slice.call(document.querySelectorAll('.tsw [data-h]'));
-  function heroMode(m){ if(m!=='float') m='band'; H.setAttribute('data-hero',m);
-    hbtn.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.h===m?'true':'false'); });
-    try{ localStorage.setItem('acg-hero',m); }catch(e){}
-    try{ var u=new URL(location.href); u.searchParams.set('hero',m); history.replaceState(null,'',u); }catch(e){}
-    if(m==='band'){ if(!ringOn){ ringOn=true; rlast=0; ringFrame(performance.now()); } } else { ringOn=false; measure(); x=0; } }
-  hbtn.forEach(function(b){ b.addEventListener('click',function(){ heroMode(b.dataset.h); }); });
-  heroMode(H.getAttribute('data-hero')||'band');
+  if(cyl){ ringOn=true; ringFrame(performance.now()); }
 
   // ---------- 事業内容：行に重ねると画像が浮かぶ ----------
   var peek=document.getElementById('peek'), pims=peek?[].slice.call(peek.querySelectorAll('img')):[], px=0,py=0,tx=0,ty=0;
@@ -739,19 +649,8 @@ document.addEventListener('DOMContentLoaded', function(){
     (function mv(){ px+=(tx-px)*.12; py+=(ty-py)*.12; peek.style.left=px+'px'; peek.style.top=py+'px'; requestAnimationFrame(mv); })();
   }
 
-  // ---------- 配色の比較（確認用）。色面・背景・メタ情報をまとめて切り替える ----------
-  var PAL={
-    apple:{cb:[.89,.95,.985],c1:[.52,.78,.96],c2:[.64,.71,.97],c3:[.62,.90,.92],c4:[.97,.58,.68],wt:[.85,.78,.7,.62],meta:'#E4F3FB'},
-    navy: {cb:[.035,.075,.19],c1:[.09,.33,.62],c2:[.08,.46,.52],c3:[.31,.64,.25],c4:[.84,.88,.9],wt:[.95,.85,.7,.28],meta:'#0A1733'},
-    sky:  {cb:[.86,.92,.97],c1:[.50,.74,.94],c2:[.64,.87,.92],c3:[.77,.90,.62],c4:[1,1,1],wt:[.85,.8,.7,.75],meta:'#DCEAF6'},
-    mint: {cb:[.87,.94,.91],c1:[.47,.80,.71],c2:[.64,.81,.94],c3:[.84,.93,.58],c4:[1,1,1],wt:[.85,.75,.7,.75],meta:'#DDF0E9'},
-    vivid:{cb:[.10,.33,.70],c1:[.22,.56,.90],c2:[.10,.62,.64],c3:[.45,.77,.29],c4:[.86,.93,1],wt:[.9,.85,.8,.35],meta:'#1D5FB8'}
-  }, FIELD=null, meta=document.querySelector('meta[name=theme-color]'), tbtn=[].slice.call(document.querySelectorAll('.tsw [data-t]'));
-  function theme(n){ if(!PAL[n]) n='apple'; H.setAttribute('data-theme',n); meta.setAttribute('content',PAL[n].meta);
-    tbtn.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.t===n?'true':'false'); });
-    if(FIELD) FIELD.set(n); try{ localStorage.setItem('acg-theme2',n); }catch(e){}
-    try{ var u=new URL(location.href); u.searchParams.set('theme',n); history.replaceState(null,'',u); }catch(e){} }
-  tbtn.forEach(function(b){ b.addEventListener('click',function(){ theme(b.dataset.t); }); });
+  // ---------- 第一画面の色面の配色（水色＋りんご） ----------
+  var PAL={apple:{cb:[.89,.95,.985],c1:[.52,.78,.96],c2:[.64,.71,.97],c3:[.62,.90,.92],c4:[.97,.58,.68],wt:[.85,.78,.7,.62]}}, FIELD=null;
 
   // ---------- 第一画面の色の場（ロゴの青→緑をもとにした流れる色面） ----------
   (function(){
@@ -775,7 +674,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var ur=gl.getUniformLocation(pr,'r'),ut=gl.getUniformLocation(pr,'t'),us=gl.getUniformLocation(pr,'s');
     var KEYS=['cb','c1','c2','c3','c4','wt'], U={}; KEYS.forEach(function(k){U[k]=gl.getUniformLocation(pr,k)});
     function copy(p){ var o={}; KEYS.forEach(function(k){o[k]=p[k].slice()}); return o; }
-    var cur=copy(PAL[H.getAttribute('data-theme')||'apple']), tgt=cur;
+    var cur=copy(PAL.apple), tgt=cur;
     function lerp(){ KEYS.forEach(function(k){ for(var i=0;i<tgt[k].length;i++){ var d=tgt[k][i]-cur[k][i]; cur[k][i]=Math.abs(d)>.002?cur[k][i]+d*.07:tgt[k][i]; } }); }
     FIELD={set:function(n){ tgt=PAL[n]; if(!ANIM){ cur=copy(tgt); draw(12000); } }};
     function size(){var d=Math.min(devicePixelRatio||1,1.5);c.width=c.clientWidth*d;c.height=c.clientHeight*d;gl.viewport(0,0,c.width,c.height);}
@@ -810,7 +709,6 @@ document.addEventListener('DOMContentLoaded', function(){
     io.observe(cv);
   }
   if(window.MESH) mapInit(); else window.addEventListener('load', mapInit);
-  theme(H.getAttribute('data-theme')||'apple');
 
   // ---------- 買取品の写真の柱（繰り返し流すため、中身を複製する） ----------
   if(ANIM){ document.querySelectorAll('.wall .col').forEach(function(c){ var n0=c.children.length; c.insertAdjacentHTML('beforeend',c.innerHTML);
