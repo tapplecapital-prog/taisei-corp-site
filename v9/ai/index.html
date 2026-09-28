@@ -5,27 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>AI・業務改善｜あっぷるキャピタルグループ</title>
-<meta name="description" content="あっぷるキャピタルグループが自社で運用しているAIの仕組みを、デモでご紹介します。領収書の読み取りから仕訳まで、届いた書類の仕分け、役割ごとに設定したAIの連携。">
+<meta name="description" content="あっぷるキャピタルグループの業務改善の取り組み。書類が届いてから試算表ができるまでの経理の流れ、店舗の日次処理と顧客カルテなどを、図とデモでご紹介します。">
 <link rel="icon" href="../../v6/assets/img/logo-color.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500&family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho+B1:wght@500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <script>(function(){var q=location.search.indexOf('noanim')>-1;var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(!q&&!rm)document.documentElement.classList.add('anim');})();</script>
 <style>
-:root{--bg:#F3F3F0;--white:#fff;--ink:#131313;--ink2:#4A4A46;--muted:#8B887F;--line:#D9D6CE;--navy:#0A1733;--navy2:#0F2147;--blue:#18549C;--teal:#1C7D86;--green:#54A83C;--gold:#C6A86E;--sky:#7FB3F0;
+:root{--bg:#EEF5FB;--pink:#E4506F;--white:#fff;--ink:#131313;--ink2:#4A4A46;--muted:#8B887F;--line:#D9D6CE;--navy:#0A1733;--navy2:#0F2147;--blue:#18549C;--teal:#1C7D86;--green:#54A83C;--gold:#C6A86E;--sky:#7FB3F0;
 --mincho:"Shippori Mincho B1","Yu Mincho",serif;--sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;--en:"Inter Tight","Helvetica Neue",Arial,sans-serif;--mono:"JetBrains Mono",Consolas,monospace;--gut:clamp(20px,4.5vw,64px);--ease:cubic-bezier(.19,1,.22,1)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:2;letter-spacing:.04em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#E4F3FB 0%,#E8EFFD 30%,#EEF0FD 55%,#E6F3FB 80%,#EEF1FD 100%);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:2;letter-spacing:.04em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap:balance;word-break:auto-phrase}p{margin:0}
 .wrap{padding:0 var(--gut);max-width:1500px;margin:0 auto}
-.lab{font-family:var(--en);font-size:12px;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:14px}.lab::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
+.lab{font-family:var(--en);font-size:12px;letter-spacing:.24em;text-transform:uppercase;display:flex;align-items:center;gap:14px;color:var(--pink)}.lab::before{content:"";width:28px;height:1px;background:currentColor;opacity:.6}
 .mark{display:inline-block;aspect-ratio:1024/559;-webkit-mask:url(../../v8/assets/img/mark.png) center/contain no-repeat;mask:url(../../v8/assets/img/mark.png) center/contain no-repeat;background:currentColor}
-.hd{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gut);background:rgba(243,243,240,.92);backdrop-filter:blur(10px)}
+.hd{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px var(--gut);background:rgba(238,245,251,.9);backdrop-filter:blur(10px)}
 .hd .brand{display:flex;align-items:center;gap:12px}.hd .brand .mark{width:40px}.hd .brand b{display:block;font-family:var(--mincho);font-weight:600;font-size:15px;letter-spacing:.14em;line-height:1.3}.hd .brand small{display:block;font-family:var(--en);font-size:9.5px;letter-spacing:.32em;opacity:.7}
 .hd nav{display:flex;gap:32px;font-size:13px;letter-spacing:.12em}@media(max-width:820px){.hd nav{display:none}}
 .badge{position:fixed;left:14px;bottom:14px;z-index:90;font-family:var(--en);font-size:11px;letter-spacing:.12em;background:rgba(10,23,51,.86);color:#cfd6e4;padding:6px 10px;border-radius:2px}
 
 .head{padding:clamp(80px,11vw,160px) 0 clamp(50px,7vw,90px)}
 .head .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,6vw,100px);align-items:end}
-.big{font-family:var(--en);font-weight:200;font-size:clamp(56px,9vw,150px);line-height:.92;letter-spacing:-.03em}
+.big{display:inline-block;font-family:var(--en);font-weight:200;font-size:clamp(56px,9vw,150px);line-height:.92;letter-spacing:-.03em;background:linear-gradient(90deg,#3A8FE0 0%,#6D7FEA 55%,#E4506F 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.04em}
 .head h1{font-family:var(--mincho);font-size:clamp(22px,2.2vw,30px);letter-spacing:.12em;margin-top:18px}
 .head p{color:var(--ink2)}
 .head .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
@@ -45,6 +45,37 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 .replay{position:absolute;right:18px;top:16px;z-index:3;font-family:var(--en);font-size:11px;letter-spacing:.2em;color:#AEB6C7;border:1px solid rgba(255,255,255,.25);background:transparent;border-radius:99px;padding:6px 14px;cursor:pointer}
 .replay:hover{color:#fff;border-color:#fff}
 .note{margin-top:14px;font-size:12px;color:var(--muted);line-height:1.9}
+
+/* ---- 01 経理の流れの全体像 ---- */
+.pf{min-height:0}
+.track{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin-top:8px}
+.track .rail{position:absolute;left:6.25%;right:6.25%;top:27px;height:2px;background:rgba(255,255,255,.14);overflow:hidden}
+.track .rail i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#3A8FE0,#7FE0A0);transition:width .8s var(--ease)}
+.track .rail b{position:absolute;top:-3px;width:90px;height:8px;border-radius:8px;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(127,224,160,0));left:-90px}
+.anim .track .rail b{animation:flowdot 3.6s linear infinite}
+@keyframes flowdot{to{left:100%}}
+.stp{all:unset;box-sizing:border-box;cursor:pointer;display:grid;justify-items:center;text-align:center;gap:8px;padding:0 2px 6px;position:relative;z-index:1}
+.stp .c{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--en);font-size:15px;color:#AEB6C7;background:#0F2147;border:1.5px solid rgba(127,179,240,.35);transition:background .5s,border-color .5s,color .5s,transform .5s var(--ease)}
+.stp .t{font-size:13px;color:#DDE3EE;letter-spacing:.06em;line-height:1.5}
+.stp .w{font-family:var(--en);font-size:10px;letter-spacing:.14em;color:#8F9AB0}
+.stp.done .c{border-color:rgba(127,224,160,.7);color:#7FE0A0}
+.stp[aria-pressed=true] .c{background:linear-gradient(135deg,#3A8FE0,#6D7FEA);border-color:#fff;color:#fff;transform:scale(1.12)}
+.stp[aria-pressed=true] .t{color:#fff}
+.stp:focus-visible .c{outline:2px solid #fff;outline-offset:3px}
+.dtl{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(18px,3vw,40px);margin-top:34px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);min-height:210px}
+.dtl .k{font-family:var(--en);font-size:11px;letter-spacing:.2em;color:#7FE0A0}
+.dtl h3{font-family:var(--mincho);font-size:clamp(20px,2vw,26px);color:#fff;letter-spacing:.08em;margin:6px 0 12px}
+.dtl p{font-size:14px;color:#C9D1E0;line-height:2}
+.dtl ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.dtl li{font-size:12px;color:#DDE3EE;border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:3px 12px}
+.dtl .m{border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);padding:22px 22px 18px;align-self:start}
+.dtl .m b{display:block;font-family:var(--en);font-weight:200;font-size:clamp(34px,3.4vw,50px);line-height:1.05;color:#fff;letter-spacing:-.01em}
+.dtl .m b small{font-family:var(--sans);font-size:13px;color:#AEB6C7;margin-left:6px;letter-spacing:.04em}
+.dtl .m span{display:block;font-size:12px;color:#AEB6C7;margin-top:8px;line-height:1.8}
+.dtl .m em{display:inline-block;margin-top:12px;font-style:normal;font-size:11px;letter-spacing:.1em;padding:2px 10px;border-radius:99px;background:rgba(127,224,160,.14);color:#7FE0A0}
+.dtl>div{transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.dtl.swap>div{opacity:0;transform:translateY(8px)}
+@media(max-width:980px){.track{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:18px}.track .rail{display:none}.dtl{grid-template-columns:1fr}}
 
 /* ---- demo1: receipt ---- */
 .d1{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,60px);align-items:center}
@@ -89,6 +120,46 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 .log{grid-column:1/-1;margin-top:6px;font-family:var(--mono);font-size:11.5px;color:#8FE0A8;line-height:1.8;min-height:66px}
 @media(max-width:860px){.d2{grid-template-columns:1fr}.folders{grid-template-columns:1fr}}
 
+/* ---- demo4: store daily & customer card ---- */
+.d4{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(18px,2.6vw,36px);align-items:start}
+.d4 h4{margin:0 0 14px;font-size:11px;font-weight:400;font-family:var(--en);letter-spacing:.2em;color:#8F9AB0}
+.pipe4{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:p}
+.pipe4 li{position:relative;padding:12px 14px 12px 44px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);font-size:13px;color:#C9D1E0;line-height:1.7;transition:border-color .5s,background .5s,color .5s}
+.pipe4 li::before{counter-increment:p;content:counter(p);position:absolute;left:14px;top:13px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-family:var(--en);font-size:11px;border:1px solid rgba(255,255,255,.3);color:#AEB6C7}
+.pipe4 li.on{border-color:rgba(127,224,160,.6);background:rgba(127,224,160,.07);color:#fff}
+.pipe4 li.on::before{background:#7FE0A0;border-color:#7FE0A0;color:#0A1733}
+.clock{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.clock span{font-family:var(--en);font-size:11.5px;color:#AEB6C7;border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:2px 10px;transition:all .4s}
+.clock span.on{background:#fff;color:#0A1733;border-color:#fff}
+.card4{background:#FCFBF7;color:#222;border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.card4 .tabs{display:flex;background:#EDEAE2;font-size:11.5px}
+.card4 .tabs span{padding:8px 14px;color:#777}.card4 .tabs span.a{background:#FCFBF7;color:#0A1733;font-weight:500}
+.card4 .bd{padding:16px 18px 18px}
+.card4 .row1{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #E4E0D6;padding-bottom:10px}
+.card4 .row1 b{font-size:15px;color:#0A1733;letter-spacing:.06em}
+.card4 .row1 span{font-size:11px;color:#8B887F}
+.card4 .visit{display:flex;align-items:baseline;gap:8px;margin-top:12px}
+.card4 .visit b{font-family:var(--en);font-weight:300;font-size:40px;line-height:1;color:#0A1733}
+.card4 .visit span{font-size:12px;color:#666}
+.card4 dl{display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:6px 10px;margin:12px 0 0;font-size:12.5px}
+.card4 dt{color:#8B887F}.card4 dd{margin:0}
+.card4 .mix{display:flex;height:10px;border-radius:5px;overflow:hidden;margin-top:12px;background:#EEE}
+.card4 .mix i{display:block;width:0;transition:width 1.2s var(--ease)}
+.card4 .legend4{display:flex;gap:12px;font-size:10.5px;color:#777;margin-top:6px}
+.card4 .legend4 em{font-style:normal;display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;vertical-align:0}
+.card4 .memo{margin-top:12px;font-size:12px;background:#F3F0E8;border-left:3px solid #C6A86E;padding:8px 10px;color:#444;opacity:0;transition:opacity .8s}
+.card4 .memo.on{opacity:1}
+.fac{display:grid;gap:12px}
+.fac .bar{display:grid;grid-template-columns:7.5em minmax(0,1fr) 3.4em;gap:10px;align-items:center;font-size:12.5px;color:#C9D1E0}
+.fac .bar .tr{position:relative;height:12px;background:rgba(255,255,255,.06);border-radius:6px}
+.fac .bar .tr::before{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:1px;background:rgba(255,255,255,.3)}
+.fac .bar .tr i{position:absolute;top:0;bottom:0;border-radius:6px;width:0;transition:width 1s var(--ease),left 1s var(--ease)}
+.fac .bar b{font-family:var(--en);font-weight:400;color:#fff;text-align:right}
+.fac .sum{border-top:1px solid rgba(255,255,255,.18);padding-top:10px;margin-top:4px}
+.fac p{font-size:12px;color:#8F9AB0;line-height:1.8;margin-top:8px}
+@media(max-width:1080px){.d4{grid-template-columns:1fr 1fr}.d4>div:last-child{grid-column:1/-1}}
+@media(max-width:700px){.d4{grid-template-columns:1fr}}
+
 /* ---- demo3: network ---- */
 .d3{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(20px,4vw,60px);align-items:center}
 .net{width:100%;height:auto;max-height:560px}
@@ -105,17 +176,21 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 .feed small{display:block;font-family:var(--en);font-size:10.5px;letter-spacing:.14em;color:#8F9AB0}
 @media(max-width:860px){.d3{grid-template-columns:1fr}}
 
-/* ---- cases ---- */
-.cases{padding:clamp(70px,9vw,130px) 0;background:var(--white);margin-top:clamp(40px,6vw,80px)}
-.cases .wrap{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(30px,6vw,100px)}
-.cases h2{font-family:var(--mincho);font-size:clamp(22px,2.2vw,30px);letter-spacing:.12em;margin-top:16px}
-.cases .intro{color:var(--ink2);font-size:14px;margin-top:16px}
-.clist{border-top:1px solid var(--ink)}
-.clist>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
-.clist h3{font-family:var(--mincho);font-size:16.5px;letter-spacing:.06em}
-.clist p{font-size:13.5px;color:var(--ink2);margin-top:4px;line-height:1.85}
-.clist b{font-family:var(--en);font-weight:300;font-size:22px;white-space:nowrap;align-self:center}
-@media(max-width:860px){.cases .wrap{grid-template-columns:1fr}}
+.cases{padding:clamp(70px,9vw,130px) 0;margin-top:clamp(40px,6vw,80px);background:rgba(255,255,255,.55)}
+.cases h2{font-family:var(--mincho);font-size:clamp(24px,2.6vw,34px);letter-spacing:.12em;margin:14px 0 10px}
+.cases .intro{color:var(--ink2);font-size:14px;max-width:44em}
+.cgrp{margin-top:44px}
+.cgrp h3{font-family:var(--mincho);font-size:18px;letter-spacing:.12em;display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.cgrp h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;transition:transform .5s var(--ease),box-shadow .5s}
+.cc:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(40,90,160,.12)}
+.cc b{font-family:var(--en);font-weight:200;font-size:clamp(30px,2.8vw,40px);line-height:1.05;letter-spacing:-.01em;background:linear-gradient(90deg,#3A8FE0,#6D7FEA 60%,#E4506F);-webkit-background-clip:text;background-clip:text;color:transparent;align-self:flex-start;padding-right:.05em}
+.cc b small{font-family:var(--sans);font-size:13px;font-weight:400;margin-left:4px;color:var(--ink2);-webkit-text-fill-color:var(--ink2)}
+.cc h4{margin:0;font-family:var(--mincho);font-weight:500;font-size:16px;letter-spacing:.06em}
+.cc p{font-size:13px;color:var(--ink2);line-height:1.85}
+@media(max-width:980px){.cgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.cgrid{grid-template-columns:1fr}}
 .ft{background:var(--navy);color:#AEB6C7;padding:50px 0;font-size:12.5px}
 .ft .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 </style>
@@ -131,15 +206,28 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
   <div class="wrap">
     <div><h2 class="big">AI<br>Operations</h2><h1>AI・業務改善</h1></div>
     <div>
-      <p>当グループでは、経理、書類の管理、物件管理などの社内業務にAIを取り入れています。判断は人が行い、AIは下書き・集計・点検を受け持ちます。このページでは、実際に社内で動いている仕組みを、デモでご紹介します。</p>
-      <div class="toc"><a href="#d1">領収書から仕訳まで</a><a href="#d2">届いた書類の仕分け</a><a href="#d3">役割ごとのAIの連携</a><a href="#cases">自社での実例</a></div>
+      <p>経理を中心に、社内の業務を、AIと自社で開発したシステムで組み直してきました。書類が届いてから試算表ができるまでの流れ、店舗の日次処理と顧客の管理、物件の調査まで、実際に動いている仕組みを図とデモでご紹介します。判断は人が行い、AIは読み取り・下書き・集計・点検を受け持ちます。</p>
+      <div class="toc"><a href="#flow">経理の流れの全体像</a><a href="#d1">領収書から仕訳まで</a><a href="#d2">届いた書類の仕分け</a><a href="#d4">店舗の日次処理と顧客カルテ</a><a href="#d3">役割ごとのAIの連携</a><a href="#cases">主な事例</a></div>
     </div>
+  </div>
+</section>
+
+<section class="demo" id="flow">
+  <div class="wrap">
+    <div class="top"><div><span class="no">01</span><h2>書類が届いてから、試算表ができるまで</h2></div><p>2つの会社の経理を、8つの工程に分けて組み直しました。会計は、市販の会計ソフトから自社で開発した会計システム「LEAN会計」へ切り替えています。工程を押すと、それぞれの中身をご覧いただけます。</p></div>
+    <div class="panel pf">
+      <div class="track" role="group" aria-label="経理の8つの工程">
+        <div class="rail" aria-hidden="true"><i id="railfill"></i><b></b></div>
+      </div>
+      <div class="dtl" id="dtl" aria-live="polite"></div>
+    </div>
+    <p class="note">工程②〜⑦は、1つの指示で2社分を順番に実行できます。月末は、投入箱の処理から試算表の出力、経営管理ファイルと物件別の収支の更新まで、7つの工程を続けて流しています。</p>
   </div>
 </section>
 
 <section class="demo" id="d1">
   <div class="wrap">
-    <div class="top"><div><span class="no">01</span><h2>領収書から仕訳まで</h2></div><p>撮影した領収書から、日付・取引先・金額・支払方法を読み取り、勘定科目を推定して仕訳の案を作ります。確定前に人が内容を確認します。</p></div>
+    <div class="top"><div><span class="no">02</span><h2>領収書から仕訳まで</h2></div><p>全体像の②と③を拡大したデモです。撮影した領収書から、日付・取引先・金額・支払方法を読み取り、過去の処理から勘定科目を推定して仕訳の案を作ります。</p></div>
     <div class="panel">
       <button class="replay" data-demo="1">REPLAY</button>
       <div class="d1">
@@ -182,7 +270,7 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 
 <section class="demo" id="d2">
   <div class="wrap">
-    <div class="top"><div><span class="no">02</span><h2>届いた書類の仕分け</h2></div><p>郵送やメールで届いた請求書・領収書・送金明細を、会社・書類の種類・対象の月で判定し、決まった場所へ保存します。毎朝、自動で動いています。</p></div>
+    <div class="top"><div><span class="no">03</span><h2>届いた書類の仕分け</h2></div><p>全体像の①と②を拡大したデモです。郵送やメールで届いた請求書・領収書・送金明細を、会社・書類の種類・対象の月で判定し、決まった場所へ決まった名前で保存します。</p></div>
     <div class="panel">
       <button class="replay" data-demo="2">REPLAY</button>
       <div class="d2">
@@ -199,9 +287,56 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
   </div>
 </section>
 
+<section class="demo" id="d4">
+  <div class="wrap">
+    <div class="top"><div><span class="no">04</span><h2>店舗の日次処理と顧客カルテ</h2></div><p>買取専門店「こやし屋」3店舗の日報と、本部のシステムにある顧客・査定の明細を、サーバーが毎日自動で集めます。同じお客さまの来店をまとめた「顧客カルテ」を作り直し、接客の前に来店の履歴や前回お売りいただいた品を確かめられるようにしています。</p></div>
+    <div class="panel">
+      <button class="replay" data-demo="4">REPLAY</button>
+      <div class="d4">
+        <div>
+          <h4>DAILY PIPELINE</h4>
+          <ol class="pipe4" id="pipe4">
+            <li>本部のシステムから、顧客と査定の明細を取得</li>
+            <li>3店舗の日報（1日の集計・取引ごとの明細・店長のコメント）を集める</li>
+            <li>明細の番号で結び付け、同じお客さまの来店をまとめる</li>
+            <li>顧客カルテと日次のデータを作り直す</li>
+          </ol>
+          <div class="clock" id="clock"><span>19:45</span><span>21:30</span><span>23:30</span><span>翌 8:30</span></div>
+          <p class="note" style="color:#8F9AB0">入力の遅れを拾うため、1日4回、同じ処理を繰り返します。</p>
+        </div>
+        <div>
+          <h4>CUSTOMER CARD</h4>
+          <div class="card4">
+            <div class="tabs"><span class="a">接客</span><span>顧客リスト</span><span>日報の検索</span></div>
+            <div class="bd">
+              <div class="row1"><b>サンプル 様</b><span>サンプル店・案内の送付 可</span></div>
+              <div class="visit"><b id="vc">1</b><span>回目のご来店</span></div>
+              <dl><dt>初回</dt><dd>2025年6月（ポスティングを見て）</dd><dt>前回お売りいただいた品</dt><dd>金のネックレス、腕時計</dd><dt>前回からの日数</dt><dd>38日</dd></dl>
+              <div class="mix" id="mix"><i style="background:#C6A86E"></i><i style="background:#6D7FEA"></i><i style="background:#3FA7B5"></i></div>
+              <div class="legend4"><span><em style="background:#C6A86E"></em>貴金属</span><span><em style="background:#6D7FEA"></em>ブランド品</span><span><em style="background:#3FA7B5"></em>時計</span></div>
+              <div class="memo" id="memo">日報より：次回はご家族のカメラを持ってきたいとのこと</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>MONTHLY FACTORS</h4>
+          <div class="fac" id="fac">
+            <div class="bar"><span>金価格の動き</span><div class="tr"><i data-v="6" style="background:#C6A86E"></i></div><b>+6%</b></div>
+            <div class="bar"><span>エリア全体の動き</span><div class="tr"><i data-v="-2" style="background:#8F9AB0"></i></div><b>−2%</b></div>
+            <div class="bar"><span>店舗固有の動き</span><div class="tr"><i data-v="4" style="background:#7FE0A0"></i></div><b>+4%</b></div>
+            <div class="bar sum"><span>粗利の前月比</span><div class="tr"><i data-v="8" style="background:linear-gradient(90deg,#3A8FE0,#E4506F)"></i></div><b>+8%</b></div>
+            <p>毎月、店舗の粗利・来店数・1件あたりの粗利の増減を、金価格、エリア全体、店舗固有の3つに分けます。数字の動きが相場によるものか、店舗の取り組みによるものかを分けて見るためです。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note">デモのため、顧客名・来店の記録・要因の数値はすべて架空のものです。実際の顧客カルテは社内のサーバー上にあり、個人情報は外部に出していません。</p>
+  </div>
+</section>
+
 <section class="demo" id="d3">
   <div class="wrap">
-    <div class="top"><div><span class="no">03</span><h2>役割ごとのAIの連携</h2></div><p>社内には、不動産・融資・経理・決算・店舗と発信・法務・開発・基盤の8つの役割を持つAIを設定しています。それぞれが下書きや点検を受け持ち、仕事を受け渡しながら動いています。</p></div>
+    <div class="top"><div><span class="no">05</span><h2>役割ごとのAIの連携</h2></div><p>社内には、不動産・融資・経理・決算・店舗と発信・法務・開発・基盤の8つの役割を持つAIを設定しています。それぞれが下書きや点検を受け持ち、仕事を受け渡しながら動いています。</p></div>
     <div class="panel">
       <button class="replay" data-demo="3">REPLAY</button>
       <div class="d3">
@@ -215,15 +350,32 @@ a{color:inherit;text-decoration:none}h1,h2,h3{margin:0;font-weight:500;text-wrap
 
 <section class="cases" id="cases">
   <div class="wrap">
-    <div><p class="lab">Cases</p><h2>自社での実例</h2><p class="intro">いずれも当グループの社内業務における事例です。他社への導入実績はまだありません。</p></div>
-    <div class="clist">
-      <div><div><h3>会計システムの移行</h3><p>市販の会計ソフトから自社開発の会計システムへ移行。試算表の全科目が一致することを確認。</p></div><b>7,751<small style="font-size:12px"> 仕訳</small></b></div>
-      <div><div><h3>減価償却の再計算</h3><p>全資産を再計算し、旧ソフトで未計上だった創立費を確認。</p></div><b>84,860<small style="font-size:12px"> 円</small></b></div>
-      <div><div><h3>領収書読み取りの高速化</h3><p>文字認識の方式を切り替え、1枚あたりの処理時間を短縮。</p></div><b>80→5<small style="font-size:12px"> 秒</small></b></div>
-      <div><div><h3>立地評価の指標</h3><p>東北6県を1km四方に分けて採点し、物件取得の判断に使用。</p></div><b>28,207<small style="font-size:12px"> 区画</small></b></div>
-      <div><div><h3>社内システムのサーバー移設</h3><p>PCの稼働に依存していた社内の仕組みを、サーバーへ移設。</p></div><b>5<small style="font-size:12px"> 件</small></b></div>
-      <div><div><h3>SNS投稿の確認工程の追加</h3><p>AIに投稿まで任せた運用で問題が生じたため、公開前に人が確認する工程を設けた。</p></div><b>—</b></div>
-    </div>
+    <p class="lab">Cases</p>
+    <h2>主な事例</h2>
+    <p class="intro">経理、店舗、不動産の調査、社内の基盤の4つの分野で、これまでに取り組んだ主な事例です。</p>
+    <div class="cgrp"><h3>経理・会計</h3><div class="cgrid">
+      <article class="cc"><b>7,751<small>仕訳</small></b><h4>会計システムの切り替え</h4><p>市販の会計ソフトから、自社で開発した会計システム「LEAN会計」へ移行。過去の仕訳をすべて移し、貸借対照表の26科目が元の数字と一致することを確かめました。</p></article>
+      <article class="cc"><b>7<small>工程</small></b><h4>月次処理の一括実行</h4><p>投入箱の処理から、2社の月次の締め、試算表、経営管理ファイル、物件ごとの収支、返済予定表の更新まで、1つの指示で続けて実行します。</p></article>
+      <article class="cc"><b>80→5<small>秒</small></b><h4>領収書の読み取り</h4><p>読み取りの方式を切り替え、領収書1枚あたりの時間を短縮しました。通帳の写真は1枚9〜14秒で読み取ります。</p></article>
+      <article class="cc"><b>371,512<small>円</small></b><h4>月次の点検で見つけた二重計上</h4><p>書類名の付け間違いから生じた二重計上を、5種類の月次チェックで見つけて訂正しました（2026年7月分）。</p></article>
+      <article class="cc"><b>84,860<small>円</small></b><h4>減価償却の再計算</h4><p>すべての資産の償却を計算し直し、以前の会計ソフトで償却されずに残っていた創立費を見つけました。</p></article>
+      <article class="cc"><b>PDF→表</b><h4>返済予定表の取り込み</h4><p>金融機関から届くPDFの返済予定表を表計算の形に変換し、元金と利息の合計が合っているかを自動で検算します。</p></article>
+    </div></div>
+    <div class="cgrp"><h3>店舗</h3><div class="cgrid">
+      <article class="cc"><b>1日4回</b><h4>店舗の日次集計</h4><p>3店舗の日報と、本部のシステムにある明細を自動で集計します。店長のコメントも全文を検索できます。</p></article>
+      <article class="cc"><b>47<small>か月</small></b><h4>顧客カルテ</h4><p>47か月分の取引をさかのぼって同じお客さまの来店をまとめ、接客の前に来店の履歴を確かめられるようにしました。</p></article>
+      <article class="cc"><b>3<small>要因</small></b><h4>月次の要因分析</h4><p>店舗の粗利の増減を、金価格、エリア全体、店舗固有の3つに分け、取り組みの効果を相場の動きと切り分けて見ています。</p></article>
+      <article class="cc"><b>経路別</b><h4>販促の効果測定</h4><p>来店のきっかけ（ポスティング、チラシ、ホームページなど）ごとに、再来店の割合と1人あたりの粗利を集計しています。</p></article>
+      <article class="cc"><b>自動</b><h4>無人販売店の動画づくり</h4><p>365スイーツショップの商品写真と価格の情報から、Instagram用の短い動画を組み立てる仕組みを作りました。</p></article>
+    </div></div>
+    <div class="cgrp"><h3>不動産・調査</h3><div class="cgrid">
+      <article class="cc"><b>28,207<small>区画</small></b><h4>立地の格付け</h4><p>東北6県を1km四方に分け、人口・立地・産業の指標から4段階に採点しました。物件を取得する前の判断に使っています。</p></article>
+      <article class="cc"><b>47,021<small>地点</small></b><h4>地価の長期分析</h4><p>地価を44年分さかのぼり、地点ごとの動きを分析しました。調査レポートにまとめています。</p></article>
+    </div></div>
+    <div class="cgrp"><h3>社内の基盤</h3><div class="cgrid">
+      <article class="cc"><b>5<small>件</small></b><h4>サーバーへの移設</h4><p>PCの電源に左右されていた社内の仕組みを、サーバーへ移しました。会計システムや店舗の集計も、サーバー上で動いています。</p></article>
+      <article class="cc"><b>8<small>役割</small></b><h4>AIの役割分担</h4><p>不動産・融資・経理・決算・店舗と発信・法務・開発・基盤の8つの役割を持つAIを設定し、仕事を受け渡しています。</p></article>
+    </div></div>
   </div>
 </section>
 </main>
@@ -236,6 +388,31 @@ document.addEventListener('DOMContentLoaded',function(){
   var timers={};
   function later(id,fn,ms){ (timers[id]=timers[id]||[]).push(setTimeout(fn,ms)); }
   function clear(id){ (timers[id]||[]).forEach(clearTimeout); timers[id]=[]; }
+
+  // ---------- 01 経理の流れの全体像 ----------
+  var STEPS=[
+    {t:'集める',w:'COLLECT',by:'自動',h:'証憑を1か所に集める',p:'メールで届く請求書は、添付ファイルを自動で回収します。郵送物や領収書、通帳の写真、銀行の明細、店舗の現金表も、1つの「投入箱」に入れるだけにしました。その月に届くはずの書類のうち、まだ届いていないものも一覧で出ます。',tags:['メールの添付を自動回収','届いていない書類の一覧','通帳の写真・銀行明細・現金表'],mb:'9',mu:'種類',ms:'投入箱で受け付ける書類の種類（請求書・領収書・納品書・送金明細・カード明細・納税通知書・現金表・銀行明細・通帳の写真）'},
+    {t:'読む・仕分ける',w:'READ',by:'AI',h:'中身を読んで、決まった場所へ',p:'AIが書類の中身を読み、会社・書類の種類・対象の月・取引先を判定します。決まったフォルダへ、決まった名前で保存し、会計システムへ登録します。',tags:['会社・種類・月・取引先を判定','保存先と名前を統一','会計システムへ自動登録'],mb:'80→5',mu:'秒',ms:'領収書1枚の読み取り時間（読み取り方式の切り替え後。通帳は9〜14秒）'},
+    {t:'記帳する',w:'BOOK',by:'自動',h:'記帳ルールで仕訳を作る',p:'取引先や摘要ごとに決めた記帳ルールにもとづいて、仕訳を自動で作ります。物件や店舗ごとの部門と税区分は、物件ごとの記帳の仕様書から引きます。判断に迷った取引は、判断の記録に1行残します。',tags:['記帳ルールの台帳','物件ごとの記帳の仕様書','判断の記録'],mb:'52',mu:'件',ms:'市販の会計ソフトから移した記帳ルールの数（その後も追加している）'},
+    {t:'照合する',w:'MATCH',by:'自動',h:'銀行の明細と突き合わせる',p:'銀行の明細と仕訳を自動で消し込みます。預金と借入の残高は、返済予定表などの元の資料と突き合わせ、差額があれば原因の候補を出します。',tags:['自動の消し込み','預金残高の照合','借入残高の照合'],mb:'預金・借入',mu:'',ms:'元の資料と突き合わせて毎月照合する残高'},
+    {t:'点検する',w:'CHECK',by:'自動＋人',h:'5種類の月次チェック',p:'重複した仕訳、税区分の誤り、部門の付け漏れ、毎月あるはずの取引の欠け、貸借の不一致の5つを、毎月機械で点検します。見つかったものは人が確認して直します。',tags:['重複仕訳','税区分の誤り','部門の付け漏れ','定期取引の欠け','貸借の一致'],mb:'371,512',mu:'円',ms:'2026年7月分で見つかった二重計上（書類名の付け間違いが原因）'},
+    {t:'締める',w:'CLOSE',by:'人が確認',h:'減価償却を確かめ、試算表を出す',p:'固定資産の減価償却を確かめたうえで月次を締め、試算表と月次レポートを出力します。2社分を順番に処理します。',tags:['減価償却の確認','試算表','月次レポート'],mb:'15',mu:'件',ms:'会計システムの固定資産台帳に登録した資産の数'},
+    {t:'活かす',w:'USE',by:'自動',h:'経営の資料に反映する',p:'締めた数字を、経営管理ファイル、物件ごとの収支、返済予定表、資金繰りの見通しへ反映します。金融機関との面談や、物件の取得の判断に、そのまま使える形にしています。',tags:['経営管理ファイル','物件ごとの収支','返済予定表','資金繰りの見通し'],mb:'7',mu:'工程',ms:'月末に1つの指示で続けて流す工程の数'},
+    {t:'直す',w:'IMPROVE',by:'人＋AI',h:'気づきを翌月の手順に戻す',p:'作業中に見つかった誤りや、人が判断した理由を改善の台帳に記録し、月の終わりに手順書と記帳ルールへ反映します。同じ誤りを翌月に繰り返さないための工程です。',tags:['改善の台帳','記帳の手順書','記帳ルールの更新'],mb:'毎月',mu:'',ms:'手順書と記帳ルールを見直す頻度'}
+  ];
+  var track=document.querySelector('.track'), dtl=document.getElementById('dtl'), railfill=document.getElementById('railfill'), stps=[], cur=-1, auto=null;
+  STEPS.forEach(function(st,i){ var b=document.createElement('button'); b.type='button'; b.className='stp'; b.setAttribute('aria-pressed','false');
+    b.innerHTML='<span class="c">'+'①②③④⑤⑥⑦⑧'.charAt(i)+'</span><span class="t">'+st.t+'</span><span class="w">'+st.w+'</span>';
+    b.addEventListener('click',function(){ stopAuto(); show(i); }); track.appendChild(b); stps.push(b); });
+  function show(i){ if(i===cur) return; cur=i; var st=STEPS[i];
+    stps.forEach(function(b,j){ b.setAttribute('aria-pressed',j===i?'true':'false'); b.classList.toggle('done',j<i); });
+    railfill.style.width=(i/(STEPS.length-1)*100)+'%';
+    var html='<div><span class="k">STEP '+(i+1)+' ／ '+st.by+'</span><h3>'+st.h+'</h3><p>'+st.p+'</p><ul>'+st.tags.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>'+
+      '<div class="m"><b>'+st.mb+(st.mu?'<small>'+st.mu+'</small>':'')+'</b><span>'+st.ms+'</span><em>'+st.by+'</em></div>';
+    if(ANIM){ dtl.classList.add('swap'); setTimeout(function(){ dtl.innerHTML=html; requestAnimationFrame(function(){ dtl.classList.remove('swap'); }); },220); } else dtl.innerHTML=html; }
+  function stopAuto(){ if(auto){ clearInterval(auto); auto=null; } }
+  function startFlow(){ show(0); if(ANIM){ stopAuto(); auto=setInterval(function(){ show((cur+1)%STEPS.length); },4200); } }
+  show(0);
 
   // ---------- 01 領収書から仕訳まで ----------
   function demo1(){
@@ -314,12 +491,31 @@ document.addEventListener('DOMContentLoaded',function(){
     if(ANIM) later(3,demo3,FLOWS.length*1500+2500);
   }
 
-  var runs={1:demo1,2:demo2,3:demo3}, started={};
+  // ---------- 04 店舗の日次処理と顧客カルテ ----------
+  function demo4(){
+    clear(4);
+    var lis=[].slice.call(document.querySelectorAll('#pipe4 li')), cl=[].slice.call(document.querySelectorAll('#clock span')), vc=document.getElementById('vc'),
+        mix=[].slice.call(document.querySelectorAll('#mix i')), memo=document.getElementById('memo'), bars=[].slice.call(document.querySelectorAll('#fac .tr i'));
+    var MIX=[55,30,15];
+    function reset(){ lis.forEach(function(e){e.classList.remove('on')}); cl.forEach(function(e){e.classList.remove('on')}); vc.textContent='2'; mix.forEach(function(e){e.style.width='0'}); memo.classList.remove('on'); bars.forEach(function(e){e.style.width='0';e.style.left='50%'}); }
+    function setBar(e){ var v=+e.dataset.v, w=Math.abs(v)/10*50; e.style.width=w+'%'; e.style.left=(v<0?50-w:50)+'%'; }
+    function final(){ lis.forEach(function(e){e.classList.add('on')}); cl[0].classList.add('on'); vc.textContent='3'; mix.forEach(function(e,i){e.style.width=MIX[i]+'%'}); memo.classList.add('on'); bars.forEach(setBar); }
+    reset(); if(!ANIM){ final(); return; }
+    cl[0].classList.add('on');
+    lis.forEach(function(e,i){ later(4,function(){ e.classList.add('on'); },400+i*900); });
+    later(4,function(){ vc.textContent='3'; mix.forEach(function(e,i){e.style.width=MIX[i]+'%'}); },4000);
+    later(4,function(){ memo.classList.add('on'); },4800);
+    bars.forEach(function(e,i){ later(4,function(){ setBar(e); },5400+i*450); });
+    [1,2,3].forEach(function(k){ later(4,function(){ cl.forEach(function(e,j){e.classList.toggle('on',j===k)}); },7600+k*700); });
+  }
+
+  var runs={1:demo1,2:demo2,3:demo3,4:demo4,flow:startFlow}, started={};
   document.querySelectorAll('.replay').forEach(function(b){ b.addEventListener('click',function(){ runs[b.dataset.demo](); }); });
   if(ANIM && 'IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ var id=e.target.id.slice(1); if(e.isIntersecting && !started[id]){ started[id]=1; runs[id](); } }); },{threshold:.35});
-    ['d1','d2','d3'].forEach(function(id){ io.observe(document.getElementById(id)); });
-  } else { demo1(); demo2(); demo3(); }
+    ['d1','d2','d3','d4'].forEach(function(id){ io.observe(document.getElementById(id)); });
+    new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !started.flow){ started.flow=1; startFlow(); } }); },{threshold:.3}).observe(document.getElementById('flow'));
+  } else { demo1(); demo2(); demo3(); demo4(); startFlow(); }
 });
 </script>
 </body>
