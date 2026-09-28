@@ -145,12 +145,13 @@ p{margin:0}
 .hero .vision .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .hero .vision .vc{display:block;white-space:nowrap;padding-left:var(--ls)}
 .hero .vision i{--st:calc(1em + var(--ls));display:inline-block;font-style:normal;letter-spacing:var(--ls);
-  background:linear-gradient(90deg,#1D4E9E 0%,#4867D6 20%,#8659C9 36%,#D23A63 50%,#8659C9 64%,#4867D6 80%,#1D4E9E 100%);
-  background-size:calc(var(--st) * 24) 100%;background-position:calc(var(--st) * (var(--flow) * 24 - var(--i))) 0;
+  background:linear-gradient(90deg,#1D4E9E 0%,#3F63CF 22%,#7A5BCB 42%,#D23A63 64%,#A04FB0 78%,#5A63D3 100%);
+  background-size:calc(var(--st) * 18) 100%;background-position:calc(var(--st) * (var(--flow) * -4 - var(--i))) 0;
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .anim .hero .vision i{opacity:0;filter:blur(14px);transform:translateY(.32em) scale(.94);transition:opacity 1.2s var(--ease),filter 1.5s var(--ease),transform 1.7s var(--ease);transition-delay:calc(.5s + var(--i) * .08s)}
 .anim.ready .hero .vision i{opacity:1;filter:blur(0);transform:none}
-.anim.ready .hero .vision{animation:flow 22s linear 3s infinite}
+/* 色の山（りんごの色）が文の後ろ寄りから中ほどへ寄って戻る。8秒で片道 */
+.anim.ready .hero .vision{animation:flow 8s ease-in-out 2.6s infinite alternate}
 @media (max-width:600px){
   [data-hero=band] .hero .copy .lab{font-size:10.5px;letter-spacing:.16em;gap:10px;white-space:nowrap}
   [data-hero=band] .hero .copy .lab::before,[data-hero=band] .hero .copy .lab::after{width:18px}
