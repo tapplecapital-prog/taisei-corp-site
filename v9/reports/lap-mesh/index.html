@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACRI③ 立地適正化計画は「残る場所」を当てているか — 居住誘導区域×メッシュ残存力スコアの実証監査</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+html,body{height:100%;overflow-x:hidden;}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;}
+.slide{width:100vw;height:100vh;height:100dvh;overflow:hidden;scroll-snap-align:start;display:flex;flex-direction:column;position:relative;}
+.slide-content{flex:1;display:flex;flex-direction:column;justify-content:center;max-height:100%;overflow:hidden;padding:var(--slide-padding);}
+:root{
+  --title-size:clamp(1.5rem,5vw,4rem);--h2-size:clamp(1.25rem,3.5vw,2.5rem);
+  --body-size:clamp(0.75rem,1.5vw,1.125rem);--small-size:clamp(0.65rem,1vw,0.875rem);
+  --slide-padding:clamp(1rem,4vw,4rem);--content-gap:clamp(0.5rem,2vw,2rem);--element-gap:clamp(0.25rem,1vw,1rem);
+  --bg:#f0f5fc;--navy:#0d3066;--text:#1a3a5c;--muted:#5a8ab5;--dim:#a0b8d0;
+  --accent:#1a5fb4;--green:#2e8b57;--green-bg:#dcfce7;--amber:#d97706;--amber-bg:#fff4d6;--red:#dc2626;--red-bg:#fde3e3;
+  --glass:rgba(255,255,255,0.6);--glass-border:rgba(255,255,255,0.75);--border-blue:rgba(26,95,180,0.12);
+  --shadow-sm:0 2px 12px rgba(0,40,100,0.05);--shadow:0 6px 28px rgba(0,40,100,0.08);
+  --radius:20px;--radius-md:14px;
+  --font-sans:'Noto Sans JP',system-ui,sans-serif;--font-num:'Inter','Noto Sans JP',sans-serif;
+  --grad:linear-gradient(135deg,#1a5fb4 0%,#0d3066 100%);
+}
+@media (max-height:700px){:root{--slide-padding:clamp(0.75rem,3vw,2rem);--h2-size:clamp(1rem,3vw,1.75rem);}}
+@media (max-height:600px){:root{--slide-padding:clamp(0.5rem,2.5vw,1.5rem);--body-size:clamp(0.7rem,1.2vw,0.95rem);}.nav-dots{display:none;}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;}html{scroll-behavior:auto;}}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:-10%;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 25% 15%,rgba(100,160,255,0.14) 0%,transparent 50%),radial-gradient(ellipse at 78% 25%,rgba(80,200,140,0.10) 0%,transparent 45%),radial-gradient(ellipse at 40% 72%,rgba(80,140,240,0.09) 0%,transparent 42%),radial-gradient(ellipse at 88% 82%,rgba(120,210,170,0.07) 0%,transparent 38%);
+  animation:aurora 22s ease-in-out infinite alternate;}
+@keyframes aurora{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-3%,2%) scale(1.03);}}
+.slide{z-index:1;}
+.kicker{font-family:var(--font-num);font-size:var(--small-size);letter-spacing:.3em;color:var(--accent);font-weight:700;text-transform:uppercase;}
+.disp{font-family:var(--font-num);color:var(--navy);font-weight:900;letter-spacing:-.01em;text-wrap:balance;}
+.eyebrow-rule{width:clamp(40px,5vw,72px);height:3px;background:var(--grad);border-radius:2px;margin:var(--element-gap) 0;}
+.reveal{opacity:0;transform:translateY(18px);}
+.slide.active .reveal{animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards;}
+.slide.active .r1{animation-delay:.05s}.slide.active .r2{animation-delay:.18s}.slide.active .r3{animation-delay:.31s}.slide.active .r4{animation-delay:.44s}.slide.active .r5{animation-delay:.57s}
+@keyframes rise{to{opacity:1;transform:none;}}
+.glass{background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:var(--radius);box-shadow:var(--shadow);}
+.nav-dots{position:fixed;right:clamp(10px,1.5vw,22px);top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:10px;}
+.nav-dots button{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--accent);background:transparent;cursor:pointer;padding:0;transition:.25s;}
+.nav-dots button.on{background:var(--accent);transform:scale(1.35);}
+.pageno{position:fixed;left:clamp(12px,2vw,26px);bottom:clamp(10px,2vh,22px);z-index:30;font-family:var(--font-num);font-size:var(--small-size);color:var(--muted);}
+.brandmark{position:fixed;right:clamp(14px,2.5vw,30px);bottom:clamp(10px,2vh,22px);z-index:30;font-family:var(--font-num);font-size:var(--small-size);color:var(--accent);font-weight:700;letter-spacing:.16em;display:flex;align-items:center;gap:.5em;}
+.brandmark .dot{width:.65em;height:.65em;border-radius:50%;background:var(--green);}
+.lead{font-size:var(--body-size);line-height:1.85;color:var(--text);max-width:64ch;text-wrap:pretty;}
+.lead strong{color:var(--navy);font-weight:700;}
+.metric-row{display:flex;flex-wrap:wrap;gap:clamp(.6rem,1.5vw,1.3rem);}
+.metric{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:var(--radius-md);box-shadow:var(--shadow-sm);padding:clamp(.7rem,1.6vw,1.4rem) clamp(.9rem,2vw,1.7rem);min-width:clamp(120px,16vw,200px);}
+.metric .n{font-family:var(--font-num);font-weight:800;font-size:clamp(1.4rem,3.6vw,2.7rem);line-height:1;}
+.metric .l{font-size:var(--small-size);color:var(--muted);margin-top:.5em;line-height:1.4;font-weight:500;}
+.killer{font-family:var(--font-num);font-weight:800;font-size:clamp(1.1rem,2.6vw,1.85rem);line-height:1.5;color:var(--navy);letter-spacing:-.01em;text-wrap:balance;}
+.killer em{font-style:normal;color:var(--accent);}
+.cards{display:grid;gap:clamp(.6rem,1.4vw,1rem);}
+.cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.c{background:var(--glass);backdrop-filter:blur(18px);border:1px solid var(--glass-border);border-left:4px solid var(--accent);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:clamp(.7rem,1.5vw,1.2rem) clamp(.8rem,1.6vw,1.3rem);box-shadow:var(--shadow-sm);}
+.c.g{border-left-color:var(--green);}.c.r{border-left-color:var(--red);}.c.y{border-left-color:var(--amber);}
+.c .h{font-weight:700;font-size:var(--body-size);color:var(--navy);margin-bottom:.35em;line-height:1.3;}
+.c .b{font-size:var(--small-size);color:var(--text);line-height:1.55;}
+.src{font-size:clamp(.6rem,.95vw,.8rem);color:var(--muted);line-height:1.7;}
+@media (max-width:700px){.cols-3,.cols-2{grid-template-columns:1fr;}}
+@media (max-height:640px){.c .b{font-size:clamp(.58rem,.95vw,.78rem);}}
+.tablecard{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:var(--radius);box-shadow:var(--shadow);padding:clamp(.5rem,1.2vw,1rem);overflow:hidden;}
+.tbl{width:100%;border-collapse:collapse;font-size:clamp(.55rem,1vw,.84rem);}
+.tbl th{background:var(--navy);color:#eaf2ff;padding:.45em .5em;text-align:left;font-weight:700;font-family:var(--font-num);}
+.tbl td{padding:.32em .5em;border-bottom:1px solid var(--border-blue);color:var(--text);line-height:1.25;}
+.tbl tr:nth-child(even) td{background:rgba(255,255,255,.4);}
+.tbl .sym{font-weight:700;color:var(--navy);text-align:center;font-family:var(--font-num);}
+.rk{text-align:center;font-weight:700;border-radius:6px;white-space:nowrap;padding:.1em .35em;}
+.rk.s{background:#e6e9fb;color:#2b2f7a;}.rk.a{background:var(--green-bg);color:#14624f;}.rk.b{background:var(--amber-bg);color:#8a5a08;}.rk.c{background:var(--red-bg);color:#a4262c;}
+.hl{font-weight:700;}.hl.g{color:var(--green);}.hl.r{color:var(--red);}.hl.a{color:var(--amber);}
+.hint{position:fixed;left:50%;bottom:clamp(8px,2vh,18px);transform:translateX(-50%);z-index:30;font-size:var(--small-size);color:var(--muted);opacity:.7;}
+</style>
+</head>
+<body>
+<div class="nav-dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 12</div>
+<div class="brandmark"><span class="dot"></span>APPLE CAPITAL ／ ACRI ③</div>
+
+<!-- 01 -->
+<section class="slide active" id="s1">
+ <div class="slide-content">
+  <div class="kicker reveal r1">あっぷる総研 ／ ACRI ③（夕張研究の継続）</div>
+  <div class="eyebrow-rule reveal r1"></div>
+  <h1 class="disp reveal r2" style="font-size:clamp(1.8rem,5.4vw,4.2rem);line-height:1.16;">立地適正化計画は<br>「残る場所」を当てているか</h1>
+  <p class="reveal r3" style="font-size:clamp(1rem,2.4vw,1.7rem);color:var(--muted);font-weight:700;margin-top:clamp(.6rem,1.5vh,1.2rem);">― 居住誘導区域 × メッシュ残存力スコアの実証監査 ―</p>
+  <p class="reveal r4" style="margin-top:clamp(1.1rem,3vh,2.2rem);font-size:var(--small-size);color:var(--accent);font-weight:700;">東北6県 28,207メッシュ ／ 立適6市の点-多角形判定 ／ 当社9物件の接合監査 ／ 敵対的査読3名</p>
+  <p class="reveal r5" style="margin-top:clamp(.9rem,2.3vh,1.6rem);font-size:var(--small-size);color:var(--muted);font-weight:500;">主任研究員 川上美咲 ／ オーケストレーション 桐島渉（IT推進部）　|　2026.06.22　|　PJ00-06 ACRI③</p>
+ </div>
+</section>
+
+<!-- 02 問い -->
+<section class="slide" id="s2">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第1章 ／ 問題設定</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">政策の線引きは、データの線引きと一致するか</h2>
+  <p class="lead reveal r2">夕張研究（ACRI②）の核心は「立適計画は未来の地価マップ」だった。区域内か外かが20年後の資産価値を二分する。ここで素朴な問いが立つ——<strong>その行政の線引きは、本当に"残る場所"を正しく当てているのか？</strong></p>
+  <p class="lead reveal r3" style="margin-top:var(--element-gap);">当社の<strong>「東北6県メッシュ格付けアトラス」（28,207の1kmメッシュを特S/A/B/Cで格付）</strong>を"データの線引き"とし、立適の<strong>居住誘導区域</strong>という"政策の線引き"と重ね合わせる。夕張・清水沢集約は、両者が高整合で引かれた<strong>"100点の答案"＝ground-truth</strong>。</p>
+  <div class="killer reveal r4 glass" style="margin-top:clamp(.8rem,2.5vh,1.8rem);padding:clamp(1rem,2.2vw,1.7rem);">行政が引いた"残す線"の内側に、<br>データが見限った土地は混じっていないか。</div>
+ </div>
+</section>
+
+<!-- 03 方法 -->
+<section class="slide" id="s3">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第2章 ／ データと方法</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">二系統で監査する</h2>
+  <div class="cards cols-2">
+   <div class="c reveal r2"><div class="h">データの線引き：メッシュ格付け</div><div class="b">東北6県 28,207メッシュ（特S647/A2,797/B7,237/C17,526）。3層合成＝市町村体力40%＋立地45%＋産業定性15%。重心座標・スコア・ランク・ハザードフラグを保有。</div></div>
+   <div class="c reveal r2"><div class="h">政策の線引き：居住誘導区域</div><div class="b">国土数値情報A50（立適区域・2020年度版）の居住誘導区域ポリゴン（A50_006=2）。</div></div>
+   <div class="c reveal r3"><div class="h">手法①：都市レベル</div><div class="b">A50ポリゴン×アトラス重心の<strong>点-多角形判定（ray-casting）</strong>で区域内/外を分類→平均score比較。</div></div>
+   <div class="c reveal r3"><div class="h">手法②：物件レベル</div><div class="b">当社東北9物件を住所→最近接1kmメッシュ（全件0.7km以内）に接合→ランク取得→区域監査と突合。</div></div>
+   <div class="c reveal r4" style="grid-column:1/-1;"><div class="h">検証：敵対的査読3名</div><div class="b">独立スクリプトで再計算。物件接合は2系統（ハーバサイン＋JISメッシュコード導出）で全9件一致、都市重合は6市すべてn・平均・分布が完全一致を確認。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 04 結論サマリー -->
+<section class="slide" id="s4">
+ <div class="slide-content">
+  <div class="kicker reveal r1">結論</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">立適は"残る場所"を概ね当てている</h2>
+  <div class="metric-row reveal r2">
+   <div class="metric"><div class="n" style="color:var(--green);">6/6</div><div class="l">立適市すべてで<br>区域内平均 ＞ 区域外平均</div></div>
+   <div class="metric"><div class="n" style="color:var(--accent);">+8.8〜<br>+16.2</div><div class="l">区域内−区域外の<br>平均scoreの差（点）</div></div>
+   <div class="metric"><div class="n" style="color:var(--green);">5/6</div><div class="l">区域内にC（最低）<br>メッシュがゼロ</div></div>
+  </div>
+  <div class="killer reveal r3 glass" style="margin-top:clamp(.8rem,2.5vh,1.8rem);padding:clamp(1rem,2.2vw,1.7rem);">立適は"残る場所"を当てている。<em>ただし、線引きがある場所だけ</em>だ。</div>
+ </div>
+</section>
+
+<!-- 05 都市レベル表 -->
+<section class="slide" id="s5">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第3章 ／ 結果① 都市レベル</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.2em 0 .4em;">区域×メッシュ 重ね合わせ（点-多角形判定）</h2>
+  <div class="tablecard reveal r2">
+   <table class="tbl">
+    <thead><tr><th>市</th><th>区域内 n／平均</th><th>区域外 n／平均</th><th style="text-align:center">差</th><th>整合</th></tr></thead>
+    <tbody>
+     <tr><td>郡山市</td><td>20／<b>77.2</b></td><td>449／61.0</td><td class="rk a">+16.2</td><td><span class="hl g">最も明瞭</span>（区域内 特S18集中）</td></tr>
+     <tr><td>花巻市</td><td>6／<b>62.4</b></td><td>472／47.5</td><td class="rk a">+14.9</td><td>強い整合（区域内 全A）</td></tr>
+     <tr><td>十和田市</td><td>8／<b>56.7</b></td><td>238／43.2</td><td class="rk a">+13.5</td><td>部分整合（区域内 主にB）</td></tr>
+     <tr><td>仙台市</td><td>13／<b>62.9</b></td><td>497／50.3</td><td class="rk a">+12.6</td><td>整合（特S+A率77%）</td></tr>
+     <tr><td>弘前市</td><td>22／<b>65.7</b></td><td>214／53.6</td><td class="rk a">+12.1</td><td>強い整合（区域内 全A）</td></tr>
+     <tr><td>青森市</td><td>32／<b>66.0</b></td><td>214／57.2</td><td class="rk a">+8.8</td><td>整合（特S+A率97%）</td></tr>
+     <tr><td>米沢市</td><td colspan="2" style="text-align:center;color:var(--muted)">判定不能</td><td>―</td><td class="hl a">A50-2020 未収録</td></tr>
+     <tr><td>南相馬市</td><td colspan="2" style="text-align:center;color:var(--muted)">判定不能</td><td>―</td><td class="hl a">A50-2020 未収録</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="src reveal r3" style="margin-top:.5em;">全6市で区域内 ＞ 区域外。構造的に弱い十和田すら区域内（主にB）が区域外（B101/C137）より明確に高い＝政策は相対的最良メッシュを掴む。米沢・南相馬は"区域なし"でなく"データ未収録"として誠実に除外。</p>
+ </div>
+</section>
+
+<!-- 06 物件クロス監査 -->
+<section class="slide" id="s6">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第4章 ／ 結果② 物件レベル</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.2em 0 .4em;">当社9物件 区域監査（政策）× メッシュランク（データ）</h2>
+  <div class="tablecard reveal r2">
+   <table class="tbl">
+    <thead><tr><th>記号</th><th>物件 / 市</th><th style="text-align:center">ランク</th><th>区域監査（政策）</th><th>政策 × データ 判定</th></tr></thead>
+    <tbody>
+     <tr><td class="sym">⑮</td><td>仙台 / 青葉区</td><td><span class="rk s">特S 82.7</span></td><td>区域内(推定)</td><td>一致：区域内×高（9件中最強）</td></tr>
+     <tr><td class="sym">⑨</td><td>弘前ウェストヒル / 弘前</td><td><span class="rk a">A 67.6</span></td><td>区域内(確定)</td><td>一致：区域内×高</td></tr>
+     <tr><td class="sym">⑦</td><td>米沢KS春日 / 米沢</td><td><span class="rk a">A 68.5</span></td><td>区域内(1-3丁目)</td><td>一致：区域内×高</td></tr>
+     <tr><td class="sym">④</td><td>メゾンドアーク / 青森</td><td><span class="rk a">A 65.5</span></td><td>区域内(境界)</td><td>一致：区域内×高</td></tr>
+     <tr><td class="sym">⑫</td><td>郡山グレースランド / 郡山</td><td><span class="rk a">A 69.2</span> 洪水</td><td>判定不能</td><td>保留（高ランクだが洪水フラグ）</td></tr>
+     <tr><td class="sym">⑬</td><td>十和田メゾントワダ / 十和田</td><td><span class="rk b">B 57.7</span></td><td>都市機能誘導内</td><td>保留（市の天井=Bに張付き）</td></tr>
+     <tr><td class="sym">⑭</td><td>南相馬MOMO / 南相馬</td><td><span class="rk b">B 57.4</span></td><td>立適なし(策定中)</td><td>保留（区域未確定）</td></tr>
+     <tr><td class="sym">⑪</td><td>花巻プリムローズ / 花巻</td><td><span class="rk a">A 59.0</span></td><td>区域<b>外</b></td><td><span class="hl r">乖離：底堅（区域外なのにA）★</span></td></tr>
+     <tr><td class="sym">⑧</td><td>宮城アーバン / 村田町</td><td><span class="rk c">C 43.3</span></td><td>立適なし</td><td>一致：区域外/撤退×低（撤退適地）</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="src reveal r3" style="margin-top:.5em;">区域内の純粋4件（④⑦⑨⑮）は全てA以上。<b>区域内×低ランクC（隠れリスク）は本9物件には不在</b>。誤接合ゼロ（査読2系統再現）。</p>
+ </div>
+</section>
+
+<!-- 07 乖離2型 -->
+<section class="slide" id="s7">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第7章 ／ 線引きの空白こそが論点</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">政策とデータがズレる、2つの方向</h2>
+  <div class="cards cols-2">
+   <div class="c r reveal r2"><div class="h">① 取りこぼし型（区域外 × A）</div><div class="b"><strong>⑪花巻プリムローズ</strong>。花巻市全体は特S+A率8%と低いなか、当該メッシュはA59.0＝市内の数少ない強メッシュ。<strong>居住誘導区域がこの強メッシュを区域外に取りこぼした</strong>可能性。区域外＝即・撤退ではない好例。</div></div>
+   <div class="c r reveal r3"><div class="h">② 無指定型（立適なし × C）</div><div class="b"><strong>⑧宮城アーバン（村田町）</strong>。立適計画そのものが存在せず、メッシュもC43.3。データ上"結果整合"だが、これは政策が当てたのではなく<strong>政策が不在なだけ</strong>——誘導区域という資産防衛線が存在しない。</div></div>
+  </div>
+  <div class="killer reveal r4 glass" style="margin-top:clamp(.8rem,2.5vh,1.6rem);padding:clamp(.9rem,2vw,1.6rem);font-size:clamp(1rem,2.3vw,1.6rem);">「線引きが残存力をよく当てている」のは、<br><em>線引きが存在する場所に限った話</em>だ。</div>
+ </div>
+</section>
+
+<!-- 08 MVV接続 -->
+<section class="slide" id="s8">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第5章 ／ MVV框組との接続</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">残存力という共通言語</h2>
+  <p class="lead reveal r2">本監査はMVV策定の評価哲学と<strong>構造的に同型</strong>。MVV設計の『人口増減でなく〈減っても賃貸需要と生活機能が残るか〉を見る』向きは、メッシュ残存力スコアと完全一致する。</p>
+  <div class="cards cols-3" style="margin-top:.6em;">
+   <div class="c reveal r3"><div class="h">7カテゴリ＝多変数分解</div><div class="b">人口20＋住宅20＋雇用18＋都市機能15＋交通12＋財政8＋災害7。上位3カテゴリ58点が「留まる/住む/働く」＝残存力の中核。</div></div>
+   <div class="c reveal r3"><div class="h">光る市町村＝雇用核</div><div class="b">「核隣接×工業立地が人を留める」＝雇用18点の操作化。⑨弘前（大学前駅至近）が区域内×A67.6で一致＝框組の妥当性を例示。</div></div>
+   <div class="c reveal r4"><div class="h">災害カテゴリ＝ハザード</div><div class="b">災害7点はメッシュ単位ハザードと直結。⑫郡山のflags＝洪水がその実例。高ランク=安全ではない。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 09 夕張anchor -->
+<section class="slide" id="s9">
+ <div class="slide-content" style="align-items:flex-start;">
+  <div class="kicker reveal r1">第6章 ／ 夕張という ground-truth</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">"100点の答案"からの距離で読む</h2>
+  <p class="lead reveal r2">夕張（清水沢集約）は本研究の定量サンプルではなく、<strong>定性的アンカー＝"100点の答案"</strong>。財政破綻後、全国に先駆けて managed shrinkage を都市政策の正面に据え、居住誘導区域を清水沢へ集約、既成市街地の約7割を区域外に置いた。この線引きは人口移動・空き家化という"データ側の残存力"と<strong>設計段階から高整合</strong>で引かれた。</p>
+  <p class="lead reveal r3" style="margin-top:var(--element-gap);">夕張は北海道でアトラス対象外＝同一指標空間での比較は不可。よって東北の結果を<strong>"夕張という到達点からの距離（乖離度）"</strong>として読む。<strong>⑧村田町（立適を持たない縮小都市）は、夕張の対極</strong>の具体例である。</p>
+ </div>
+</section>
+
+<!-- 10 賃貸戦略 -->
+<section class="slide" id="s10">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第8章 ／ 賃貸経営インサイト</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.2em 0 .5em;">取得基準の「第6軸」を持つ</h2>
+  <div class="cards cols-2">
+   <div class="c g reveal r2"><div class="h">① 第6軸＝メッシュ残存力ランク／雇用核徒歩圏</div><div class="b">利回り・LTV・DSCR・築年/構造・駅距離に加える。区域内×A以上=底固め（④⑦⑨⑮）／区域外×A=底堅で割安取得余地（⑪花巻型）／区域内×B/C=隠れリスク要警戒。</div></div>
+   <div class="c y reveal r3"><div class="h">② 立適なし都市はメッシュを独自基準に</div><div class="b">村田町・南相馬は"区域内=防衛線"が使えない。市全体の特S+A率（村田0%/南相馬1%/十和田0%）を都市の天井指標として保有規模を抑制。</div></div>
+   <div class="c y reveal r4"><div class="h">③ 区域内でも「市の天井」を過信しない</div><div class="b">⑬十和田は都市機能誘導内（中心拠点）だがB57.7＝市の天井に張付き。区域指定の有無より「区域内ランクの絶対水準」と「市全体の特S+A率」を併読。</div></div>
+   <div class="c r reveal r5"><div class="h">④ ハザードフラグは別軸で必ず併読</div><div class="b">⑫郡山はA69.2（高残存力市）だがflags＝洪水。高ランク=安全ではない。保険・修繕・出口で割り引く。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 限界 -->
+<section class="slide" id="s11">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第9章 ／ 限界（誠実な開示）</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">言い切れないこと</h2>
+  <div class="cards" style="gap:.6rem;">
+   <div class="c y reveal r2"><div class="b">米沢市・南相馬市は国土数値情報<strong>A50-2020に立適区域が未収録</strong>で都市レベル判定不能（"区域なし"でなく"データ未収録"）。A50最新が2020年度版のため2021年以降の区域変更は未反映。</div></div>
+   <div class="c y reveal r3"><div class="b">区域内に入る当社メッシュは6〜32件と少ない（誘導区域が中心市街地に局在）。仙台市はアトラスが市一括510メッシュで区域別集計不可。物件座標はジオコーディング推定を含む（⑮仙台＝町丁未特定の代表座標）。</div></div>
+   <div class="c y reveal r4"><div class="b">夕張は東北アトラス対象外のため定量比較不可、定性アンカーに留める。<strong>本稿は当社内部の研究記録であり投資助言ではない</strong>。推定箇所はすべて推定と明記した。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 12 結論+クレジット -->
+<section class="slide" id="s12">
+ <div class="slide-content" style="align-items:center;text-align:center;">
+  <div class="kicker reveal r1">第10章 ／ 結論</div>
+  <h2 class="disp reveal r2" style="font-size:clamp(1.5rem,4.2vw,3rem);margin:.4em 0;line-height:1.28;">区域内であることは、<br>もう"安全の証明"ではない。</h2>
+  <p class="lead reveal r3" style="margin:0 auto;">立適は東北6市すべてで"残る場所"を概ね当てていた。しかしそれは線引きがある場所だけの話。<strong>区域外なのにAの花巻、計画すら無い村田町</strong>——政策の線引きの空白を埋めるのは、<strong>大家自身が持つ「メッシュ残存力」という第6軸</strong>である。</p>
+  <p class="reveal r4" style="margin-top:clamp(1.2rem,3vh,2.2rem);font-family:var(--font-num);font-size:var(--small-size);color:var(--muted);">主任研究員 川上美咲 ／ IT推進部 桐島渉　|　2026.06.22　|　PJ00-06 ACRI③　|　夕張研究ACRI②の継続</p>
+  <p class="src reveal r4" style="margin-top:.7em;">出典：東北6県メッシュ格付けアトラス／国土数値情報A50（立適区域）／社人研2050／夕張市立適計画。※投資助言ではありません。</p>
+ </div>
+</section>
+
+<div class="hint" id="hint">↓ スクロール or ← → キー</div>
+<script>
+const slides=Array.from(document.querySelectorAll('.slide'));
+const dotsWrap=document.getElementById('dots'),pageno=document.getElementById('pageno'),hint=document.getElementById('hint');
+slides.forEach((s,i)=>{const b=document.createElement('button');b.setAttribute('aria-label','スライド'+(i+1));b.addEventListener('click',()=>s.scrollIntoView({behavior:'smooth'}));dotsWrap.appendChild(b);});
+const dots=Array.from(dotsWrap.children),pad=n=>String(n).padStart(2,'0');let current=0;
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const i=slides.indexOf(e.target);current=i;slides.forEach(s=>s.classList.remove('active'));e.target.classList.add('active');dots.forEach((d,j)=>d.classList.toggle('on',j===i));pageno.textContent=pad(i+1)+' / '+pad(slides.length);if(hint)hint.style.opacity=i===0?'.7':'0';}});},{threshold:.55});
+slides.forEach(s=>io.observe(s));
+addEventListener('keydown',(e)=>{if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();if(current<slides.length-1)slides[current+1].scrollIntoView({behavior:'smooth'});}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();if(current>0)slides[current-1].scrollIntoView({behavior:'smooth'});}if(e.key==='Home')slides[0].scrollIntoView({behavior:'smooth'});if(e.key==='End')slides[slides.length-1].scrollIntoView({behavior:'smooth'});});
+</script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACRI② 追加研究 — 保有13棟 × 立地適正化計画 区域監査</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== VIEWPORT FITTING BASE (full include) ===== */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); }
+:root {
+  --title-size: clamp(1.5rem, 5vw, 4rem); --h2-size: clamp(1.25rem, 3.5vw, 2.5rem); --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+  --body-size: clamp(0.75rem, 1.5vw, 1.125rem); --small-size: clamp(0.65rem, 1vw, 0.875rem);
+  --slide-padding: clamp(1rem, 4vw, 4rem); --content-gap: clamp(0.5rem, 2vw, 2rem); --element-gap: clamp(0.25rem, 1vw, 1rem);
+}
+.card, .container, .content-box { max-width: min(90vw, 1000px); max-height: min(80vh, 700px); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(0.5rem, 1.5vw, 1rem); }
+img { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
+@media (max-height: 700px) { :root { --slide-padding: clamp(0.75rem,3vw,2rem); --content-gap: clamp(0.4rem,1.5vw,1rem); --title-size: clamp(1.25rem,4.5vw,2.5rem); --h2-size: clamp(1rem,3vw,1.75rem);} }
+@media (max-height: 600px) { :root { --slide-padding: clamp(0.5rem,2.5vw,1.5rem); --content-gap: clamp(0.3rem,1vw,0.75rem); --title-size: clamp(1.1rem,4vw,2rem); --body-size: clamp(0.7rem,1.2vw,0.95rem);} .nav-dots,.keyboard-hint,.decorative{display:none;} }
+@media (max-height: 500px) { :root { --slide-padding: clamp(0.4rem,2vw,1rem); --title-size: clamp(1rem,3.5vw,1.5rem); --h2-size: clamp(0.9rem,2.5vw,1.25rem); --body-size: clamp(0.65rem,1vw,0.85rem);} }
+@media (max-width: 600px) { :root { --title-size: clamp(1.25rem,7vw,2.5rem);} .grid{grid-template-columns:1fr;} }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important;} html{scroll-behavior:auto;} }
+
+/* ===== APPLE CAPITAL GROUP — Aurora「霧氷」THEME ===== */
+:root{
+  --bg:#f0f5fc; --navy:#0d3066; --text:#1a3a5c; --muted:#5a8ab5; --dim:#a0b8d0;
+  --accent:#1a5fb4; --green:#2e8b57; --green-bg:#dcfce7; --amber:#d97706; --amber-bg:#fff4d6; --red:#dc2626; --red-bg:#fde3e3;
+  --glass:rgba(255,255,255,0.6); --glass-border:rgba(255,255,255,0.75); --border-blue:rgba(26,95,180,0.12);
+  --shadow-sm:0 2px 12px rgba(0,40,100,0.05); --shadow:0 6px 28px rgba(0,40,100,0.08);
+  --radius:20px; --radius-md:14px;
+  --font-sans:'Noto Sans JP',system-ui,sans-serif; --font-serif:'Noto Serif JP',serif; --font-num:'Inter','Noto Sans JP',sans-serif;
+  --grad:linear-gradient(135deg,#1a5fb4 0%,#0d3066 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{ background:var(--bg); color:var(--text); font-family:var(--font-sans); -webkit-font-smoothing:antialiased;}
+body::before{ content:""; position:fixed; inset:-10%; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse at 25% 15%, rgba(100,160,255,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 78% 25%, rgba(80,200,140,0.10) 0%, transparent 45%),
+    radial-gradient(ellipse at 40% 72%, rgba(80,140,240,0.09) 0%, transparent 42%),
+    radial-gradient(ellipse at 88% 82%, rgba(120,210,170,0.07) 0%, transparent 38%);
+  animation:aurora 22s ease-in-out infinite alternate;}
+@keyframes aurora{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-3%,2%) scale(1.03);}}
+.contour{ position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;}
+.contour svg{ width:100%; height:100%;}
+.slide{ z-index:1;}
+.kicker{ font-family:var(--font-num); font-size:var(--small-size); letter-spacing:.3em; color:var(--accent); font-weight:700; text-transform:uppercase;}
+.disp{ font-family:var(--font-serif); color:var(--navy); font-weight:900;}
+.serif{ font-family:var(--font-serif);}
+.num{ font-family:var(--font-num);}
+.eyebrow-rule{ width:clamp(40px,5vw,72px); height:3px; background:var(--grad); border-radius:2px; margin:var(--element-gap) 0;}
+.reveal{ opacity:0; transform:translateY(18px); }
+.slide.active .reveal{ animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards;}
+.slide.active .r1{animation-delay:.05s}.slide.active .r2{animation-delay:.18s}.slide.active .r3{animation-delay:.31s}.slide.active .r4{animation-delay:.44s}.slide.active .r5{animation-delay:.57s}.slide.active .r6{animation-delay:.70s}
+@keyframes rise{to{opacity:1;transform:none;}}
+.glass{ background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:var(--radius); box-shadow:var(--shadow);}
+.nav-dots{ position:fixed; right:clamp(10px,1.5vw,22px); top:50%; transform:translateY(-50%); z-index:30; display:flex; flex-direction:column; gap:10px;}
+.nav-dots button{ width:9px;height:9px;border-radius:50%;border:1.5px solid var(--accent); background:transparent; cursor:pointer; padding:0; transition:.25s;}
+.nav-dots button.on{ background:var(--accent); transform:scale(1.35);}
+.pageno{ position:fixed; left:clamp(12px,2vw,26px); bottom:clamp(10px,2vh,22px); z-index:30; font-family:var(--font-num); font-size:var(--small-size); color:var(--muted); letter-spacing:.1em;}
+.brandmark{ position:fixed; right:clamp(14px,2.5vw,30px); bottom:clamp(10px,2vh,22px); z-index:30; font-family:var(--font-num); font-size:var(--small-size); color:var(--accent); font-weight:700; letter-spacing:.16em; display:flex; align-items:center; gap:.5em;}
+.brandmark .dot{ width:.65em;height:.65em;border-radius:50%; background:var(--green);}
+.lead{ font-size:var(--body-size); line-height:1.85; color:var(--text); max-width:64ch;}
+.lead strong{ color:var(--navy); font-weight:700;}
+.metric-row{ display:flex; flex-wrap:wrap; gap:clamp(.6rem,1.5vw,1.3rem);}
+.metric{ background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:clamp(.7rem,1.6vw,1.4rem) clamp(.9rem,2vw,1.8rem); min-width:clamp(120px,16vw,200px);}
+.metric .n{ font-family:var(--font-num); font-weight:800; font-size:clamp(1.6rem,4vw,3rem); line-height:1;}
+.metric .l{ font-size:var(--small-size); color:var(--muted); margin-top:.5em; line-height:1.45; font-weight:500;}
+.cards{ display:grid; gap:clamp(.55rem,1.3vw,.95rem);}
+.cols-3{ grid-template-columns:repeat(3,minmax(0,1fr));}
+.cols-2{ grid-template-columns:repeat(2,minmax(0,1fr));}
+.c{ background:var(--glass); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid var(--glass-border); border-left:4px solid var(--accent); border-radius:0 var(--radius-md) var(--radius-md) 0; padding:clamp(.6rem,1.4vw,1.1rem) clamp(.7rem,1.5vw,1.2rem); box-shadow:var(--shadow-sm);}
+.c.g{border-left-color:var(--green);} .c.r{border-left-color:var(--red);} .c.y{border-left-color:var(--amber);}
+.c .h{ font-weight:700; font-size:var(--body-size); color:var(--navy); margin-bottom:.3em; line-height:1.3;}
+.c .b{ font-size:var(--small-size); color:var(--text); line-height:1.55;}
+.killer{ font-family:var(--font-serif); font-weight:700; font-size:clamp(1.1rem,2.7vw,1.95rem); line-height:1.55; color:var(--navy);}
+.killer em{ font-style:normal; color:var(--accent); }
+.src{ font-size:clamp(.6rem,.95vw,.8rem); color:var(--muted); line-height:1.75;}
+@media (max-width:700px){ .cols-3,.cols-2{grid-template-columns:1fr;} }
+@media (max-height:640px){ .c .b{font-size:clamp(.58rem,.95vw,.78rem);} }
+/* audit table */
+.tablecard{ background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:var(--radius); box-shadow:var(--shadow); padding:clamp(.5rem,1.2vw,1rem); overflow:hidden;}
+.audit{ width:100%; border-collapse:collapse; font-size:clamp(.58rem,1.05vw,.86rem); }
+.audit th{ background:var(--navy); color:#eaf2ff; padding:.5em .55em; text-align:left; font-weight:700; font-family:var(--font-num); }
+.audit td{ padding:.34em .55em; border-bottom:1px solid var(--border-blue); color:var(--text); line-height:1.25; vertical-align:middle;}
+.audit tr:nth-child(even) td{ background:rgba(255,255,255,.4);}
+.audit .sym{ font-weight:700; color:var(--navy); text-align:center; font-family:var(--font-num);}
+.rate{ text-align:center; font-weight:700; border-radius:6px; white-space:nowrap; padding:.15em .3em;}
+.rate.g{ background:var(--green-bg); color:#14624f;}
+.rate.y{ background:var(--amber-bg); color:#8a5a08;}
+.rate.r{ background:var(--red-bg); color:#a4262c;}
+.rate.w{ background:#ececec; color:#555;}
+.hint{ position:fixed; left:50%; bottom:clamp(8px,2vh,18px); transform:translateX(-50%); z-index:30; font-size:var(--small-size); color:var(--muted); opacity:.7;}
+</style>
+</head>
+<body>
+<div class="contour" aria-hidden="true">
+<svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
+ <g fill="none" stroke="rgba(26,95,180,.4)" stroke-width="1.1">
+  <path d="M-30,120 C200,60 380,200 560,130 S900,60 1030,160"/>
+  <path d="M-30,210 C200,150 380,290 560,220 S900,150 1030,250"/>
+  <path d="M-30,300 C200,240 380,380 560,310 S900,240 1030,340"/>
+  <path d="M-30,390 C200,330 380,470 560,400 S900,330 1030,430"/>
+  <path d="M-30,480 C200,420 380,560 560,490 S900,420 1030,520"/>
+  <path d="M-30,570 C200,510 380,650 560,580 S900,510 1030,610"/>
+ </g>
+ <g fill="none" stroke="rgba(46,139,87,.28)" stroke-width="1">
+  <path d="M-30,165 C200,105 380,245 560,175 S900,105 1030,205"/>
+  <path d="M-30,435 C200,375 380,515 560,445 S900,375 1030,475"/>
+ </g>
+</svg>
+</div>
+
+<div class="nav-dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 11</div>
+<div class="brandmark"><span class="dot"></span>APPLE CAPITAL ／ ACRI ②</div>
+
+<!-- 01 TITLE -->
+<section class="slide active" id="s1">
+ <div class="slide-content">
+  <div class="kicker reveal r1">あっぷる総研 ／ ACRI ② 追加研究</div>
+  <div class="eyebrow-rule reveal r1"></div>
+  <h1 class="disp reveal r2" style="font-size:clamp(1.9rem,6vw,4.6rem);line-height:1.16;">保有13棟 ×<br>立地適正化計画 区域監査</h1>
+  <p class="serif reveal r3" style="font-size:clamp(1rem,2.5vw,1.8rem);color:var(--muted);font-weight:700;margin-top:clamp(.6rem,1.5vh,1.2rem);">― 夕張の物差しを、自社ポートフォリオに当てる ―</p>
+  <p class="num reveal r4" style="margin-top:clamp(1.2rem,3vh,2.2rem);font-size:var(--small-size);font-weight:700;letter-spacing:.04em;">
+   <span style="color:var(--green);">🟢 保有継続 5</span>　/　<span style="color:var(--amber);">🟡 注視・保留 5</span>　/　<span style="color:var(--red);">🔴 出口検討 5（傾斜含む）</span></p>
+  <p class="reveal r5" style="margin-top:clamp(.9rem,2.3vh,1.6rem);font-size:var(--small-size);color:var(--muted);font-weight:500;">主任研究員 川上美咲 ／ オーケストレーション 桐島渉（IT推進部）　|　2026.06.21　|　PJ00-05 ACRI②</p>
+ </div>
+</section>
+
+<!-- 02 方法 -->
+<section class="slide" id="s2">
+ <div class="slide-content">
+  <div class="kicker reveal r1">方法 ／ 夕張の第一原則を自社に適用</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .5em;">「立適計画＝未来の地価マップ」を、13棟に引き直す</h2>
+  <p class="lead reveal r2">夕張②研究の核心は、<strong>居住誘導区域の内/外が、20年後の地価・賃貸需給・融資評価・出口流動性を先取りして二分する</strong>こと。この物差しを、当社保有13棟へ機械的に当てた。</p>
+  <div class="cards cols-2 reveal r3" style="margin-top:clamp(.6rem,1.5vh,1.2rem);">
+   <div class="c"><div class="h">① 各市の立適計画を特定</div><div class="b">所在市町村が都市再生特措法に基づく立地適正化計画を策定済みか（未策定＝セーフティネット不在）。</div></div>
+   <div class="c"><div class="h">② 区域の内/外を判定</div><div class="b">居住誘導区域・都市機能誘導区域に物件所在地が入るかを区域図・GISで推定。</div></div>
+   <div class="c"><div class="h">③ 敵対的独立検証</div><div class="b">各判定を別エージェントが一次ソースで再確認（同意/訂正）。</div></div>
+   <div class="c"><div class="h">④ 夕張8インサイトで提言</div><div class="b">保有継続／注視／出口検討の三択に翻訳。</div></div>
+  </div>
+  <p class="src reveal r4" style="margin-top:clamp(.6rem,1.5vh,1.2rem);">13棟並列・27サブエージェント・652ツール呼び出し・一次ソース裏取り。</p>
+ </div>
+</section>
+
+<!-- 03 結論 -->
+<section class="slide" id="s3">
+ <div class="slide-content">
+  <div class="kicker reveal r1">結論</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .7em;">13棟は、三層に割れた</h2>
+  <div class="metric-row reveal r2">
+   <div class="metric"><div class="n" style="color:var(--green);">5</div><div class="l">🟢 区域内アンカー<br>（保有継続）<br>⑥⑦⑨⑬⑮</div></div>
+   <div class="metric"><div class="n" style="color:var(--amber);">5</div><div class="l">🟡⚪ 注視・保留<br>（地番照会で確定）<br>②④⑩⑫⑭</div></div>
+   <div class="metric"><div class="n" style="color:var(--red);">3<span style="font-size:.5em">核+2</span></div><div class="l">🔴 出口検討<br>（区域外・立適なし）<br>③⑧⑪（+②⑩傾斜）</div></div>
+  </div>
+  <div class="killer reveal r3 glass" style="margin-top:clamp(.8rem,2.5vh,1.8rem);padding:clamp(1rem,2.2vw,1.7rem);">市場が縮退を織り込み切る前——つまり<em>今</em>——が、<br>区域外の資産を区域内アンカーへ入れ替える最適窓。</div>
+ </div>
+</section>
+
+<!-- 04 TABLE -->
+<section class="slide" id="s4">
+ <div class="slide-content">
+  <div class="kicker reveal r1">全13棟 区域監査マトリクス</div>
+  <div class="tablecard reveal r2" style="margin-top:.5em;">
+   <table class="audit">
+    <thead><tr><th>記号</th><th>物件</th><th>所在</th><th>区域判定</th><th style="text-align:center">評価</th><th>アクション</th></tr></thead>
+    <tbody>
+     <tr><td class="sym">⑨</td><td>弘前ウェストヒル</td><td>弘前市西ケ丘町</td><td>居住誘導区域内（確定）</td><td><div class="rate g">🟢</div></td><td>保有継続</td></tr>
+     <tr><td class="sym">⑬</td><td>十和田メゾントワダ</td><td>十和田市稲生町</td><td>都市機能誘導区域内（確定的）</td><td><div class="rate g">🟢</div></td><td>保有継続</td></tr>
+     <tr><td class="sym">⑥</td><td>江別パレルモ</td><td>江別市文京台東町</td><td>居住誘導区域内（推定）</td><td><div class="rate g">🟢</div></td><td>保有継続</td></tr>
+     <tr><td class="sym">⑮</td><td>仙台</td><td>仙台市青葉区</td><td>居住誘導区域内（推定）</td><td><div class="rate g">🟢</div></td><td>保有継続</td></tr>
+     <tr><td class="sym">⑦</td><td>米沢KS春日</td><td>米沢市春日</td><td>区域内（1-3丁目）※4-5は外</td><td><div class="rate g">🟢</div></td><td>保有継続（注視）</td></tr>
+     <tr><td class="sym">④</td><td>メゾンドアーク</td><td>青森市大字三内</td><td>居住誘導区域内（境界）</td><td><div class="rate y">🟡</div></td><td>注視</td></tr>
+     <tr><td class="sym">⑫</td><td>郡山グレースランド</td><td>郡山市安積町日出山</td><td>判定不能（駅800m圏外）</td><td><div class="rate w">⚪</div></td><td>注視</td></tr>
+     <tr><td class="sym">⑭</td><td>南相馬MOMO</td><td>南相馬市原町区錦町</td><td>立適なし（FY2026策定中）</td><td><div class="rate y">🟡</div></td><td>注視</td></tr>
+     <tr><td class="sym">②</td><td>ベイセジュール</td><td>岐阜市芥見嵯峨</td><td>居住誘導区域外（推定濃厚）</td><td><div class="rate r">🔴寄</div></td><td>注視→出口傾斜</td></tr>
+     <tr><td class="sym">⑩</td><td>札幌エクセレンス東苗穂</td><td>札幌市東区東苗穂</td><td>居住誘導区域外（推定）</td><td><div class="rate r">🔴</div></td><td>注視→出口傾斜</td></tr>
+     <tr><td class="sym">③</td><td>T-style広野</td><td>静岡市駿河区広野</td><td>区域外＋津波災害警戒区域</td><td><div class="rate r">🔴</div></td><td>出口検討（最優先）</td></tr>
+     <tr><td class="sym">⑪</td><td>花巻プリムローズ</td><td>花巻市西宮野目</td><td>区域外（GIS実測で確認）</td><td><div class="rate r">🔴</div></td><td>出口検討</td></tr>
+     <tr><td class="sym">⑧</td><td>宮城アーバン</td><td>柴田郡村田町</td><td>立適計画なし（非該当）</td><td><div class="rate r">🔴</div></td><td>出口検討</td></tr>
+    </tbody>
+   </table>
+  </div>
+  <p class="src reveal r3" style="margin-top:.5em;">確度：⑨⑬⑥⑧＝高／②③④⑦⑩⑪⑮＝中／⑫＝判定不能。多くは地番レベルのGIS照合が未達の「推定」を含む。</p>
+ </div>
+</section>
+
+<!-- 05 アンカー -->
+<section class="slide" id="s5">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第一層 ／ 🟢 区域内アンカー（保有継続）</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .5em;">誘導区域＋核施設で守られる5棟</h2>
+  <div class="cards cols-3">
+   <div class="c g reveal r2"><div class="h">⑨ 弘前ウェストヒル</div><div class="b">居住誘導区域内（確定）。弘前大・弘前学院大に挟まれ単身需要が厚い拠点側。</div></div>
+   <div class="c g reveal r2"><div class="h">⑬ 十和田メゾントワダ</div><div class="b">官庁街通り＝市の中心拠点（都市機能誘導区域内）。需要が残る核。</div></div>
+   <div class="c g reveal r3"><div class="h">⑥ 江別パレルモ</div><div class="b">居住誘導区域内。札幌通勤圏・大学近接で域内移転需要の受け皿。</div></div>
+   <div class="c g reveal r3"><div class="h">⑮ 仙台</div><div class="b">地方中枢都市で密度維持。青葉区中央・東部は居住維持エリア。</div></div>
+   <div class="c g reveal r4"><div class="h">⑦ 米沢KS春日</div><div class="b">区域内（春日1-3丁目）。ただし4-5丁目なら区域外＝丁目特定で要確定。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 06 リスク高 -->
+<section class="slide" id="s6">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第二層 ／ 🔴 リスク高（出口検討）</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .5em;">区域外・再編側・立適なしの5棟</h2>
+  <div class="cards cols-3">
+   <div class="c r reveal r2"><div class="h">③ T-style広野</div><div class="b">区域外＋津波災害警戒区域の二重。災害指定が地価・流動性・融資を同時に毀損。最優先で出口。</div></div>
+   <div class="c r reveal r2"><div class="h">⑧ 宮城アーバン（村田町）</div><div class="b">立適そのものが不在＝縮退セーフティネットゼロの非線引き小規模町。</div></div>
+   <div class="c r reveal r3"><div class="h">⑪ 花巻プリムローズ</div><div class="b">花巻駅北2.9kmで区域外（GIS実測で安定）。誘導の重心から外れる。</div></div>
+   <div class="c r reveal r3"><div class="h">⑩ 札幌エクセレンス東苗穂</div><div class="b">政令市でも誘導18拠点外＝中心部アンカーが届かぬ郊外。区域外の蓋然性高。</div></div>
+   <div class="c r reveal r4"><div class="h">② ベイセジュール（岐阜）</div><div class="b">芥見の誘導核から約1.65km・鉄道なし・白地。区域外濃厚（GIS確定待ち）。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 07 境界 -->
+<section class="slide" id="s7">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第三層 ／ 🟡⚪ 判定保留・境界</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .5em;">一本の地番照会で内/外が確定する3棟</h2>
+  <div class="cards cols-3">
+   <div class="c y reveal r2"><div class="h">④ メゾンドアーク（青森三内）</div><div class="b">住宅集積帯は区域内だが、南西フリンジ（工業側）は区域外。字・地番で割れる境界。高齢単身プロダクト適合余地。</div></div>
+   <div class="c y reveal r3"><div class="h">⑫ 郡山グレースランド</div><div class="b">安積永盛駅800m圏外で判定不能。バス停300m圏に掛かれば居住促進区域内。副次拠点近接で上振れ余地。</div></div>
+   <div class="c y reveal r4"><div class="h">⑭ 南相馬MOMO</div><div class="b">立適はFY2026策定中で未告示。原ノ町駅近・中心市街地で実質維持側。告示後の区域図で確定。</div></div>
+  </div>
+  <p class="lead reveal r5" style="margin-top:clamp(.6rem,1.5vh,1.2rem);">いずれも縮退側（🔴）ではなく、確定次第 保有強化へ転じる可能性も含む。</p>
+ </div>
+</section>
+
+<!-- 08 最優先アクション -->
+<section class="slide" id="s8">
+ <div class="slide-content">
+  <div class="kicker reveal r1">最優先アクション</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .5em;">動く順番</h2>
+  <div class="cards cols-2">
+   <div class="c r reveal r2"><div class="h">1. ③広野 — 出口検討に最優先着手</div><div class="b">「見捨てられる前に」が最も鋭い。鉄道圏外＋津波警戒の二重除外。市場が織り込む前の売却が分水嶺。</div></div>
+   <div class="c r reveal r2"><div class="h">2. ⑧村田町 — 出口方針を固める</div><div class="b">立適不在でGIS救済不能。実需（需給・売却可否）で出口の現実性を確認。確度高で即動ける。</div></div>
+   <div class="c g reveal r3"><div class="h">3. ⑦米沢 — 丁目・番地を特定し市照会</div><div class="b">1-3丁目なら🟢保有／4-5丁目なら🔴出口に反転。一本の照会で確定する費用対効果最大。</div></div>
+   <div class="c y reveal r3"><div class="h">4. ②岐阜 — 県GIS/都計課で区域確定</div><div class="b">区域外なら🔴に格上げできる「あと一歩」物件。</div></div>
+   <div class="c y reveal r4"><div class="h">5. ④青森・⑫郡山 — 地番照会で確定</div><div class="b">内なら保有・外なら出口の分岐点。境界/判定不能を解消。</div></div>
+   <div class="c r reveal r4"><div class="h">6. ⑩札幌 — web-GISで実測</div><div class="b">区域外確定なら、政令市の厚い売却市場を活かし区域内アンカーへ資本を再配分。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 09 戦略 -->
+<section class="slide" id="s9">
+ <div class="slide-content" style="align-items:flex-start;">
+  <div class="kicker reveal r1">戦略の三段構え</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">守る・確かめる・入れ替える</h2>
+  <div class="cards cols-3" style="width:100%;">
+   <div class="c g reveal r2"><div class="h">① 守る</div><div class="b">区域内アンカー（⑨⑥⑬⑮⑦）を核に据え、高齢単身・学生単身プロダクトへ最適化。</div></div>
+   <div class="c y reveal r3"><div class="h">② 確かめる</div><div class="b">一本の市照会/GISで確定する境界物件（②④⑦⑩⑫）を最優先で解消し、グレーを消す。</div></div>
+   <div class="c r reveal r4"><div class="h">③ 入れ替える</div><div class="b">断定できる🔴（③⑧⑪）から計画的に出口を確保し、空いた資本をアンカーへ再配分。</div></div>
+  </div>
+  <div class="killer reveal r5 glass" style="margin-top:clamp(.8rem,2.5vh,1.6rem);padding:clamp(.9rem,2vw,1.6rem);">区域外5棟は<em>「誘導区域による地価防衛が効かない」</em>。<br>縮退が始まる前に、資産を入れ替える局面。</div>
+ </div>
+</section>
+
+<!-- 10 留意 -->
+<section class="slide" id="s10">
+ <div class="slide-content">
+  <div class="kicker reveal r1">留意（投資助言ではない・確度）</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">この監査の使い方</h2>
+  <div class="cards" style="gap:.6rem;">
+   <div class="c y reveal r2"><div class="b">本研究は区域判定×夕張8インサイトの<strong>戦略整理</strong>であり、特定の売買を推奨する<strong>投資助言ではありません</strong>。取得/売却/保有は収支・融資・市場・税務を含め専門家相談のうえ自己責任で。</div></div>
+   <div class="c y reveal r3"><div class="b">区域内外の多くは<strong>地番レベルのGIS/区域図照合が未達の「推定」</strong>を含む（③⑩=確度中、⑫=判定不能、⑦は丁目次第で反転）。市役所窓口/GISでの確定を経るまで断定は避ける。</div></div>
+   <div class="c y reveal r4"><div class="b">区域内（🟢）も建物老朽化・空室は別評価。区域外（🔴）も即時売却の断定ではなく、出口の現実性（買い手・価格・融資）を確認した計画的判断が前提。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 クレジット -->
+<section class="slide" id="s11">
+ <div class="slide-content" style="align-items:center;text-align:center;">
+  <div class="kicker reveal r1">あっぷる総研 ／ ACRI ② 追加研究</div>
+  <h2 class="disp reveal r2" style="font-size:clamp(1.5rem,4.2vw,3rem);margin:.4em 0;line-height:1.3;">夕張の物差しは、<br>もう自社の地図に引けている。</h2>
+  <p class="lead reveal r3" style="margin:0 auto;">あとは、境界の5棟を一本の照会で確定し、区域外の資産を区域内アンカーへ入れ替えるだけ。縮退が始まる前に動けるかどうかが、次の10年の差になる。</p>
+  <p class="num reveal r4" style="margin-top:clamp(1.2rem,3vh,2.2rem);font-size:var(--small-size);color:var(--muted);">主任研究員 川上美咲 ／ IT推進部 桐島渉　|　2026.06.21　|　PJ00-05 ACRI②　|　区域監査の詳細はExcelマトリクス参照</p>
+  <p class="src reveal r4" style="margin-top:.7em;">※ 本稿は不動産・経済の調査研究であり、特定の投資判断を推奨するものではありません（投資助言ではありません）。</p>
+ </div>
+</section>
+
+<div class="hint" id="hint">↓ スクロール or ← → キー</div>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const dotsWrap = document.getElementById('dots');
+const pageno = document.getElementById('pageno');
+const hint = document.getElementById('hint');
+slides.forEach((s,i)=>{ const b=document.createElement('button'); b.setAttribute('aria-label','スライド'+(i+1));
+  b.addEventListener('click',()=>s.scrollIntoView({behavior:'smooth'})); dotsWrap.appendChild(b); });
+const dots = Array.from(dotsWrap.children);
+const pad = n => String(n).padStart(2,'0');
+let current = 0;
+const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){
+  const i = slides.indexOf(e.target); current=i;
+  slides.forEach(s=>s.classList.remove('active')); e.target.classList.add('active');
+  dots.forEach((d,j)=>d.classList.toggle('on', j===i));
+  pageno.textContent = pad(i+1)+' / '+pad(slides.length);
+  if(hint) hint.style.opacity = i===0 ? '.7' : '0';
+}});}, {threshold:.55});
+slides.forEach(s=>io.observe(s));
+addEventListener('keydown',(e)=>{
+  if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){ e.preventDefault(); if(current<slides.length-1) slides[current+1].scrollIntoView({behavior:'smooth'}); }
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); if(current>0) slides[current-1].scrollIntoView({behavior:'smooth'}); }
+  if(e.key==='Home'){ slides[0].scrollIntoView({behavior:'smooth'}); }
+  if(e.key==='End'){ slides[slides.length-1].scrollIntoView({behavior:'smooth'}); }
+});
+</script>
+</body>
+</html>

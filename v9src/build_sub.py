@@ -292,9 +292,9 @@ PAGES = {
         <div><b>5,561<small>万円</small></b><span>売上高（賃料等）</span></div>
         <div><b>4億8,187<small>万円</small></b><span>総資産（期末）</span></div>
       </div>
-      <div class="acts"><a class="btn" href="https://tapplecapital-prog.github.io/portfolio-portal/disclosure/kessan-setsumei-fy2026.html" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a><button class="btn line" type="button" data-viewer>このページで見る</button></div>
+      <div class="acts"><a class="btn" href="fy2026/" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a><button class="btn line" type="button" data-viewer>このページで見る</button></div>
     </article>
-    <div class="viewer rv" id="viewer" hidden><iframe title="第6期 決算説明資料" loading="lazy" data-src="https://tapplecapital-prog.github.io/portfolio-portal/disclosure/kessan-setsumei-fy2026.html"></iframe></div>
+    <div class="viewer rv" id="viewer" hidden><iframe title="第6期 決算説明資料" loading="lazy" data-src="fy2026/"></iframe></div>
   </div>
 </div></section>
 
@@ -305,7 +305,7 @@ PAGES = {
       <div class="dh"><span class="dt">2026年6月策定</span></div>
       <h3>不動産事業 中長期成長戦略</h3>
       <p>地方の収益不動産の市場が縮小していく中で、当社がどのように成長を図るかの方針をまとめた資料です。</p>
-      <div class="acts"><a class="btn line" href="https://tapplecapital-prog.github.io/portfolio-portal/strategy/index.html" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a></div>
+      <div class="acts"><a class="btn line" href="strategy/" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a></div>
     </article>
   </div>
 </div></section>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACRI② 夕張コンパクトシティの経済学 — 居住集約マップと縮小都市の賃貸経営戦略</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   VIEWPORT FITTING: MANDATORY BASE STYLES (full include)
+   =========================================== */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide {
+  width: 100vw; height: 100vh; height: 100dvh; overflow: hidden;
+  scroll-snap-align: start; display: flex; flex-direction: column; position: relative;
+}
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); }
+:root {
+  --title-size: clamp(1.5rem, 5vw, 4rem);
+  --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+  --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+  --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+  --small-size: clamp(0.65rem, 1vw, 0.875rem);
+  --slide-padding: clamp(1rem, 4vw, 4rem);
+  --content-gap: clamp(0.5rem, 2vw, 2rem);
+  --element-gap: clamp(0.25rem, 1vw, 1rem);
+}
+.card, .container, .content-box { max-width: min(90vw, 1000px); max-height: min(80vh, 700px); }
+.feature-list, .bullet-list { gap: clamp(0.4rem, 1vh, 1rem); }
+.feature-list li, .bullet-list li { font-size: var(--body-size); line-height: 1.4; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: clamp(0.5rem, 1.5vw, 1rem); }
+img, .image-container { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
+@media (max-height: 700px) { :root { --slide-padding: clamp(0.75rem,3vw,2rem); --content-gap: clamp(0.4rem,1.5vw,1rem); --title-size: clamp(1.25rem,4.5vw,2.5rem); --h2-size: clamp(1rem,3vw,1.75rem);} }
+@media (max-height: 600px) { :root { --slide-padding: clamp(0.5rem,2.5vw,1.5rem); --content-gap: clamp(0.3rem,1vw,0.75rem); --title-size: clamp(1.1rem,4vw,2rem); --body-size: clamp(0.7rem,1.2vw,0.95rem);} .nav-dots,.keyboard-hint,.decorative{display:none;} }
+@media (max-height: 500px) { :root { --slide-padding: clamp(0.4rem,2vw,1rem); --title-size: clamp(1rem,3.5vw,1.5rem); --h2-size: clamp(0.9rem,2.5vw,1.25rem); --body-size: clamp(0.65rem,1vw,0.85rem);} }
+@media (max-width: 600px) { :root { --title-size: clamp(1.25rem,7vw,2.5rem);} .grid{grid-template-columns:1fr;} }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important;} html{scroll-behavior:auto;} }
+
+/* ===========================================
+   APPLE CAPITAL GROUP — Aurora「霧氷」THEME
+   (tokens extracted from portfolio-portal / system-map / mission-control / taisei-corp)
+   =========================================== */
+:root{
+  --bg:#f0f5fc; --surface:#f8fafc;
+  --navy:#0d3066; --navy-ink:#0b1b3b;
+  --text:#1a3a5c; --muted:#5a8ab5; --dim:#a0b8d0;
+  --accent:#1a5fb4; --accent-deep:#0d3066;
+  --green:#2e8b57; --green-bg:#dcfce7; --amber:#d97706; --amber-bg:#fffbeb; --red:#dc2626; --red-bg:#fef2f2;
+  --glass:rgba(255,255,255,0.6); --glass-strong:rgba(255,255,255,0.82);
+  --glass-border:rgba(255,255,255,0.75); --border-blue:rgba(26,95,180,0.12); --border-blue-soft:rgba(26,95,180,0.06);
+  --shadow-sm:0 2px 12px rgba(0,40,100,0.05); --shadow:0 6px 28px rgba(0,40,100,0.08); --shadow-lg:0 16px 48px rgba(0,40,100,0.12);
+  --radius:20px; --radius-md:14px; --radius-sm:10px;
+  --font-sans:'Noto Sans JP',system-ui,-apple-system,sans-serif;
+  --font-serif:'Noto Serif JP',serif;
+  --font-num:'Inter','Noto Sans JP',sans-serif;
+  --grad-primary:linear-gradient(135deg,#1a5fb4 0%,#0d3066 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{ background:var(--bg); color:var(--text); font-family:var(--font-sans); -webkit-font-smoothing:antialiased;}
+/* Aurora animated atmosphere (group signature) */
+body::before{ content:""; position:fixed; inset:-10%; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse at 25% 15%, rgba(100,160,255,0.14) 0%, transparent 50%),
+    radial-gradient(ellipse at 78% 25%, rgba(80,200,140,0.10) 0%, transparent 45%),
+    radial-gradient(ellipse at 40% 72%, rgba(80,140,240,0.09) 0%, transparent 42%),
+    radial-gradient(ellipse at 88% 82%, rgba(120,210,170,0.07) 0%, transparent 38%);
+  animation:aurora 22s ease-in-out infinite alternate;}
+@keyframes aurora{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-3%,2%) scale(1.03);}}
+/* frost contour layer (map motif → frost blue) */
+.contour{ position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.45;}
+.contour svg{ width:100%; height:100%;}
+.slide{ z-index:1;}
+
+.kicker{ font-family:var(--font-num); font-size:var(--small-size); letter-spacing:.3em; color:var(--accent); font-weight:700; text-transform:uppercase;}
+.disp{ font-family:var(--font-serif); color:var(--navy); font-weight:900;}
+.serif{ font-family:var(--font-serif);}
+.num{ font-family:var(--font-num);}
+.eyebrow-rule{ width:clamp(40px,5vw,72px); height:3px; background:var(--grad-primary); border-radius:2px; margin:var(--element-gap) 0;}
+.reveal{ opacity:0; transform:translateY(18px); }
+.slide.active .reveal{ animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards;}
+.slide.active .r1{animation-delay:.05s}.slide.active .r2{animation-delay:.18s}.slide.active .r3{animation-delay:.31s}.slide.active .r4{animation-delay:.44s}.slide.active .r5{animation-delay:.57s}.slide.active .r6{animation-delay:.70s}
+@keyframes rise{to{opacity:1;transform:none;}}
+
+/* glass surface helper */
+.glass{ background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:var(--radius); box-shadow:var(--shadow);}
+
+/* nav */
+.nav-dots{ position:fixed; right:clamp(10px,1.5vw,22px); top:50%; transform:translateY(-50%); z-index:30; display:flex; flex-direction:column; gap:10px;}
+.nav-dots button{ width:9px;height:9px;border-radius:50%;border:1.5px solid var(--accent); background:transparent; cursor:pointer; padding:0; transition:.25s;}
+.nav-dots button.on{ background:var(--accent); transform:scale(1.35);}
+.pageno{ position:fixed; left:clamp(12px,2vw,26px); bottom:clamp(10px,2vh,22px); z-index:30; font-family:var(--font-num); font-size:var(--small-size); color:var(--muted); letter-spacing:.1em;}
+.brandmark{ position:fixed; right:clamp(14px,2.5vw,30px); bottom:clamp(10px,2vh,22px); z-index:30; font-family:var(--font-num); font-size:var(--small-size); color:var(--accent); font-weight:700; letter-spacing:.18em; display:flex; align-items:center; gap:.5em;}
+.brandmark .dot{ width:.65em;height:.65em;border-radius:50%; background:var(--green);}
+
+/* blocks */
+.tag{ display:inline-block; background:var(--grad-primary); color:#eaf2ff; font-family:var(--font-num); font-weight:700; font-size:var(--small-size); letter-spacing:.14em; padding:.45em 1.05em; border-radius:var(--radius-sm); box-shadow:var(--shadow-sm);}
+.lead{ font-size:var(--body-size); line-height:1.85; color:var(--text); max-width:64ch;}
+.lead strong{ color:var(--navy); font-weight:700;}
+.metric-row{ display:flex; flex-wrap:wrap; gap:clamp(.6rem,1.5vw,1.3rem);}
+.metric{ background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:var(--radius-md); box-shadow:var(--shadow-sm); padding:clamp(.7rem,1.6vw,1.4rem) clamp(.9rem,2vw,1.7rem); min-width:clamp(120px,15vw,180px);}
+.metric .n{ font-family:var(--font-num); font-weight:800; font-size:clamp(1.4rem,3.6vw,2.7rem); color:var(--accent-deep); line-height:1;}
+.metric .n small{ font-size:.5em; font-weight:700;}
+.metric .l{ font-size:var(--small-size); color:var(--muted); margin-top:.5em; line-height:1.45; font-weight:500;}
+
+/* district map */
+.mapwrap{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:clamp(1rem,3vw,3rem); align-items:center;}
+.mapcard{ background:var(--glass); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:var(--radius); box-shadow:var(--shadow); padding:clamp(.6rem,1.5vw,1.2rem);}
+.legend{ display:flex; flex-direction:column; gap:clamp(.5rem,1.2vh,1rem);}
+.lg{ display:flex; gap:.7em; align-items:flex-start;}
+.sw{ width:14px;height:14px;border-radius:4px;margin-top:.25em;flex:none; box-shadow:var(--shadow-sm);}
+.lg .t{ font-weight:700; font-size:var(--body-size); color:var(--navy);}
+.lg .d{ font-size:var(--small-size); color:var(--muted); line-height:1.45;}
+
+/* cards */
+.cards{ display:grid; gap:clamp(.6rem,1.4vw,1rem);}
+.cols-3{ grid-template-columns:repeat(3,minmax(0,1fr));}
+.cols-2{ grid-template-columns:repeat(2,minmax(0,1fr));}
+.c{ background:var(--glass); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid var(--glass-border); border-left:4px solid var(--accent); border-radius:0 var(--radius-md) var(--radius-md) 0; padding:clamp(.7rem,1.5vw,1.2rem) clamp(.8rem,1.6vw,1.3rem); box-shadow:var(--shadow-sm);}
+.c .h{ font-weight:700; font-size:var(--body-size); color:var(--navy); margin-bottom:.4em; line-height:1.3;}
+.c .b{ font-size:var(--small-size); color:var(--text); line-height:1.6;}
+.c.red{ border-left-color:var(--red);}
+.c.amber{ border-left-color:var(--amber);}
+.c .label{ font-family:var(--font-num); font-weight:700; font-size:.85em; letter-spacing:.02em;}
+.lg-y{ color:var(--green);} .lg-r{ color:var(--red);}
+@media (max-width:700px){ .cols-3,.cols-2{grid-template-columns:1fr;} .mapwrap{grid-template-columns:1fr;} }
+@media (max-height:640px){ .c .b{font-size:clamp(.6rem,.95vw,.8rem);} }
+.killer{ font-family:var(--font-serif); font-weight:700; font-size:clamp(1.1rem,2.7vw,1.95rem); line-height:1.55; color:var(--navy);}
+.killer em{ font-style:normal; color:var(--accent); }
+.src{ font-family:var(--font-sans); font-size:clamp(.6rem,.95vw,.8rem); color:var(--muted); line-height:1.75;}
+.hint{ position:fixed; left:50%; bottom:clamp(8px,2vh,18px); transform:translateX(-50%); z-index:30; font-size:var(--small-size); color:var(--muted); opacity:.7;}
+</style>
+</head>
+<body>
+
+<!-- ===== Aurora atmosphere is body::before; frost contour layer below ===== -->
+<div class="contour" aria-hidden="true">
+<svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice">
+ <g fill="none" stroke="rgba(26,95,180,.45)" stroke-width="1.1">
+  <path d="M-30,90 C200,30 380,170 560,100 S900,30 1030,130"/>
+  <path d="M-30,160 C200,100 380,240 560,170 S900,100 1030,200"/>
+  <path d="M-30,230 C200,170 380,310 560,240 S900,170 1030,270"/>
+  <path d="M-30,300 C200,240 380,380 560,310 S900,240 1030,340"/>
+  <path d="M-30,370 C200,310 380,450 560,380 S900,310 1030,410"/>
+  <path d="M-30,440 C200,380 380,520 560,450 S900,380 1030,480"/>
+  <path d="M-30,510 C200,450 380,590 560,520 S900,450 1030,550"/>
+  <path d="M-30,580 C200,520 380,660 560,590 S900,520 1030,620"/>
+  <path d="M-30,650 C200,590 380,730 560,660 S900,590 1030,690"/>
+ </g>
+ <g fill="none" stroke="rgba(46,139,87,.3)" stroke-width="1">
+  <path d="M-30,125 C200,65 380,205 560,135 S900,65 1030,165"/>
+  <path d="M-30,335 C200,275 380,415 560,345 S900,275 1030,375"/>
+  <path d="M-30,545 C200,485 380,625 560,555 S900,485 1030,585"/>
+ </g>
+</svg>
+</div>
+
+<div class="nav-dots" id="dots" aria-label="スライドナビ"></div>
+<div class="pageno" id="pageno">01 / 15</div>
+<div class="brandmark"><span class="dot"></span>APPLE CAPITAL ／ ACRI ②</div>
+
+<!-- ===== 01 TITLE ===== -->
+<section class="slide active" id="s1">
+ <div class="slide-content">
+  <div class="kicker reveal r1">あっぷる総研 ／ Apple Capital Research Institute ／ ②</div>
+  <div class="eyebrow-rule reveal r1"></div>
+  <h1 class="disp reveal r2" style="font-size:clamp(2rem,6.5vw,5rem);line-height:1.14;">夕張コンパクトシティ<br>の経済学</h1>
+  <p class="serif reveal r3" style="font-size:clamp(1rem,2.6vw,1.9rem);color:var(--muted);font-weight:700;margin-top:clamp(.6rem,1.5vh,1.2rem);">― 居住集約マップと、縮小都市の賃貸経営戦略 ―</p>
+  <p class="num reveal r4" style="margin-top:clamp(1.2rem,3vh,2.4rem);font-size:var(--small-size);color:var(--accent);font-weight:700;letter-spacing:.04em;">
+   <span style="display:inline-block;width:.7em;height:.7em;border-radius:50%;background:var(--green);box-shadow:0 0 0 .3em rgba(46,139,87,.18);vertical-align:middle;margin-right:.6em;"></span>中心拠点：清水沢（南清水沢）</p>
+  <p class="reveal r5" style="margin-top:clamp(1rem,2.5vh,1.8rem);font-size:var(--small-size);color:var(--muted);font-weight:500;">主任研究員 川上美咲 ／ オーケストレーション 桐島渉（IT推進部）　|　2026.06.21　|　PJ00-05</p>
+ </div>
+</section>
+
+<!-- ===== 02 なぜ夕張か ===== -->
+<section class="slide" id="s2">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第1章 ／ 問題設定</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">なぜ「夕張」を研究するのか</h2>
+  <p class="lead reveal r2">人口減少は遠い将来の話ではなく、当社が物件を持つ北海道・東北の多くの市町村で<strong>現在進行形の現実</strong>である。問いは単純だ——<span class="serif" style="color:var(--accent);font-weight:700;">「行政が街をたたみ始めるとき、賃貸需要と資産価値は、どこに残り、どこで消えるのか」</span></p>
+  <p class="lead reveal r3" style="margin-top:var(--element-gap);">夕張は財政破綻で「全市域を維持する」選択肢を最初に奪われ、居住エリアを<strong>明示的に選別する政策</strong>を日本で最も早く・最も徹底して実装した。すなわち夕張は、多くの地方都市が今後たどる縮小フェーズの<strong>「20年先の実験場」</strong>である。</p>
+  <div class="killer reveal r4 glass" style="margin-top:clamp(.8rem,2.5vh,1.8rem);padding:clamp(1rem,2.2vw,1.8rem);">行政が市街地の約7割を「居住誘導区域の外」に置いた瞬間、<br>そこの賃貸資産には<em>20年の賞味期限</em>がつく。</div>
+ </div>
+</section>
+
+<!-- ===== 03 規模感 ===== -->
+<section class="slide" id="s3">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第5章 ／ 縮小の規模感</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .7em;">「縮む」を、数字で見る</h2>
+  <div class="metric-row reveal r2">
+   <div class="metric"><div class="n">107,972<small>人</small></div><div class="l">人口ピーク（1960年・国勢調査）</div></div>
+   <div class="metric"><div class="n">5,699<small>人</small></div><div class="l">現在人口（2026年6月）＝約1/20</div></div>
+   <div class="metric"><div class="n">53.5<small>%</small></div><div class="l">高齢化率（全国最高水準）</div></div>
+  </div>
+  <div class="metric-row reveal r3" style="margin-top:clamp(.6rem,1.5vw,1.3rem);">
+   <div class="metric"><div class="n">28.7<small>%</small></div><div class="l">居住誘導区域／用途地域<br>＝市街地の約7割を区域外に</div></div>
+   <div class="metric"><div class="n">37.9<small>%</small></div><div class="l">清水沢の市内人口シェア<br>（縮小局面でも漸増）</div></div>
+   <div class="metric"><div class="n">約4割</div><div class="l">公営住宅に住む世帯の比率<br>（民間賃貸は1割未満）</div></div>
+  </div>
+  <p class="src reveal r4" style="margin-top:clamp(.8rem,2vh,1.6rem);">出典：夕張市公式統計／総務省 国勢調査／国立社会保障・人口問題研究所 将来推計／夕張市立地適正化計画（令和3年3月）</p>
+ </div>
+</section>
+
+<!-- ===== 04 計画の三層構造 ===== -->
+<section class="slide" id="s4">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第3章 ／ 計画の三層構造</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .7em;">居住エリアは、3つの計画で形づくられた</h2>
+  <div class="cards cols-3">
+   <div class="c reveal r2"><div class="h">2012年3月<br>まちづくりMP</div><div class="b">将来都市構造＝<strong>2骨格軸・1都市拠点（清水沢）・4地域内再編地区</strong>。清水沢を唯一の都市拠点に一極集約。</div></div>
+   <div class="c reveal r3"><div class="h">2021年3月<br>立地適正化計画（法定）</div><div class="b">都市再生特措法に基づく法定計画。「<strong>2骨格軸・3拠点（若菜・清水沢・紅葉山）</strong>」へ更新（災害時の孤立回避で分散）。</div></div>
+   <div class="c reveal r4"><div class="h">2022年3月<br>コンパクトシティ構想</div><div class="b">〜2030年の実行計画。清水沢を「<strong>人を誘いにぎわいがある都市拠点</strong>」と明記し具体化。</div></div>
+  </div>
+  <p class="lead reveal r5" style="margin-top:clamp(.8rem,2vh,1.6rem);">コンパクト化の実体は<strong>「区域の絞り込み」</strong>。居住誘導区域は296.9ha＝用途地域1,033haの約28.7%にすぎず、市街地の約7割を区域の外に置いた。設定基準は「2040年に人口密度2人/ha以上のメッシュ」、土砂災害警戒区域は除外。</p>
+ </div>
+</section>
+
+<!-- ===== 05 結論：中心＝清水沢 ===== -->
+<section class="slide" id="s5">
+ <div class="slide-content" style="align-items:flex-start;">
+  <div class="kicker reveal r1">結論①</div>
+  <h2 class="disp reveal r1" style="font-size:clamp(1.6rem,4.5vw,3.4rem);margin:.2em 0 .5em;line-height:1.22;">居住集約の中心は<br><span style="color:var(--accent);">清水沢（南清水沢）</span>。<br>かつての中心・本町ではない。</h2>
+  <p class="lead reveal r3">敵対的査読3名が独立検証し、全員が <span class="num" style="color:var(--green);font-weight:700;">high confidence</span> で支持。核は拠点複合施設<strong>「りすた」</strong>（2020年3月開所＝図書館＋バス＋子育て＋市役所支所）。さらに市役所本庁舎ごと、本町から南清水沢「りすた北側」へ移転する（2030年度供用予定）。</p>
+  <p class="lead reveal r4" style="margin-top:var(--element-gap);"><span style="color:var(--accent);font-weight:700;">中心は土地の格ではなく、行政が「人を残す」と決めた線で決まる。</span>旧行政中心の本町は、むしろ「地域再編地区」＝新規居住の抑制側に回った。</p>
+ </div>
+</section>
+
+<!-- ===== 06 地区別マップ ===== -->
+<section class="slide" id="s6">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第3章 ／ 居住集約マップ</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.2em 0 .5em;">都市骨格軸（南北）に沿って、残す・畳むを線引き</h2>
+  <div class="mapwrap">
+   <div class="mapcard reveal r2" aria-label="夕張の都市骨格軸と地区分類">
+    <svg viewBox="0 0 360 380" style="width:100%;height:auto;max-height:54vh;" role="img" aria-label="南北の都市骨格軸に沿った地区の分類図">
+     <line x1="120" y1="30" x2="120" y2="350" stroke="#1a5fb4" stroke-width="3" stroke-dasharray="2 5" opacity=".55"/>
+     <text x="120" y="18" text-anchor="middle" font-family="Inter" font-size="11" fill="#5a8ab5">北 ▲ 都市骨格軸</text>
+     <g font-family="Noto Sans JP" font-size="13" font-weight="700">
+      <circle cx="120" cy="55" r="9" fill="#dc2626"/><text x="138" y="59" fill="#a4262c">本庁（撤退側）</text>
+      <circle cx="120" cy="110" r="11" fill="#1a5fb4"/><text x="140" y="114" fill="#0d3066">若菜（医療拠点）</text>
+      <circle cx="120" cy="180" r="18" fill="#0d3066"/><text x="146" y="178" fill="#0d3066" font-size="14">清水沢</text><text x="146" y="193" fill="#5a8ab5" font-size="10">中心・都市拠点</text>
+      <circle cx="120" cy="245" r="9" fill="#d97706"/><text x="138" y="249" fill="#9a5a08">沼ノ沢（維持）</text>
+      <circle cx="120" cy="300" r="11" fill="#1a5fb4"/><text x="140" y="304" fill="#0d3066">紅葉山（交流拠点）</text>
+      <circle cx="44" cy="150" r="8" fill="#dc2626" opacity=".85"/><text x="2" y="135" fill="#a4262c" font-size="11">真谷地</text><text x="2" y="172" fill="#a4262c" font-size="9">空家50%・撤退</text>
+      <circle cx="48" cy="320" r="8" fill="#dc2626" opacity=".85"/><text x="2" y="345" fill="#a4262c" font-size="11">南部（撤退）</text>
+      <line x1="120" y1="180" x2="52" y2="150" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
+      <line x1="120" y1="300" x2="56" y2="320" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
+     </g>
+     <text x="120" y="368" text-anchor="middle" font-family="Inter" font-size="11" fill="#5a8ab5">南 ▼ 新夕張・道の駅</text>
+    </svg>
+   </div>
+   <div class="legend">
+    <div class="lg reveal r3"><span class="sw" style="background:#0d3066;"></span><div><div class="t">誘導の中心：清水沢</div><div class="d">市内最多人口（市の約37%）・市内唯一の小中高・りすた・新市庁舎移転先</div></div></div>
+    <div class="lg reveal r3"><span class="sw" style="background:#1a5fb4;"></span><div><div class="t">集約先：若菜／紅葉山</div><div class="d">若菜＝医療拠点（診療所核）／紅葉山＝交流・観光拠点（JR・高速IC・道の駅）</div></div></div>
+    <div class="lg reveal r4"><span class="sw" style="background:#d97706;"></span><div><div class="t">維持：沼ノ沢</div><div class="d">生産地区だが居住誘導区域に含む特異点</div></div></div>
+    <div class="lg reveal r5"><span class="sw" style="background:#dc2626;"></span><div><div class="t">非誘導・実質撤退：本庁・真谷地・南部・楓/登川</div><div class="d">新規居住を抑制。住替え時は拠点へ誘導。真谷地は公営空家率50.4%で住棟集約を実施</div></div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ===== 07 精緻化 ===== -->
+<section class="slide" id="s7">
+ <div class="slide-content">
+  <div class="kicker reveal r1">査読による精緻化</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">「清水沢だけ」ではない、が「清水沢が中核」</h2>
+  <div class="cards cols-3">
+   <div class="c reveal r2"><div class="h">① 3拠点制への更新</div><div class="b">2021年に集約先は「清水沢のみ」から「若菜・清水沢・紅葉山」へ分散。ただし清水沢は<strong>唯一の“市の中心＝都市拠点”</strong>。</div></div>
+   <div class="c amber reveal r3"><div class="h">② 強制移転ではない</div><div class="b">住民意向ベース・対話前提。「居住誘導区域外に住み続けることを否定しない」と明記。実装は漸進的で<strong>現在進行中</strong>。</div></div>
+   <div class="c red reveal r4"><div class="h">③ 一極集約には未収束</div><div class="b">2023年に市立診療所が清水沢でなく若菜へ移転し、住民から「<strong>コンパクトシティ後退</strong>」批判。機能配置はなお調整中。</div></div>
+  </div>
+  <p class="src reveal r5" style="margin-top:clamp(.8rem,2vh,1.6rem);">出典：夕張市立地適正化計画・コンパクトシティ構想（一次）／瀬戸口剛 北大教授 LIJ2013（学術）／北海道新聞（報道）。命題のコア「中心＝清水沢、本町ではない」は2012年版・2021年版とも不変。</p>
+ </div>
+</section>
+
+<!-- ===== 08 メカニズム ===== -->
+<section class="slide" id="s8">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第4章 ／ 集約の作動メカニズム</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">どうやって人を寄せたか（強制せずに）</h2>
+  <div class="cards cols-2">
+   <div class="c reveal r2"><div class="h">1. 法定区域の二段構え</div><div class="b">拠点で住宅供給・補助の「呼び込み」、地域再編地区で新規居住の「抑制」。区域外開発は届出義務。</div></div>
+   <div class="c reveal r2"><div class="h">2. 市営住宅を集約レバーに</div><div class="b">公営住宅が全世帯の約4割。真谷地で入居者を特定棟へ寄せ、空棟を除却して維持費削減（2013-14年度）。</div></div>
+   <div class="c reveal r3"><div class="h">3. 経済的誘導</div><div class="b">子育て世帯の取得・家賃補助、高齢世帯のサ高住・グループホーム転用、市内住替え支援。</div></div>
+   <div class="c reveal r3"><div class="h">4. 拠点核施設の求心力</div><div class="b">「りすた」、若菜の診療所、清水沢の小中高。生活機能を物理的に集めて引力を作る。</div></div>
+   <div class="c amber reveal r4" style="grid-column:1/-1;"><div class="h">5. 生活サービスの差別的維持（managed shrinkage）</div><div class="b">再編地区は即時撤退せず、新規抑制＋将来困難の明示＋移転時の拠点誘導という「時間をかけた緩やかな撤退」。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- ===== 09 第二部 扉 ===== -->
+<section class="slide" id="s9">
+ <div class="slide-content" style="align-items:flex-start;">
+  <div class="kicker reveal r1">第6章 ／ 考察</div>
+  <div class="eyebrow-rule reveal r1"></div>
+  <h2 class="disp reveal r2" style="font-size:clamp(1.8rem,5vw,3.6rem);line-height:1.22;">第二部<br>縮小フェーズ都市の<br>賃貸経営戦略</h2>
+  <p class="lead reveal r3" style="margin-top:var(--element-gap);">夕張は「日本の地方賃貸の20年後を先取りした実験場」。ここから当社（北海道・東北を中心に地方賃貸を運用するあっぷるキャピタル）への含意を、<strong>8つのインサイト</strong>＝「夕張の根拠 → 当社への適用 → リスク」で抽出する。</p>
+ </div>
+</section>
+
+<!-- ===== 10 インサイト 1-4 ===== -->
+<section class="slide" id="s10">
+ <div class="slide-content">
+  <div class="kicker reveal r1">インサイト ①〜④</div>
+  <div class="cards cols-2" style="margin-top:.4em;">
+   <div class="c reveal r2"><div class="h">① 立適計画＝未来の地価マップ</div><div class="b"><span class="label lg-y">適用：</span>保有・候補物件が各市の居住誘導区域の「内/外」かを取得DDの正式項目に。区域内＝需要の最後の砦。<br><span class="label lg-r">リスク：</span>計画は改定される（1→3拠点）。</div></div>
+   <div class="c reveal r3"><div class="h">② 拠点核施設の徒歩圏が最後の優良立地</div><div class="b"><span class="label lg-y">適用：</span>病院・学校・スーパー・駅の徒歩圏を評価軸に。医療と教育は最後まで残り需要を固定。<br><span class="label lg-r">リスク：</span>核施設自体が移転する（診療所の例）。</div></div>
+   <div class="c reveal r4"><div class="h">③ 公営住宅の動向が競合を決める</div><div class="b"><span class="label lg-y">適用：</span>公営ストック量・再編計画を把握。公営と被らない層へターゲットをずらす。除却進行で民間に需要流出。<br><span class="label lg-r">リスク：</span>優先入居枠拡充で需要を公営に吸われる。</div></div>
+   <div class="c reveal r5"><div class="h">④ 需要は「高齢×単身×低家賃」へ</div><div class="b"><span class="label lg-y">適用：</span>大型ファミリーより、バリアフリー単身・見守り・近接医療型へプロダクト転換。<br><span class="label lg-r">リスク：</span>孤独死・原状回復・滞納。保証会社併用が前提。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- ===== 11 インサイト 5-8 ===== -->
+<section class="slide" id="s11">
+ <div class="slide-content">
+  <div class="kicker reveal r1">インサイト ⑤〜⑧</div>
+  <div class="cards cols-2" style="margin-top:.4em;">
+   <div class="c reveal r2"><div class="h">⑤ 域内移転需要を捕捉する</div><div class="b"><span class="label lg-y">適用：</span>衰退地区の戸建より、拠点地区の管理RC賃貸を厚く持ち、家じまい・住替えの受け皿に。<br><span class="label lg-r">リスク：</span>集約は遅い（住替え意向「考えない」約50%）。</div></div>
+   <div class="c reveal r3"><div class="h">⑥ 出口は「見捨てられる前」に</div><div class="b"><span class="label lg-y">適用：</span>区域外/再編地区の物件は稼働があるうちに売却前倒し。売却基準に「立適計画 区域外」をトリガー追加。<br><span class="label lg-r">リスク：</span>早すぎる売却＝機会損失。</div></div>
+   <div class="c reveal r4"><div class="h">⑦ 重心を政令市・中核市中心部へ</div><div class="b"><span class="label lg-y">適用：</span>札幌・仙台をアンカーに。地方小都市は「拠点内・高利回り・短期回収」の回転型と割り切る。<br><span class="label lg-r">リスク：</span>政令市は利回りが低く基準11%と両立しにくい。</div></div>
+   <div class="c reveal r5"><div class="h">⑧ 「2人/ha」を第5基準にする</div><div class="b"><span class="label lg-y">適用：</span>利回り・築年・稼働・年収の4基準に「500mメッシュ20年後人口密度」を追加（RESAS/社人研/国交省）。<br><span class="label lg-r">リスク：</span>推計の粒度・不確実性＝補助指標として運用。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- ===== 12 結論 ===== -->
+<section class="slide" id="s12">
+ <div class="slide-content" style="align-items:flex-start;">
+  <div class="kicker reveal r1">第8章 ／ 結論</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">縮小は、立地の差を「むき出し」にする</h2>
+  <p class="lead reveal r2">夕張が示したのは「人口が減る」こと自体ではなく、<strong>「行政が、残す場所と畳む場所を線引きする」</strong>という事実だ。中心は固定ではなく、政策で移動する（本町→清水沢）。</p>
+  <div class="killer reveal r3 glass" style="margin-top:clamp(.8rem,2.5vh,1.8rem);padding:clamp(1rem,2.2vw,1.8rem);">利回り・築年・稼働の次に、こう問う。<br>「この物件は、行政が20年後も人を残すと決めた<em>線の内側</em>にあるか」</div>
+  <p class="lead reveal r4" style="margin-top:clamp(.8rem,2.5vh,1.6rem);">その地図＝立地適正化計画は、行政自身が描いて<strong>すでに公開している</strong>。次にすべきは、当社の保有13棟と新規候補を、この地図の上に一棟ずつ置き直すことである。</p>
+ </div>
+</section>
+
+<!-- ===== 13 限界 ===== -->
+<section class="slide" id="s13">
+ <div class="slide-content">
+  <div class="kicker reveal r1">第7章 ／ 限界（誠実な開示）</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">この研究で言い切れないこと</h2>
+  <div class="cards" style="gap:.6rem;">
+   <div class="c amber reveal r2"><div class="b">居住誘導区域の<strong>地区別ha値</strong>はPDF図ラベルのレイアウト抽出で図上配置の推定を含む（総量296.9ha・101.1haは本文明記で確実）。</div></div>
+   <div class="c amber reveal r3"><div class="b">真谷地の<strong>除却棟数</strong>は報道（二次情報）由来。確定値は「夕張市営住宅等長寿命化計画」原文の追加取得が必要。</div></div>
+   <div class="c amber reveal r4"><div class="b">拠点地区別の高齢化率公表値・令和5年空き家率の確定一次値は<strong>未取得</strong>＝要追加照会。第6章の各インサイトは夕張の単一事例からの一般化であり、物件別の個別検証を要する。</div></div>
+  </div>
+ </div>
+</section>
+
+<!-- ===== 14 出典 ===== -->
+<section class="slide" id="s14">
+ <div class="slide-content">
+  <div class="kicker reveal r1">出典一覧（主要・一次資料）</div>
+  <h2 class="disp reveal r1" style="font-size:var(--h2-size);margin:.3em 0 .6em;">すべて公的一次ソースで裏取り</h2>
+  <div class="glass reveal r2" style="padding:clamp(1rem,2.2vw,1.8rem);">
+   <div class="src" style="font-size:clamp(.65rem,1vw,.85rem);columns:2;column-gap:clamp(1rem,3vw,2.5rem);color:var(--text);">
+    ・夕張市『立地適正化計画』令和3年3月（本編・概要版）<br>
+    ・夕張市『コンパクトシティ構想』令和4年3月（建設課）<br>
+    ・夕張市『まちづくりマスタープラン』H24策定/R3改訂<br>
+    ・夕張市『都市機能誘導区域と居住誘導区域を定めています』<br>
+    ・瀬戸口剛（北大）『人口激減都市夕張市における集約型コンパクトシティへの計画支援』土地総合研究2013春号<br>
+    ・夕張市公式 人口・高齢化統計／総務省 国勢調査／社人研 将来推計<br>
+    ・総務省『夕張市財政再生計画の概要』<br>
+    ・（補完）三菱総研／Wedge／北海道新聞／日本経済新聞／nippon.com<br>
+   </div>
+  </div>
+  <p class="lead reveal r3" style="margin-top:clamp(1rem,3vh,1.8rem);font-size:var(--small-size);color:var(--muted);">研究run：23サブエージェント並列・531ツール呼び出し・敵対的査読3名。中間データと出典は本PJの data/ に provenance として永続化。</p>
+ </div>
+</section>
+
+<!-- ===== 15 クレジット ===== -->
+<section class="slide" id="s15">
+ <div class="slide-content" style="align-items:center;text-align:center;">
+  <div class="kicker reveal r1">あっぷる総研 ／ ACRI ②</div>
+  <h2 class="disp reveal r2" style="font-size:clamp(1.6rem,4.5vw,3.2rem);margin:.4em 0;line-height:1.3;">夕張は失敗例ではない。<br>畳み方を、一番早く言語化した街だ。</h2>
+  <p class="lead reveal r3" style="margin:0 auto;">人口が減るかどうかではない。「残す場所と畳む場所を、誰かが線引きする」——その線を、自分の物件の地図に引き直すこと。それが縮小時代の大家の仕事である。</p>
+  <p class="num reveal r4" style="margin-top:clamp(1.4rem,3.5vh,2.6rem);font-size:var(--small-size);color:var(--muted);">主任研究員 川上美咲 ／ IT推進部 桐島渉　|　2026.06.21　|　PJ00-05 ACRI②</p>
+  <p class="src reveal r4" style="margin-top:.8em;">※ 本稿は不動産・経済の調査研究であり、特定の投資判断を推奨するものではありません（投資助言ではありません）。</p>
+ </div>
+</section>
+
+<div class="hint" id="hint">↓ スクロール or ← → キー</div>
+
+<script>
+/* === slide nav: dots, page number, active class === */
+const slides = Array.from(document.querySelectorAll('.slide'));
+const dotsWrap = document.getElementById('dots');
+const pageno = document.getElementById('pageno');
+const hint = document.getElementById('hint');
+slides.forEach((s,i)=>{ const b=document.createElement('button'); b.setAttribute('aria-label','スライド'+(i+1));
+  b.addEventListener('click',()=>s.scrollIntoView({behavior:'smooth'})); dotsWrap.appendChild(b); });
+const dots = Array.from(dotsWrap.children);
+const pad = n => String(n).padStart(2,'0');
+let current = 0;
+const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){
+  const i = slides.indexOf(e.target); current=i;
+  slides.forEach(s=>s.classList.remove('active')); e.target.classList.add('active');
+  dots.forEach((d,j)=>d.classList.toggle('on', j===i));
+  pageno.textContent = pad(i+1)+' / '+pad(slides.length);
+  if(hint) hint.style.opacity = i===0 ? '.7' : '0';
+}});}, {threshold:.55});
+slides.forEach(s=>io.observe(s));
+addEventListener('keydown',(e)=>{
+  if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){ e.preventDefault(); if(current<slides.length-1) slides[current+1].scrollIntoView({behavior:'smooth'}); }
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); if(current>0) slides[current-1].scrollIntoView({behavior:'smooth'}); }
+  if(e.key==='Home'){ slides[0].scrollIntoView({behavior:'smooth'}); }
+  if(e.key==='End'){ slides[slides.length-1].scrollIntoView({behavior:'smooth'}); }
+});
+</script>
+</body>
+</html>
