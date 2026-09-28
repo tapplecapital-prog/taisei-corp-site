@@ -141,7 +141,7 @@ p{margin:0}
 /* ビジョン：1文字ずつ現れ、色は青から薄紫、りんごの色へゆっくり移る */
 @property --flow{syntax:'<number>';inherits:true;initial-value:0}
 @keyframes flow{to{--flow:1}}
-[data-hero=band] .hero .vision{--ls:.14em;margin:4px 0 22px;font-family:"Zen Old Mincho",var(--mincho);font-weight:500;font-size:clamp(34px,5.2vw,82px);line-height:1.5;letter-spacing:0}
+[data-hero=band] .hero .vision{--ls:.16em;margin:10px 0 24px;font-family:"Zen Old Mincho",var(--mincho);font-weight:500;font-size:clamp(20px,2.7vw,42px);line-height:1.6;letter-spacing:0}
 .hero .vision .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .hero .vision .vc{display:block;white-space:nowrap;padding-left:var(--ls)}
 .hero .vision i{--st:calc(1em + var(--ls));display:inline-block;font-style:normal;letter-spacing:var(--ls);
@@ -158,9 +158,7 @@ p{margin:0}
   [data-hero=band] .hero h1{font-size:5.6vw;margin-top:14px}
   .hero h1 .ln .lk{flex-direction:column;gap:12px}
   .hero h1 .logo{height:54px}
-  [data-hero=band] .hero .vision{font-size:9.4vw;line-height:1.4;margin-bottom:18px}
-  .hero .vision .vc{padding-left:0}
-  .hero .vision .vl{display:block;padding-left:var(--ls)}
+  [data-hero=band] .hero .vision{font-size:5vw;margin-bottom:18px}
   [data-hero=band] .hero .areas{gap:6px 20px;font-size:12px}
 }
 /* 第一画面にロゴつきの社名があるあいだは、ヘッダーの社名を出さない */
@@ -339,6 +337,9 @@ svg .dot{fill:#54A83C}
 .msg figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 14%}
 .msg h2{font-family:var(--mincho);font-size:clamp(26px,2.8vw,38px);letter-spacing:.12em;margin:22px 0 40px}
 .msg .body p{color:var(--ink2);margin-bottom:1.3em}
+/* 代表挨拶：冒頭にビジョンを引き、二つの言葉を本文で説明する（2026-09-29） */
+.msg .body .vq{margin:-14px 0 26px;font-family:"Zen Old Mincho",var(--mincho);font-weight:500;font-size:clamp(22px,2.2vw,30px);letter-spacing:.14em;line-height:1.6;display:inline-block;padding-right:.1em;background:linear-gradient(90deg,#1D4E9E,#7A5BCB 60%,#D23A63);-webkit-background-clip:text;background-clip:text;color:transparent}
+.msg .body em{font-style:normal;font-family:var(--mincho);font-weight:600;color:var(--deep)}
 .msg .sig{margin-top:40px;display:flex;align-items:baseline;gap:18px;font-size:12.5px;color:var(--muted);letter-spacing:.1em}
 .msg .sig b{font-family:var(--mincho);font-weight:500;font-size:24px;color:var(--ink);letter-spacing:.3em}
 @media (max-width:860px){.msg .wrap{grid-template-columns:1fr}.msg figure{max-width:420px}}
@@ -573,10 +574,11 @@ svg .dot{fill:#54A83C}
     <div class="body">
       <p class="lab rv">Message</p>
       <h2 class="rv d1">代表挨拶</h2>
-      <p class="rv d1">三井住友銀行に在職中に公認会計士試験に合格し、EYストラテジー・アンド・コンサルティングを経て、2020年に独立しました。</p>
-      <p class="rv d2">買える物件が地方にあったことから、2020年に地方の一棟の賃貸住宅の取得を始め、いまは北海道から中部までの14棟208室を保有・運営しています。東京と横浜では買取専門店も運営しています。物件の取得、借入、修繕、決算、税務申告は、いずれもグループ内で毎年行っている業務です。</p>
-      <p class="rv d2">税務・会計、不動産、店舗運営のいずれも、自社で行ってきた実務と数字をもとに判断することを大切にしています。</p>
-      <p class="rv d2">これから取り組みたいことは三つあります。古くなった賃貸住宅に手を入れ、長く住める建物として次の世代へ引き継ぐこと。店を通じて、まちに人が行き交う場所を増やすこと。そして、自社で試して確かめた会計と業務の仕組みを、地方で事業をする方々と分かち合うことです。</p>
+      <p class="vq rv d1">実らせて、未来へつなぐ。</p>
+      <p class="rv d1">当グループの仕事の考え方を、この一文に込めています。</p>
+      <p class="rv d2"><em>「実らせる」</em>とは、資本を届けるべき場所を見極め、事業を収益が続く形になるまで育てることです。当グループは2020年に、地方の一棟の賃貸住宅の取得を始めました。いまは北海道から中部までの14棟208室を保有・運営しています。取得の前には人口と地価の推移を確かめ、取得した後は修繕を重ねて、入居者が長く住める建物に整えてきました。</p>
+      <p class="rv d2"><em>「未来へつなぐ」</em>とは、育てた事業を一代で使い切らず、次の担い手に引き渡せる状態で残すことです。古くなった賃貸住宅は手を入れて次の世代へ引き継ぎ、店は地域の方が日々立ち寄れる場所として営み続けます。自社で試して確かめた会計と業務の仕組みは、地方で事業を営む<span class="nw">方々</span>とも共有していきます。</p>
+      <p class="rv d2">銀行とコンサルティング会社で多くの企業の財務に携わるなかで、続く事業には、数字による裏付けと、現場での地道な手入れの両方が欠かせないことを学びました。入居者、お客さま、取引先、金融機関の皆さまにこれからも信頼していただけるよう、<span class="nw">一つひとつ</span>の事業に誠実に取り組んでまいります。</p>
       <p class="sig rv d3">代表　公認会計士・税理士<b>三上 浩平</b></p>
       <a class="more rv d3" href="profile/" style="margin-top:28px"><i></i>Profile</a>
       <div class="tl rv d3" id="tl"><span class="fill" aria-hidden="true"></span>
