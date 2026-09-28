@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>あっぷるキャピタルグループ｜Apple Capital Group</title>
 <meta name="description" content="あっぷるキャピタルグループは、税理士事務所と2つの合同会社からなる企業グループです。税務・会計、賃貸住宅の保有・運営、買取専門店「こやし屋」と「365スイーツショップ青森本店」の運営を手がけています。">
-<meta name="theme-color" content="#0A1733">
+<meta name="theme-color" content="#E4F3FB">
 <link rel="icon" href="../v6/assets/img/logo-color.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500&family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho+B1:wght@500;600&display=swap" rel="stylesheet">
@@ -15,8 +15,8 @@
   (function(){var q=location.search.indexOf('noanim')>-1;var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!q&&!rm){document.documentElement.classList.add('anim');}
   // 配色（比較用）。?theme= か、前回選んだ配色を使う
-  var t=(location.search.match(/theme=(\w+)/)||[])[1]; if(!t){try{t=localStorage.getItem('acg-theme')}catch(e){}}
-  if(/^(navy|sky|mint|vivid)$/.test(t||'')) document.documentElement.setAttribute('data-theme',t);})();
+  var t=(location.search.match(/theme=(\w+)/)||[])[1]; if(!t){try{t=localStorage.getItem('acg-theme2')}catch(e){}}
+  if(!/^(apple|navy|sky|mint|vivid)$/.test(t||'')) t='apple'; document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <style>
 :root{
@@ -31,6 +31,8 @@
   --ease:cubic-bezier(.19,1,.22,1);
 }
 /* 配色の比較用（紺＝現行／空色／ミント／明るい青） */
+[data-theme=apple]{--bg:#EAF5FB;--paper:#FAFDFF;--white:#fff;--line:#D2DFEB;--muted:#7F8A99;--deep:#1D4E9E;--accent:#E4506F;--hero-bg:#E4F3FB;--hero-ink:#0B2340;--glass:rgba(236,246,252,.82);--photo-sh:0 30px 70px rgba(40,90,160,.2);
+  --hero-fb:radial-gradient(60% 70% at 25% 70%,#8CC8F2 0%,transparent 60%),radial-gradient(50% 60% at 70% 30%,#A9B8F6 0%,transparent 60%),radial-gradient(35% 45% at 92% 8%,#F7A3B6 0%,transparent 60%),radial-gradient(40% 50% at 55% 90%,#A6E6EA 0%,transparent 60%),#E4F3FB}
 [data-theme=sky]{--bg:#F2F6F9;--paper:#FAFCFD;--line:#D3DCE4;--deep:#134B80;--accent:#2A7CCB;--hero-bg:#DCEAF6;--hero-ink:#0B2340;--glass:rgba(242,246,249,.9);--photo-sh:0 30px 70px rgba(19,75,128,.18);
   --hero-fb:radial-gradient(60% 70% at 25% 70%,#8CC0EC 0%,transparent 60%),radial-gradient(50% 60% at 70% 30%,#A9DDE7 0%,transparent 60%),radial-gradient(40% 50% at 55% 90%,#C4E3A0 0%,transparent 60%),#DCEAF6}
 [data-theme=mint]{--bg:#F1F6F4;--paper:#FAFCFB;--line:#D1DED8;--deep:#0F4A4F;--accent:#15937F;--hero-bg:#DDF0E9;--hero-ink:#0B2B2E;--glass:rgba(241,246,244,.9);--photo-sh:0 30px 70px rgba(15,74,79,.18);
@@ -149,6 +151,17 @@ p{margin:0}
 .more i::after{content:"";width:7px;height:7px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg) translate(-1px,1px)}
 .more:hover i{background:var(--ink);color:var(--bg)}
 @media (max-width:860px){.about .wrap{grid-template-columns:1fr}}
+
+/* ---------- policy & strengths ---------- */
+.pol{padding:0 0 clamp(90px,11vw,150px)}
+.pol .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,90px)}
+.pol h2{font-family:var(--mincho);font-size:clamp(20px,2vw,26px);letter-spacing:.12em;margin:14px 0 8px}
+.pol ol{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--ink)}
+.pol li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:20px 0;border-bottom:1px solid var(--line)}
+.pol li>span{font-family:var(--en);font-weight:300;font-size:13px;letter-spacing:.1em;color:var(--muted);padding-top:3px}
+.pol h3{font-family:var(--mincho);font-size:17px;letter-spacing:.08em;line-height:1.7}
+.pol p{font-size:13.5px;color:var(--ink2);line-height:1.95;margin-top:4px}
+@media (max-width:860px){.pol .wrap{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- places filmstrip ---------- */
 .places{padding:0 0 clamp(90px,12vw,170px);overflow:hidden}
@@ -318,6 +331,31 @@ p{margin:0}
 .ft nav{display:flex;flex-wrap:wrap;gap:12px 28px}
 .ft a:hover{color:#fff}
 
+/* ---------- 配色「水色＋りんご」：薄い色が上から下へ連なる ---------- */
+[data-theme=apple] body{background:linear-gradient(180deg,#E4F3FB 0%,#E6F0FD 14%,#EEEFFD 26%,#E7F4FB 38%,#E3EEFC 50%,#FCEEF3 62%,#E8F1FD 74%,#E5F5FA 88%,#EDF1FD 100%)}
+[data-theme=apple] .news,[data-theme=apple] .biz,[data-theme=apple] .res{background:rgba(255,255,255,.55)}
+[data-theme=apple] .lab,[data-theme=apple] .data .lab{color:var(--accent)}
+[data-theme=apple] .news .lab{color:var(--muted)}
+[data-theme=apple] .big{display:inline-block;padding-right:.04em;background:linear-gradient(90deg,#3A8FE0 0%,#6D7FEA 55%,#E4506F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme=apple] .row:hover .go{background:var(--accent);border-color:var(--accent)}
+[data-theme=apple] .more:hover i{background:var(--accent);border-color:var(--accent);color:#fff}
+[data-theme=apple] .tl .fill{background:linear-gradient(180deg,#3A8FE0,#E4506F)}
+[data-theme=apple] .tl div::before{border-color:#6D7FEA}
+[data-theme=apple] .ks{background:linear-gradient(160deg,#0F1B3D 0%,#1A2D62 55%,#2B2C63 100%)}
+[data-theme=apple] .sw{background:linear-gradient(180deg,rgba(253,240,245,0) 0%,#FDEFF4 18%,#FCE9F0 82%,rgba(253,240,245,0) 100%)}
+[data-theme=apple] .data{background:transparent;color:var(--ink)}
+[data-theme=apple] .data h2{color:var(--ink)}
+[data-theme=apple] .data .txt p{color:var(--ink2)}
+[data-theme=apple] .data .txt .lab{color:var(--accent)}
+[data-theme=apple] .counts div{border-top-color:var(--line)}
+[data-theme=apple] .counts b{color:var(--ink)}
+[data-theme=apple] .counts b small,[data-theme=apple] .counts span,[data-theme=apple] .legend .src{color:var(--muted)}
+[data-theme=apple] .legend{color:var(--ink2)}[data-theme=apple] .legend b{color:var(--ink)}
+[data-theme=apple] .mapbox{background:linear-gradient(165deg,#132A63 0%,#1D4E9E 60%,#2E72C8 100%);border-radius:18px;padding:18px;box-shadow:0 30px 70px rgba(29,78,158,.25)}
+[data-theme=apple] .ft{background:linear-gradient(120deg,#193C86 0%,#2765C0 55%,#4A8ED9 100%)}
+[data-theme=apple] .ft .word{background:linear-gradient(90deg,#fff 0%,#D8E8FF 50%,#FFC9D6 100%);-webkit-background-clip:text;background-clip:text}
+[data-theme=apple] .hero .vision{color:#1B3F7A}
+
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -377,6 +415,29 @@ p{margin:0}
         <div><b data-count="9">9<small>道県</small></b><span>保有エリア</span></div>
       </div>
       <a class="more rv d2" href="#message"><i></i>Message</a>
+    </div>
+  </div>
+</section>
+
+<section class="pol" id="policy" aria-label="経営の方針と強み">
+  <div class="wrap">
+    <div class="rv">
+      <p class="lab">Policy</p>
+      <h2>経営の方針</h2>
+      <ol>
+        <li><span>01</span><div><h3>数字で確かめてから決める</h3><p>事業の良し悪しは、会計と財務の数字で確かめてから判断します。勘や慣習だけでは決めません。</p></div></li>
+        <li><span>02</span><div><h3>昔からある事業に、今の経営管理を</h3><p>不動産、買取、小売といった昔からある事業に、資金調達や経営管理の手法を組み合わせます。</p></div></li>
+        <li><span>03</span><div><h3>長く続けることを優先する</h3><p>目先の利益より、10年、20年と続くことを優先します。財務を健全に保ち、得た利益は次の事業へ再投資します。</p></div></li>
+      </ol>
+    </div>
+    <div class="rv d1">
+      <p class="lab">Strengths</p>
+      <h2>当グループの強み</h2>
+      <ol>
+        <li><span>01</span><div><h3>数字にもとづく投資判断</h3><p>事業ごとの収益の構造と資本の効率を数字で示し、物件や店舗の取得を判断しています。</p></div></li>
+        <li><span>02</span><div><h3>複数の事業による安定</h3><p>税務・会計、不動産、店舗運営と収入源が分かれているため、景気の波の影響を受けにくい構成です。</p></div></li>
+        <li><span>03</span><div><h3>専門知識と現場の経験</h3><p>公認会計士・税理士としての専門知識に加えて、自社で物件と店舗を運営してきた経験があります。</p></div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -544,6 +605,7 @@ p{margin:0}
   </div>
 </footer>
 <div class="tsw" role="group" aria-label="配色の比較（確認用）"><b>PREVIEW v9｜配色</b>
+  <button type="button" data-t="apple" aria-label="水色＋りんご"><i style="background:linear-gradient(135deg,#BFE3F7,#9FB5F4 50%,#F29AB0)"></i><span>水色＋りんご</span></button>
   <button type="button" data-t="navy" aria-label="紺（現行）"><i style="background:linear-gradient(135deg,#0A1733,#18549C 60%,#54A83C)"></i><span>紺（現行）</span></button>
   <button type="button" data-t="sky" aria-label="空色"><i style="background:linear-gradient(135deg,#DCEAF6,#8CC0EC 55%,#C4E3A0)"></i><span>空色</span></button>
   <button type="button" data-t="mint" aria-label="ミント"><i style="background:linear-gradient(135deg,#DDF0E9,#7ED0BA 55%,#D6EC96)"></i><span>ミント</span></button>
@@ -614,14 +676,15 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ---------- 配色の比較（確認用）。色面・背景・メタ情報をまとめて切り替える ----------
   var PAL={
+    apple:{cb:[.89,.95,.985],c1:[.52,.78,.96],c2:[.64,.71,.97],c3:[.62,.90,.92],c4:[.97,.58,.68],wt:[.85,.78,.7,.62],meta:'#E4F3FB'},
     navy: {cb:[.035,.075,.19],c1:[.09,.33,.62],c2:[.08,.46,.52],c3:[.31,.64,.25],c4:[.84,.88,.9],wt:[.95,.85,.7,.28],meta:'#0A1733'},
     sky:  {cb:[.86,.92,.97],c1:[.50,.74,.94],c2:[.64,.87,.92],c3:[.77,.90,.62],c4:[1,1,1],wt:[.85,.8,.7,.75],meta:'#DCEAF6'},
     mint: {cb:[.87,.94,.91],c1:[.47,.80,.71],c2:[.64,.81,.94],c3:[.84,.93,.58],c4:[1,1,1],wt:[.85,.75,.7,.75],meta:'#DDF0E9'},
     vivid:{cb:[.10,.33,.70],c1:[.22,.56,.90],c2:[.10,.62,.64],c3:[.45,.77,.29],c4:[.86,.93,1],wt:[.9,.85,.8,.35],meta:'#1D5FB8'}
   }, FIELD=null, meta=document.querySelector('meta[name=theme-color]'), tbtn=[].slice.call(document.querySelectorAll('.tsw button'));
-  function theme(n){ if(!PAL[n]) n='navy'; H.setAttribute('data-theme',n); meta.setAttribute('content',PAL[n].meta);
+  function theme(n){ if(!PAL[n]) n='apple'; H.setAttribute('data-theme',n); meta.setAttribute('content',PAL[n].meta);
     tbtn.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.t===n?'true':'false'); });
-    if(FIELD) FIELD.set(n); try{ localStorage.setItem('acg-theme',n); }catch(e){}
+    if(FIELD) FIELD.set(n); try{ localStorage.setItem('acg-theme2',n); }catch(e){}
     try{ var u=new URL(location.href); u.searchParams.set('theme',n); history.replaceState(null,'',u); }catch(e){} }
   tbtn.forEach(function(b){ b.addEventListener('click',function(){ theme(b.dataset.t); }); });
 
@@ -647,7 +710,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var ur=gl.getUniformLocation(pr,'r'),ut=gl.getUniformLocation(pr,'t'),us=gl.getUniformLocation(pr,'s');
     var KEYS=['cb','c1','c2','c3','c4','wt'], U={}; KEYS.forEach(function(k){U[k]=gl.getUniformLocation(pr,k)});
     function copy(p){ var o={}; KEYS.forEach(function(k){o[k]=p[k].slice()}); return o; }
-    var cur=copy(PAL[H.getAttribute('data-theme')||'navy']), tgt=cur;
+    var cur=copy(PAL[H.getAttribute('data-theme')||'apple']), tgt=cur;
     function lerp(){ KEYS.forEach(function(k){ for(var i=0;i<tgt[k].length;i++){ var d=tgt[k][i]-cur[k][i]; cur[k][i]=Math.abs(d)>.002?cur[k][i]+d*.07:tgt[k][i]; } }); }
     FIELD={set:function(n){ tgt=PAL[n]; if(!ANIM){ cur=copy(tgt); draw(12000); } }};
     function size(){var d=Math.min(devicePixelRatio||1,1.5);c.width=c.clientWidth*d;c.height=c.clientHeight*d;gl.viewport(0,0,c.width,c.height);}
@@ -682,7 +745,7 @@ document.addEventListener('DOMContentLoaded', function(){
     io.observe(cv);
   }
   if(window.MESH) mapInit(); else window.addEventListener('load', mapInit);
-  theme(H.getAttribute('data-theme')||'navy');
+  theme(H.getAttribute('data-theme')||'apple');
 
   // ---------- 買取品の写真の柱（繰り返し流すため、中身を複製する） ----------
   if(ANIM){ document.querySelectorAll('.wall .col').forEach(function(c){ var n0=c.children.length; c.insertAdjacentHTML('beforeend',c.innerHTML);
