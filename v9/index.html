@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>あっぷるキャピタルグループ｜Apple Capital Group</title>
-<meta name="description" content="あっぷるキャピタルグループは、税理士事務所と2つの合同会社からなる企業グループです。税務・会計、賃貸住宅の保有・運営、買取専門店「こやし屋」の運営を手がけています。">
+<meta name="description" content="あっぷるキャピタルグループは、税理士事務所と2つの合同会社からなる企業グループです。税務・会計、賃貸住宅の保有・運営、買取専門店「こやし屋」と「365スイーツショップ青森本店」の運営を手がけています。">
 <meta name="theme-color" content="#0A1733">
 <link rel="icon" href="../v6/assets/img/logo-color.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,6 +94,9 @@ p{margin:0}
 .hero h1{font-family:var(--mincho);font-weight:500;font-size:clamp(38px,5.4vw,92px);line-height:1.22;letter-spacing:.08em;margin:22px 0 26px}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln span{display:inline-block}
+.hero .vision{font-family:var(--mincho);font-size:clamp(15px,1.35vw,19px);letter-spacing:.14em;line-height:1.9;margin:-6px 0 22px;color:color-mix(in srgb,var(--hero-ink) 92%,transparent)}
+.anim .hero .vision{opacity:0;transition:opacity 1.4s var(--ease)}
+.anim.ready .hero .vision{opacity:1;transition-delay:.4s}
 .hero .areas{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:13px;letter-spacing:.16em;color:color-mix(in srgb,var(--hero-ink) 84%,transparent)}
 .hero .scroll{position:absolute;right:var(--gut);bottom:clamp(40px,9vh,96px);font-family:var(--en);font-size:11px;letter-spacing:.3em;writing-mode:vertical-rl;display:flex;align-items:center;gap:14px;color:color-mix(in srgb,var(--hero-ink) 75%,transparent)}
 .hero .scroll i{display:block;width:1px;height:72px;background:color-mix(in srgb,var(--hero-ink) 25%,transparent);position:relative;overflow:hidden}
@@ -134,6 +137,8 @@ p{margin:0}
 .big{font-family:var(--en);font-weight:200;font-size:clamp(64px,11vw,190px);line-height:.9;letter-spacing:-.03em}
 .big+.jp{display:block;margin-top:18px;font-size:13px;letter-spacing:.2em;color:var(--muted)}
 .about .txt p{font-family:var(--mincho);font-size:clamp(17px,1.5vw,21px);line-height:2.2;letter-spacing:.08em}
+.about .txt p+p{margin-top:1.4em}
+.about .txt p.sub{font-family:var(--sans);font-size:14.5px;line-height:2.1;letter-spacing:.05em;color:var(--ink2)}
 .about .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;border-top:1px solid var(--ink)}
 .about .facts div{padding:18px 0 0}
 .about .facts b{display:block;font-family:var(--en);font-weight:300;font-size:clamp(34px,3.4vw,54px);line-height:1;letter-spacing:-.01em}
@@ -215,6 +220,31 @@ p{margin:0}
 @keyframes colup{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @keyframes coldown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
 @media (max-width:900px){.ks .wrap{grid-template-columns:minmax(0,1fr)}.wall{height:520px;grid-template-columns:repeat(2,minmax(0,1fr))}.wall .col:nth-child(3){display:none}}
+
+/* ---------- stores (365スイーツ) ---------- */
+.sw{background:#FBF5EE;padding:clamp(100px,13vw,180px) 0;overflow:hidden}
+.sw .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(36px,6vw,110px);align-items:center}
+.sw .txt{min-width:0}
+.sw .lab{color:#D0567A}
+.sw h2{font-family:var(--mincho);font-size:clamp(28px,3.2vw,46px);letter-spacing:.1em;line-height:1.45;margin:22px 0 28px}
+.sw h2 small{display:block;font-family:var(--en);font-size:11.5px;letter-spacing:.3em;color:#9A8F84;margin-top:12px}
+.sw .lead{color:var(--ink2);font-size:14.5px;line-height:2.05}
+.sw .lead+.lead{margin-top:1.2em}
+.sw .poem{font-family:var(--mincho);font-size:clamp(16px,1.4vw,19px);letter-spacing:.1em;line-height:2;color:var(--ink);margin-top:26px;padding-left:18px;border-left:2px solid #F2A7BC}
+.sw dl{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:10px 18px;margin:36px 0 0;padding-top:22px;border-top:1px solid #E6D9CB;font-size:13.5px}
+.sw dt{color:#9A8F84;letter-spacing:.1em}.sw dd{margin:0}
+.sw .ig{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-family:var(--en);font-size:12.5px;letter-spacing:.14em;border-bottom:1px solid currentColor;padding-bottom:4px}
+.sw .ig:hover{color:#D0567A}
+.collage{position:relative;height:min(92vh,820px);min-height:560px}
+.collage .phone{position:absolute;left:50%;top:50%;width:min(300px,62%);aspect-ratio:9/16;transform:translate(-50%,-50%);border-radius:26px;overflow:hidden;background:#222;box-shadow:0 40px 90px rgba(120,70,40,.28);z-index:2;border:6px solid #fff}
+.collage .phone video,.collage .phone img{width:100%;height:100%;object-fit:cover;display:block}
+.collage figure{position:absolute;margin:0;width:min(230px,42%);z-index:1}
+.collage figure img{width:100%;border-radius:6px;box-shadow:0 20px 50px rgba(120,70,40,.18);border:5px solid #fff}
+.collage figure.a{left:0;top:4%}.collage figure.a img{transform:rotate(-5deg)}
+.collage figure.b{right:0;bottom:3%}.collage figure.b img{transform:rotate(4deg)}
+.collage figure.c{right:2%;top:0;width:min(190px,34%)}.collage figure.c img{transform:rotate(6deg)}
+.collage figure.d{left:3%;bottom:0;width:min(250px,44%)}.collage figure.d img{transform:rotate(-3deg)}
+@media (max-width:900px){.sw .wrap{grid-template-columns:minmax(0,1fr)}.collage{height:600px;min-height:0;order:2}}
 
 /* ---------- research / map ---------- */
 .data{position:relative;background:var(--deep);transition:background .8s;color:#E9ECF2;padding:clamp(100px,13vw,180px) 0;overflow:hidden}
@@ -319,6 +349,7 @@ p{margin:0}
   <div class="copy">
     <p class="lab">Apple Capital Group — Since 2020</p>
     <h1><span class="ln"><span>あっぷるキャピタル</span></span><span class="ln"><span>グループ</span></span></h1>
+    <p class="vision">住まいと、店と、数字の仕事で、地方のまちを長持ちさせる。</p>
     <p class="areas"><span>税務・会計</span><span>不動産</span><span>店舗運営</span></p>
   </div>
   <div class="scroll" aria-hidden="true">SCROLL<i></i></div>
@@ -338,7 +369,8 @@ p{margin:0}
   <div class="wrap">
     <div class="rv"><h2 class="big">About</h2><span class="jp">私たちについて</span></div>
     <div class="txt">
-      <p class="rv">あっぷるキャピタルグループは、税理士事務所と2つの不動産会社からなる企業グループです。公認会計士・税理士の三上浩平が2020年に設立し、税務・会計、北海道から中部までの賃貸住宅の保有・運営、買取専門店「こやし屋」の運営を手がけています。</p>
+      <p class="rv">あっぷるキャピタルグループは、税理士事務所と2つの合同会社からなる企業グループです。公認会計士・税理士の三上浩平が2020年に設立し、税務・会計、北海道から中部までの賃貸住宅の保有・運営、買取専門店「こやし屋」、青森市の「365スイーツショップ」の運営を手がけています。</p>
+      <p class="rv d1 sub">人口が減っていく地域でも、手入れの行き届いた住まいと、気軽に立ち寄れる店があれば、まちの暮らしは続いていきます。私たちは、会計の知識と自社で積み上げてきた数字を使って、その土台を一つずつ整えていきたいと考えています。</p>
       <div class="facts rv d1">
         <div><b data-count="14">14<small>棟</small></b><span>保有する賃貸住宅</span></div>
         <div><b data-count="208">208<small>室</small></b><span>保有する住戸</span></div>
@@ -381,7 +413,7 @@ p{margin:0}
     <div class="rows" id="rows">
       <a class="row rv" href="../v6/tax/" data-peek="0"><span class="no">01</span><h3>税務・会計<small>Tax &amp; Accounting</small></h3><p>三上浩平税理士事務所として、個人・法人の税務申告と会計、相続税申告、創業支援を行っています。</p><span class="go" aria-hidden="true"></span></a>
       <a class="row rv" href="../v6/real-estate/" data-peek="1"><span class="no">02</span><h3>不動産<small>Real Estate</small></h3><p>北海道・東北・関東・中部で、一棟の賃貸住宅を取得し、保有・運営しています。</p><span class="go" aria-hidden="true"></span></a>
-      <a class="row rv" href="#stores" data-peek="3"><span class="no">03</span><h3>店舗運営<small>Retail</small></h3><p>東京と横浜で買取専門店「こやし屋」を3店舗、青森市で無人販売店を運営しています。</p><span class="go" aria-hidden="true"></span></a>
+      <a class="row rv" href="#stores" data-peek="3"><span class="no">03</span><h3>店舗運営<small>Retail</small></h3><p>東京と横浜で買取専門店「こやし屋」を3店舗、青森市で24時間営業のスイーツの無人販売店を運営しています。</p><span class="go" aria-hidden="true"></span></a>
       <a class="row rv" href="ai/" data-peek="2"><span class="no">04</span><h3>AI・業務改善<small>AI Operations</small></h3><p>経理や書類の管理など、社内業務にAIを取り入れています。仕組みの一部をデモでご覧いただけます。</p><span class="go" aria-hidden="true"></span></a>
     </div>
   </div>
@@ -396,6 +428,7 @@ p{margin:0}
       <p class="lab rv">Stores</p>
       <h2 id="ks-h" class="rv d1">買取専門店 こやし屋<small>3 STORES — TOKYO / YOKOHAMA</small></h2>
       <p class="lead rv d1">合同会社たいせいが、買取専門店「こやし屋」を東京と横浜で3店舗運営しています。貴金属、ブランド品、時計、カメラ、骨董、お酒などを、店頭で査定してお買い取りしています。</p>
+      <p class="lead rv d1" style="margin-top:1em;color:#E6D6B4;font-family:var(--mincho);letter-spacing:.1em">引き出しの奥で眠っていた品物に、もう一度値段をつけて、次に使う人へ渡す仕事です。</p>
       <ul class="cats rv d2"><li>貴金属</li><li>ブランド品</li><li>時計</li><li>カメラ</li><li>骨董・古銭</li><li>お酒</li></ul>
       <div class="shops rv d2">
         <a class="shop" href="https://coyashiya.jp/store/omorisannou/" target="_blank" rel="noopener"><span class="n">01</span><div><h3>大森山王店</h3><p>東京都大田区山王　JR大森駅</p></div><span class="go" aria-hidden="true"></span></a>
@@ -408,12 +441,33 @@ p{margin:0}
   </div>
 </section>
 
+<section class="sw" id="sweets" aria-labelledby="sw-h">
+  <div class="wrap">
+    <div class="collage rv" aria-label="365スイーツショップ青森本店の写真と動画">
+      <figure class="a" data-speed="-0.05"><img src="../v8/assets/img/s365-front.webp" width="750" height="1000" alt="365スイーツショップ青森本店の外観" loading="lazy"></figure>
+      <figure class="c" data-speed="0.04"><img src="../v8/assets/img/s365-neon.webp" width="750" height="1000" alt="店内のネオンサイン" loading="lazy"></figure>
+      <div class="phone"><video id="swv" muted loop playsinline preload="none" poster="../v8/assets/media/365-loop.jpg" aria-label="店頭と商品の短い動画（音声なし）"><source src="../v8/assets/media/365-loop.mp4" type="video/mp4"></video></div>
+      <figure class="b" data-speed="0.07"><img src="../v8/assets/img/s365-crepe.webp" width="750" height="1000" alt="いちごを使ったスイーツ" loading="lazy"></figure>
+      <figure class="d" data-speed="-0.03"><img src="../v8/assets/img/s365-case.webp" width="1000" height="750" alt="商品が並ぶショーケース" loading="lazy"></figure>
+    </div>
+    <div class="txt">
+      <p class="lab rv">Sweets</p>
+      <h2 id="sw-h" class="rv d1">365スイーツショップ<br>青森本店<small>OPEN 24 HOURS — AOMORI</small></h2>
+      <p class="lead rv d1">青森市古川で、24時間営業のスイーツの無人販売店を運営しています。ショーケースに並ぶケーキ、アイス、季節のスイーツを、お客さまが自分で選び、店内のセルフレジでお支払いいただく形です。</p>
+      <p class="lead rv d2">商品の入れ替えや季節の飾りつけは、Instagramでもお知らせしています。</p>
+      <p class="poem rv d2">仕事帰りの遅い時間でも、思い立ったときに甘いものを選べる店です。夜の古川の通りに、ショーケースの灯りを一つ増やしています。</p>
+      <dl class="rv d3"><dt>所在地</dt><dd>青森県青森市古川</dd><dt>営業</dt><dd>24時間（無人販売）</dd><dt>開業</dt><dd>2024年1月</dd><dt>運営</dt><dd>合同会社たいせい</dd></dl>
+      <a class="ig rv d3" href="https://www.instagram.com/365sweets.aomori/" target="_blank" rel="noopener">Instagram　@365sweets.aomori</a>
+    </div>
+  </div>
+</section>
+
 <section class="data" id="research" aria-labelledby="data-h">
   <div class="wrap">
     <div class="txt">
       <p class="lab rv">Research</p>
       <h2 id="data-h" class="rv d1">東北6県を1km四方で格付けした、28,207区画の地図</h2>
-      <p class="rv d2">グループ内の調査部門「あっぷる総研」では、東北6県を1km四方の区画に分け、人口、立地、産業の指標から4段階に格付けしています。物件を取得する前に、その場所で賃貸の需要が続くかを確かめるための資料です。</p>
+      <p class="rv d2">グループ内の調査部門「あっぷる総研」では、東北6県を1km四方の区画に分け、人口、立地、産業の指標から4段階に格付けしています。物件を取得する前に、その場所で賃貸の需要が続くかを確かめるための資料です。勘に頼らず、数字で確かめてから、まちに投資する。そのために作った地図です。</p>
       <div class="counts rv d3">
         <div><b data-count="28207">28,207<small>区画</small></b><span>格付けした区画の数</span></div>
         <div><b data-count="47021">47,021<small>地点</small></b><span>地価を44年分さかのぼって分析した地点の数</span></div>
@@ -440,6 +494,7 @@ p{margin:0}
       <p class="rv d1">私は三井住友銀行で連結会計、リスク管理、投資銀行業務に携わり、在職中に公認会計士試験に合格しました。その後、EYストラテジー・アンド・コンサルティングで財務・経営のコンサルティングを担当しました。2020年に合同会社たいせいと合同会社あっぷるキャピタルを設立し、2021年に三上浩平税理士事務所を開業しています。</p>
       <p class="rv d2">2020年から地方の一棟賃貸住宅の取得を始め、現在は北海道から中部までの14棟208室を保有・運営しています。東京と横浜では買取専門店を運営しています。物件の取得、融資、修繕、決算、税務申告は、いずれもグループ内で毎年行っている業務です。</p>
       <p class="rv d2">税務・会計、不動産、店舗運営のいずれにおいても、自社で行ってきた実務と数値をもとにお話しすることを大切にしています。</p>
+      <p class="rv d2">これから取り組みたいことは三つあります。古くなった賃貸住宅に手を入れ、長く住める建物として次の世代へ引き継ぐこと。店を通じて、まちに人が行き交う場所を増やすこと。そして、自社で試して確かめた会計と業務の仕組みを、地方で事業をする方々と分かち合うことです。</p>
       <p class="sig rv d3">代表　公認会計士・税理士<b>三上 浩平</b></p>
       <div class="tl rv d3" id="tl"><span class="fill" aria-hidden="true"></span>
         <div><b>2008</b>東北大学経済学部を卒業し、三井住友銀行に入行</div>
@@ -470,7 +525,7 @@ p{margin:0}
     <div>
       <div class="ents rv d1">
         <div><h3>合同会社あっぷるキャピタル</h3><p>2020年12月設立<br>賃貸不動産の保有・運営</p></div>
-        <div><h3>合同会社たいせい</h3><p>2020年6月設立<br>賃貸不動産の保有・運営、買取専門店「こやし屋」3店舗の運営</p></div>
+        <div><h3>合同会社たいせい</h3><p>2020年6月設立<br>賃貸不動産の保有・運営、買取専門店「こやし屋」3店舗と「365スイーツショップ青森本店」の運営</p></div>
         <div><h3>三上浩平税理士事務所</h3><p>2021年開業<br>東京税理士会所属（登録番号 第144424号）</p></div>
       </div>
       <p class="addr rv d2">代表　三上浩平　／　東京都港区港南4-2-7</p>
@@ -632,6 +687,10 @@ document.addEventListener('DOMContentLoaded', function(){
   // ---------- 買取品の写真の柱（繰り返し流すため、中身を複製する） ----------
   if(ANIM){ document.querySelectorAll('.wall .col').forEach(function(c){ var n0=c.children.length; c.insertAdjacentHTML('beforeend',c.innerHTML);
     [].slice.call(c.children).slice(n0).forEach(function(f){ f.setAttribute('aria-hidden','true'); var im=f.querySelector('img'); if(im) im.alt=''; }); }); }
+
+  // ---------- 365スイーツの動画（画面に入ったときだけ再生） ----------
+  var swv=document.getElementById('swv');
+  if(swv && ANIM && 'IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ swv.preload='auto'; var p=swv.play(); if(p&&p.catch) p.catch(function(){}); } else { swv.pause(); } }); },{threshold:.25}).observe(swv); }
 
   // ---------- 経歴の年表（見えたら線が伸びる） ----------
   var tl=document.getElementById('tl');
