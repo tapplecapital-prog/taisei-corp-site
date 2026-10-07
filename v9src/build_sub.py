@@ -68,16 +68,16 @@ ks_imgs = "".join(f'<img src="@@A@@img/ks/{k}.webp" width="600" height="750" alt
 PAGES = {
 "name": dict(
   title="社名に込めた思い",
-  desc="あっぷるキャピタルには、自分たちの事業を着実に育て、その実りを次の世代へつなぐ願いを込めています。社名の原点となったリンゴ農園の記憶と、経営への考え方をご紹介します。",
+  desc="自分たちの事業という「果実」を育て、その実りを次の世代へ。あっぷるキャピタルの社名に込めた願いと、リンゴ農園の記憶、地域とともに歳を重ねる経営の姿勢をご紹介します。",
   nav="name/", en="Origin", h1="社名に込めた思い",
-  lead="あっぷるキャピタルには、自分たちの事業を着実に育て、その実りを次の世代へつないでいきたいという願いを込めています。",
+  lead="あっぷるキャピタルには、<strong>自分たちの事業という「果実」を着実に育て、その実りを次の世代へつなぐ</strong>という願いを込めています。",
   body='''
 <article class="name-story" aria-label="あっぷるキャピタルの社名の由来">
 <section class="sec"><div class="wrap two">
   <div><p class="lab">Apple</p><h2>リンゴ農園の記憶</h2></div>
   <div class="prose">
-    <p>この願いの原点は、青森にある母方の実家のリンゴ農園です。幼い頃から愛着のあったその農園で、小さな実が少しずつ大きくなり、やがて収穫を迎える姿を見て育ちました。子どもの私には、それが奇跡のように思えました。</p>
-    <p>時間をかけて育ったものが、実を結ぶ。その驚きと喜びを、いまも覚えています。自分たちの事業にも同じように愛着を持ち、実を結ぶまで育てたい。「あっぷる」という名前は、この思いから生まれました。</p>
+    <p>この願いの原点は、青森にある<strong>母方の実家のリンゴ農園</strong>です。幼い頃から愛着のあったその農園で、小さな実が少しずつ大きくなり、やがて収穫を迎える姿を見て育ちました。子どもの私には、それが奇跡のように思えました。</p>
+    <p>時間をかけて育ったものが、実を結ぶ。その驚きと喜びを、いまも覚えています。自分たちの事業という「果実」にも同じように愛着を持ち、実を結ぶまで育てたい。「あっぷる」という名前は、この思いから生まれました。</p>
   </div>
 </div></section>
 <section class="sec alt"><div class="wrap two">
@@ -85,15 +85,24 @@ PAGES = {
   <div class="prose">
     <p>自分たちの手が届く事業を、一つずつ着実に育てる。それが、私たちの経営の出発点です。住まいや店舗に手を入れ、収益を上げ、得た利益で事業を続けるための備えをつくる。まずは、その営みに責任を持ちたいと考えています。</p>
     <p>思い描いたとおりに進まないときも、工夫を重ね、実を結ぶまで向き合い続ける。遠回りや試行錯誤も引き受けながら、次の世代が育てていける事業として残すことを目指しています。</p>
-    <p>自分たちの事業を健全に育て、長く続けていくこと。それが私たちの考える社会的責任です。その積み重ねが、そこで暮らす人や働く人の生活を支え、未来の社会にもつながっていくと考えています。</p>
+    <p><mark>自分たちの事業を健全に育て、長く続けていくこと。</mark>それが私たちの考える社会的責任です。その積み重ねが、そこで暮らす人や働く人の生活を支え、未来の社会にもつながっていくと考えています。</p>
   </div>
 </div></section>
 <section class="sec"><div class="wrap two">
+  <div><p class="lab">Community</p><h2>地域とともに歳を重ねる</h2></div>
+  <div class="prose">
+    <p>私たちが事業を営む地方でも、少子高齢化や人口の減少が進み、まちの活力が失われていく現実に直面しています。</p>
+    <p>私たちが大切にしたいのは、<mark>そこで暮らす人たちと、一緒に歳をとって生きていくこと</mark>です。まちの成長だけを前提にせず、人が減り、暮らし方が変わる中でも、住まいや店のあり方を考え続ける。地域の変化を、自分たちの事業の課題として引き受けたいと思っています。</p>
+    <p>必要な手入れを重ね、住まいを保つ。変わっていく暮らしに合わせて、店の運営を見直す。こうした仕事を続けられるよう、収益と資金の備えをつくる。<strong>地域に寄り添うとは、私たちにとって、この営みを続けることです。</strong></p>
+    <p>一緒に歳を重ねながら、その時々に必要とされる事業を育て、次の担い手へ渡していく。その役割を全うすることが、私たちの経営の方針です。</p>
+  </div>
+</div></section>
+<section class="sec alt"><div class="wrap two">
   <div><p class="lab">Capital</p><h2>「キャピタル」の役割</h2></div>
   <div class="prose">
     <p>「キャピタル」は、この成長を支える資本を意味します。</p>
-    <p>事業から得た利益を、住まいや店舗の手入れ、運営の改善、次の事業へ戻していく。育てた事業が生む資金で、また事業を育てる。その循環をつくり、次の世代へ引き継ぐための会社でありたいと考えています。</p>
-    <p>「実らせて、未来へつなぐ。」この言葉には、自分たちの事業に向き合い続け、その実りを次の担い手へ手渡す決意を込めています。</p>
+    <p>事業から得た利益を、住まいや店舗の手入れ、運営の改善、次の事業へ戻していく。<strong>育てた事業が生む資金で、また事業を育てる。</strong>その循環をつくり、地域とともに事業を続け、次の世代へ引き継ぐための会社でありたいと考えています。</p>
+    <p><strong>「実らせて、未来へつなぐ。」</strong>この言葉には、自分たちの事業に向き合い続け、その実りを次の担い手へ手渡す決意を込めています。</p>
     <p class="name-signature">あっぷるキャピタルグループ<br>代表　三上 浩平</p>
   </div>
 </div></section>
@@ -278,7 +287,7 @@ PAGES = {
 <section class="sec"><div class="wrap two">
   <div><p class="lab">Origin</p><h2>社名に込めた思い</h2></div>
   <div class="prose">
-    <p>あっぷるキャピタルには、自分たちの事業を着実に育て、その実りを次の世代へつなぐ願いを込めています。その原点は、代表が幼い頃に親しんだ、母方の実家のリンゴ農園にあります。</p>
+    <p>あっぷるキャピタルには、自分たちの事業という「果実」を着実に育て、その実りを次の世代へつなぐ願いを込めています。その原点は、代表が幼い頃に親しんだ、母方の実家のリンゴ農園にあります。地域の人たちと一緒に歳を重ね、住まいや店を続けていく。それも、私たちが大切にしたい経営の姿勢です。</p>
     <div class="acts"><a class="btn line" href="@@R@@name/">社名の由来を読む<span class="arr" aria-hidden="true"></span></a></div>
   </div>
 </div></section>
@@ -401,6 +410,14 @@ def shell(key, p):
     body = (p["body"].replace("@@MAP@@", map_svg()).replace("@@PROPS@@", prop_rows).replace("@@KS@@", ks_imgs.replace("@@A@@", A))
             .replace("@@MONO@@", MONO).replace("@@A@@", A).replace("@@R@@", R))
     title = p["title"] + "｜あっぷるキャピタルグループ"
+    heading = f'''<p class="en">{p["en"]}</p>
+  <h1>{p["h1"]}</h1>
+  <p class="lead">{p["lead"]}</p>'''
+    if key == "name":
+        heading = f'''<div class="name-intro">
+    <div><p class="en">{p["en"]}</p><h1>{p["h1"]}</h1></div>
+    <p class="lead">{p["lead"]}</p>
+  </div>'''
     return f'''<!DOCTYPE html>
 <html lang="ja" data-theme="apple">
 <head>
@@ -424,11 +441,9 @@ def shell(key, p):
 </header>
 <nav class="mnav" aria-label="メニュー">{mnav}</nav>
 <main>
-<section class="ph"><div class="wrap">
+<section class="ph{' name-head' if key == 'name' else ''}"><div class="wrap">
   <nav class="crumb" aria-label="現在の位置">{crumb}</nav>
-  <p class="en">{p["en"]}</p>
-  <h1>{p["h1"]}</h1>
-  <p class="lead">{p["lead"]}</p>
+  {heading}
   {op}
 </div></section>
 {body}
@@ -440,7 +455,7 @@ def shell(key, p):
     <span class="cp"><span>{MONO}</span>© 2026 Apple Capital Group</span>
   </div>
 </div></footer>
-<div class="badge">PREVIEW v9</div>
+<div class="badge{' name-badge' if key == 'name' else ''}">PREVIEW v9</div>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="../assets/sub.js" defer></script>
 </body>

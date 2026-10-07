@@ -201,9 +201,22 @@ svg .dot{fill:#54A83C}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
 /* 社名の由来は、動きなしでも最後まで読める文章として表示する */
-.name-story .prose{max-width:44em;font-size:clamp(15px,1.3vw,17px);line-height:2.15}
+.name-head{padding:clamp(130px,12vw,175px) 0 clamp(56px,6vw,86px)}
+.name-intro{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:clamp(28px,6vw,100px);align-items:start}
+.name-head .en{font-size:14px;line-height:1.5;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--deep);background:none}
+.name-head h1{font-size:clamp(28px,2.6vw,36px);letter-spacing:.08em;line-height:1.6;margin-top:14px}
+.name-head .lead{max-width:30em;margin:0;padding-left:28px;border-left:3px solid var(--accent);font-size:clamp(20px,1.7vw,24px);line-height:1.9;letter-spacing:.04em;color:var(--ink2)}
+.name-head strong,.name-story strong{font-weight:500;color:var(--deep)}
+.name-story .prose{max-width:44em;font-size:clamp(16px,1.3vw,17px);line-height:2.15}
+.name-story .prose p+p{margin-top:1.35em}
+.name-story mark{color:var(--deep);font-weight:500;background:linear-gradient(transparent 58%,rgba(228,80,111,.19) 58%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .08em}
 .name-story .name-signature{margin-top:2.5em;font-size:14px;text-align:right;color:var(--ink)}
 .name-related{display:flex;flex-wrap:wrap;gap:14px}
+.name-badge{position:static;width:fit-content;margin:16px var(--gut)}
+@media (max-width:900px){
+  .name-intro{grid-template-columns:minmax(0,1fr);gap:26px}
+  .name-head .lead{max-width:34em;border-left:0;border-top:2px solid var(--accent);padding:24px 0 0}
+}
 
 /* IR */
 .doc{background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.95);border-radius:20px;padding:30px 32px 30px;box-shadow:0 20px 50px rgba(40,90,160,.1)}
