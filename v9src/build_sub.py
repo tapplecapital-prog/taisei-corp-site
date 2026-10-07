@@ -12,7 +12,7 @@ OUT = HERE.parent / "v9"
 
 NAV = [("#about", "私たちについて"), ("tax/", "税務・会計"), ("real-estate/", "不動産"), ("stores/", "店舗"),
        ("ai/", "AI・業務改善"), ("profile/", "代表"), ("company/", "会社概要"), ("ir/", "IR")]
-FNAV = NAV + [("privacy/", "プライバシーポリシー")]
+FNAV = NAV + [("name/", "社名に込めた思い"), ("privacy/", "プライバシーポリシー")]
 
 MONO = ('<svg viewBox="0 0 120 120" role="img" aria-label="あっぷるキャピタルグループの組み文字">'
         '<circle class="s" pathLength="1" cx="60" cy="60" r="56" stroke-width="1.6"/>'
@@ -66,6 +66,42 @@ KS = ["k08", "k05", "k02", "k13", "k04", "k16", "k09", "k15"]
 ks_imgs = "".join(f'<img src="@@A@@img/ks/{k}.webp" width="600" height="750" alt="" loading="lazy">' for k in KS)
 
 PAGES = {
+"name": dict(
+  title="社名に込めた思い",
+  desc="あっぷるキャピタルの社名の由来。青森の母方の実家のリンゴ農園で育まれた思いと、事業を着実に実らせ、次の世代へつなぐための資本の役割をご紹介します。",
+  nav="name/", en="Origin", h1="社名に込めた思い",
+  lead="あっぷるキャピタルという名前の原点は、代表・三上浩平が幼い頃から親しんだ、母方の実家のリンゴ農園にあります。",
+  body='''
+<article class="name-story" aria-label="あっぷるキャピタルの社名の由来">
+<section class="sec"><div class="wrap two">
+  <div><p class="lab">Apple</p><h2>リンゴ農園の記憶</h2></div>
+  <div class="prose">
+    <p>青森で育った私にとって、母方の実家のリンゴ農園は、子どもの頃から愛着のある場所でした。小さな実が少しずつ育ち、やがて収穫を迎える。その変化を見守ることに、幼いながらも心を動かされていました。</p>
+    <p>時間をかけて育ったものが、実を結ぶ。あの農園で感じた喜びは、いま、事業の成長を見守る気持ちにつながっています。「あっぷる」には、この原体験を込めました。</p>
+  </div>
+</div></section>
+<section class="sec alt"><div class="wrap two">
+  <div><p class="lab">Growth</p><h2>着実に育て、<br>次の世代へ</h2></div>
+  <div class="prose">
+    <p>私たちが目指すのは、目の前の事業を着実に育て、次の世代が引き継いでいける形で残すことです。</p>
+    <p>思い描いたとおりに進まないときも、工夫を重ねて事業を続ける。遠回りや試行錯誤を重ねても、実を結ぶまで向き合い続ける。そうした一つひとつの積み重ねを、経営の基本にしています。</p>
+    <p>「実らせて、未来へつなぐ。」は、この姿勢を表した言葉です。自分たちの代で得た成果を、次の担い手が育てていける形で手渡したいと考えています。</p>
+  </div>
+</div></section>
+<section class="sec"><div class="wrap two">
+  <div><p class="lab">Capital</p><h2>「キャピタル」の役割</h2></div>
+  <div class="prose">
+    <p>事業を長く続けるには、育てたいという思いに加えて、資金が回り続ける仕組みが必要です。</p>
+    <p>事業から得た利益を、住まいや店舗の手入れ、運営の改善、次の事業に役立てる。資本を事業の成長につなげ、その成果を再び事業に戻す。この循環をつくり、次の世代へ続けていくことが、「キャピタル」に込めた役割です。</p>
+    <p>幼い頃に見守ったリンゴの成長のように、事業を育て、その実りを次の世代へ。あっぷるキャピタルという名前には、この願いを込めています。</p>
+    <p class="name-signature">あっぷるキャピタルグループ<br>代表　三上 浩平</p>
+  </div>
+</div></section>
+</article>
+<section class="sec alt"><div class="wrap name-related">
+  <a class="btn line" href="@@R@@#about">私たちについて<span class="arr" aria-hidden="true"></span></a>
+  <a class="btn line" href="@@R@@company/">会社概要<span class="arr" aria-hidden="true"></span></a>
+</div></section>'''),
 "tax": dict(
   title="税務・会計｜三上浩平税理士事務所",
   desc="三上浩平税理士事務所（東京税理士会所属）のご案内。不動産オーナーの税務顧問を中心に、個人・法人の税務申告、会計、相続税申告、創業支援を行っています。",
@@ -236,6 +272,14 @@ PAGES = {
     <div><b>2025.03</b>買取専門店「こやし屋 野方店」を開店</div>
     <div><b>2025.11</b>青森県十和田市の賃貸住宅（30室）を取得</div>
     <div><b>2026.06</b>埼玉県東松山市の賃貸住宅を取得。調査部門「あっぷる総研」を設立</div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap two">
+  <div><p class="lab">Origin</p><h2>社名に込めた思い</h2></div>
+  <div class="prose">
+    <p>「あっぷる」の原点は、代表が幼い頃から親しんだ、母方の実家のリンゴ農園にあります。事業を着実に実らせ、次の世代へつなぐ。そのための資金の循環をつくる役割を、「キャピタル」に込めています。</p>
+    <div class="acts"><a class="btn line" href="@@R@@name/">社名の由来を読む<span class="arr" aria-hidden="true"></span></a></div>
   </div>
 </div></section>
 
