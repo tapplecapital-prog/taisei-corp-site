@@ -323,7 +323,7 @@ PAGES = {
       <li>経理と店舗運営の仕組みづくり（<a href="@@R@@ai/">AI・業務改善</a>）</li>
     </ul>
     <h3>メディア掲載</h3>
-    <ul><li><a href="https://www.rakumachi.jp/news/column/408837" target="_blank" rel="noopener">楽待新聞「CF100万円までの道のり」#8（2026年10月31日）</a></li><li><a href="https://www.rakumachi.jp/news/column/406727" target="_blank" rel="noopener">楽待新聞「大家業のひとびと」#91（2026年9月25日）</a></li></ul>
+    <ul><li><a href="https://www.rakumachi.jp/news/video/409744" target="_blank" rel="noopener">楽待（動画）「令和デビューの不動産投資家たち」#30（2026年11月6日）</a></li><li><a href="https://www.rakumachi.jp/news/column/408837" target="_blank" rel="noopener">楽待新聞「CF100万円までの道のり」#8（2026年10月31日）</a></li><li><a href="https://www.rakumachi.jp/news/column/406727" target="_blank" rel="noopener">楽待新聞「大家業のひとびと」#91（2026年9月25日）</a></li></ul>
   </div>
 </div></section>'''),
 
