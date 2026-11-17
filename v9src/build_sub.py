@@ -329,11 +329,29 @@ PAGES = {
 
 "ir": dict(
   title="IR・決算説明",
-  desc="合同会社あっぷるキャピタルの決算説明資料と、不動産事業の中長期成長戦略を掲載しています。",
+  desc="合同会社たいせい・合同会社あっぷるキャピタルの決算説明資料と、不動産事業の中長期成長戦略を掲載しています。",
   nav="ir/", en="Investor Relations", h1="IR・決算説明",
-  lead="合同会社あっぷるキャピタルの決算説明資料と、不動産事業の中長期の方針をまとめた資料を掲載しています。金融機関や取引先の皆さまに、当社の現状を数字でご確認いただくための資料です。",
+  lead="合同会社たいせいと合同会社あっぷるキャピタルの決算説明資料と、不動産事業の中長期の方針をまとめた資料を掲載しています。金融機関や取引先の皆さまに、当社の現状を数字でご確認いただくための資料です。",
   body='''
 <section class="sec"><div class="wrap two">
+  <div class="rv"><p class="lab">Results</p><h2>決算説明資料</h2><p class="s">合同会社たいせい（単体）</p></div>
+  <div>
+    <article class="doc rv d1">
+      <div class="dh"><span class="new">最新</span><span class="dt">作成日 2026年11月17日　全23ページ</span></div>
+      <h3>第7期（2026年9月期）決算説明資料</h3>
+      <p>財務三表と事業別（不動産賃貸・買取専門店・無人販売）の内訳に加え、月次の推移、財務の健全性、借入の状況と金利上昇の影響、減価償却費の見通し、事業等のリスク、来期の見込みを掲載しています。</p>
+      <div class="kpis">
+        <div><b>1億8,140<small>万円</small></b><span>売上高</span></div>
+        <div><b>2,792<small>万円</small></b><span>経常利益</span></div>
+        <div><b>2億878<small>万円</small></b><span>総資産（期末）</span></div>
+      </div>
+      <div class="acts"><a class="btn" href="taisei-fy2026/" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a><button class="btn line" type="button" data-viewer="viewer-taisei">このページで見る</button></div>
+    </article>
+    <div class="viewer rv" id="viewer-taisei" hidden><iframe title="合同会社たいせい 第7期 決算説明資料" loading="lazy" data-src="taisei-fy2026/"></iframe></div>
+  </div>
+</div></section>
+
+<section class="sec alt"><div class="wrap two">
   <div class="rv"><p class="lab">Results</p><h2>決算説明資料</h2><p class="s">合同会社あっぷるキャピタル（単体）</p></div>
   <div>
     <article class="doc rv d1">
@@ -345,13 +363,13 @@ PAGES = {
         <div><b>5,561<small>万円</small></b><span>売上高（賃料等）</span></div>
         <div><b>4億8,187<small>万円</small></b><span>総資産（期末）</span></div>
       </div>
-      <div class="acts"><a class="btn" href="fy2026/" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a><button class="btn line" type="button" data-viewer>このページで見る</button></div>
+      <div class="acts"><a class="btn" href="fy2026/" target="_blank" rel="noopener">資料を開く<span class="arr" aria-hidden="true"></span></a><button class="btn line" type="button" data-viewer="viewer">このページで見る</button></div>
     </article>
     <div class="viewer rv" id="viewer" hidden><iframe title="第6期 決算説明資料" loading="lazy" data-src="fy2026/"></iframe></div>
   </div>
 </div></section>
 
-<section class="sec alt"><div class="wrap two">
+<section class="sec"><div class="wrap two">
   <div class="rv"><p class="lab">Strategy</p><h2>経営の方針</h2></div>
   <div>
     <article class="doc rv d1">
@@ -363,11 +381,12 @@ PAGES = {
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap two">
+<section class="sec alt"><div class="wrap two">
   <div class="rv"><p class="lab">Profile</p><h2>対象の会社</h2></div>
   <div class="rv d1">
+    <dl class="dl"><dt>商号</dt><dd>合同会社たいせい</dd><dt>代表者</dt><dd>代表社員 三上浩平</dd><dt>設立</dt><dd>2020年（令和2年）6月16日</dd><dt>決算期</dt><dd>9月30日（事業年度は毎年10月1日から翌年9月30日まで）</dd><dt>事業内容</dt><dd>賃貸用不動産の保有・賃貸、買取専門店（こやし屋）の運営、無人販売店（365スイーツショップ）の運営</dd></dl>
     <dl class="dl"><dt>商号</dt><dd>合同会社あっぷるキャピタル</dd><dt>代表者</dt><dd>代表社員 三上浩平</dd><dt>設立</dt><dd>2020年（令和2年）12月21日</dd><dt>決算期</dt><dd>6月30日（事業年度は毎年7月1日から翌年6月30日まで）</dd><dt>事業内容</dt><dd>賃貸用不動産の保有・賃貸</dd></dl>
-    <p class="note">本ページに掲載する情報は開示した時点のものであり、将来の業績などを保証するものではありません。合同会社たいせいと代表個人が保有する物件は、この資料の対象に含みません。</p>
+    <p class="note">本ページに掲載する情報は開示した時点のものであり、将来の業績などを保証するものではありません。各資料はそれぞれの会社の単体の数字です。代表個人が保有する物件は、どちらの資料の対象にも含みません。</p>
   </div>
 </div></section>'''),
 
