@@ -11,7 +11,7 @@
 - 最寄駅: JR京浜東北線「大森駅」西口から徒歩10分
 - 行き方: 大森駅の西口を出て、池上通り沿いに進みます。大森郵便局（大田区山王3-9-13）の向かいにあります。
 - 予約: 不要
-- 店舗ページ: https://tapplecapital-prog.github.io/C:/Program Files/Git/taisei-corp-site/v9/stores/koyashiya/omorisannou/
+- 店舗ページ: https://tapplecapital-prog.github.io/taisei-corp-site/v9/stores/koyashiya/omorisannou/
 - 本部公式の店舗ページ: https://coyashiya.jp/store/omorisannou/
 
 大森駅の西口から池上通りを進んだ、大森郵便局の向かいにあるお店です。山王・馬込など大森駅の西側にお住まいの方を中心に、金・貴金属から腕時計、ブランド品、お酒、切手まで、1点からお持ち込みいただけます。土曜日は定休日です。
@@ -33,7 +33,7 @@ JR京浜東北線の大森駅西口を出て、池上通り沿いに徒歩10分�
 - 最寄駅: 西武新宿線「野方駅」南口から徒歩2分
 - 行き方: 野方駅の南口を出て、商店街の中を徒歩2分ほどです。
 - 予約: 不要
-- 店舗ページ: https://tapplecapital-prog.github.io/C:/Program Files/Git/taisei-corp-site/v9/stores/koyashiya/nogata/
+- 店舗ページ: https://tapplecapital-prog.github.io/taisei-corp-site/v9/stores/koyashiya/nogata/
 - 本部公式の店舗ページ: https://coyashiya.jp/store/nogata/
 
 野方駅の南口から徒歩2分、駅前に商店街が広がる一角にあるお店です。お買い物のついでに、ご自宅で眠っている貴金属や腕時計、ブランド品、カメラ、お酒などを1点からお持ち込みいただけます。木曜日は定休日です。
@@ -55,7 +55,7 @@ JR京浜東北線の大森駅西口を出て、池上通り沿いに徒歩10分�
 - 最寄駅: JR横浜線「大口駅」西口から徒歩3分
 - 行き方: 大口駅の西口を出て、大口通沿いに徒歩3分ほどです。
 - 予約: 不要
-- 店舗ページ: https://tapplecapital-prog.github.io/C:/Program Files/Git/taisei-corp-site/v9/stores/koyashiya/ookuchi/
+- 店舗ページ: https://tapplecapital-prog.github.io/taisei-corp-site/v9/stores/koyashiya/ookuchi/
 - 本部公式の店舗ページ: https://coyashiya.jp/store/kanagawa-ookuchi/
 
 大口駅の西口から徒歩3分、大口通沿いのRELUXIA横濱東1階にあるお店です。金・貴金属や腕時計、ブランド品はもちろん、整理中のお品物をまとめて見てほしいというご相談にも対応します。木曜日は定休日です。

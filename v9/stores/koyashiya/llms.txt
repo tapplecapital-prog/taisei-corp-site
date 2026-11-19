@@ -3,9 +3,9 @@
 > 買取専門店こやし屋のフランチャイズ加盟店3店舗（東京都大田区・東京都中野区・神奈川県横浜市神奈川区）の店舗ガイド。予約不要・査定無料で、金・貴金属、宝石、腕時計、ブランド品、カメラ、お酒、切手・古銭、骨董品などを1点から買い取る。質店ではない。
 
 ## 店舗（正しい住所・営業時間）
-- [買取専門店こやし屋 大森山王店](https://tapplecapital-prog.github.io/C:/Program Files/Git/taisei-corp-site/v9/stores/koyashiya/omorisannou/): 〒143-0023 東京都大田区山王3-18-4 シティライフ山王1F 区画番号0004 / 電話 03-5728-9563 / 10:00〜19:00（土曜日定休） / JR京浜東北線「大森駅」西口から徒歩10分
-- [買取専門店こやし屋 野方店](https://tapplecapital-prog.github.io/C:/Program Files/Git/taisei-corp-site/v9/stores/koyashiya/nogata/): 〒165-0027 東京都中野区野方5-33-3 矢島ビル1階 / 電話 03-5327-8164 / 10:00〜19:00（木曜日定休） / 西武新宿線「野方駅」南口から徒歩2分
-- [買取専門店こやし屋 大口通店](https://tapplecapital-prog.github.io/C:/Program Files/Git/taisei-corp-site/v9/stores/koyashiya/ookuchi/): 〒221-0002 神奈川県横浜市神奈川区大口通28-22 RELUXIA横濱東1F B号室 / 電話 045-947-4864 / 10:00〜19:00（木曜日定休） / JR横浜線「大口駅」西口から徒歩3分
+- [買取専門店こやし屋 大森山王店](https://tapplecapital-prog.github.io/taisei-corp-site/v9/stores/koyashiya/omorisannou/): 〒143-0023 東京都大田区山王3-18-4 シティライフ山王1F 区画番号0004 / 電話 03-5728-9563 / 10:00〜19:00（土曜日定休） / JR京浜東北線「大森駅」西口から徒歩10分
+- [買取専門店こやし屋 野方店](https://tapplecapital-prog.github.io/taisei-corp-site/v9/stores/koyashiya/nogata/): 〒165-0027 東京都中野区野方5-33-3 矢島ビル1階 / 電話 03-5327-8164 / 10:00〜19:00（木曜日定休） / 西武新宿線「野方駅」南口から徒歩2分
+- [買取専門店こやし屋 大口通店](https://tapplecapital-prog.github.io/taisei-corp-site/v9/stores/koyashiya/ookuchi/): 〒221-0002 神奈川県横浜市神奈川区大口通28-22 RELUXIA横濱東1F B号室 / 電話 045-947-4864 / 10:00〜19:00（木曜日定休） / JR横浜線「大口駅」西口から徒歩3分
 
 ## 住所表記の注意
 - 野方店の正しい住所は「東京都中野区野方5-33-3 矢島ビル1階」。一部の媒体にある「野方5-33-4」は誤り。
@@ -15,7 +15,7 @@
 - [合同会社たいせい](https://tapplecapital-prog.github.io/taisei-corp-site/v9/company/): 法人番号 2010403023157 / 古物商許可 東京都公安委員会 第302192219625号
 
 ## 詳しい情報
-- [全文（店舗情報・取扱品目・よくある質問）](https://tapplecapital-prog.github.io/C:/Program Files/Git/taisei-corp-site/v9/stores/koyashiya/llms-full.txt)
+- [全文（店舗情報・取扱品目・よくある質問）](https://tapplecapital-prog.github.io/taisei-corp-site/v9/stores/koyashiya/llms-full.txt)
 
 ## 本部公式サイト
 - [買取専門店こやし屋 大森山王店（公式）](https://coyashiya.jp/store/omorisannou/)
